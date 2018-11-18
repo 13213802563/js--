@@ -1,0 +1,87 @@
+<html>
+<head>
+	<meta charset='utf-8'>
+	<style type="text/css">
+	   #idData {color: red;border: solid;text-align: center;}
+	   a{text-decoration: none;}            
+	</style>
+</head>
+<body  onLoad="goPage(1,10);">
+	<table id="idData" width="70%">        
+		<tr><td>liujinzhong1</td><td>25</td><td>男</td><td>山西吕梁</td></tr>
+		<tr><td>liujinzhong2</td><td>25</td><td>男</td><td>山西吕梁</td></tr>
+		<tr><td>liujinzhong3</td><td>25</td><td>男</td><td>山西吕梁</td></tr>
+		<tr><td>liujinzhong4</td><td>25</td><td>男</td><td>山西吕梁</td></tr>
+		<tr><td>liujinzhong5</td><td>25</td><td>男</td><td>山西吕梁</td></tr>
+		<tr><td>liujinzhong6</td><td>25</td><td>男</td><td>山西吕梁</td></tr>
+		<tr><td>liujinzhong7</td><td>25</td><td>男</td><td>山西吕梁</td></tr>
+		<tr><td>liujinzhong8</td><td>25</td><td>男</td><td>山西吕梁</td></tr>
+		<tr><td>liujinzhong9</td><td>25</td><td>男</td><td>山西吕梁</td></tr>
+		<tr><td>liujinzhong10</td><td>25</td><td>男</td><td>山西吕梁</td></tr>
+		<tr><td>liujinzhong11</td><td>25</td><td>男</td><td>山西吕梁</td></tr>
+		<tr><td>liujinzhong12</td><td>25</td><td>男</td><td>山西吕梁</td></tr>
+		<tr><td>liujinzhong13</td><td>25</td><td>男</td><td>山西吕梁</td></tr>
+		<tr><td>liujinzhong14</td><td>25</td><td>男</td><td>山西吕梁</td></tr>
+		<tr><td>liujinzhong15</td><td>25</td><td>男</td><td>山西吕梁</td></tr>
+		<tr><td>liujinzhong16</td><td>25</td><td>男</td><td>山西吕梁</td></tr>  
+	</table>
+	<table width="60%" align="right" id="pageEnd">
+		<tr><td><div id="barcon" name="barcon">
+		fjgfgfogofigifofoop</div></td></tr>
+	</table>
+
+	<script type="text/javascript">
+	     //pno  页数
+         //psize 每页显示记录数
+         function  goPage(pno,psize){
+         	var itable=document.getElementById("idData");
+         	var  num=itable.rows.length;//表格所有行数
+         	console.log(num);
+         	var  totalPage=0;//总页数
+         	var pageSize=psize;//每页显示的行数
+         	//这总共分为几页
+         	 if(num/pageSize>parseInt(num/pageSize)){
+         	 	totalPage=parseInt(num/pageSize)+1;
+         	 }
+         	 else{
+         	 	totalPage=parseInt(num/pageSize);
+         	 }
+         	 var currentPage=pno;//当前页数
+         	 var startRow=(currentPage-1)*pageSize+1;//开始显示的行
+         	 var  endRow=currentPage*pageSize;//结束显示的行
+         	 endRow=(endRow>num)?num:endRow;//10>8----8;10>30-----30
+            //遍历显示数据  实现分页
+         	 for(var i=1;i<(num+1);i++){//1---num
+         	 	var irow=itable.rows[i-1];//row[0]---row[num-1]
+         	 	if(i>=startRow&&i<=endRow){
+         	 		irow.style.display="block";
+         	 	}
+         	 	else{
+         	 		irow.style.display="none"
+         	 	}
+         	 }
+         	 var  pageEnd=document.getElementById('pageEnd');
+			 console.log("jjsjjskkkl");
+         	 var  tempStr="共"+num+"条记录 分"+totalPage+"页 当前第"+currentPage+"页";
+         	 if(currentPage>1){//2>1
+         	 	tempStr += "<a href=\"#\">  onclick=\"goPage("+(1)+","+psize+")\">首页</a>";
+         	 	tempStr += "<a href=\"#\" onClick=\"goPage("+(currentPage-1)+","+psize+")\"><上一页</a>"
+         	 } 
+         	 else{//0>1
+         	 	tempStr+="首页";
+         	 	tempStr+="<上一页";
+         	 }
+         	 if(currentPage<totalPage){//2>3
+			    tempStr += "<a href=\"#\" onClick=\"goPage("+(currentPage+1)+","+psize+")\">下一页></a>";
+                tempStr += "<a href=\"#\" onClick=\"goPage("+(totalPage)+","+psize+")\">尾页</a>";
+         	 
+         	 }else{//3<3
+                tempStr+="尾页";
+                tempStr+="下一页>"
+         	 }
+			 console.log(tempStr)
+         	 document.getElementById("barcon").innerHTML = tempStr;
+			}
+	</script> 
+</body> 
+</html>
