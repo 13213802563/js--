@@ -1,0 +1,61 @@
+<html>
+<head>
+	<meta charset='utf-8'>
+	<title></title>
+</head>
+<body>
+   
+</body>
+<script>
+//浅拷贝：就是复制，把一个对象中的所有内容复制一份给另一个对象；也就是说把一个对象的地址给了另一个对象，指向相同了，
+// 两对象之间有共同的属性和方法。
+    var obj1={
+    	age:10,
+    	sex:'男',
+    	car:['奔驰','宝马']
+    }
+    var obj2={};
+    //把a对象复制到b中
+    function  extend(a,b){
+      for(var key in a){
+      	b[key]=a[key];
+      //b['age']=a['age'];
+      }
+    }
+    extend(obj1,obj2);
+//深拷贝:把一个对象中所有的属性和方法一个一个的找到，并且在两一个对象中开辟相应的空间，一个个的存储在另一个对象中
+   var obj1={
+    	age:10,
+    	sex:'男',
+    	car:['奔驰','宝马'],
+    	dog:{
+    		name:'大黄',
+    		age:5,
+    		color:"黑白色"
+    	}
+    }
+    var obj2={};
+    function  extend(a,b){
+    	for(var key in a){
+    		var item=a[key];
+    		if(item instanceof Array){
+    			b[key]=[];
+    			extend(item,b[key]);
+    		}
+    		else if(item instanceof Object){
+    		//如果是对象类型，把b对象添加一个属性，是一个空对象
+    			b[key]={};
+    	     //再次调用，把a对象是属性对象一个一个复制到b对象中
+    			extend(item,b[key]);
+    		}
+    		else{
+    			//如果值是普通的数据，直接复制到b对象的这个属性中
+    			b[key]=item;
+    		}
+    	}
+    }
+    extend(obj1,obj2);
+    console.log(obj1);
+    console.log(obj2);
+</script>
+</html>
