@@ -59,9 +59,10 @@
   <label>座机</label><input type="text" id="telephone"><span></span><br/>
   <label>姓名</label><input type="text" id="fullName"><span></span><br/>
 </div>
-<script src="common.js"></script>
 <script>
-
+     function my$(id) {
+        return document.getElementById(id);
+    }
   //qq的
   checkInput(my$("qq"),/^\d{5,11}$/);
   //手机
