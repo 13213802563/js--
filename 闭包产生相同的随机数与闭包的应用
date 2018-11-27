@@ -26,5 +26,24 @@
    ff();
    ff();
    ff();
+   //普通函数
+    function f1(){
+      var num=10;
+      num++;
+      return num;
+    }
+    console.log(f1());
+    console.log(f1());
+   //函数的闭包
+    function f2(){
+    	var num=10;
+    	return function(){
+    		num++;
+    		return num;
+    	}
+    }
+     var ff=f2();
+     console.log(ff());
+     console.log(ff());
 </script>
 </html>
