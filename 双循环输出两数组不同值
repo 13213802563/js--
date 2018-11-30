@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+</head>
+	<body>		
+	</body>
+<script>
+	var array1 = [ {
+		"USER_ID": "1111",
+		"USER_NAME": "88881",
+		"TF_REMARK": "备注备注备注"
+		},
+		{
+		"USER_ID": "2222",
+		"USER_NAME": "88882",
+		"TF_REMARK": "这是一个备注"
+		}];
+	var array2 = [
+		{
+		"USER_ID": "1111",
+		"USER_NAME": "88881",
+		"TF_REMARK": "备注备注备注"
+		},
+		{
+		"USER_ID": "2222",
+		"USER_NAME": "88881",
+		"TF_REMARK": "备注备注备注"
+		},
+		{
+		"USER_ID": "3333",
+		"USER_NAME": "88882",
+		"TF_REMARK": "这是一个备注"
+		},
+		{
+		"USER_ID": "4444",
+		"USER_NAME": "8888",
+		"TF_REMARK": null
+		}
+		];
+		
+		var result = [];
+		for(var i = 0; i < array2.length; i++){
+			var obj = array2[i];
+			var num = obj.USER_ID;
+			var flag = false;
+			 for(var j = 0; j < array1.length; j++){
+					var aj = array1[j];
+					var n = aj.USER_ID;
+					if(n == num){
+						flag = true;
+						break;
+					}
+		        }
+				if(!flag){
+					result.push(obj);
+				}
+		}
+		console.log(result);
+</script>
+</html>
