@@ -1,0 +1,28 @@
+////数组去重1
+var methods=function(s){
+	var arr=[];
+	for(var i=0;i<s.length;i++){
+		if(arr.indexOf(s[i])==-1){
+			arr.push(s[i]);
+		}
+		console.log("skjkk")
+	}
+	return arr;
+}
+var p=[2,4,5,6,2,4,6];
+console.log(methods(p));
+//////数组去重2
+var method2=function(p){
+	var h={};
+	var arr=[];
+	for(var i=0;i<p.length;i++){
+		console.log(h[p[i]]);
+		if(!h[p[i]]){
+			h[p[i]]=true;
+			arr.push(p[i]);
+		}
+	}
+	return arr;
+}
+var p=[2,4,5,6,2,4,6];
+console.log(method2(p));
