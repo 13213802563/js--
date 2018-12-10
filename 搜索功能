@@ -1,0 +1,13 @@
+ // 搜索功能
+	$(".seach_button").on("click", function() {
+		yt.loadVedioList();
+	});
+	// 按回车键触发搜索功能
+	$(".seach_value").on("keyup", function(e) {
+		if(e.keyCode === 13) {
+			$(".seach_button").click();
+		}
+		if($(".seach_button").val() === "") {
+			yt.loadVedioList();
+		}
+	});
