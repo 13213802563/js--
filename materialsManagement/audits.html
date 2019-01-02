@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <title></title>
+</head>
+<link rel="stylesheet" type="text/css" href="../source/public/css/reset.css" />
+<link rel="stylesheet" type="text/css" href="../plugins/bootstrap/css/bootstrap.min.css" />
+<link rel="stylesheet" type="text/css" href="../plugins/jquery/toast/jquery.toast.css" />
+<link rel="stylesheet" type="text/css" href="../plugins/flatui/css/flat-ui.css" />
+<link rel="stylesheet" type="text/css" href="../plugins/jquery/toast/jquery.toast.css">
+<link rel="stylesheet" type="text/css" href="./../plugins/bootstrap/css/bootstrap.min.css" />
+<link rel="stylesheet" type="text/css" href="./../plugins/bootstrap/css/bootstrap-table.min.css">
+<link rel="stylesheet" type="text/css" href="../plugins/iconfont/iconfont.css" />
+<link rel="stylesheet" type="text/css" href="../plugins/customPlugins/widgets_default.css" />
+<link rel="stylesheet" type="text/css" href="../plugins/font-awesome-4.7.0/css/font-awesome.min.css" />
+<link rel="stylesheet" type="text/css" href="../plugins/jquery/jquery.mCustomScrollbar.css" />
+<link rel="stylesheet" type="text/css" href="../source/materialsManagement/css/audits.css" />
+<!-- <link rel="stylesheet" type="text/css" href="../source/personalManage/css/addPerson.css"> -->
+<script src="../plugins/requireJs/require.js" data-main="../source/materialsManagement/js/audits"></script>
+
+<body>
+  <div id="addUserForm" style="display: none;">
+    <table id="userTable">
+
+    </table>
+
+  </div>
+  <div class="taskMonitor">
+    <p class="task_title"><i class="icon iconfont icon-renyuan" aria-hidden="true"></i>调运管理</p>
+    <div class="task_search">
+      <div class="ytSelect">
+        <div class="people_type">
+
+        </div>
+        <div class="sel_position">
+
+        </div>
+      </div>
+      <div class="search_warp">
+        <i class="icon iconfont icon-sousuo search_btn"></i>
+        <input type="text" value="" class="search_input" placeholder="搜索调运申请人、调运仓库、审批人、调拨人" />
+      </div>
+    </div>
+
+    <div class="table_warp">
+      <div class="taskInfo_table" id="taskInfo_table"></div>
+
+    </div>
+  </div>
+  <div class="detailsBox"></div>
+
+  <!-- 确认是否删除 -->
+  <div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" id="myDelModal">
+    <div class="modal-dialog" role="document" aria-hidden="true">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title">调拨物资</h4>
+        </div>
+        <div class="modal-body">
+          该调运申请单的物资均已调拨完成吗？
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-del" data-dismiss="modal">已完成调拨</button>
+          <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>

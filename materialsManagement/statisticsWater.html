@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <title></title>
+</head>
+<link rel="stylesheet" href="../source/public/css/reset.css">
+<link rel="stylesheet" type="text/css" href="../plugins/iconfont/iconfont.css" />
+<link rel="stylesheet" type="text/css" href="../plugins/bootstrap/css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="../plugins/bootstrap/css/bootstrap-table.min.css">
+<link rel="stylesheet" type="text/css" href="../source/public/css/public.css" />
+<link rel="stylesheet" type="text/css" href="../plugins/customPlugins/widgets_default.css" />
+<link rel="stylesheet" type="text/css" href="../source/materialsManagement/css/statisticsWater.css" />
+<script src="../plugins/requireJs/require.js" data-main="../source/materialsManagement/js/statisticsWater"></script>
+
+<body>
+  <table class="derive_table" border="0" cellspacing="" cellpadding="" id="table" style="display: none;">
+    <style type="text/css">
+      table {
+        width: 98%;
+        margin: auto;
+      }
+
+      td {
+        padding: 10px 0;
+        height: 40px;
+        text-align: center;
+        border: 1px solid #000;
+      }
+
+      .firstTr td {
+        border: none;
+        border-bottom: 1px solid #000;
+      }
+
+      .lastTr td {
+        text-align: left;
+        border: none;
+        border-top: 1px solid #000;
+      }
+    </style>
+
+  </table>
+  <div id="realHtml"></div>
+  <div class="mask"></div>
+
+  <div class="taskMonitor">
+    <div class="title clearfix">
+      <p class="task_title"><i class="icon iconfont icon-renyuan" aria-hidden="true"></i>水利工程公司物资统计</p>
+      <div class="button_warp">
+        <button class="print">打印</button>
+        <button class="derive">导出</button>
+      </div>
+      <div class="line"></div>
+    </div>
+
+    <div class="sel_position">
+
+    </div>
+    <table id="tableWrap">
+
+    </table>
+  </div>
+
+</body>
+
+</html>

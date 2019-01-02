@@ -1,0 +1,166 @@
+#container{
+	width: auto;
+	height: auto;
+	margin: 5px 0 0 0;
+	}
+.title_name,.telphone_number{
+	line-height: 40px;
+}
+.title_name{
+	float: left;
+}
+.telphone_number{
+	float: right;
+}
+.title_name input,
+.telphone_number input{
+	height: 27px;
+	width: 150px;
+	border: 1px solid #ccc;
+	padding-left: 5px;
+	outline: none;
+	border-radius: 5px;
+}
+.title_name input:hover,
+.telphone_number input:hover{
+	border: 1px solid #42A3F4;
+}
+.town_belong,
+.town_belong1{
+	float: left;
+	margin: 10px 0;	
+}
+
+.town_belong select{
+	height: 30px;
+	width: 150px;
+}
+.person_style{
+/*		clear: both;*/
+	/* float: right; */
+	height: 30px;
+	margin: 10px auto;	
+	line-height: 30px;
+	width: 300px;
+}
+.person_style span{
+	margin-right: 5px;
+}
+
+
+	
+input[type='checkbox'],
+input[type='radio']{
+	width: 20px;
+	height: 20px;
+	vertical-align:middle;
+	opacity: 0;
+}
+.input_style{
+	background: url(../img/green.png) no-repeat;
+	width: 20px;
+	height: 20px;
+	display: inline-block;
+	vertical-align: middle;
+}
+.radio_bg{
+	background-position: -118px 0 ;
+}
+.checkbox_bg{
+	background-position: -120px 0;
+}
+.radio_bg_check{
+	background-position: -166px 0 ;
+}
+.checkbox_bg_check{
+	background-position: -48px 0;
+}
+.link_project{
+	clear: both;
+	float: left;
+	min-height: 50px;
+}
+.link_project div{
+	float: left; line-height: 30px;
+}
+.link_project ul,.select_conent ul{
+	float: left;
+	width: auto;
+}
+.link_project ul li{
+	float: left;
+	margin: 0 10px 10px 0;
+	width: auto;
+	border-radius:3px;
+/*	border: 1px solid #ccc;*/
+	height: 30px;
+	line-height: 30px;
+	padding:0 10px;
+	background:#14a2da;
+	color: #fff;
+}
+.link_project ul li i{
+	color: #FF9523;
+	margin-left: 5px;
+	color: #14a2da;
+	font-size: 16px;
+}
+.link_project ul li:hover i{
+	color: #fff;
+	cursor: pointer;
+}
+
+.select_conent{
+	clear: both;
+	border: 1px solid #ccc;
+	width: auto;
+	height: 230px;
+	overflow: hidden;
+	margin: 10px 0 0;
+	padding: 10px;
+	background: #F8F8F8;
+}
+.select_conent input{
+	width:100%;
+	height: 30px;
+	border: 1px solid #ccc;
+	border-radius:3px;
+	margin-bottom: 10px;
+	padding: 0 8px;
+}
+.select_conent .project_connent{
+	overflow: auto;
+	width: auto;
+	height: 180px;
+}
+.project_person{
+	height: 30px;
+	width: auto;
+}
+.click_green{
+	background: #96d411;
+	color: #fff;
+}
+.project_person .project_name,.project_person .town_name{
+	width: auto;
+	height: 30px;
+	line-height: 30px;
+}
+.project_person .project_name{
+	float: left;
+	margin-left: 20px;
+}
+.project_person .town_name{
+	float: right;
+	margin-right: 20px;
+}
+.project_person:hover{
+	background:#e6f5fc;
+	cursor: pointer;
+	color: #000;
+}
+
+/* 巡查、维修切换 */
+.person_style label{
+	height: 30px;
+}

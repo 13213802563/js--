@@ -1,0 +1,94 @@
+html, body {
+  height: 100%;
+  width: 100%;
+  font-size: 12px;
+}
+body{
+  overflow: hidden;
+}
+
+/* 清除浮动 */
+.clearfix:after{
+content: "";
+height: 0;
+font-size: 0;
+visibility: hidden;
+clear: both;
+display: block;
+}
+.clearfix{
+zoom: 1;
+}
+.task_title {
+  line-height: 45px;
+  border-left: 2px solid #158DC4;
+  /* border-bottom: 1px solid #F5F5F5; */
+  width: auto;
+  padding: 0 15px;
+  color: #158DC4;
+  font-size: 14px;
+  float: left;
+}
+.taskMonitor{
+background: #fff;
+  position: absolute;
+  left: 15px;
+  right: 0;
+  top: 10px;
+  bottom: 0px;
+  margin: 0;
+}
+.fixed-table-pagination{
+  position: fixed;
+  bottom: -10px;
+  width: 98%;
+}
+.button_warp{
+  float: right;
+}
+.button_warp button{
+  cursor: pointer;
+  display: inline-block;
+  border-radius: 2px;
+  text-align: center;
+  height: 32px;
+  padding: 0 15px;
+  color: #fff;
+  line-height: 32px;
+  border: 0;
+  margin-top: 10px;
+}
+.button_warp button:first-child{
+  background-color: rgba(66,133,244,1);
+}
+.button_warp button:last-child{
+  background-color: rgba(255,128,15,1);
+  margin-right: 50px;
+}
+.line{
+  border-bottom: 1px solid #F5F5F5;
+  margin-top:46px;
+}
+.bootstrap-table{
+  font-size: 14px;
+}
+.mask{
+  width: 100%;
+  height: 100%;
+  background-color: #fff;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+.ytSelect_showbox {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.ytSelect_label {
+  height: 20px!important;
+  line-height: 1px;
+}
+.ytSelect_option {
+  top: 28px;
+}

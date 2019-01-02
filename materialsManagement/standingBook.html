@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+	<link rel="stylesheet" href="../source/public/css/reset.css">
+	<link rel="stylesheet" type="text/css" href="../plugins/iconfont/iconfont.css" />
+	<link rel="stylesheet" type="text/css" href="../plugins/bootstrap/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="../plugins/bootstrap/css/bootstrap-table.min.css">
+	<link rel="stylesheet" type="text/css" href="../plugins/jquery/jquery.mCustomScrollBar.min.css" />
+	<link rel="stylesheet" type="text/css" href="../source/public/css/public.css" />
+	<link rel="stylesheet" type="text/css" href="../plugins/font-awesome-4.7.0/css/font-awesome.css" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="../plugins/customPlugins/widgets_default.css" />
+	<link rel="stylesheet" type="text/css" href="../plugins/customPlugins/widgets_patrol.css" />
+	<link rel="stylesheet" type="text/css" href="../plugins/sweetalert/sweetalert.css" />
+	<link rel="stylesheet" type="text/css" href="../plugins/bootstrap/css/bootstrap-datetimepicker.min.css">
+
+	<link rel="stylesheet" type="text/css" href="../source/materialsManagement/css/standingBook.css" />
+	<script src="../plugins/requireJs/require.js" data-main="../source/materialsManagement/js/standingBook"></script>
+</head>
+
+<body>
+	<div id="manageUnit">
+		<div class="button_warp" style="position: absolute;right: 15px;top: 10px;">
+			<div class="add_info_btn button">
+				<i class="icon iconfont icon-jiahao" style="font-size: 12px;"></i>
+				增加
+			</div>
+			<div class="edit_info_btn button disable">
+				<i class="icon iconfont icon-bianji" style="font-size: 14px;"></i>
+				编辑
+			</div>
+
+			<div class="delete_info_btn button disable">
+				<i class="icon iconfont icon-shanchu" style="font-size: 14px;"></i>
+				删除
+			</div>
+		</div>
+		<table id="tableWrap">
+
+		</table>
+
+		<div id="suppliesInfoDig" style="display:none;">
+			<form id="suppliesInfoForm" style="position: absolute;left: 15px;top: 65px;right: 0px;bottom: 60px;overflow-y: auto;overflow-x: hidden;">
+				<div class="form-group has-feedback">
+					<label for="" class="col-md-4">调运申请人：</label>
+					<div class="col-sm-6 del_padding">
+						<input type="text" class="form-control material_name" placeholder="调运申请人" data-error="请输入调运申请人" required name="transported_man">
+						<span class="glyphicon form-control-feedback" aria-hidden="true"></span>
+						<div class="help-block with-errors"></div>
+					</div>
+				</div>
+				<div class="form-group has-feedback">
+					<label for="" class="col-md-4">调运仓库：</label>
+					<div class="col-sm-6 warehouse del_padding">
+						<input type="text" class="form-control material_spec" placeholder="调运仓库" required data-error="请输入调运仓库" name="transported_store">
+						<ol class="hide">
+						</ol>
+						<span class="glyphicon form-control-feedback" aria-hidden="true"></span>
+						<div class="help-block with-errors"></div>
+					</div>
+				</div>
+				<div class="form-group has-feedback">
+					<label for="" class="col-md-4">申请日期：</label>
+					<div class="col-sm-6 applyTimeBox del_padding">
+						<input type="text" class="form-control apply_time use_year" placeholder="申请日期" required data-error="请输入申请日期" name="apply_time">
+						<span class="glyphicon form-control-feedback" aria-hidden="true"></span>
+						<div class="help-block with-errors"></div>
+					</div>
+				</div>
+				<div class="form-group has-feedback">
+					<label for="" class="col-md-4">审批人：</label>
+					<div class="col-sm-6 del_padding">
+						<input type="text" class="form-control custodian_name" placeholder="审批人" name="audit_man">
+						<span class="glyphicon form-control-feedback" aria-hidden="true"></span>
+						<div class="help-block with-errors"></div>
+					</div>
+				</div>
+				<div class="form-group has-feedback">
+					<label for="" class="col-md-4">审批日期：</label>
+					<div class="col-sm-6 del_padding">
+						<input type="text" class="form-control use_year" placeholder="审批日期" name="audit_time">
+						<span class="glyphicon form-control-feedback" aria-hidden="true"></span>
+						<div class="help-block with-errors"></div>
+					</div>
+				</div>
+				<div class="form-group has-feedback">
+					<label for="" class="col-md-4">调拨人：</label>
+					<div class="col-sm-6 del_padding">
+						<input type="text" class="form-control custodian_phone" placeholder="调拨人" name="allot_man">
+						<span class="glyphicon form-control-feedback" aria-hidden="true"></span>
+						<div class="help-block with-errors"></div>
+					</div>
+				</div>
+				<div class="form-group has-feedback">
+					<label for="" class="col-md-4">调拨日期：</label>
+					<div class="col-sm-6 del_padding">
+						<input type="text" class="form-control use_year" placeholder="调拨日期" name="allot_time">
+						<span class="glyphicon form-control-feedback" aria-hidden="true"></span>
+						<div class="help-block with-errors"></div>
+					</div>
+				</div>
+				<div class="status form-group has-feedback">
+					<label for="" class="col-md-4">状态：</label>
+					<div class="col-sm-6 del_padding">
+						<input type="text" class="form-control price" data-val="4" value="完成" placeholder="状态" required data-error="请输入状态" name="transported_stauts">
+						<ul class="hide">
+							<li data-val="0">待审批</li>
+							<li data-val="1">待调拨</li>
+							<li data-val="2">未通过</li>
+							<li data-val="3">完成</li>
+						</ul>
+						<span class="glyphicon form-control-feedback" aria-hidden="true"></span>
+						<div class="help-block with-errors"></div>
+					</div>
+				</div>
+
+				<div class="form-group has-feedback">
+					<label for="" class="col-md-4">附件：</label>
+					<div class="col-sm-8 del_padding" style="overflow: hidden;">
+						<div class="add_image_warp default_style" id="addDeviceImg">
+							<i class="icon iconfont icon-icon02"></i> 添加附件
+						</div>
+						<div id="imgDeviceFilesName" class="file_name_warp file_type_pic_warp" style="overflow: hidden;">
+
+						</div>
+						<input style="display: none;" type="text" data-error="文件未上传完成" class="form-control upfile" placeholder="文件" name=" transport_standing_book_file">
+						<div class="help-block with-errors"></div>
+					</div>
+				</div>
+
+			</form>
+		</div>
+	</div>
+	<div class="detailsBox"></div>
+</body>
+
+</html>

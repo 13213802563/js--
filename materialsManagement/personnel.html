@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <title></title>
+</head>
+<link rel="stylesheet" type="text/css" href="../source/public/css/reset.css" />
+<link rel="stylesheet" type="text/css" href="../plugins/bootstrap/css/bootstrap.min.css" />
+<link rel="stylesheet" type="text/css" href="../plugins/jquery/toast/jquery.toast.css" />
+<link rel="stylesheet" type="text/css" href="../plugins/flatui/css/flat-ui.css" />
+<link rel="stylesheet" type="text/css" href="../plugins/jquery/toast/jquery.toast.css">
+<link rel="stylesheet" type="text/css" href="./../plugins/bootstrap/css/bootstrap.min.css" />
+<link rel="stylesheet" type="text/css" href="./../plugins/bootstrap/css/bootstrap-table.min.css">
+<link rel="stylesheet" type="text/css" href="../plugins/iconfont/iconfont.css" />
+<link rel="stylesheet" type="text/css" href="../plugins/customPlugins/widgets_default.css" />
+<link rel="stylesheet" type="text/css" href="../plugins/font-awesome-4.7.0/css/font-awesome.min.css" />
+<link rel="stylesheet" type="text/css" href="../plugins/jquery/jquery.mCustomScrollbar.css" />
+<link rel="stylesheet" type="text/css" href="../source/materialsManagement/css/personnel.css" />
+<link rel="stylesheet" type="text/css" href="../source/materialsManagement/css/addPerson.css">
+<script src="../plugins/requireJs/require.js" data-main="../source/materialsManagement/js/personnel"></script>
+
+<body>
+  <div id="addUserForm" style="display: none;">
+    <table id="userTable">
+
+    </table>
+
+  </div>
+  <div class="taskMonitor">
+    <p class="task_title"><i class="icon iconfont icon-renyuan" aria-hidden="true"></i>人员列表</p>
+    <div class="task_search">
+      <div class="ytSelect">
+        <div class="people_type">
+
+        </div>
+        <div class="sel_position">
+
+        </div>
+      </div>
+      <div class="search_warp">
+        <i class="icon iconfont icon-sousuo search_btn"></i>
+        <input type="text" value="" class="search_input" placeholder="搜索人员名称、仓库名称" />
+      </div>
+      <span class="add_person">导入人员</span>
+    </div>
+
+    <div class="table_warp">
+      <div class="taskInfo_table" id="taskInfo_table"></div>
+
+    </div>
+    <!-- 分页的结构 -->
+    <div class="text-right">
+      <ul id="paginator"></ul>
+    </div>
+  </div>
+
+  <!-- 确认是否删除 -->
+  <div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" id="myDelModal">
+    <div class="modal-dialog" role="document" aria-hidden="true">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title">删除人员</h4>
+        </div>
+        <div class="modal-body">
+          确认删除该人员吗？
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-del" data-dismiss="modal">删除</button>
+          <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- 更新关联 -->
+  <div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" id="myProjectModal">
+    <div class="modal-dialog" role="document" aria-hidden="true">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title">关联仓库</h4>
+        </div>
+        <div class="modal-body">
+          <div id="link_project1">
+
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-del" data-dismiss="modal">确认添加</button>
+          <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- 更新人员 -->
+  <div id="suppliesInfoDig" style="display:none;">
+    <form id="suppliesInfoForm" style="position: absolute;left: 15px;top: 65px;right: 0px;bottom: 60px;overflow-y: auto;overflow-x: hidden;">
+      <div class="form-group has-feedback">
+        <label for="" class="col-md-4">姓名：</label>
+        <div class="col-sm-6 del_padding">
+          <input type="text" class="form-control person_name material_name" data-error="请输入姓名" required name="person_name">
+          <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
+          <div class="help-block with-errors"></div>
+        </div>
+      </div>
+      <div class="status form-group has-feedback">
+        <label for="" class="col-md-4">人员类型：</label>
+        <div class="col-sm-6 del_padding">
+          <input type="text" class="form-control price person_type" data-val="4" required data-error="请输入人员类型" name="person_type">
+          <ol class="hide">
+            <li data-val="0">审核人员</li>
+            <li data-val="1">仓管人员</li>
+            <li data-val="2">调运人员</li>
+          </ol>
+          <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
+          <div class="help-block with-errors"></div>
+        </div>
+      </div>
+      <div class="form-group has-feedback">
+        <label for="" class="col-md-4">所在单位：</label>
+        <div class="col-sm-6 warehouse del_padding">
+          <input type="text" class="form-control place_unit material_spec" name="place_unit">
+          <div class="help-block with-errors"></div>
+        </div>
+      </div>
+      <div class="form-group has-feedback">
+        <label for="" class="col-md-4">联系电话：</label>
+        <div class="col-sm-6 del_padding">
+          <input type="text" class="form-control person_phone custodian_name" name="person_phone">
+          <div class="help-block with-errors"></div>
+        </div>
+      </div>
+    </form>
+  </div>
+
+  <!-- <div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" id="myUpDateModal">
+    <div class="modal-dialog" role="document" aria-hidden="true">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title">更新人员信息</h4>
+        </div>
+        <div class="modal-body clearfix">
+          <div class="person_style">人员类型：
+            <label>
+              <i class='input_style radio_bg'><input type="radio" name="q" value="0" data-value="调运人员" class="canrepair"></i>
+              <span>调运人员 </span>
+            </label>
+            <label>
+              <i class='input_style radio_bg'><input type="radio" name="q" value="1" data-value="审核人员" class="canrepair"></i>
+              <span>审核人员 </span>
+            </label>
+            <label>
+              <i class='input_style radio_bg'><input type="radio" name="q" value="2" data-value="仓管人员" class="canrepair"></i>
+              <span>仓管人员 </span>
+            </label>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-del">确认更新</button>
+          <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+        </div>
+      </div>
+    </div>
+  </div> -->
+
+  <!-- <div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" id="myUpDateModal">
+    <div class="modal-dialog" role="document" aria-hidden="true">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title">更新人员信息</h4>
+        </div>
+        <div class="modal-body update_body clearfix">
+          <form class="add_form">
+            <div class="form-group has-feedback">
+              <label for="" class="col-md-3">姓名：</label>
+              <div class="col-sm-8 del_padding">
+                <input type="text" class="form-control person_name" data-error="请输入姓名" required name="person_name">
+                <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
+                <div class="help-block with-errors"></div>
+              </div>
+            </div>
+            <div class="form-group has-feedback">
+              <label for="" class="col-md-3">人员类型：</label>
+              <div class="col-sm-8 del_padding">
+                <input type="text" class="form-control person_type" required data-error="请输入人员类型"
+                  name="person_type">
+                <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
+                <div class="help-block with-errors"></div>
+              </div>
+            </div>
+            <div class="form-group has-feedback">
+              <label for="" class="col-md-3">所在单位：</label>
+              <div class="col-sm-8 del_padding">
+                <input type="text" class="form-control place_unit" placeholder="所在单位" name="place_unit">
+                <div class="help-block with-errors"></div>
+              </div>
+            </div>
+            <div class="form-group has-feedback">
+              <label for="" class="col-md-3">联系电话：</label>
+              <div class="col-sm-8 del_padding">
+                <input type="text" class="form-control person_phone" placeholder="联系电话" name="person_phone">
+              </div>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer update_button">
+          <button type="button" class="btn btn-del">确认更新</button>
+          <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+        </div>
+      </div>
+    </div>
+  </div> -->
+</body>
+
+</html>

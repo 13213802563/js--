@@ -1,0 +1,454 @@
+html, body {
+  height: 100%;
+  width: 100%;
+  font-size: 12px;
+}
+
+/* 清除浮动 */
+.clearfix:after{
+content: "";
+height: 0;
+font-size: 0;
+visibility: hidden;
+clear: both;
+display: block;
+}
+.clearfix{
+zoom: 1;
+}
+.task_title {
+  line-height: 45px;
+  border-left: 2px solid #158DC4;
+  border-bottom: 1px solid #F5F5F5;
+  width: auto;
+  padding: 0 15px;
+  color: #158DC4;
+  font-size: 14px;
+}
+/*搜索条件模块*/
+.task_search{
+font-size: 12px;
+margin: 12px 0 15px 25px;
+height: 30px;
+}
+.ytSelect{
+float: left;
+}
+.ytSelect>div{
+float: left;
+}
+.people_type{
+margin-right: 10px;
+}
+.search_warp {
+float: left;
+width: 280px;
+margin-left: 20px;
+overflow: hidden;
+border-radius: 30px;
+background: #F4F4F4;
+}
+.search_btn{
+border: none;
+color: #6D6D6D;
+font-size: 16px;
+text-align: center;
+line-height: 27px;
+margin: 2px 5px 0 0;
+display: inline-block;
+/* float: right; */
+cursor: pointer;
+}
+.search_btn:hover{
+color: #3779E7;
+}
+.btn-default{
+border-radius: 12px;
+}
+.task_search input {
+height: 30px;
+width: 235px;
+line-height: 28px;
+font-size: 12px;
+margin-left: 12px;
+padding: 0 8px;
+float: left;
+border: none;
+outline: none;
+background: #F5F5F5;
+}
+.add_person{
+height: 30px;
+line-height: 30px;
+float: left;
+cursor: pointer;
+background: #FF981F;
+color: #fff;
+border-radius: 15px;
+margin-left: 15px;
+padding: 0 10px;
+}
+.add_person:hover{
+box-shadow: 2px 2px 10px #ff981f;
+}
+
+.ytRangeSelect_input_wrap:hover{
+border: 1px solid #42A3F4!important;
+}
+.ytRangeSelect_wrap .ytRangeSelect_input_wrap{
+height: 30px;
+}
+/* 表格 */
+#taskInfo_table td{
+vertical-align: middle;
+}
+.uneven{
+background: #F5F5F5;
+}
+.even{
+background: #fff;
+}
+div#taskInfo_table.gridbox_dhx_skyblue.isModern table.obj.row20px tr td{
+line-height: 45px;
+}
+div#taskInfo_table.gridbox_dhx_skyblue.gridbox table.hdr td{
+vertical-align: middle;
+line-height: 45px;
+}
+div.gridbox table.obj td,td>div{
+font-family: "宋体";
+}
+.icon-gengduo{
+font-size: 12px;
+}
+.obj_msg{
+float: left;
+width: 100%;
+white-space: nowrap;
+overflow: hidden;
+text-overflow: ellipsis;
+}
+.obj_more{
+color: #52A9F3;
+cursor: pointer;
+float: right;
+margin-right: 80px;
+position: relative;
+}
+.obj_more:hover{
+color: skyblue;
+}
+.taskMonitor{
+background: #fff;
+  position: absolute;
+  left: 15px;
+  right: 0;
+  top: 10px;
+  bottom: 0px;
+  margin: 0;
+}
+
+
+/* 弹窗样式 */
+#myModal .modal-body{
+padding: 10px 15px 5px 15px;
+}
+.modal-header{
+background: #EBF1FD;
+border: none;
+border-radius: 5px;
+padding: 5px 15px;
+}
+.modal-header span{
+font-size: 18px;
+}
+.modal-header button{
+outline: none;
+}
+.modal-header h4{
+font-size: 14px;
+}
+#myModal .modal-body ul{
+margin-bottom: 5px;
+}
+#myModal .modal-dialog{
+width: 380px;
+}
+#myModal .modal-body li{
+list-style: none;
+float: left;
+width: 50%;
+}
+.modal-footer{
+padding: 5px;
+}
+.modal-footer .btn{
+height: 24px;
+line-height: 20px;
+outline: none;
+padding: 2px 12px;
+}
+.modal-dialog{
+margin-top: 200px!important;
+width: 440px;
+}
+#myModal .btn-default{
+background: #222;
+}
+
+/* 表格 */
+.table_warp{
+width: auto;
+margin: 0 15px;
+/* height: 666px; */
+overflow-y: auto;
+overflow-x: hidden;
+border: 1px solid #f5f5f5;
+}
+#tableContainer{
+width: auto;
+margin: 0 10px 0 15px;
+}
+.objbox{
+overflow-x: hidden!important;
+}
+/* 添加人员弹窗 */
+.confirmWin_winFrame{
+border-radius: 5px;
+}
+.confirmWin_titleDiv{
+border-top-right-radius: 5px;
+border-top-left-radius: 5px;
+background: #EBF1FD;
+}
+/* 删除人员弹窗 */
+#myDelModal .modal-dialog{
+width: 400px;
+}
+#myDelModal .modal-body{
+padding: 20px 15px 32px 15px;
+text-align: center;
+}
+#myUpDateModal .btn-del,
+.confirmWin_enterBtn,
+.confirmWin_cancleBtn,
+#myProjectModal .btn-del,
+#myUpDateModal .btn-default,
+#myProjectModal .btn-default{
+height: 30px;
+width: 72px;
+line-height: 24px;
+border-radius: 15px;
+display: inline-block;
+}
+#myDelModal .btn-default,
+#myDelModal .btn-del{
+width: 90px;
+height: 35px;
+border-radius: 18px;
+display: inline-block;
+}
+.confirmWin_cancleBtn,
+.confirmWin_enterBtn{
+border: none;
+line-height: 30px!important;
+}
+#myDelModal .modal-footer,
+#myUpDateModal .modal-footer,
+#myProjectModal .modal-footer{
+text-align: center;
+}
+#myDelModal .btn-del,
+.confirmWin_enterBtn,
+#myProjectModal .btn-del,
+#myUpDateModal .btn-del{
+background: #3FA2F7;
+color: white;
+}
+#myDelModal .btn-del:hover,
+.confirmWin_enterBtn:hover,
+#myUpDateModal .btn-del:hover,
+#myProjectModal .btn-del:hover{
+background: #00a2d4;
+}
+.btn-default{
+border: 1px solid #43A4F5;
+background: #fff;
+color: #333;
+}
+.confirmWin_btnDiv{
+width: 100%;
+text-align: center;
+}
+.confirmWin_cancleBtn{
+  border: 1px solid #43A4F5;
+}
+.btn-default:hover{
+box-shadow: 0px 0px 19px -7px #43A4F5;
+border: 1px solid #43A4F5;
+background: #fff;
+color: #333;
+}
+
+#myDelModal .modal-footer .btn-default{
+margin-left: 20px;
+}
+#myDelModal .modal-footer{
+padding: 10px 10px 20px 10px;
+}
+#myDelModal h4{
+height: 30px;
+line-height: 30px;
+}
+/* 更新关联弹窗 */
+#myProjectModal .modal-dialog{
+width: 560px;
+}
+#myProjectModal .sel_position{
+margin-bottom: 10px;
+}
+/* 更新人员弹窗 */
+#myUpDateModal .modal-dialog{
+width: 480px;
+}
+
+
+
+
+/* 编辑按钮颜色 */
+.connect_project,
+.option_bj,
+.delete_project{
+color: #52A9F3;
+margin-right: 10px;
+cursor: pointer;
+}
+.modal-footer{
+border-top: none;
+padding: 15px;
+}
+
+
+.selct_gou_icon {
+  left: 5px;
+  top: 10px;
+  height: 12px;
+  position: absolute;
+  float: left;
+  vertical-align: middle;
+}
+
+.pagination{
+  background-color: #fff;
+}
+
+.pagination li{
+  margin: 0;
+}
+
+.fixed-table-pagination .pagination a{
+  line-height: 28px;
+}
+.pagination li.active > a{
+  background-color: #337ab7;
+  /* border-left: 1px solid #337ab7; */
+}
+.pagination li.active > a:hover{
+  background-color: #337ab7;
+}
+.fixed-table-pagination .pagination a{
+  padding: 2px 8px;
+}
+.pagination li > a{
+  min-width: 30px;
+  min-height: 30px;
+}
+.pagination li:first-child > a{
+  border-left: 1px solid #ccc;
+}
+
+.ytSelect_option li{
+  overflow: hidden;
+  text-overflow:ellipsis;
+  white-space: nowrap;
+}
+.ytSelect_showbox{
+  overflow: hidden;
+  text-overflow:ellipsis;
+  white-space: nowrap;
+}
+.ytSelect_label {
+  height: 20px!important;
+  line-height: 1px;
+}
+
+/* .ytSelect_label{
+  margin-top: -22px;
+} */
+.ytSelect_option{
+  top: 28px;
+}
+.text-right{
+  position: fixed;
+  bottom: 20px;
+  right: 30px;
+}
+.update_button{
+  margin-top: 100px;
+}
+.update_body{
+  margin-top:20px;
+}
+#myUpDateModal input{
+  width: 100%;
+}
+.has-feedback .form-control {
+  display: block;
+  width: 100%;
+  height: 34px;
+  font-size: 14px;
+  line-height: 1.42857;
+  color: rgb(85, 85, 85);
+  background-color: rgb(255, 255, 255);
+  background-image: none;
+  box-shadow: rgba(0, 0, 0, 0.075) 0px 1px 1px inset;
+  padding: 6px 12px;
+  border-width: 1px;
+  border-style: solid;
+  border-color: rgb(204, 204, 204);
+  border-image: initial;
+  border-radius: 4px;
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+.has-success .form-control-feedback {
+  margin-right: 10px;
+}
+.has-error .form-control-feedback {
+  margin-right: 10px;
+}
+.status{
+	position: relative;
+}
+.status ol {
+	position: absolute;
+	z-index: 999;
+	background-color: #fff;
+	width: 100%;
+	border: 1px solid #ccc;
+	top: 34px;
+	cursor: pointer;
+	/* display: none; */
+}
+.status input{
+	cursor: pointer;
+}
+.hide{
+	display: none;
+}
+.status ol li {
+  line-height: 30px;
+  font-size: 14px;
+}
+#suppliesInfoForm .col-sm-6 {
+  padding: 0
+}

@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+	<link rel="stylesheet" href="../source/public/css/reset.css">
+	<link rel="stylesheet" type="text/css" href="../plugins/iconfont/iconfont.css" />
+	<link rel="stylesheet" type="text/css" href="../plugins/bootstrap/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="../plugins/bootstrap/css/bootstrap-table.min.css">
+	<link rel="stylesheet" type="text/css" href="../plugins/jquery/jquery.mCustomScrollBar.min.css" />
+	<link rel="stylesheet" type="text/css" href="../source/public/css/public.css" />
+	<link rel="stylesheet" type="text/css" href="../plugins/font-awesome-4.7.0/css/font-awesome.css" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="../plugins/customPlugins/widgets_default.css" />
+	<link rel="stylesheet" type="text/css" href="../plugins/customPlugins/widgets_patrol.css" />
+	<link rel="stylesheet" type="text/css" href="../plugins/sweetalert/sweetalert.css" />
+	<link rel="stylesheet" type="text/css" href="../plugins/bootstrap/css/bootstrap-datetimepicker.min.css">
+	<link rel="stylesheet" type="text/css" href="../plugins/jquery/ztree/css/zTreeStyle/zTreeStyle.css" />
+
+	<link rel="stylesheet" type="text/css" href="../source/materialsManagement/css/materials.css" />
+	<script src="../plugins/requireJs/require.js" data-main="../source/materialsManagement/js/materials"></script>
+</head>
+
+<body>
+	<table class="derive_table" border="0" cellspacing="" cellpadding="" id="table" style="display: none;">
+		<style type="text/css">
+			table {
+				width: 98%;
+				margin: auto;
+			}
+
+			td {
+				padding: 10px 0;
+				height: 40px;
+				text-align: center;
+				border: 1px solid #000;
+			}
+
+			.firstTr td {
+				border: none;
+				border-bottom: 1px solid #000;
+			}
+
+			.lastTr td {
+				text-align: left;
+				border: none;
+				border-top: 1px solid #000;
+			}
+		</style>
+
+	</table>
+	<ul id="manageUnitContainer">
+		<li>
+			<ul id="treeView" class="ztree"></ul>
+
+		</li>
+
+	</ul>
+	<div id="manageUnit">
+		<div class="button_warp hide">
+			<div class="add_info_btn button">
+				<i class="icon iconfont icon-jiahao" style="font-size: 12px;"></i>
+				增加
+			</div>
+			<div class="edit_info_btn button disable">
+				<i class="icon iconfont icon-bianji" style="font-size: 14px;"></i>
+				编辑
+			</div>
+			<div class="delete_info_btn button disable">
+				<i class="icon iconfont icon-shanchu" style="font-size: 14px;"></i>
+				删除
+			</div>
+		</div>
+		<div class="button_right">
+			<input type="file" class="file">
+			<div class="leadingIn button hide" id="leadingIn">
+				导入
+			</div>
+			<div id="excelDeviceFilesName" class="file_name_warp file_type_pic_warp" style="overflow: hidden; display: none"></div>
+			<div class="derive button">
+				<i class="icon iconfont icon-jiahao" style="font-size: 12px;"></i>
+				导出
+			</div>
+		</div>
+		<table id="tableWrap">
+
+		</table>
+
+		<div id="inSuppliesDig" style="display:none;">
+			<form id="inSuppliesForm">
+				<div class="form-group">
+					<label for="" class="col-md-4">物品名称：</label>
+					<div class="col-sm-6 del_padding">
+						<input class="form-control material_name" type="text" placeholder="物品数量" name="material_name" readonly>
+						<span class="glyphicon form-control-feedback" aria-hidden="true"></span>
+						<div class="help-block with-errors"></div>
+					</div>
+				</div>
+				<div class="form_group has-feedback">
+					<!--<label>入库时间：</label>-->
+					<label for="" class="col-md-4">入库时间：</label>
+					<div class="col-sm-6 del_padding" style="margin-bottom: 10px;">
+						<!-- <i class="iconfont icon-mima"></i> -->
+						<input type="text" name="change_date" class="form-control form-control" data-error="时间不能为空" placeholder="时间">
+					</div>
+				</div>
+
+				<div class="form-group has-feedback">
+					<label for="" class="col-md-4">入库数量：</label>
+					<div class="col-sm-6 del_padding">
+						<input class="form-control amount" type="number" min="1" max="2000" placeholder="物品数量" data-error="数量在1-2000之间"
+						 required name="amount">
+						<span class="glyphicon form-control-feedback" aria-hidden="true"></span>
+						<div class="help-block with-errors"></div>
+					</div>
+				</div>
+				<div class="form-group has-feedback">
+					<label for="" class="col-md-4">物品来源：</label>
+					<div class="col-sm-6 del_padding">
+						<input type="text" class="form-control purpose" placeholder="来源说明" data-error="来源说明不能为空" required name="purpose">
+						<span class="glyphicon form-control-feedback" aria-hidden="true"></span>
+						<div class="help-block with-errors"></div>
+					</div>
+				</div>
+			</form>
+		</div>
+
+		<div id="outSuppliesDig" style="display:none;">
+			<form id="outSuppliesForm">
+				<div class="form-group">
+					<label for="" class="col-md-4">物品名称：</label>
+					<div class="col-sm-6 del_padding">
+						<input class="form-control material_name" type="text" placeholder="物品数量" name="material_name" readonly>
+						<span class="glyphicon form-control-feedback" aria-hidden="true"></span>
+						<div class="help-block with-errors"></div>
+					</div>
+				</div>
+				<div class="form_group has-feedback">
+					<!--<label>入库时间：</label>-->
+					<label for="" class="col-md-4">出库时间：</label>
+					<div class="col-sm-6 del_padding" style="margin-bottom: 10px;">
+						<!-- <i class="iconfont icon-mima"></i> -->
+						<input type="text" name="change_date" class="form-control form-control" data-error="时间不能为空" placeholder="时间">
+					</div>
+				</div>
+				<div class="form-group has-feedback">
+					<label for="" class="col-md-4">出库数量：</label>
+					<div class="col-sm-6 del_padding">
+						<input class="form-control amount" type="number" min="1" max="5" placeholder="出库数量" data-error="请输入正确的出库"
+						 required name="amount">
+						<span class="glyphicon form-control-feedback" aria-hidden="true"></span>
+						<div class="help-block with-errors"></div>
+					</div>
+				</div>
+				<div class="form-group has-feedback">
+					<label for="" class="col-md-4">物品用途：</label>
+					<div class="col-sm-6 del_padding">
+						<input type="text" class="form-control purpose" placeholder="物品用途" data-error="请输入物品用途" required name="purpose">
+						<span class="glyphicon form-control-feedback" aria-hidden="true"></span>
+						<div class="help-block with-errors"></div>
+					</div>
+				</div>
+			</form>
+		</div>
+		<div id="suppliesInfoDig" style="display:none;">
+			<form id="suppliesInfoForm" style="position: absolute;left: 15px;top: 65px;right: 0px;bottom: 60px;overflow-y: auto;overflow-x: hidden;">
+				<div class="form-group has-feedback">
+					<label for="" class="col-md-4">物资名称：</label>
+					<div class="col-sm-6 del_padding">
+						<input type="text" class="form-control material_name" placeholder="物资名称" data-error="请输入物资名称" required name="material_name">
+						<span class="glyphicon form-control-feedback" aria-hidden="true"></span>
+						<div class="help-block with-errors"></div>
+					</div>
+				</div>
+				<div class="form-group has-feedback">
+					<label for="" class="col-md-4">物资规格：</label>
+					<div class="col-sm-6 del_padding">
+						<input type="text" class="form-control material_spec" placeholder="物资规格" required data-error="请输入物资规格" name="material_spec">
+						<span class="glyphicon form-control-feedback" aria-hidden="true"></span>
+						<div class="help-block with-errors"></div>
+					</div>
+				</div>
+				<div class="form-group has-feedback">
+					<label for="" class="col-md-4">保管人姓名：</label>
+					<div class="col-sm-6 del_padding">
+						<input type="text" class="form-control custodian_name" placeholder="姓名" name="custodian_name">
+						<span class="glyphicon form-control-feedback" aria-hidden="true"></span>
+						<div class="help-block with-errors"></div>
+					</div>
+				</div>
+				<div class="form-group has-feedback">
+					<label for="" class="col-md-4">保管人手机：</label>
+					<div class="col-sm-6 del_padding">
+						<input type="text" class="form-control custodian_phone" placeholder="手机号" name="custodian_phone">
+						<span class="glyphicon form-control-feedback" aria-hidden="true"></span>
+						<div class="help-block with-errors"></div>
+					</div>
+				</div>
+				<div class="form-group has-feedback">
+					<label for="" class="col-md-4">生产日期：</label>
+					<div class="col-sm-6 useYearBox del_padding">
+						<input type="text" class="form-control use_year" placeholder="生产日期" required data-error="请输入生产日期" name="use_year">
+						<span class="glyphicon form-control-feedback" aria-hidden="true"></span>
+						<div class="help-block with-errors"></div>
+					</div>
+				</div>
+				<div class="form-group has-feedback">
+					<label for="" class="col-md-4">价格：</label>
+					<div class="col-sm-6 del_padding">
+						<input type="text" class="form-control price" placeholder="价格" name="price">
+						<span class="glyphicon form-control-feedback" aria-hidden="true"></span>
+						<div class="help-block with-errors"></div>
+					</div>
+				</div>
+
+				<div class="form-group has-feedback">
+					<label for="" class="col-md-4">照片：</label>
+					<div class="col-sm-8 del_padding" style="overflow: hidden;">
+						<div class="add_image_warp default_style" id="addDeviceImg">
+							<i class="icon iconfont icon-icon02"></i> 添加设备图片
+						</div>
+						<div id="imgDeviceFilesName" class="file_name_warp file_type_pic_warp" style="overflow: hidden;">
+
+						</div>
+						<input style="display: none;" type="text" data-error="图片未上传完成" class="form-control upfile" placeholder="图片" name="upfile">
+						<div class="help-block with-errors"></div>
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
+	<div class="detailsBox"></div>
+</body>
+
+</html>

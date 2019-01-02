@@ -1,0 +1,19 @@
+.leftMenu {
+    font-size: 14px;
+    border-top: 0;
+    padding: 30px 0 10px 0;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    top: 190px;
+    width: 192px;
+    background: #1A1B2F;
+}
+#container {
+    position: absolute;
+    left: 192px;
+    top: 70px;
+    bottom: 0;
+    right: 0;
+    overflow: hidden;
+}
