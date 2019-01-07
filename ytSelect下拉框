@@ -1,0 +1,280 @@
+/*
+ * directions
+ * 生成自定义的下拉框
+ * 
+ * params
+ * element:调用插件的jquery元素；options：配置参数
+ * 
+ * event
+ * loader：初始化数据
+ * dataFormat：整理数据格式
+ * createLabel：生成标题栏
+ * createOption： 生成下拉框
+ * 
+ * 控件初始化
+ * $(".sel_position").ytSelect({
+ *      data: baseData,
+ *      url: baseUrl + "obj/getObjLocationList",
+ *      textField: "addvnm",
+ *      valueField: "addvcd"
+ *  });
+ * 
+ * 控件显示
+ * $(".sel_classify").ytSelect("show");
+ * 
+ * 
+ * // 事件：
+ * 1、chanage事件
+    $(".sel_classify").ytSelect("change", function(e,oldValue,newValue){}); //当发生change事件时，触发函数
+ * 
+ */
+;(function($, window, document, undefined) {
+    var ytSelect = function(element, options){
+        var $elem = $(element);
+        var _this = this;
+        this.elem = $elem;
+        var defaults = {
+            width: 160,
+            height: 250,
+            labelWidth: 60,
+            show: false,
+            lineHeight: 28,
+            verticalAlign: "center",
+            fontSize: "12px",
+            fontWeight: "normal",
+            enabled: true,
+            dataFormat: "",
+            url:{},
+            //url: "",
+            successFun:function () {},
+            data: {
+                label: "",
+                value: []
+            },
+            textField:"",
+            valueField:""
+        };
+        this.opts = $.extend({}, defaults, options);
+        // 创建控件
+        this.create = function(){
+            // this.loader(this.opts.url);
+            this.loader(this.opts.url, [this.createLabel, this.createOption, this.opts.successFun], {textField: this.opts.textField, valueField: this.opts.valueField, data: this.opts.data.value, dataFormat: this.opts.dataFormat});
+        };
+        this.create();
+        
+        // 点击显示框时，显示和隐藏下拉框列表
+        $elem.on("click", ".ytSelect_showbox", function(e){
+            $(this).toggleClass("active"); 
+  
+            $(this).siblings("ul.ytSelect_option").stop(true).slideToggle();
+            
+        });
+        
+        // 点击下拉箭头时，显示和隐藏下拉框列表
+        $elem.on("click", ">i", function(){
+            $(this).prev(".ytSelect_showbox").trigger("click");
+            
+        });
+        
+//      $(window).bind("click", function (event) {
+//          var e = event || window.event;
+//          var target = e.target || e.srcElement;
+//          if ($(target).parents(".ytSelect_wrap").length == 0) {
+//              $("ul.ytSelect_option").slideUp();
+//              $(".ytSelect_showbox").removeClass("active");
+//          }
+//      });
+        
+        // 鼠标离开控件后，下拉框自动隐藏
+        $elem.on("mouseleave",function(){
+            // 改变显示框对象样式
+            $(this).find(".ytSelect_showbox").removeClass("active");
+            // 改变显示框对象样式
+            $(this).find(".ytSelect_option").slideUp();
+            
+        });
+        
+        // 单击某一下拉列表选项时，选中该对象
+        $elem.on("click", ".ytSelect_option li", function(){
+            // 得到旧值
+            var oldValue = $(this).parent().siblings(".ytSelect_showbox").attr("value");
+            // 得到新值
+            var newValue = $(this).attr("value");
+            if(oldValue==newValue) return;
+            
+            // 选中选项和未选中选项的样式设置
+            $(this).addClass("active").siblings().removeClass("active");
+            // 选中选项前加入图标
+            $(this).prepend("<i class='icon iconfont icon-gou selct_gou_icon'/></i>").siblings().find(".selct_gou_icon").remove();
+            // 下拉框缩回
+            $(this).parent().slideUp();
+            // 设置当前选中选项值到ytSelect_showbox中，值为选中选项的值，文字是选中选项的文字
+            $(this).parent().siblings(".ytSelect_showbox").attr("value", $(this).attr("value")).text($(this).text()).toggleClass("active");
+            
+            
+            // 触发自定义change事件
+            $(this).trigger("change",[oldValue,newValue]);
+        });
+        
+        // 下拉列表选项的鼠标移动时，
+        $elem.on("mouseover", ".ytSelect_option li", function(){
+            $(this).siblings().removeClass("active");
+        });
+        
+        $elem.on("mouseout", ".ytSelect_option li", function(){
+            $elem.find("ul.ytSelect_option li").each(function(index,element){
+                $(this).text() == $(this).parent().siblings(".ytSelect_showbox").text() ? $(this).addClass("active") : $(this).removeClass("active");
+            });
+        });
+        return this;    
+    };
+    
+    // 当选项改变时，触发的函数fn绑定
+    ytSelect.prototype.change = function(fn){
+        var _this = this;
+        this.elem.on("change", ".ytSelect_option li", $.proxy(fn, _this));
+        return this;
+    }
+    
+    // 得到当前选项值
+    ytSelect.prototype.getValue = function(){
+        return this.elem.find(".ytSelect_showbox").attr("value");
+    }
+    
+    // 设置当前选项值
+    ytSelect.prototype.setValue = function(value){
+        var that = this;
+        that.elem.find("ul.ytSelect_option li").each(function(index,element){
+            if($(this).hasClass("active")){
+                $(this).removeClass("active").find(".selct_gou_icon").remove();
+            }
+            if($(this).attr("value") == value){
+                $(this).addClass("active").prepend("<i class='icon iconfont icon-gou selct_gou_icon'/></i>");
+                that.elem.find(".ytSelect_showbox").attr("value", value).text($(this).find("span").text());
+            }
+        });
+        return this;
+    }
+    
+    // 控件显示
+    ytSelect.prototype.show = function(){
+        this.elem.show();
+        return this;
+    }
+    
+    // 控件隐藏
+    ytSelect.prototype.hide = function(){
+        this.elem.hide();
+        return this;
+    }
+    
+    // 控件reset
+    ytSelect.prototype.reset = function(){
+        //this.elem.hide();
+    }
+    
+    
+    /*
+    ytSelect.prototype.loader = function(url){
+        if(url != ""){
+            var that = this;
+            $.ajax({
+                type: "get",
+                url: url,
+                data: {},
+                dataType: "json",
+                success: function(res){
+                    that.dataFormat(res);
+                    that.createLabel();
+                    that.createOption();
+                    that.opts.successFun(res);
+                },
+                error: function(){
+                    console.log("ajax异常");
+                }
+        
+            });
+        }else{
+            this.createLabel();
+            this.createOption();
+            this.opts.successFun();
+        }
+        
+    }
+    
+    ytSelect.prototype.dataFormat = function(temp){
+        var textField = this.opts.textField;
+        var valueField = this.opts.valueField;
+        for(var i = 0; i < temp.length; i++) {
+            var jsonTemp = {};
+            jsonTemp.v = temp[i][valueField];
+            jsonTemp.t = temp[i][textField];
+            this.opts.data.value.push(jsonTemp);
+        }
+    }
+    */
+    
+    ytSelect.prototype.createLabel = function(){
+        this.elem.addClass("ytSelect_wrap").css({lineHeight: this.opts.lineHeight + "px",fontSize: this.opts.fontSize,fontWeight: this.opts.fontWeight,position: "relative"});
+        $("<span></span>").css({height: this.opts.lineHeight + "px",width: this.opts.labelWidth + "px"}).addClass("ytSelect_label").text(this.opts.data.label).appendTo(this.elem);
+        $("<div></div>").css({
+            width: this.opts.width - this.opts.labelWidth + "px",
+            height: this.opts.lineHeight + "px",
+            lineHeight: this.opts.lineHeight - 3 + "px"
+        }).addClass("ytSelect_showbox").attr("value", this.opts.data.value[0][this.opts.valueField]).text(this.opts.data.value[0][this.opts.textField]).appendTo(this.elem);
+        $("<i></i>").css({
+            position: "absolute",
+            left: this.opts.width - 20 + "px"
+//          top: this.opts.lineHeight / 2-12
+        }).addClass("icon iconfont icon-icon-up").appendTo(this.elem);
+    }
+    
+    ytSelect.prototype.createOption = function(){
+        $("<ul></ul>").attr("class", "ytSelect_option").css({maxHeight: this.opts.height,width: this.opts.width - this.opts.labelWidth + "px",marginLeft: this.opts.labelWidth + "px"}).hide().appendTo(this.elem);
+        var options = this.opts.data;
+        //为每个option建立个li并赋值
+        for (var i = 0; i < options.value.length; i++) {
+            $("<li></li>").html("<span>"+options.value[i][this.opts.textField]+"</span>").attr("value", options.value[i][this.opts.valueField]).appendTo(this.elem.find("ul"));
+        }
+        this.elem.find("ul li:first-child").addClass("active").prepend("<i class='icon iconfont icon-gou selct_gou_icon'/></i>");
+    }
+    
+    //BaseClass.extend()
+    extend(ytSelect, BaseClass, "loader", "dataFormat");
+    
+    function Plugin(){
+        /* 得到输入参数
+         * 说明：当只有一个参数时：
+         *               1、参数类型为对象时，说明为创建对象参数。
+         *               2、参数类型为字符时，说明为函数调用，无参数
+         * 当有二个参数时：参数类型为字符时，说明为函数调用，有参数
+         * 
+         */
+        var arguments_info = arguments;
+        this.each(function(){
+            var args_num = arguments_info.length; //得到参数长度
+            var $this = $(this);
+            var data = $this.data("bs.ytSelect");
+            if(args_num==1){
+                var argument = arguments_info[0];
+                if(typeof argument == "object"){
+                    if(!data) $this.data("bs.ytSelect", (data = new ytSelect(this, argument)));
+                    result = data;
+                    //console.log(result)
+                }
+                else if(typeof argument == "string") {
+                    if(data) result = data[argument]();
+                }
+            }
+            else if(args_num==2){
+                if(data) result = data[arguments_info[0]](arguments_info[1]);
+            }
+        
+        });
+        
+        return result;
+    }
+    
+    $.fn.ytSelect = Plugin;
+    $.fn.ytSelect.constructor = ytSelect;
+})(jQuery, window, document);
