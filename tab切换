@@ -1,0 +1,113 @@
+/*
+ * directions
+ * 生成自定义的tab切换页
+ * 
+ * params
+ * element:调用插件的jquery元素；options：配置参数
+ * extendCallback：点击切换时的自定义事件（点击各个选项有不同的处理时可用）
+ * 
+ * event
+ * init：初始化数据
+ * dataFormat：整理数据格式
+ * addTabTitle：生成tab切换选项
+ * addTabContent： 生成选项对应的区域
+ * 
+ * example
+ * 
+ * 
+ * $(".task_tab_warp").ytTabs({
+ *      tabTitle:["基本信息", "上报附件"],
+ *      extendCallback: []
+ * });
+ * 
+ */
+(function($){
+    var ytTabs = function(element, options){
+        var defaults = {};
+        var $elem = $(element);
+        this.$elem = $elem;
+        this.options = $.extend({}, defaults, options);
+        this.tabTitle = this.options.tabTitle || [];
+        this.lengths = this.tabTitle.length || 0;
+        var extendCallback = this.options.extendCallback;
+        this.init();
+        $elem.find(".ytTabs_nav li").click(function(){
+            if($(this).hasClass("active")){
+                return;
+            }
+            var i = $(this).index();
+            if(typeof extendCallback[i] == "function") {
+                extendCallback[i](i);
+            }
+            $(this).siblings().removeClass("active").end().addClass("active");
+            $(this).parent().siblings(".ytTabs_content").find(">div").removeClass("active").eq(i).addClass("active");
+        });
+    };
+    ytTabs.prototype.init = function(){
+        this.addTabTitle(this.tabTitle);
+        this.addTabContent(this.lengths);
+    }
+    ytTabs.prototype.showTab = function(index) {
+        this.$elem.find(".ytTabs_nav li").eq(index).click();
+    }
+    ytTabs.prototype.addTabTitle = function(tabTitle){
+        $("<div></div>").addClass("ytTabs").appendTo(this.$elem);
+        if(tabTitle.length == 0){
+            return;
+        }
+        $("<ul></ul>").addClass("ytTabs_nav").appendTo(this.$elem.find(".ytTabs"));
+        
+        for(var i = 0; i < tabTitle.length; i++){
+            $("<li></li>").text(tabTitle[i]).appendTo(this.$elem.find(".ytTabs ul"));
+        }
+        this.$elem.find("ul.ytTabs_nav li:first-child").addClass("active");
+    }
+    ytTabs.prototype.addTabContent = function(lengths){
+        $("<div></div>").addClass("ytTabs_content").appendTo(this.$elem.find(".ytTabs"));
+        if(lengths == 0){
+            this.$elem.find(".ytTabs_content").css("margin-top", "0").append($("<div></div>"));
+        }
+        for(var i = 0; i < lengths; i++){
+            $("<div></div>").appendTo(this.$elem.find("div.ytTabs_content"));
+        }
+        this.$elem.find("div.ytTabs_content>div:first-child").addClass("active");
+    }
+    
+    ytTabs.prototype.fillTabContent = function(params){
+        if(typeof params === "function"){
+            params.call(this, this.$elem.find("div.ytTabs_content>div"));
+        }
+        if(Object.prototype.toString.call(params) != "[object Array]"){
+            return;
+        }
+        for(var i = 0, len=params.length; i < len; i++){
+            if(typeof params[i].renderDOM === "string"){
+                this.$elem.find(".ytTabs_content>div").eq(params[i].index).html(params[i].renderDOM);
+            }
+            if(typeof params[i].renderDOM === "function") {
+                params[i].renderDOM(this.$elem.find("div.ytTabs_content>div").eq(params[i].index), params[i].index);
+            }
+        }
+        
+        
+        return this;
+    }
+    function Plugin(option, o){
+        this.each(function(){
+            
+            var $this = $(this);
+            var data = $this.data("bs.ytTabs");
+            var options = typeof option == "object" && option;
+            $this.data("bs.ytTabs", (data = new ytTabs(this, options)));
+            result = data;
+            if(typeof option === "string"){
+                data[option](o);
+                result = data[option](o);
+            }
+        });
+        return result;
+    }
+    $.fn.ytTabs = Plugin;
+    $.fn.ytTabs.constructor = ytTabs;
+})(jQuery);
+
