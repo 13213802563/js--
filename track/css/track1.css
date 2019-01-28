@@ -1,0 +1,29 @@
+.dv_hwzz{width:986px;height:auto;margin:auto;padding:0;font-size:14px;}
+.dv_hwzzTp{width:986px;height:309px;background-image:url("../img/hwzzbg1yyt.jpg");background-repeat:no-repeat;overflow:hidden;}
+.dv_hwzzTp_fn{width:800px;height:32px;margin-top:54px;margin-left:30px;font-size:24px;font-family:"微软雅黑";color:#1f8c41;}
+.dv_hwzzBd{width:986px;height:219px;background-image:url("../img/hwzzbg2.jpg");background-repeat:no-repeat;overflow:hidden;}
+.dv_hwzzBd_1{background:#daf5ff;width:984px;height:219px;background-image:url("../img/hwzzbg4.jpg");background-repeat:no-repeat;overflow:hidden;border-left:1px solid #1773b6;border-right:1px solid #1773b6;}
+.tr_size{font-size:12px;color:#666;font-famliy:"宋体";}
+.tr_size1{font-size:12px;color:#666;font-famliy:"宋体";}
+.dv_hwzzFt{width:986px;height:45px;background-image:url("../img/hwzzbg3.jpg");background-repeat:no-repeat;overflow:hidden;}
+.dv_hwzzTp_in{width:680px;height:50px;margin:auto;margin-top:85px;}
+.hhzz_inpt1{float:left;width:104px;height:27px;line-height:27px;margin-right:20px;diasplay:block;}
+.hhzz_span1{float:left;height:33px;line-height:33px;diasplay:block;}
+.dv_btn1{width:82px;height:30px;background-image:url("../img/search.png");float:left;cursor:pointer;}
+.dv_btn2{width:82px;height:30px;background-image:url("../img/clear.png");float:left;margin-left:32px;cursor:pointer;}
+.dv_hwzzTp_bt{width:220px;margin:auto;}
+.dv_hwzzBd_fn1{margin-top:30px;margin-left:27px;color:#cc2003;font-size:24px;font-family:"微软雅黑";}
+.dv_hwzzBd_fn2{margin:auto;margin-top:15px;color:#1f8c41;font-size:22px;line-height:32px;font-family:"微软雅黑";width:840px;}
+.dv_hwzzFt1{color:#7d7d7d;height:45px;line-height:45px;font-weight:bold;width:400px;margin:auto;}
+
+#tabs{border:0;padding:0;}
+#tabs .ui-tabs-nav .ui-state-default{background:url("../img/tableBg_r2_c81.jpg") 50% 50% repeat-x;font-weight:bold;font-size:14px;color:#fff;}
+.ui-color{background:#daf5ff;margin-left:10px;}
+#tabs .ui-tabs-nav .ui-state-active{background:#6eac2c url("../img/topbj1.jpg") 50% 50% repeat-x;font-weight:bold;font-size:14px;color:#fff;}
+#tabs .ui-tabs{border:0px;padding:0px;}
+#tabs .ui-tabs-panel{padding:1px 0px 0px 0px;}
+#tabs #gbox_gridTable{-moz-border-radius:0px 0px 0px 0px;}
+#tabs .ui-corner-all{-moz-border-radius:10px 10px 0px 0px;}
+#tabs .ui-widget-header{background:url("../img/headerbg1.jpg") repeat-x;height:32px;line-height:32px;margin:0;padding:0;}
+.even,#ptxbDetailBody .even td,#gtxbDetailBody .even td{background:#d3f4d9;}
+.odd,#ptxbDetailBody .odd td,#gtxbDetailBody .odd td{background:#e9f5eb;}

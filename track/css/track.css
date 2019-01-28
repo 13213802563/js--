@@ -1,0 +1,710 @@
+/*
+ * jQuery UI CSS Framework 1.8.12
+ *
+ * Copyright 2011, AUTHORS.txt (http://jqueryui.com/about)
+ * Dual licensed under the MIT or GPL Version 2 licenses.
+ * http://jquery.org/license
+ *
+ * http://docs.jquery.com/UI/Theming/API
+ */
+/* style of botton by sunzx*/
+#testPager .dcslbtn,#pager1 .dcslbtn, #gridPager .dcslbtn,#gridPager1 .dcslbtn,#gridPager2 .dcslbtn{background-image: url("images/dcsl.png");width:90px;height:32px;margin-left: 0;margin-right: 0;margin-top: 2px;} /*EXCEL导出*/
+#testPager .sdbtn,#pager1 .sdbtn, #gridPager .sdbtn,#gridPager1 .sdbtn,#gridPager2 .sdbtn{background-image: url("images/sd_1.png");width:90px;height:32px;margin-left: 0;margin-right: 0;margin-top: 2px;} /*锁定*/
+#testPager .pltgbtn,#pager1 .pltgbtn, #gridPager .pltgbtn,#gridPager1 .pltgbtn,#gridPager2 .pltgbtn{background-image: url("images/pltg.png");width:90px;height:32px;margin-left: 0;margin-right: 0;margin-top: 2px;} /*批量通过*/
+#testPager .shqrbtn,#pager1 .shqrbtn, #gridPager .shqrbtn,#gridPager1 .shqrbtn,#gridPager2 .shqrbtn{background-image: url("images/shqr1.png");width:90px;height:32px;margin-left: 0;margin-right: 0;margin-top: 2px;} /*EXCEL导出*/
+#testPager .reportbtn,#pager1 .reportbtn, #gridPager .reportbtn,#gridPager1 .reportbtn,#gridPager2 .reportbtn{background-image: url("images/report1.png");width:90px;height:32px;margin-left: 0;margin-right: 0;margin-top: 2px;} /*提报*/
+#testPager .sendsmsbtn, #pager1 .sendsmsbtn,#gridPager .sendsmsbtn,#gridPager1 .sendsmsbtn,#gridPager2 .sendsmsbtn,#gridPager3 .sendsmsbtn,#gridPager4 .sendsmsbtn{background-image: url("images/sendsms1.png");width:90px;height:32px;margin-left: 0;margin-right: 0;margin-top: 2px;} /*发送*/
+#testPager .detailbtn, #pager1 .detailbtn,#gridPager .detailbtn,#gridPager1 .detailbtn,#gridPager2 .detailbtn{background-image: url("images/detailed1.png");width:90px;height:32px;margin-left: 0;margin-right: 0;margin-top: 2px;} /*详细*/
+#testPager .auditbtn, #pager1 .auditbtn,#gridPager .auditbtn,#gridPager1 .auditbtn,#gridPager2 .auditbtn{background-image: url("images/audit1.png");width:90px;height:32px;margin-left: 0;margin-right: 0;margin-top: 2px;} /*审核*/
+#testPager .ckjybtn, #pager1 .ckjybtn,#gridPager .ckjybtn,#gridPager1 .ckjybtn,#gridPager2 .ckjybtn{background-image: url("images/ckjy1.png");width:90px;height:32px;margin-left: 0;margin-right: 0;margin-top: 2px;} /*查看建议*/
+#testPager .definebtn,#pager1 .definebtn, #gridPager .definebtn,#gridPager1 .definebtn,#gridPager2 .definebtn{background-image: url("images/definition1.png");width:90px;height:32px;margin-left: 0;margin-right: 0;margin-top: 2px;} /*定义列显示*/
+#testPager .savebtn,#pager1 .savebtn, #gridPager .savebtn,#gridPager1 .savebtn,#gridPager2 .savebtn{background-image: url("images/save1.png");width:90px;height:32px;margin-left: 0;margin-right: 0;margin-top: 2px;} /*保存*/
+#testPager .printbtn, #pager1 .printbtn,#gridPager .printbtn,#gridPager1 .printbtn,#gridPager2 .printbtn{background-image: url("images/printer1.png");width:90px;height:32px;margin-left: 0;margin-right: 0;margin-top: 2px;} /*打印*/
+#testPager .paymentbtn, #pager1 .paymentbtn,#gridPager .paymentbtn,#gridPager1 .paymentbtn,#gridPager2 .paymentbtn{background-image: url("images/payment.png");width:90px;height:32px;margin-left: 0;margin-right: 0;margin-top: 2px;} /*支付*/
+#testPager .cbbtn, #pager1 .cbbtn,#gridPager .cbbtn,#gridPager1 .paymentbtn,#gridPager2 .cbbtn{background-image: url("images/cb.png");width:90px;height:32px;margin-left: 0;margin-right: 0;margin-top: 2px;} /*退订*/
+#testPager .exportbtn,#pager1 .exportbtn, #gridPager .exportbtn,#gridPager1 .exportbtn,#gridPager2 .exportbtn{background-image: url("images/export1.png");width:90px;height:32px;margin-left: 0;margin-right: 0;margin-top: 2px;} /*导出*/
+#testPager .excelbtn,#pager1 .excelbtn, #gridPager .excelbtn,#gridPager1 .excelbtn,#gridPager2 .excelbtn{background-image: url("images/excel1.png");width:90px;height:32px;margin-left: 0;margin-right: 0;margin-top: 2px;} /*EXCEL导出*/
+#testPager .editbtn,#pager1 .editbtn, #gridPager .editbtn,#gridPager1 .editbtn,#gridPager2 .editbtn{background-image: url("images/edit1.png");width:90px;height:32px;margin-left: 0;margin-right: 0;margin-top: 2px;} /*编辑༭*/
+#testPager .addbtn, #pager1 .addbtn,#gridPager .addbtn,#gridPager1 .addbtn,#gridPager2 .addbtn,#gridPager3 .addbtn,#gridPager4 .addbtn{background-image: url("images/new1.png");width:90px;height:32px;margin-left: 0;margin-right: 0;margin-top: 2px;} /*新增*/
+#testPager .delbtn,#pager1 .delbtn, #gridPager .delbtn,#gridPager1 .delbtn,#gridPager2 .delbtn,#gridPager3 .delbtn,#gridPager4 .delbtn{background-image: url("images/del1.png"); width:90px;height:32px;margin-left: 0;margin-right: 0;margin-top: 2px;} /*删除*/
+#testPager .backbtn1,#pager1 .backbtn1, #gridPager .backbtn1,#gridPager1 .backbtn1,#gridPager2 .backbtn1{background-image: url("../../images/goback1.png"); width:90px;height:32px;margin-left: 0;margin-right: 0;margin-top: 2px;} /*返回上一级*/
+#testPager .backbtn2,#pager1 .backbtn2, #gridPager .backbtn2,#gridPager1 .backbtn2,#gridPager2 .backbtn2{background-image: url("../../images/goback2.png"); width:90px;height:32px;margin-left: 0;margin-right: 0;margin-top: 2px;} /*返回上一级*/
+#testPager .open_closebtn1,#pager1 .open_closebtn1, #gridPager .open_closebtn1,#gridPager1 .open_closebtn1,#gridPager2 .open_closebtn1{background-image: url("../../images/open_close01.png"); width:98px;height:32px;margin-left: 0;margin-right: 0;margin-top: 2px;} /*展开/收起*/
+#testPager .open_closebtn2,#pager1 .open_closebtn2, #gridPager .open_closebtn2,#gridPager1 .open_closebtn2,#gridPager2 .open_closebtn2{background-image: url("../../images/open_close02.png"); width:98px;height:32px;margin-left: 0;margin-right: 0;margin-top: 2px;} /*展开/收起*/
+#testPager .refreshbtn, #pager1 .refreshbtn,#gridPager .refreshbtn,#gridPager1 .refreshbtn,#gridPager2 .refreshbtn{background-image: url("../../images/refresh.png");width:90px;height:32px;margin-left: 0;margin-right: 0;margin-top: 2px;} /*刷新*/
+#testPager .invasionbtn,#pager1 .invasionbtn, #gridPager .invasionbtn,#gridPager1 .invasionbtn,#gridPager2 .invasionbtn{background-image: url("../../images/invasion.png");width:90px;height:32px;margin-left: 0;margin-right: 0;margin-top: 2px;} /*显示无效*/
+#zxgjGridPager .gjckbtn, #testPager .gjckbtn, #gridPager .gjckbtn,#gridPager1 .gjckbtn,#gridPager2 .gjckbtn{background-image: url("images/gjck1.png");width:90px;height:32px;margin-left: 0;margin-right: 0;margin-top: 2px;;} /*轨迹查看*/
+#zxgjGridPager .gjcjbtn, #testPager .gjcjbtn, #gridPager .gjcjbtn,#gridPager1 .gjcjbtn,#gridPager2 .gjcjbtn{background-image: url("images/gjcj1.png");width:90px;height:32px;margin-left: 0;margin-right: 0;margin-top: 2px;} /*轨迹采集*/
+#testPager .approvebtn,#pager1 .approvebtn, #gridPager .approvebtn,#gridPager1 .approvebtn,#gridPager2 .approvebtn{background-image: url("images/approve1.png");width:90px;height:32px;margin-left: 0;margin-right: 0;margin-top: 2px;} /*受理*/
+#testPager .assignbtn,#pager1 .assignbtn, #gridPager .assignbtn,#gridPager1 .assignbtn,#gridPager2 .assignbtn{background-image: url("images/assign1.png");width:90px;height:32px;margin-left: 0;margin-right: 0;margin-top: 2px;} /*分配*/
+#testPager .bdtldjbtn,#pager1 .bdtldjbtn, #gridPager .bdtldjbtn,#gridPager1 .bdtldjbtn,#gridPager2 .bdtldjbtn{background-image: url("images/bdtldj1.png");width:101px;height:32px;margin-left: 0;margin-right: 0;margin-top: 2px;} /*绑定铁路单据*/
+#testPager .executebtn,#pager1 .executebtn, #gridPager .executebtn,#gridPager1 .executebtn,#gridPager2 .executebtn{background-image: url("images/execute1.png");width:100px;height:32px;margin-left: 0;margin-right: 0;margin-top: 2px;} /*执行*/
+#testPager .scqqcbtn,#pager1 .scqqcbtn, #gridPager .scqqcbtn,#gridPager1 .scqqcbtn,#gridPager2 .scqqcbtn{background-image: url("images/scqqc1.png");width:100px;height:32px;margin-left: 0;margin-right: 0;margin-top: 2px;} /*逐日预定空车*/
+#testPager .plqcbtn,#pager1 .plqcbtn, #gridPager .plqcbtn,#gridPager1 .plqcbtn,#gridPager2 .plqcbtn{background-image: url("images/plqc1.png");width:100px;height:32px;margin-left: 0;margin-right: 0;margin-top: 2px;} /*自动预定空车*/
+#testPager .fristauditbtn,#pager1 .fristauditbtn, #gridPager .fristauditbtn,#gridPager1 .fristauditbtn,#gridPager2 .fristauditbtn{background-image: url("images/fristaudit1.png");width:90px;height:32px;margin-left: 0;margin-right: 0;margin-top: 2px;} /*一级审核*/
+#testPager .secondauditbtn,#pager1 .secondauditbtn, #gridPager .secondauditbtn,#gridPager1 .secondauditbtn,#gridPager2 .secondauditbtn{background-image: url("images/secondaudit1.png");width:90px;height:32px;margin-left: 0;margin-right: 0;margin-top: 2px;} /*二级审核*/
+#testPager .selbtn,#pager1 .selbtn, #gridPager .selbtn,#gridPager1 .selbtn,#gridPager2 .selbtn{background-image: url("images/selbtn1.png");width:90px;height:32px;margin-left: 0;margin-right: 0;margin-top: 2px;} /*选择*/
+#testPager .matchbtn,#pager1 .matchbtn, #gridPager .matchbtn,#gridPager1 .matchbtn,#gridPager2 .matchbtn{background-image: url("images/matchbtn1.png");width:90px;height:32px;margin-left: 0;margin-right: 0;margin-top: 2px;} /*匹配*/
+#testPager .adjustmentbtn,#pager1 .adjustmentbtn, #gridPager .adjustmentbtn,#gridPager1 .adjustmentbtn,#gridPager2 .adjustmentbtn{background-image: url("images/adjustment1.png");width:90px;height:32px;margin-left: 0;margin-right: 0;margin-top: 2px;} /*调整*/
+#testPager .passbtn,#pager1 .passbtn, #gridPager .passbtn,#gridPager1 .passbtn,#gridPager2 .passbtn{background-image: url("images/pass1.png");width:90px;height:32px;margin-left: 0;margin-right: 0;margin-top: 2px;} /*通过*/
+#testPager .notpassbtn,#pager1 .notpassbtn, #gridPager .notpassbtn,#gridPager1 .notpassbtn,#gridPager2 .notpassbtn{background-image: url("images/notpass1.png");width:90px;height:32px;margin-left: 0;margin-right: 0;margin-top: 2px;} /*不通过*/
+#testPager .setemptybtn,#pager1 .setemptybtn, #gridPager .setemptybtn,#gridPager1 .setemptybtn,#gridPager2 .setemptybtn{background-image: url("images/setempty1.png");width:90px;height:32px;margin-left: 0;margin-right: 0;margin-top: 2px;} /*定空车*/
+#testPager .zytimebtn,#pager1 .zytimebtn, #gridPager .zytimebtn,#gridPager1 .zytimebtn,#gridPager2 .zytimebtn{background-image: url("images/zytime1.png");width:90px;height:32px;margin-left: 0;margin-right: 0;margin-top: 2px;} /*作业时间*/
+#testPager .xswxbtn,#pager1 .xswxbtn, #gridPager .xswxbtn,#gridPager1 .xswxbtn,#gridPager2 .xswxbtn{background-image: url("images/xswx1.png");width:90px;height:32px;margin-left: 0;margin-right: 0;margin-top: 2px;} /*显示无效*/
+#testPager .xcinfobtn,#pager1 .xcinfobtn, #gridPager .xcinfobtn,#gridPager1 .xcinfobtn,#gridPager2 .xcinfobtn{background-image: url("images/xcinfo1.png");width:90px;height:32px;margin-left: 0;margin-right: 0;margin-top: 2px;} /*卸车信息*/
+#testPager .refreshbtn,#pager1 .refreshbtn, #gridPager .refreshbtn,#gridPager1 .refreshbtn,#gridPager2 .refreshbtn{background-image: url("images/refresh1.png");width:90px;height:32px;margin-left: 0;margin-right: 0;margin-top: 2px;} /*刷新*/
+#testPager .logbtn,#pager1 .logbtn, #gridPager .logbtn,#gridPager1 .logbtn,#gridPager2 .logbtn{background-image: url("images/log1.png");width:90px;height:32px;margin-left: 0;margin-right: 0;margin-top: 2px;} /*日志*/
+#testPager .fhzsbtn,#pager1 .fhzsbtn, #gridPager .fhzsbtn,#gridPager1 .fhzsbtn,#gridPager2 .fhzsbtn{background-image: url("images/fhzs1.png");width:90px;height:32px;margin-left: 0;margin-right: 0;margin-top: 2px;} /*返回再审*/
+#testPager .zcinfobtn,#pager1 .zcinfobtn, #gridPager .zcinfobtn,#gridPager1 .zcinfobtn,#gridPager2 .zcinfobtn{background-image: url("images/zcinfo1.png");width:90px;height:32px;margin-left: 0;margin-right: 0;margin-top: 2px;} /*装车信息*/
+#testPager .qrddbtn,#pager1 .qrddbtn, #gridPager .qrddbtn,#gridPager1 .qrddbtn,#gridPager2 .qrddbtn{background-image: url("images/qrdd1.png");width:90px;height:32px;margin-left: 0;margin-right: 0;margin-top: 2px;} /*确认到达*/
+#testPager .hwydstatusbtn,#pager1 .hwydstatusbtn, #gridPager .hwydstatusbtn,#gridPager1 .hwydstatusbtn,#gridPager2 .hwydstatusbtn{background-image: url("images/hwydstatus1.png");width:90px;height:32px;margin-left: 0;margin-right: 0;margin-top: 2px;} /*状态跟踪*/
+#testPager .hwydtrackbtn,#pager1 .hwydtrackbtn, #gridPager .hwydtrackbtn,#gridPager1 .hwydtrackbtn,#gridPager2 .hwydtrackbtn{background-image: url("images/hwydtrack1.png");width:90px;height:32px;margin-left: 0;margin-right: 0;margin-top: 2px;} /*走形轨迹*/
+#testPager .finishbtn,#pager1 .finishbtn, #gridPager .finishbtn,#gridPager1 .finishbtn,#gridPager2 .finishbtn{background-image: url("images/finish1.png");width:90px;height:32px;margin-left: 0;margin-right: 0;margin-top: 2px;} /*完成*/
+#testPager .zcbtn,#pager1 .zcbtn, #gridPager .zcbtn,#gridPager1 .zcbtn,#gridPager2 .zcbtn{background-image: url("images/zcbtn1.png");width:90px;height:32px;margin-left: 0;margin-right: 0;margin-top: 2px;} /*装车*/
+#testPager .pdbtn,#pager1 .pdbtn, #gridPager .pdbtn,#gridPager1 .pdbtn,#gridPager2 .pdbtn{background-image: url("images/pdbtn1.png");width:90px;height:32px;margin-left: 0;margin-right: 0;margin-top: 2px;} /*派单*/
+#testPager .hczzbtn,#pager1 .hczzbtn, #gridPager .hczzbtn,#gridPager1 .hczzbtn,#gridPager2 .hczzbtn{background-image: url("images/hczz1.png");width:90px;height:32px;margin-left: 0;margin-right: 0;margin-top: 2px;} /*货车追踪*/
+#testPager .hyjlbtn,#pager1 .hyjlbtn, #gridPager .hyjlbtn,#gridPager1 .hyjlbtn,#gridPager2 .hyjlbtn{background-image: url("images/hyjl1.png");width:90px;height:32px;margin-left: 0;margin-right: 0;margin-top: 2px;} /*货运记录*/
+#testPager .zuofeibtn,#pager1 .zuofeibtn, #gridPager .zuofeibtn,#gridPager1 .zuofeibtn,#gridPager2 .zuofeibtn,#gridPager3.zuofeibtn,#gridPager4 .zuofeibtn{background-image: url("images/zuofei.png"); width:90px;height:32px;margin-left: 0;margin-right: 0;margin-top: 2px;} /*作废*/
+
+#testPager .byjlbtn,#pager1 .byjlbtn, #gridPager .byjlbtn,#gridPager1 .byjlbtn,#gridPager2 .byjlbtn{background-image: url("images/byjl.jpg");width:90px;height:32px;margin-left: 0;margin-right: 0;margin-top: 2px;} /*编有记录*/
+#testPager .kjlrbtn,#pager1 .kjlrbtn, #gridPager .kjlrbtn,#gridPager1 .kjlrbtn,#gridPager2 .kjlrbtn{background-image: url("images/kjlr1.png");width:90px;height:32px;margin-left: 0;margin-right: 0;margin-top: 2px;} /*快捷录入*/
+#testPager .fbbtn,#pager1 .fbbtn, #gridPager .fbbtn,#gridPager1 .fbbtn,#gridPager2 .fbbtn{background-image: url("images/fb1.png");width:90px;height:32px;margin-left: 0;margin-right: 0;margin-top: 2px;} /*发布*/
+
+#testPager .lqjlbtn,#pager1 .lqjlbtn, #gridPager .lqjlbtn,#gridPager1 .lqjlbtn,#gridPager2 .lqjlbtn{background-image: url("images/lqjl.png");width:90px;height:32px;margin-left: 0;margin-right: 0;margin-top: 2px;} /*领取记录*/
+#testPager .pcslbtn,#pager1 .pcslbtn, #gridPager .pcslbtn,#gridPager1 .pcslbtn,#gridPager2 .pcslbtn{background-image: url("images/pcsl.png");width:90px;height:32px;margin-left: 0;margin-right: 0;margin-top: 2px;} /*赔偿受理*/
+#testPager .lpwcbtn,#pager1 .lpwcbtn, #gridPager .lpwcbtn,#gridPager1 .lpwcbtn,#gridPager2 .lpwcbtn{background-image: url("images/lpwc.png");width:90px;height:32px;margin-left: 0;margin-right: 0;margin-top: 2px;} /*理赔完成*/
+
+#testPager .swmbbtn,#pager1 .swmbbtn, #gridPager .swmbbtn,#gridPager1 .swmbbtn,#gridPager2 .swmbbtn{background-image: url("images/swmb1.png");width:90px;height:32px;margin-left: 0;margin-right: 0;margin-top: 2px;} /*设为模板*/
+#testPager .mbfpbtn,#pager1 .mbfpbtn, #gridPager .mbfpbtn,#gridPager1 .mbfpbtn,#gridPager2 .mbfpbtn{background-image: url("images/mbfp1.png");width:90px;height:32px;margin-left: 0;margin-right: 0;margin-top: 2px;} /*模板分配*/
+
+#testPager .zxyybtn,#pager1 .zxyybtn, #gridPager .zxyybtn,#gridPager1 .zxyybtn,#gridPager2 .zxyybtn{background-image: url("images/zxyybtn1.png");width:70px;height:32px;margin-left: 0;margin-right: 0;margin-top: 2px;} /*绑定综合物流*/
+#testPager .zcydbtn,#pager1 .zcydbtn, #gridPager .zcydbtn,#gridPager1 .zcydbtn,#gridPager2 .zcydbtn{background-image: url("images/zcydbtn1.png");width:70px;height:32px;margin-left: 0;margin-right: 0;margin-top: 2px;} /*绑定综合物流*/
+#testPager .zhwlbtn,#pager1 .zhwlbtn, #gridPager .zhwlbtn,#gridPager1 .zhwlbtn,#gridPager2 .zhwlbtn{background-image: url("images/zhwlbtn1.png");width:70px;height:32px;margin-left: 0;margin-right: 0;margin-top: 2px;} /*绑定综合物流*/
+#testPager .lsbhbtn,#pager1 .lsbhbtn, #gridPager .lsbhbtn,#gridPager1 .lsbhbtn,#gridPager2 .lsbhbtn{background-image: url("images/ldydbtn1.png");width:70px;height:32px;margin-left: 0;margin-right: 0;margin-top: 2px;} /*绑定零散白货*/
+#testPager .jzxbtn,#pager1 .jzxbtn, #gridPager .jzxbtn,#gridPager1 .jzxbtn,#gridPager2 .jzxbtn{background-image: url("images/jzxydbtn1.png");width:85px;height:32px;margin-left: 0;margin-right: 0;margin-top: 2px;} /*绑定集装箱*/
+#testPager .delbtn,#pager1 .hfbtn, #gridPager .hfbtn,#gridPager1 .hfbtn,#gridPager2 .hfbtn,#gridPager3 .hfbtn,#gridPager4 .hfbtn{background-image: url("images/hf.png"); width:90px;height:32px;margin-left: 0;margin-right: 0;margin-top: 2px;} /*恢复*/
+
+#testPager .fpbtn,#pager1 .fpbtn, #gridPager .fpbtn,#gridPager1 .fpbtn,#gridPager2 .fpbtn{background-image: url("images/fp1.png");width:90px;height:32px;margin-left: 0;margin-right: 0;margin-top: 2px;} /*分配*/
+#testPager .pcsqbtn,#pager1 .pcsqbtn, #gridPager .pcsqbtn,#gridPager1 .pcsqbtn,#gridPager2 .pcsqbtn{background-image: url("images/pcsq1.png");width:90px;height:32px;margin-left: 0;margin-right: 0;margin-top: 2px;} /*赔偿申请*/
+#testPager .pctzbtn,#pager1 .pctzbtn, #gridPager .pctzbtn,#gridPager1 .pctzbtn,#gridPager2 .pctzbtn{background-image: url("images/pctz1.png");width:90px;height:32px;margin-left: 0;margin-right: 0;margin-top: 2px;} /*赔偿通知*/
+#testPager .bllhbtn,#pager1 .bllhbtn, #gridPager .bllhbtn,#gridPager1 .bllhbtn,#gridPager2 .bllhbtn{background-image: url("images/bllh1.png");width:90px;height:32px;margin-left: 0;margin-right: 0;margin-top: 2px;} /*办理领货*/
+#testPager .handlebtn,#pager1 .handlebtn, #gridPager .handlebtn,#gridPager1 .handlebtn,#gridPager2 .handlebtn{background-image: url("images/handle1.png");width:90px;height:32px;margin-left: 0;margin-right: 0;margin-top: 2px;} /*处理*/
+#testPager .szthrxxbtn,#pager1 .szthrxxbtn, #gridPager .szthrxxbtn,#gridPager1 .szthrxxbtn,#gridPager2 .szthrxxbtn{background-image: url("images/szthrxx1.png");width:115px;height:32px;margin-left: 0;margin-right: 0;margin-top: 2px;} /*设置提货人信息*/
+#testPager .zhifubtn,#pager1 .zhifubtn, #gridPager .zhifubtn,#gridPager1 .zhifubtn,#gridPager2 .zhifubtn{background-image: url("images/zhifu1.png");width:90px;height:32px;margin-left: 0;margin-right: 0;margin-top: 2px;} /*支付*/
+#testPager .yyddfwbtn,#pager1 .yyddfwbtn, #gridPager .yyddfwbtn,#gridPager1 .yyddfwbtn,#gridPager2 .yyddfwbtn{background-image: url("images/yyddfw1.png");width:100px;height:32px;margin-left: 0;margin-right: 0;margin-top: 2px;} /*预约到达服务*/
+#testPager .jzcjbtn,#pager1 .jzcjbtn, #gridPager .jzcjbtn,#gridPager1 .jzcjbtn,#gridPager2 .jzcjbtn{background-image: url("images/jzcj1.png");width:100px;height:32px;margin-left: 0;margin-right: 0;margin-top: 2px;} /*记载戳记*/
+#testPager .jzxxbtn,#pager1 .jzxxbtn, #gridPager .jzxxbtn,#gridPager1 .jzxxbtn,#gridPager2 .jzxxbtn{background-image: url("images/jzxx1.png");width:100px;height:32px;margin-left: 0;margin-right: 0;margin-top: 2px;} /*记载信息*/
+#testPager .yybtn,#pager1 .yybtn, #gridPager .yybtn,#gridPager1 .yybtn,#gridPager2 .yybtn{background-image: url("images/yy_1.png");width:43px;height:32px;margin-left: 0;margin-right: 0;margin-top: 2px;} /*预约*/
+#testPager .dcbtn,#pager1 .dcbtn, #gridPager .dcbtn,#gridPager1 .dcbtn,#gridPager2 .dcbtn{background-image: url("images/dc_1.png");width:43px;height:32px;margin-left: 0;margin-right: 0;margin-top: 2px;} /*订车*/
+#testPager .pkblbtn,#pager1 .pkblbtn, #gridPager .pkblbtn,#gridPager1 .pkblbtn,#gridPager2 .pkblbtn{background-image: url("images/pkbl_1.png");width:43px;height:32px;margin-left: 0;margin-right: 0;margin-top: 2px;} /*普快班列*/
+#testPager .ksblbtn,#pager1 .ksblbtn, #gridPager .ksblbtn,#gridPager1 .ksblbtn,#gridPager2 .ksblbtn{background-image: url("images/ksbl_1.png");width:43px;height:32px;margin-left: 0;margin-right: 0;margin-top: 2px;} /*快速班列*/
+#testPager .jzxbtn,#pager1 .jzxbtn, #gridPager .jzxbtn,#gridPager1 .jzxbtn,#gridPager2 .jzxbtn{background-image: url("images/jzx_1.png");width:55px;height:32px;margin-left: 0;margin-right: 0;margin-top: 2px;} /*集装箱*/
+#testPager .ldbtn,#pager1 .ldbtn, #gridPager .ldbtn,#gridPager1 .ldbtn,#gridPager2 .ldbtn{background-image: url("images/ld_1.png");width:43px;height:32px;margin-left: 0;margin-right: 0;margin-top: 2px;} /*零担*/
+#testPager .xbbtn,#pager1 .xbbtn, #gridPager .xbbtn,#gridPager1 .xbbtn,#gridPager2 .xbbtn{background-image: url("images/xb_1.png");width:43px;height:32px;margin-left: 0;margin-right: 0;margin-top: 2px;} /*行包*/
+#testPager .gkbtn,#pager1 .gkbtn, #gridPager .gkbtn,#gridPager1 .gkbtn,#gridPager2 .gkbtn{background-image: url("images/gk_1.png");width:43px;height:32px;margin-left: 0;margin-right: 0;margin-top: 2px;} /*高铁快件*/
+
+#testPager .wyfhzc,#pager1 .wyfhzc, #gridPager .wyfhzc,#gridPager1 .wyfhzc,#gridPager2 .wyfhzc{background-image: url("images/zc.png");width:90px;height:32px;margin-left: 0;margin-right: 0;margin-top: 2px;} /*我要发货 整车*/
+#testPager .wyfhhw,#pager1 .wyfhhw, #gridPager .wyfhhw,#gridPager1 .wyfhhw,#gridPager2 .wyfhhw{background-image: url("images/hw.png");width:90px;height:32px;margin-left: 0;margin-right: 0;margin-top: 2px;} /*我要发货 货物快运*/
+#testPager .wyfhfalc,#pager1 .wyfhfalc, #gridPager .wyfhfalc,#gridPager1 .wyfhfalc,#gridPager2 .wyfhfalc{background-image: url("images/falc.png");width:90px;height:32px;margin-left: 0;margin-right: 0;margin-top: 2px;} /*我要发货 方案落成*/
+
+#testPager .zhcbtn, #pager1 .zhcbtn,#gridPager .zhcbtn,#gridPager1 .zhcbtn,#gridPager2 .zhcbtn{background-image: url("images/zhc1.png");width:90px;height:32px;margin-left: 0;margin-right: 0;margin-top: 2px;} /*转换车*/
+
+#testPager .skzbtn, #pager1 .skzbtn,#gridPager .skzbtn,#gridPager1 .skzbtn,#gridPager2 .skzbtn{background-image: url("images/skz.png");width:90px;height:32px;margin-left: 0;margin-right: 0;margin-top: 2px;}/*吨转车 受控制*/
+#testPager .bskzbtn, #pager1 .bskzbtn,#gridPager .bskzbtn,#gridPager1 .bskzbtn,#gridPager2 .bskzbtn{background-image: url("images/bskz.png");width:90px;height:32px;margin-left: 0;margin-right: 0;margin-top: 2px;} /*吨转车 不受控制*/
+
+#testPager .jswcbtn, #pager1 .jswcbtn,#gridPager .jswcbtn,#gridPager1 .jswcbtn,#gridPager2 .jswcbtn{background-image: url("images/jswc1.png");width:90px;height:32px;margin-left: 0;margin-right: 0;margin-top: 2px;} /*计算累均完成车数*/
+#gridPager #gridPager_right,#pager1 #pager1_right,#testPager #testPager_right,#gridPager1 #gridPager1_right,#gridPager2 #gridPager2_right,#gridPager3 #gridPager3_right,#gridPager4 #gridPager4_right{width:110px;} //设置翻页靠右
+#gridPager #gridPager_center input,#gridPager #gridPager_center .ui-pg-selbox,#gridPager1 #gridPager1_center input,#gridPager1 #gridPager1_center .ui-pg-selbox,#gridPager2 #gridPager2_center input,#gridPager2 #gridPager2_center .ui-pg-selbox{height:18px;}
+.ui-jqgrid .ui-jqgrid-htable th div {color: #333333;font-weight: bold;height: 27px;line-height: 27px;overflow: hidden;position: relative;text-align: center;}/**此处设置grid表头居中*/
+/* Layout helpers
+----------------------------------*/
+.ui-helper-hidden { display: none; }
+.ui-helper-hidden-accessible { position: absolute !important; clip: rect(1px 1px 1px 1px); clip: rect(1px,1px,1px,1px); }
+.ui-helper-reset { margin: 0; padding: 0; border: 0; outline: 0; line-height: 1.3; text-decoration: none; font-size: 100%; list-style: none; }
+.ui-helper-clearfix:after { content: "."; display: block; height: 0; clear: both; visibility: hidden; }
+.ui-helper-clearfix { display: inline-block; }
+/* required comment for clearfix to work in Opera \*/
+* html .ui-helper-clearfix { height:1%;}
+.ui-helper-clearfix { display:block;}
+/* end clearfix */
+.ui-helper-zfix { width: 100%; height: 100%; top: 0; left: 0; position: absolute; opacity: 0; filter:Alpha(Opacity=0); }
+
+
+/* Interaction Cues
+----------------------------------*/
+.ui-state-disabled { cursor: default !important; }
+
+
+/* Icons
+----------------------------------*/
+
+/* states and images */
+.ui-icon { display: block; text-indent: -99999px; overflow: hidden; background-repeat: no-repeat; }
+
+
+/* Misc visuals
+----------------------------------*/
+
+/* Overlays */
+.ui-widget-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
+
+
+/*
+ * jQuery UI CSS Framework 1.8.12
+ *
+ * Copyright 2011, AUTHORS.txt (http://jqueryui.com/about)
+ * Dual licensed under the MIT or GPL Version 2 licenses.
+ * http://jquery.org/license
+ *
+ * http://docs.jquery.com/UI/Theming/API
+ *
+ * To view and modify this theme, visit http://jqueryui.com/themeroller/?ffDefault=Verdana,Arial,sans-serif&fwDefault=normal&fsDefault=1.1em&cornerRadius=5px&bgColorHeader=2191c0&bgTextureHeader=12_gloss_wave.png&bgImgOpacityHeader=75&borderColorHeader=4297d7&fcHeader=eaf5f7&iconColorHeader=d8e7f3&bgColorContent=fcfdfd&bgTextureContent=06_inset_hard.png&bgImgOpacityContent=100&borderColorContent=a6c9e2&fcContent=222222&iconColorContent=0078ae&bgColorDefault=0078ae&bgTextureDefault=02_glass.png&bgImgOpacityDefault=45&borderColorDefault=77d5f7&fcDefault=ffffff&iconColorDefault=e0fdff&bgColorHover=79c9ec&bgTextureHover=02_glass.png&bgImgOpacityHover=75&borderColorHover=448dae&fcHover=026890&iconColorHover=056b93&bgColorActive=6eac2c&bgTextureActive=12_gloss_wave.png&bgImgOpacityActive=50&borderColorActive=acdd4a&fcActive=ffffff&iconColorActive=f5e175&bgColorHighlight=f8da4e&bgTextureHighlight=02_glass.png&bgImgOpacityHighlight=55&borderColorHighlight=fcd113&fcHighlight=915608&iconColorHighlight=f7a50d&bgColorError=e14f1c&bgTextureError=12_gloss_wave.png&bgImgOpacityError=45&borderColorError=cd0a0a&fcError=ffffff&iconColorError=fcd113&bgColorOverlay=aaaaaa&bgTextureOverlay=01_flat.png&bgImgOpacityOverlay=75&opacityOverlay=30&bgColorShadow=999999&bgTextureShadow=01_flat.png&bgImgOpacityShadow=55&opacityShadow=45&thicknessShadow=0px&offsetTopShadow=5px&offsetLeftShadow=5px&cornerRadiusShadow=5px
+ */
+
+
+/* Component containers
+----------------------------------*/
+.ui-widget { font-family:"宋体",Arial,sans-serif; font-size:12px;}
+.ui-widget .ui-widget { font-size:12px; }
+.ui-widget input, .ui-widget select, .ui-widget textarea, .ui-widget button { font-family:"宋体",Arial,sans-serif; font-size:12px; }
+.ui-widget input {margin-top:0px; margin-left:0px;}
+.ui-widget-content { border: 1px solid #2887B3; background: #fcfdfd url(images/ui-bg_inset-hard_100_fcfdfd_1x100.png) 50% bottom repeat-x; color: #777; }
+.ui-widget-content a { color: #222222; }
+.ui-widget-header { background-color:#1F8C41;height:32px;line-height:32px;margin:0;padding:0;}/*update by sunzx */
+/*.ui-widget-header { border: 1px solid #4297d7;background:url(images/work.jpg) repeat-x;height:32px;line-height:32px;margin:0;padding:0;}*/
+.ui-widget-header a { color: #eaf5f7; }
+
+/* Interaction states
+----------------------------------*/
+/*Top*/
+#ui-datepicker-div .ui-datepicker-calendar .ui-state-highlight,#ui-datepicker-div .ui-datepicker-calendar .ui-state-default{height:22px;}
+#gbox_grid .ui-jqgrid-pager{background:url(images/pagerbg.jpg) repeat-x;}
+#gridPager,#gridPager1,#gridPager2,#gridPager3,#gridPager4{background:url(images/pagerbg.jpg) repeat-x;}
+#gview_grid .ui-jqgrid-hdiv, .ui-jqgrid-view .ui-jqgrid-hdiv, #gbox_detailGridTable .ui-jqgrid-hdiv, #gview_grid .ui-state-default{background:none;background:url(images/workTop2.jpg) repeat-x;height:31px;}
+.ui-state-default, .ui-widget-content .ui-state-default, .ui-widget-header .ui-state-default { border:0; background:url(images/workTop4.jpg) repeat-x;font-weight: normal; x text-align:left; height:40px;}
+.ui-state-default a, .ui-state-default a:link, .ui-state-default a:visited { color: #333333; text-decoration: none; }
+
+/*CenterHover*/
+.ui-widget-header .ui-state-hover, .ui-state-focus, .ui-widget-content .ui-state-focus, .ui-widget-header .ui-state-focus { font-weight: normal; color: #006699;} /*update by sunzx:del border: 1px solid #C8EAF9;*/
+.ui-widget-content .ui-state-hover {font-weight: normal; color: #006699;} /*update by sunzx:del border: 1px solid #C8EAF9;*/
+.ui-state-hover a, .ui-state-hover a:hover { color: #333333; text-decoration: none; }
+/*.ui-state-active, .ui-widget-content .ui-state-active, .ui-widget-header .ui-state-active { border: 1px solid #C8EAF9; background: #6eac2c url(images/ui-bg_gloss-wave_50_6eac2c_500x100.png) 50% 50% repeat-x; font-weight: normal; color: #ffffff; }*/
+.ui-state-active, .ui-widget-content .ui-state-active, .ui-widget-header .ui-state-active {font-weight: normal; color: #ffffff; } /*update by sunzx*/
+.ui-state-active a, .ui-state-active a:link, .ui-state-active a:visited { color: #333333; text-decoration: none; }
+.ui-widget :active { outline: none; }
+
+/* Interaction Cues
+----------------------------------*/
+/*CenterActive*/
+.ui-state-highlight, .ui-widget-content .ui-state-highlight, .ui-widget-header .ui-state-highlight  {border: 1px solid #C8EAF9; background: #FFFFCC; color: #444; }
+.ui-state-highlight a, .ui-widget-content .ui-state-highlight a,.ui-widget-header .ui-state-highlight a { color: #915608; }
+.ui-state-error, .ui-widget-content .ui-state-error, .ui-widget-header .ui-state-error {border: 1px solid #cd0a0a; background: #e14f1c url(images/ui-bg_gloss-wave_45_e14f1c_500x100.png) 50% top repeat-x; color: #ffffff; }
+.ui-state-error a, .ui-widget-content .ui-state-error a, .ui-widget-header .ui-state-error a { color: #ffffff; }
+.ui-state-error-text, .ui-widget-content .ui-state-error-text, .ui-widget-header .ui-state-error-text { color: #ffffff; }
+.ui-priority-primary, .ui-widget-content .ui-priority-primary, .ui-widget-header .ui-priority-primary { font-weight: bold; }
+.ui-priority-secondary, .ui-widget-content .ui-priority-secondary,  .ui-widget-header .ui-priority-secondary { opacity: 1; filter:Alpha(Opacity=100); font-weight: normal; }
+.ui-state-disabled, .ui-widget-content .ui-state-disabled, .ui-widget-header .ui-state-disabled { opacity: .35; filter:Alpha(Opacity=35); background-image: none; }
+
+/* Icons
+----------------------------------*/
+
+/* states and images */
+//翻页第一页
+#gbox_gridTable  .ui-icon-seek-first{background-color: red;}
+.ui-icon { width: 16px; height: 16px; background-image: url(images/ui-icons_0078ae_256x240.png); }
+.ui-widget-content .ui-icon {background-image: url(images/ui-icons_0078ae_256x240.png); }
+.ui-widget-header .ui-icon {background-image: url(images/ui-icons_d8e7f3_256x240.png); }
+.ui-state-default .ui-icon { background-image: url(images/ui-icons_056b93_256x240.png); }
+
+.ui-state-hover .ui-icon, .ui-state-focus .ui-icon {background-image: url(images/ui-icons_056b93_256x240.png); }
+.ui-state-active .ui-icon {background-image: url(images/ui-icons_f5e175_256x240.png); }
+.ui-state-highlight .ui-icon {background-image: url(images/ui-icons_f7a50d_256x240.png); }
+.ui-state-error .ui-icon, .ui-state-error-text .ui-icon {background-image: url(images/ui-icons_fcd113_256x240.png); }
+
+/* positioning */
+.ui-icon-carat-1-n { background-position: 0 0; }
+.ui-icon-carat-1-ne { background-position: -16px 0; }
+.ui-icon-carat-1-e { background-position: -32px 0; }
+.ui-icon-carat-1-se { background-position: -48px 0; }
+.ui-icon-carat-1-s { background-position: -64px 0; }
+.ui-icon-carat-1-sw { background-position: -80px 0; }
+.ui-icon-carat-1-w { background-position: -96px 0; }
+.ui-icon-carat-1-nw { background-position: -112px 0; }
+.ui-icon-carat-2-n-s { background-position: -128px 0; }
+.ui-icon-carat-2-e-w { background-position: -144px 0; }
+.ui-icon-triangle-1-n { background-position: 0 -16px; }
+.ui-icon-triangle-1-ne { background-position: -16px -16px; }
+.ui-icon-triangle-1-e { background-position: -32px -16px; }
+.ui-icon-triangle-1-se { background-position: -48px -16px; }
+.ui-icon-triangle-1-s { background-position: -64px -16px; }
+.ui-icon-triangle-1-sw { background-position: -80px -16px; }
+.ui-icon-triangle-1-w { background-position: -96px -16px; }
+.ui-icon-triangle-1-nw { background-position: -112px -16px; }
+.ui-icon-triangle-2-n-s { background-position: -128px -16px; }
+.ui-icon-triangle-2-e-w { background-position: -144px -16px; }
+.ui-icon-arrow-1-n { background-position: 0 -32px; }
+.ui-icon-arrow-1-ne { background-position: -16px -32px; }
+.ui-icon-arrow-1-e { background-position: -32px -32px; }
+.ui-icon-arrow-1-se { background-position: -48px -32px; }
+.ui-icon-arrow-1-s { background-position: -64px -32px; }
+.ui-icon-arrow-1-sw { background-position: -80px -32px; }
+.ui-icon-arrow-1-w { background-position: -96px -32px; }
+.ui-icon-arrow-1-nw { background-position: -112px -32px; }
+.ui-icon-arrow-2-n-s { background-position: -128px -32px; }
+.ui-icon-arrow-2-ne-sw { background-position: -144px -32px; }
+.ui-icon-arrow-2-e-w { background-position: -160px -32px; }
+.ui-icon-arrow-2-se-nw { background-position: -176px -32px; }
+.ui-icon-arrowstop-1-n { background-position: -192px -32px; }
+.ui-icon-arrowstop-1-e { background-position: -208px -32px; }
+.ui-icon-arrowstop-1-s { background-position: -224px -32px; }
+.ui-icon-arrowstop-1-w { background-position: -240px -32px; }
+.ui-icon-arrowthick-1-n { background-position: 0 -48px; }
+.ui-icon-arrowthick-1-ne { background-position: -16px -48px; }
+.ui-icon-arrowthick-1-e { background-position: -32px -48px; }
+.ui-icon-arrowthick-1-se { background-position: -48px -48px; }
+.ui-icon-arrowthick-1-s { background-position: -64px -48px; }
+.ui-icon-arrowthick-1-sw { background-position: -80px -48px; }
+.ui-icon-arrowthick-1-w { background-position: -96px -48px; }
+.ui-icon-arrowthick-1-nw { background-position: -112px -48px; }
+.ui-icon-arrowthick-2-n-s { background-position: -128px -48px; }
+.ui-icon-arrowthick-2-ne-sw { background-position: -144px -48px; }
+.ui-icon-arrowthick-2-e-w { background-position: -160px -48px; }
+.ui-icon-arrowthick-2-se-nw { background-position: -176px -48px; }
+.ui-icon-arrowthickstop-1-n { background-position: -192px -48px; }
+.ui-icon-arrowthickstop-1-e { background-position: -208px -48px; }
+.ui-icon-arrowthickstop-1-s { background-position: -224px -48px; }
+.ui-icon-arrowthickstop-1-w { background-position: -240px -48px; }
+.ui-icon-arrowreturnthick-1-w { background-position: 0 -64px; }
+.ui-icon-arrowreturnthick-1-n { background-position: -16px -64px; }
+.ui-icon-arrowreturnthick-1-e { background-position: -32px -64px; }
+.ui-icon-arrowreturnthick-1-s { background-position: -48px -64px; }
+.ui-icon-arrowreturn-1-w { background-position: -64px -64px; }
+.ui-icon-arrowreturn-1-n { background-position: -80px -64px; }
+.ui-icon-arrowreturn-1-e { background-position: -96px -64px; }
+.ui-icon-arrowreturn-1-s { background-position: -112px -64px; }
+.ui-icon-arrowrefresh-1-w { background-position: -128px -64px; }
+.ui-icon-arrowrefresh-1-n { background-position: -144px -64px; }
+.ui-icon-arrowrefresh-1-e { background-position: -160px -64px; }
+.ui-icon-arrowrefresh-1-s { background-position: -176px -64px; }
+.ui-icon-arrow-4 { background-position: 0 -80px; }
+.ui-icon-arrow-4-diag { background-position: -16px -80px; }
+.ui-icon-extlink { background-position: -32px -80px; }
+.ui-icon-newwin { background-position: -48px -80px; }
+.ui-icon-refresh { background-position: -64px -80px; }
+.ui-icon-shuffle { background-position: -80px -80px; }
+.ui-icon-transfer-e-w { background-position: -96px -80px; }
+.ui-icon-transferthick-e-w { background-position: -112px -80px; }
+.ui-icon-folder-collapsed { background-position: 0 -96px; }
+.ui-icon-folder-open { background-position: -16px -96px; }
+.ui-icon-document { background-position: -32px -96px; }
+.ui-icon-document-b { background-position: -48px -96px; }
+.ui-icon-note { background-position: -64px -96px; }
+.ui-icon-mail-closed { background-position: -80px -96px; }
+.ui-icon-mail-open { background-position: -96px -96px; }
+.ui-icon-suitcase { background-position: -112px -96px; }
+.ui-icon-comment { background-position: -128px -96px; }
+.ui-icon-person { background-position: -144px -96px; }
+.ui-icon-print { background-position: -160px -96px; }
+.ui-icon-trash { background-position: -176px -96px; }
+.ui-icon-locked { background-position: -192px -96px; }
+.ui-icon-unlocked { background-position: -208px -96px; }
+.ui-icon-bookmark { background-position: -224px -96px; }
+.ui-icon-tag { background-position: -240px -96px; }
+.ui-icon-home { background-position: 0 -112px; }
+.ui-icon-flag { background-position: -16px -112px; }
+.ui-icon-calendar { background-position: -32px -112px; }
+.ui-icon-cart { background-position: -48px -112px; }
+.ui-icon-pencil { background-position: -64px -112px; }
+.ui-icon-clock { background-position: -80px -112px; }
+.ui-icon-disk { background-position: -96px -112px; }
+.ui-icon-calculator { background-position: -112px -112px; }
+.ui-icon-zoomin { background-position: -128px -112px; }
+.ui-icon-zoomout { background-position: -144px -112px; }
+.ui-icon-search { background-position: -160px -112px; }
+.ui-icon-wrench { background-position: -176px -112px; }
+.ui-icon-gear { background-position: -192px -112px; }
+.ui-icon-heart { background-position: -208px -112px; }
+.ui-icon-star { background-position: -224px -112px; }
+.ui-icon-link { background-position: -240px -112px; }
+.ui-icon-cancel { background-position: 0 -128px; }
+.ui-icon-plus { background-position: -16px -128px; }
+.ui-icon-plusthick { background-position: -32px -128px; }
+.ui-icon-minus { background-position: -48px -128px; }
+.ui-icon-minusthick { background-position: -64px -128px; }
+.ui-icon-close { background-position: -80px -128px; }
+.ui-icon-closethick { background-position: -96px -128px; }
+.ui-icon-key { background-position: -112px -128px; }
+.ui-icon-lightbulb { background-position: -128px -128px; }
+.ui-icon-scissors { background-position: -144px -128px; }
+.ui-icon-clipboard { background-position: -160px -128px; }
+.ui-icon-copy { background-position: -176px -128px; }
+.ui-icon-contact { background-position: -192px -128px; }
+.ui-icon-image { background-position: -208px -128px; }
+.ui-icon-video { background-position: -224px -128px; }
+.ui-icon-script { background-position: -240px -128px; }
+.ui-icon-alert { background-position: 0 -144px; }
+.ui-icon-info { background-position: -16px -144px; }
+.ui-icon-notice { background-position: -32px -144px; }
+.ui-icon-help { background-position: -48px -144px; }
+.ui-icon-check { background-position: -64px -144px; }
+.ui-icon-bullet { background-position: -80px -144px; }
+.ui-icon-radio-off { background-position: -96px -144px; }
+.ui-icon-radio-on { background-position: -112px -144px; }
+.ui-icon-pin-w { background-position: -128px -144px; }
+.ui-icon-pin-s { background-position: -144px -144px; }
+.ui-icon-play { background-position: 0 -160px; }
+.ui-icon-pause { background-position: -16px -160px; }
+.ui-icon-seek-next { background-position: -32px -160px; }
+.ui-icon-seek-prev { background-position: -48px -160px; }
+.ui-icon-seek-end { background-position: -64px -160px; }
+.ui-icon-seek-start { background-position: -80px -160px; }
+/* ui-icon-seek-first is deprecated, use ui-icon-seek-start instead */
+.ui-icon-seek-first { background-position: -80px -160px;}
+/*翻页第一页*/
+#gridPager .ui-icon-seek-first,#gridPager1 .ui-icon-seek-first,#gridPager2 .ui-icon-seek-first,#gridPager3 .ui-icon-seek-first,#gridPager4 .ui-icon-seek-first {background-position: 0 0;background-image:url("images/fristpage.png");height: 20px; width: 39px;}
+.ui-pg-table #gridPager_center,.ui-pg-table #gridPager1_center,.ui-pg-table #gridPager2_center,.ui-pg-table #gridPager3_center,.ui-pg-table #gridPager4_center{width:285px !important;}
+/*翻页上一页*/
+#gridPager .ui-icon-seek-prev,#gridPager1 .ui-icon-seek-prev,#gridPager2 .ui-icon-seek-prev,#gridPager3 .ui-icon-seek-prev,#gridPager4 .ui-icon-seek-prev{ background-position: 0 0;background-image:url("images/uppage.png");height: 20px; width: 39px;}
+/*翻页下一页*/
+#gridPager .ui-icon-seek-next,#gridPager1 .ui-icon-seek-next,#gridPager2 .ui-icon-seek-next,#gridPager3 .ui-icon-seek-next,#gridPager4 .ui-icon-seek-next {background-position: 0 0;background-image:url("images/nextpage.png");height: 20px; width: 39px; }
+/*翻页最后页*/
+#gridPager .ui-icon-seek-end,#gridPager1 .ui-icon-seek-end,#gridPager2 .ui-icon-seek-end,#gridPager3 .ui-icon-seek-end,#gridPager4 .ui-icon-seek-end { background-position: 0 0;background-image:url("images/lastpage.png");height: 20px; width: 39px;}
+.ui-icon-stop { background-position: -96px -160px; }
+.ui-icon-eject { background-position: -112px -160px;}
+.ui-icon-volume-off { background-position: -128px -160px; }
+.ui-icon-volume-on { background-position: -144px -160px; }
+.ui-icon-power { background-position: 0 -176px; }
+.ui-icon-signal-diag { background-position: -16px -176px; }
+.ui-icon-signal { background-position: -32px -176px; }
+.ui-icon-battery-0 { background-position: -48px -176px; }
+.ui-icon-battery-1 { background-position: -64px -176px; }
+.ui-icon-battery-2 { background-position: -80px -176px; }
+.ui-icon-battery-3 { background-position: -96px -176px; }
+.ui-icon-circle-plus { background-position: 0 -192px; }
+.ui-icon-circle-minus { background-position: -16px -192px; }
+.ui-icon-circle-close { background-position: -32px -192px; }
+.ui-icon-circle-triangle-e { background-position: -48px -192px; }
+.ui-icon-circle-triangle-s { background-position: -64px -192px; }
+.ui-icon-circle-triangle-w { background-position: -80px -192px; }
+.ui-icon-circle-triangle-n { background-position: -96px -192px; }
+.ui-icon-circle-arrow-e { background-position: -112px -192px; }
+.ui-icon-circle-arrow-s { background-position: -128px -192px; }
+.ui-icon-circle-arrow-w { background-position: -144px -192px; }
+.ui-icon-circle-arrow-n { background-position: -160px -192px; }
+.ui-icon-circle-zoomin { background-position: -176px -192px; }
+.ui-icon-circle-zoomout { background-position: -192px -192px; }
+.ui-icon-circle-check { background-position: -208px -192px; }
+.ui-icon-circlesmall-plus { background-position: 0 -208px; }
+.ui-icon-circlesmall-minus { background-position: -16px -208px; }
+.ui-icon-circlesmall-close { background-position: -32px -208px; }
+.ui-icon-squaresmall-plus { background-position: -48px -208px; }
+.ui-icon-squaresmall-minus { background-position: -64px -208px; }
+.ui-icon-squaresmall-close { background-position: -80px -208px; }
+.ui-icon-grip-dotted-vertical { background-position: 0 -224px; }
+.ui-icon-grip-dotted-horizontal { background-position: -16px -224px; }
+.ui-icon-grip-solid-vertical { background-position: -32px -224px; }
+.ui-icon-grip-solid-horizontal { background-position: -48px -224px; }
+.ui-icon-gripsmall-diagonal-se { background-position: -64px -224px; }
+.ui-icon-grip-diagonal-se { background-position: -80px -224px; }
+
+
+/* Misc visuals
+----------------------------------*/
+
+/* Corner radius */
+.ui-corner-tl { -moz-border-radius-topleft: 5px; -webkit-border-top-left-radius: 5px; border-top-left-radius: 5px; }
+.ui-corner-tr { -moz-border-radius-topright: 5px; -webkit-border-top-right-radius: 5px; border-top-right-radius: 5px; }
+.ui-corner-bl { -moz-border-radius-bottomleft: 5px; -webkit-border-bottom-left-radius: 5px; border-bottom-left-radius: 5px; }
+.ui-corner-br { -moz-border-radius-bottomright: 5px; -webkit-border-bottom-right-radius: 5px; border-bottom-right-radius: 5px; }
+.ui-corner-top { -moz-border-radius-topleft: 5px; -webkit-border-top-left-radius: 5px; border-top-left-radius: 5px; -moz-border-radius-topright: 5px; -webkit-border-top-right-radius: 5px; border-top-right-radius: 5px; }
+.ui-corner-bottom { -moz-border-radius-bottomleft: 5px; -webkit-border-bottom-left-radius: 5px; border-bottom-left-radius: 5px; -moz-border-radius-bottomright: 5px; -webkit-border-bottom-right-radius: 5px; border-bottom-right-radius: 5px; }
+.ui-corner-right {  -moz-border-radius-topright: 5px; -webkit-border-top-right-radius: 5px; border-top-right-radius: 5px; -moz-border-radius-bottomright: 5px; -webkit-border-bottom-right-radius: 5px; border-bottom-right-radius: 5px; }
+.ui-corner-left { -moz-border-radius-topleft: 5px; -webkit-border-top-left-radius: 5px; border-top-left-radius: 5px; -moz-border-radius-bottomleft: 5px; -webkit-border-bottom-left-radius: 5px; border-bottom-left-radius: 5px; }
+.ui-corner-all { -moz-border-radius: 5px; -webkit-border-radius: 5px; border-radius: 5px; }
+
+/* Overlays */
+.ui-widget-overlay { background: #aaaaaa url(images/ui-bg_flat_75_aaaaaa_40x100.png) 50% 50% repeat-x; opacity: .30;filter:Alpha(Opacity=30); }
+.ui-widget-shadow { margin: 5px 0 0 5px; padding: 0px; background: #999999 url(images/ui-bg_flat_55_999999_40x100.png) 50% 50% repeat-x; opacity: .45;filter:Alpha(Opacity=45); -moz-border-radius: 5px; -webkit-border-radius: 5px; border-radius: 5px; }/*
+ * jQuery UI Resizable 1.8.12
+ *
+ * Copyright 2011, AUTHORS.txt (http://jqueryui.com/about)
+ * Dual licensed under the MIT or GPL Version 2 licenses.
+ * http://jquery.org/license
+ *
+ * http://docs.jquery.com/UI/Resizable#theming
+ */
+.ui-resizable { position: relative;}
+.ui-resizable-handle { position: absolute;font-size: 0.1px;z-index: 99999; display: block;
+	/* http://bugs.jqueryui.com/ticket/7233
+	 - Resizable: resizable handles fail to work in IE if transparent and content overlaps
+	*/
+	background-image:url(data:);
+}
+.ui-resizable-disabled .ui-resizable-handle, .ui-resizable-autohide .ui-resizable-handle { display: none; }
+.ui-resizable-n { cursor: n-resize; height: 7px; width: 100%; top: -5px; left: 0; }
+.ui-resizable-s { cursor: s-resize; height: 7px; width: 100%; bottom: -5px; left: 0; }
+.ui-resizable-e { cursor: e-resize; width: 7px; right: -5px; top: 0; height: 100%; }
+.ui-resizable-w { cursor: w-resize; width: 7px; left: -5px; top: 0; height: 100%; }
+.ui-resizable-se { cursor: se-resize; width: 12px; height: 12px; right: 1px; bottom: 1px; }
+.ui-resizable-sw { cursor: sw-resize; width: 9px; height: 9px; left: -5px; bottom: -5px; }
+.ui-resizable-nw { cursor: nw-resize; width: 9px; height: 9px; left: -5px; top: -5px; }
+.ui-resizable-ne { cursor: ne-resize; width: 9px; height: 9px; right: -5px; top: -5px;}/*
+ * jQuery UI Selectable 1.8.12
+ *
+ * Copyright 2011, AUTHORS.txt (http://jqueryui.com/about)
+ * Dual licensed under the MIT or GPL Version 2 licenses.
+ * http://jquery.org/license
+ *
+ * http://docs.jquery.com/UI/Selectable#theming
+ */
+.ui-selectable-helper { position: absolute; z-index: 100; border:1px dotted black; }
+/*
+ * jQuery UI Accordion 1.8.12
+ *
+ * Copyright 2011, AUTHORS.txt (http://jqueryui.com/about)
+ * Dual licensed under the MIT or GPL Version 2 licenses.
+ * http://jquery.org/license
+ *
+ * http://docs.jquery.com/UI/Accordion#theming
+ */
+/* IE/Win - Fix animation bug - #4615 */
+.ui-accordion { width: 100%; }
+.ui-accordion .ui-accordion-header { cursor: pointer; position: relative; margin-top: 1px; zoom: 1; }
+.ui-accordion .ui-accordion-li-fix { display: inline; }
+.ui-accordion .ui-accordion-header-active { border-bottom: 0 !important; }
+.ui-accordion .ui-accordion-header a { display: block; font-size: 1em; padding: .5em .5em .5em .7em; }
+.ui-accordion-icons .ui-accordion-header a { padding-left: 2.2em; }
+.ui-accordion .ui-accordion-header .ui-icon { position: absolute; left: .5em; top: 50%; margin-top: -8px; }
+.ui-accordion .ui-accordion-content { padding: 1em 2.2em; border-top: 0; margin-top: -2px; position: relative; top: 1px; margin-bottom: 2px; overflow: auto; display: none; zoom: 1; }
+.ui-accordion .ui-accordion-content-active { display: block; }
+/*
+ * jQuery UI Autocomplete 1.8.12
+ *
+ * Copyright 2011, AUTHORS.txt (http://jqueryui.com/about)
+ * Dual licensed under the MIT or GPL Version 2 licenses.
+ * http://jquery.org/license
+ *
+ * http://docs.jquery.com/UI/Autocomplete#theming
+ */
+.ui-autocomplete { position: absolute; cursor: default; }	
+
+/* workarounds */
+* html .ui-autocomplete { width:1px; } /* without this, the menu expands to 100% in IE6 */
+
+/*
+ * jQuery UI Menu 1.8.12
+ *
+ * Copyright 2010, AUTHORS.txt (http://jqueryui.com/about)
+ * Dual licensed under the MIT or GPL Version 2 licenses.
+ * http://jquery.org/license
+ *
+ * http://docs.jquery.com/UI/Menu#theming
+ */
+.ui-menu {
+	list-style:none;
+	padding: 2px;
+	margin: 0;
+	display:block;
+	float: left;
+}
+.ui-menu .ui-menu {
+	margin-top: -3px;
+}
+.ui-menu .ui-menu-item {
+	margin:0;
+	padding: 0;
+	zoom: 1;
+	float: left;
+	clear: left;
+	width: 100%;
+}
+.ui-menu .ui-menu-item a {
+	text-decoration:none;
+	display:block;
+	padding:.2em .4em;
+	line-height:1.5;
+	zoom:1;
+}
+.ui-menu .ui-menu-item a.ui-state-hover,
+.ui-menu .ui-menu-item a.ui-state-active {
+	font-weight: normal;
+	margin: -1px;
+}
+/*
+ * jQuery UI Button 1.8.12
+ *
+ * Copyright 2011, AUTHORS.txt (http://jqueryui.com/about)
+ * Dual licensed under the MIT or GPL Version 2 licenses.
+ * http://jquery.org/license
+ *
+ * http://docs.jquery.com/UI/Button#theming
+ */
+.ui-button { display: inline-block; position: relative; padding: 0; margin-right: .1em; text-decoration: none !important; cursor: pointer; text-align: center; zoom: 1; overflow: visible; } /* the overflow property removes extra width in IE */
+.ui-button-icon-only { width: 2.2em; } /* to make room for the icon, a width needs to be set here */
+button.ui-button-icon-only { width: 2.4em; } /* button elements seem to need a little more width */
+.ui-button-icons-only { width: 3.4em; } 
+button.ui-button-icons-only { width: 3.7em; } 
+
+/*button text element */
+.ui-button .ui-button-text { display: block; line-height: 1.4;  }
+.ui-button-text-only .ui-button-text { padding: .4em 1em; }
+.ui-button-icon-only .ui-button-text, .ui-button-icons-only .ui-button-text { padding: .4em; text-indent: -9999999px; }
+.ui-button-text-icon-primary .ui-button-text, .ui-button-text-icons .ui-button-text { padding: .4em 1em .4em 2.1em; }
+.ui-button-text-icon-secondary .ui-button-text, .ui-button-text-icons .ui-button-text { padding: .4em 2.1em .4em 1em; }
+.ui-button-text-icons .ui-button-text { padding-left: 2.1em; padding-right: 2.1em; }
+/* no icon support for input elements, provide padding by default */
+input.ui-button { padding: .4em 1em; }
+
+/*button icon element(s) */
+.ui-button-icon-only .ui-icon, .ui-button-text-icon-primary .ui-icon, .ui-button-text-icon-secondary .ui-icon, .ui-button-text-icons .ui-icon, .ui-button-icons-only .ui-icon { position: absolute; top: 50%; margin-top: -8px; }
+.ui-button-icon-only .ui-icon { left: 50%; margin-left: -8px; }
+.ui-button-text-icon-primary .ui-button-icon-primary, .ui-button-text-icons .ui-button-icon-primary, .ui-button-icons-only .ui-button-icon-primary { left: .5em; }
+.ui-button-text-icon-secondary .ui-button-icon-secondary, .ui-button-text-icons .ui-button-icon-secondary, .ui-button-icons-only .ui-button-icon-secondary { right: .5em; }
+.ui-button-text-icons .ui-button-icon-secondary, .ui-button-icons-only .ui-button-icon-secondary { right: .5em; }
+
+/*button sets*/
+.ui-buttonset { margin-right: 7px; }
+.ui-buttonset .ui-button { margin-left: 0; margin-right: -.3em; }
+
+/* workarounds */
+button.ui-button::-moz-focus-inner { border: 0; padding: 0; } /* reset extra padding in Firefox */
+/*
+ * jQuery UI Dialog 1.8.12
+ *
+ * Copyright 2011, AUTHORS.txt (http://jqueryui.com/about)
+ * Dual licensed under the MIT or GPL Version 2 licenses.
+ * http://jquery.org/license
+ *
+ * http://docs.jquery.com/UI/Dialog#theming
+ */
+.ui-dialog { position: absolute; padding: .2em; width: 300px; overflow: hidden; }
+.ui-dialog .ui-dialog-titlebar { padding: .4em 1em; position: relative; height: 24px;  }
+.ui-dialog .ui-dialog-title { float: left; margin: .1em 16px .1em 0;color:#FFFFFF;font-weight: bold;font-size:14px;} 
+.ui-dialog .ui-dialog-titlebar-close { position: absolute; right: .3em; top: 50%; width: 19px; margin: -10px 0 0 0; padding: 1px; height: 18px; }
+.ui-dialog .ui-dialog-titlebar-close span { display: block; margin: 1px; }
+.ui-dialog .ui-dialog-titlebar-close:hover, .ui-dialog .ui-dialog-titlebar-close:focus { padding: 0; }
+.ui-dialog .ui-dialog-content { position: relative; border: 0; padding: .5em 1em; background: none; overflow: visible; zoom: 1; }
+.ui-dialog .ui-dialog-buttonpane { text-align: left; border-width: 1px 0 0 0; background-image: none; margin: .5em 0 0 0; padding: .3em 1em .5em .4em; }
+.ui-dialog .ui-dialog-buttonpane .ui-dialog-buttonset { float: right; }
+.ui-dialog .ui-dialog-buttonpane button { margin: .5em .4em .5em 0; cursor: pointer; }
+.ui-dialog .ui-resizable-se { width: 14px; height: 14px; right: 3px; bottom: 3px; }
+.ui-draggable .ui-dialog-titlebar { cursor: move; }
+/*
+ * jQuery UI Slider 1.8.12
+ *
+ * Copyright 2011, AUTHORS.txt (http://jqueryui.com/about)
+ * Dual licensed under the MIT or GPL Version 2 licenses.
+ * http://jquery.org/license
+ *
+ * http://docs.jquery.com/UI/Slider#theming
+ */
+.ui-slider { position: relative; text-align: left; }
+.ui-slider .ui-slider-handle { position: absolute; z-index: 2; width: 1.2em; height: 1.2em; cursor: default; }
+.ui-slider .ui-slider-range { position: absolute; z-index: 1; font-size: .7em; display: block; border: 0; background-position: 0 0; }
+
+.ui-slider-horizontal { height: .8em; }
+.ui-slider-horizontal .ui-slider-handle { top: -.3em; margin-left: -.6em; }
+.ui-slider-horizontal .ui-slider-range { top: 0; height: 100%; }
+.ui-slider-horizontal .ui-slider-range-min { left: 0; }
+.ui-slider-horizontal .ui-slider-range-max { right: 0; }
+
+.ui-slider-vertical { width: .8em; height: 100px; }
+.ui-slider-vertical .ui-slider-handle { left: -.3em; margin-left: 0; margin-bottom: -.6em; }
+.ui-slider-vertical .ui-slider-range { left: 0; width: 100%; }
+.ui-slider-vertical .ui-slider-range-min { bottom: 0; }
+.ui-slider-vertical .ui-slider-range-max { top: 0; }/*
+ * jQuery UI Tabs 1.8.12
+ *
+ * Copyright 2011, AUTHORS.txt (http://jqueryui.com/about)
+ * Dual licensed under the MIT or GPL Version 2 licenses.
+ * http://jquery.org/license
+ *
+ * http://docs.jquery.com/UI/Tabs#theming
+ */
+.ui-tabs { position: relative; padding: .2em; zoom: 1; } /* position: relative prevents IE scroll bug (element with position: relative inside container with overflow: auto appear as "fixed") */
+.ui-tabs .ui-tabs-nav { margin: 0;}
+.ui-tabs .ui-tabs-nav li { list-style: none; float: left; position: relative; top: 1px; margin: 0 .2em 1px 0; border-bottom: 0 !important; padding: 0; white-space: nowrap; }
+.ui-tabs .ui-tabs-nav li a { color: #2989B5; font-weight:bold;float: left; padding: .5em 1em; text-decoration: none; }
+.ui-tabs .ui-tabs-nav li.ui-tabs-selected { margin-bottom: 0; padding-bottom: 1px; }
+.ui-tabs .ui-tabs-nav li.ui-tabs-selected a, .ui-tabs .ui-tabs-nav li.ui-state-disabled a, .ui-tabs .ui-tabs-nav li.ui-state-processing a { cursor: text; }
+.ui-tabs .ui-tabs-nav li a, .ui-tabs.ui-tabs-collapsible .ui-tabs-nav li.ui-tabs-selected a { cursor: pointer; } /* first selector in group seems obsolete, but required to overcome bug in Opera applying cursor: text overall if defined elsewhere... */
+.ui-tabs .ui-tabs-panel { display: block; border-width: 0; padding: 1em 1.4em; background: none; }
+.ui-tabs .ui-tabs-hide { display: none !important; }
+/*
+ * jQuery UI Datepicker 1.8.12
+ *
+ * Copyright 2011, AUTHORS.txt (http://jqueryui.com/about)
+ * Dual licensed under the MIT or GPL Version 2 licenses.
+ * http://jquery.org/license
+ *
+ * http://docs.jquery.com/UI/Datepicker#theming
+ */
+.ui-datepicker { width: 17em; padding: .2em .2em 0; display: none; }
+.ui-datepicker .ui-datepicker-header { position:relative; padding:.2em 0; }
+.ui-datepicker .ui-datepicker-prev, .ui-datepicker .ui-datepicker-next { position:absolute; top: 2px; width: 1.8em; height: 1.8em; }
+.ui-datepicker .ui-datepicker-prev-hover, .ui-datepicker .ui-datepicker-next-hover { top: 1px; }
+.ui-datepicker .ui-datepicker-prev { left:2px; }
+.ui-datepicker .ui-datepicker-next { right:2px; }
+.ui-datepicker .ui-datepicker-prev-hover { left:1px; }
+.ui-datepicker .ui-datepicker-next-hover { right:1px; }
+.ui-datepicker .ui-datepicker-prev span, .ui-datepicker .ui-datepicker-next span { display: block; position: absolute; left: 50%; margin-left: -8px; top: 50%; margin-top: -8px;  }
+.ui-datepicker .ui-datepicker-title { margin: 0 2.3em; line-height: 1.8em; text-align: center; }
+.ui-datepicker .ui-datepicker-title select { font-size:1em; margin:1px 0; }
+.ui-datepicker select.ui-datepicker-month-year {width: 100%;}
+.ui-datepicker select.ui-datepicker-month, 
+.ui-datepicker select.ui-datepicker-year { width: 49%;}
+.ui-datepicker table {width: 100%; font-size: .9em; border-collapse: collapse; margin:0 0 .4em; }
+.ui-datepicker th { padding: .7em .3em; text-align: center; font-weight: bold; border: 0;  }
+.ui-datepicker td { border: 0; padding: 1px; }
+.ui-datepicker td span, .ui-datepicker td a { display: block; padding: .2em; text-align: right; text-decoration: none; }
+.ui-datepicker .ui-datepicker-buttonpane { background-image: none; margin: .7em 0 0 0; padding:0 .2em; border-left: 0; border-right: 0; border-bottom: 0; }
+.ui-datepicker .ui-datepicker-buttonpane button { float: right; margin: .5em .2em .4em; cursor: pointer; padding: .2em .6em .3em .6em; width:auto; overflow:visible; }
+.ui-datepicker .ui-datepicker-buttonpane button.ui-datepicker-current { float:left; }
+
+/* with multiple calendars */
+.ui-datepicker.ui-datepicker-multi { width:auto; }
+.ui-datepicker-multi .ui-datepicker-group { float:left; }
+.ui-datepicker-multi .ui-datepicker-group table { width:95%; margin:0 auto .4em; }
+.ui-datepicker-multi-2 .ui-datepicker-group { width:50%; }
+.ui-datepicker-multi-3 .ui-datepicker-group { width:33.3%; }
+.ui-datepicker-multi-4 .ui-datepicker-group { width:25%; }
+.ui-datepicker-multi .ui-datepicker-group-last .ui-datepicker-header { border-left-width:0; }
+.ui-datepicker-multi .ui-datepicker-group-middle .ui-datepicker-header { border-left-width:0; }
+.ui-datepicker-multi .ui-datepicker-buttonpane { clear:left; }
+.ui-datepicker-row-break { clear:both; width:100%; }
+
+/* RTL support */
+.ui-datepicker-rtl { direction: rtl; }
+.ui-datepicker-rtl .ui-datepicker-prev { right: 2px; left: auto; }
+.ui-datepicker-rtl .ui-datepicker-next { left: 2px; right: auto; }
+.ui-datepicker-rtl .ui-datepicker-prev:hover { right: 1px; left: auto; }
+.ui-datepicker-rtl .ui-datepicker-next:hover { left: 1px; right: auto; }
+.ui-datepicker-rtl .ui-datepicker-buttonpane { clear:right; }
+.ui-datepicker-rtl .ui-datepicker-buttonpane button { float: left; }
+.ui-datepicker-rtl .ui-datepicker-buttonpane button.ui-datepicker-current { float:right; }
+.ui-datepicker-rtl .ui-datepicker-group { float:right; }
+.ui-datepicker-rtl .ui-datepicker-group-last .ui-datepicker-header { border-right-width:0; border-left-width:1px; }
+.ui-datepicker-rtl .ui-datepicker-group-middle .ui-datepicker-header { border-right-width:0; border-left-width:1px; }
+
+/* IE6 IFRAME FIX (taken from datepicker 1.5.3 */
+.ui-datepicker-cover {
+    display: none; /*sorry for IE5*/
+    display/**/: block; /*sorry for IE5*/
+    position: absolute; /*must have*/
+    z-index: -1; /*must have*/
+    filter: mask(); /*must have*/
+    top: -4px; /*must have*/
+    left: -4px; /*must have*/
+    width: 200px; /*must have*/
+    height: 200px; /*must have*/
+}/*
+ * jQuery UI Progressbar 1.8.12
+ *
+ * Copyright 2011, AUTHORS.txt (http://jqueryui.com/about)
+ * Dual licensed under the MIT or GPL Version 2 licenses.
+ * http://jquery.org/license
+ *
+ * http://docs.jquery.com/UI/Progressbar#theming
+ */
+.ui-progressbar { height:2em; text-align: left; }
+.ui-progressbar .ui-progressbar-value {margin: -1px; height:100%; }

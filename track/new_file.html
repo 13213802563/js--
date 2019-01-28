@@ -1,0 +1,252 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <title>货物追踪</title>
+
+  <link rel="stylesheet" type="text/css" href="css/track.css" />
+  <link rel="stylesheet" type="text/css" href="css/track1.css" />
+  <link rel="stylesheet" type="text/css" href="css/index.css" />
+  
+  <link rel="stylesheet" href="//code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css">
+  <script src="//code.jquery.com/jquery-1.9.1.js"></script>
+  <script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+  <script type="text/javascript"   src="js/track.js"></script>
+  
+</head>
+<body>
+  <div class="topyyt">
+    <div class="top3" style="font-size:13px;">
+      <span>&mdash;&mdash;</span>铁路总公司
+    </div>
+  </div>
+<style>
+.top{background:url("../resources/images/new/images/hwzz/top.jpg");width:960px;height:69px;margin:2px auto;position:relative;}
+</style>
+  <div class="dv_hwzz" style="width:986px;height:auto;margin:0 auto;">
+    <div id="tabs" class="tabs">
+      <ul class="tabs">
+        <li style="width:150px;height:27px;overflow:hidden;">
+          <a href="#tabs-1" style="padding-bottom:0;padding-top:0;color:#1f8c41;">整车货物</a>
+        </li>
+        <li style="width:150px;height:27px;overflow:hidden;">
+          <a href="#tabs-2" style="padding-bottom:0;padding-top:0;color:#1f8c41;">散货快运</a>
+        </li>
+        <li style="width:150px;height:27px;overflow:hidden;">
+          <a href="#tabs-5" style="padding-bottom:0;padding-top:0;color:#1f8c41;">集装箱</a>
+        </li>
+        <li style="width:150px;height:27px;overflow:hidden;">
+          <a href="#tabs-4" style="padding-bottom:0;padding-top:0;color:#1f8c41;">行包快运</a>
+        </li>
+        <li style="width:150px;height:27px;overflow:hidden;">
+          <a href="#tabs-3" style="padding-bottom:0;padding-top:0;color:#1f8c41;">高铁快运</a>
+        </li>
+      </ul>
+      <div class="clear"></div>
+      <div id="tabs-1">
+        <div class="dv_hwzzTp">
+          <div class="dv_hwzzTp_fn">请输入要查询货物的车号和运单号，您可查询货物的最新位置。</div>
+          <div class="dv_hwzzTp_in">
+            <form action="" name="hwzzForm" id="hwzzForm">
+              <div class="dv_hwzzTp2_font" style="float:left;">
+                <span class="hhzz_span1">车号：</span>
+                <input name="carNo" id="carNo" class="hhzz_inpt1" type="text" />
+                <span class="hhzz_span1">运单号：</span>
+                <input name="hph" id="hph" class="hhzz_inpt1" type="text" />
+                <span class="hhzz_span1">验证码：</span>
+                <input class="hhzz_inpt1" name="QUERY_CAPTCA" id="QUERY_CAPTCA" type="text" />
+              </div>
+            </form>
+            <div class="img" style="float:left;">
+              <img id="captchaImage" src="img/jcaptcha.jpg" style="margin-left:2px;float:left;line-height:60px;margin-top:3px;" width="100" height="27" alt="如看不清，可点击图片更换" onclick="refreshCaptca(this);" />
+            </div>
+            <div style="clear:both;"></div>
+          </div>
+          <div class="dv_hwzzTp_bt">
+            <div class="dv_btn1" onclick="hwzz();"></div>
+            <div class="dv_btn2" onclick="clearForm();"></div>
+            <div style="clear:both;"></div>
+          </div>
+        </div>
+        <div class="dv_hwzzBd" id="infoBody" style="display:none;">
+          <div class="dv_hwzzBd_fn">
+            <div class="dv_hwzzBd_fn1">查询结果：</div>
+            <div class="dv_hwzzBd_fn2" id="reportBody">您查询的货物当前报告站为***站（***铁路局），<br />报告时间为：2014年4月15日10点30分</div>
+          </div>
+        </div>
+      </div>
+      <div id="tabs-2">
+        <div class="dv_hwzzTp">
+          <div class="dv_hwzzTp_fn">请输入要查询货物的需求单号和手机号，您可查询货物的最新位置。</div>
+          <div class="dv_hwzzTp_in">
+            <form action="" name="shkyForm" id="shkyForm">
+              <div class="dv_hwzzTp2_font" style="float:left;">
+                <span class="hhzz_span1">需求单号：</span>
+                <input name="ddh" id="ddh" class="hhzz_inpt1" type="text" />
+                <span class="hhzz_span1"> 发货人手机：</span>
+                <input name="fhrsjhm" id="fhrsjhm" class="hhzz_inpt1" type="text" />
+                <span class="hhzz_span1"> 验证码：</span>
+                <input class="hhzz_inpt1" name="QUERY_CAPTCA" id="QUERY_CAPTCA_2" style="width:84px;" type="text" />
+              </div>
+            </form>
+            <div class="img" style="float:left;">
+              <img id="captchaImage2" src="img/jcaptcha.jpg" style="margin-left:2px;float:left;line-height:60px;margin-top:3px;" width="100" height="27" alt="如看不清，可点击图片更换" onclick="refreshCaptca(this);" />
+            </div>
+            <div style="clear:both;"></div>
+          </div>
+          <div class="dv_hwzzTp_bt">
+            <div class="dv_btn1" onclick="shky();"></div>
+            <div class="dv_btn2" onclick="clearForm();"></div>
+            <div style="clear:both;"></div>
+          </div>
+        </div>
+        <div class="dv_hwzzBd" id="shkyBody" style="display:none;">
+          <div class="dv_hwzzBd_fn">
+            <div class="dv_hwzzBd_fn1">查询结果：</div>
+            <div class="dv_hwzzBd_fn2" id="shkyResult">您查询的货物当前报告站为***站（***铁路局），<br />报告时间为：2014年4月15日10点30分</div>
+          </div>
+        </div>
+        <div id="shkyDialog" title="货物轨迹">
+          <div style="margin-top:10px;width:560px;">
+            <table class="table5" style="width:550px;height:auto;margin:5px 0 10px 0;" cellspacing="1" cellpadding="1">
+              <thead>
+                <tr style="background-color:#dcdcdc;height:30px;text-align:center;font-weight:700;">
+                  <td width="60" scope="col">序号</td>
+                  <td width="150">操作时间</td>
+                  <td width="250">流程内容</td>
+                </tr>
+              </thead>
+              <tbody id="shkyDetailBody" style="background-color:rgb(222, 233, 224);height:30px;"></tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+      <div id="tabs-3">
+        <div class="dv_hwzzTp">
+          <div class="dv_hwzzTp_fn">请输入要查询货物的快运单号，您可查询货物的最新位置。</div>
+          <div class="dv_hwzzTp_in">
+            <form action="" name="gtxbForm" id="gtxbForm">
+              <div class="dv_hwzzTp2_font" style="float:left;">
+                <span class="hhzz_span1">快运单号：</span>
+                <input name="gtxbdh" id="gtxbdh" class="hhzz_inpt1" type="text" />
+                <span class="hhzz_span1">验证码：</span>
+                <input class="hhzz_inpt1" name="QUERY_CAPTCA" id="QUERY_CAPTCA_3" style="width:84px;" type="text" />
+              </div>
+            </form>
+            <div class="img" style="float:left;">
+              <img id="captchaImage3" src="img/jcaptcha.jpg" style="margin-left:2px;float:left;line-height:60px;margin-top:3px;" width="100" height="27" alt="如看不清，可点击图片更换" onclick="refreshCaptca(this);" />
+            </div>
+            <div style="clear:both;"></div>
+          </div>
+          <div class="dv_hwzzTp_bt">
+            <div class="dv_btn1" onclick="gtxb();"></div>
+            <div class="dv_btn2" onclick="clearForm();"></div>
+            <div style="clear:both;"></div>
+          </div>
+        </div>
+        <div class="dv_hwzzBd" id="gtxbBody" style="display:none;">
+          <div class="dv_hwzzBd_fn">
+            <div class="dv_hwzzBd_fn1">查询结果：</div>
+            <div class="dv_hwzzBd_fn2" id="gtxbResult">您查询的货物当前报告站为***站（***铁路局），<br />报告时间为：2014年4月15日10点30分</div>
+          </div>
+        </div>
+        <div id="gtxbDialog" title="行包轨迹">
+          <div style="margin-top:10px;width:510px;">
+            <table class="table5" style="width:500px;height:auto;margin:5px 0 10px 0;" cellspacing="1" cellpadding="1">
+              <thead>
+                <tr style="background-color:#dcdcdc;height:30px;text-align:center;font-weight:700;">
+                  <td width="50" scope="col">序号</td>
+                  <td width="120">时间</td>
+                  <td width="250">轨迹</td>
+                </tr>
+              </thead>
+              <tbody id="gtxbDetailBody" style="background-color:rgb(222, 233, 224);height:30px;"></tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+      <div id="tabs-4">
+        <div class="dv_hwzzTp">
+          <div class="dv_hwzzTp_fn">请输入要查询货物的快运单号，您可查询货物的最新位置。</div>
+          <div class="dv_hwzzTp_in">
+            <form action="" name="ptxbForm" id="ptxbForm">
+              <div class="dv_hwzzTp2_font" style="float:left;">
+                <span class="hhzz_span1">快运单号：</span>
+                <input name="ptxbdh" id="ptxbdh" class="hhzz_inpt1" type="text" />
+                <span class="hhzz_span1">验证码：</span>
+                <input class="hhzz_inpt1" name="QUERY_CAPTCA" id="QUERY_CAPTCA_4" style="width:84px;" type="text" />
+              </div>
+            </form>
+            <div class="img" style="float:left;">
+              <img id="captchaImage4" src="img/jcaptcha.jpg" style="margin-left:2px;float:left;line-height:60px;margin-top:3px;" width="100" height="27" alt="如看不清，可点击图片更换" onclick="refreshCaptca(this);" />
+            </div>
+            <div style="clear:both;"></div>
+          </div>
+          <div class="dv_hwzzTp_bt">
+            <div class="dv_btn1" onclick="ptxb();"></div>
+            <div class="dv_btn2" onclick="clearForm();"></div>
+            <div style="clear:both;"></div>
+          </div>
+        </div>
+        <div class="dv_hwzzBd" id="ptxbBody" style="display:none;">
+          <div class="dv_hwzzBd_fn">
+            <div class="dv_hwzzBd_fn1">查询结果：</div>
+            <div class="dv_hwzzBd_fn2" id="ptxbResult">您查询的货物当前报告站为***站（***铁路局），<br />报告时间为：2014年4月15日10点30分</div>
+          </div>
+        </div>
+        <div id="ptxbDialog" title="行包轨迹">
+          <div style="margin-top:10px;width:510px;">
+            <table class="table5" style="width:500px;height:auto;margin:5px 0 10px 0;" cellspacing="1" cellpadding="1">
+              <thead>
+                <tr style="background-color:#a3e1b0;height:30px;text-align:center;font-weight:700;">
+                  <td width="60" scope="col">序号</td>
+                  <td width="150">作业时间</td>
+                  <td width="90">作业名称</td>
+                  <td width="120">作业机构</td>
+                </tr>
+              </thead>
+              <tbody id="ptxbDetailBody" style="background-color:rgb(222, 233, 224);height:30px;"></tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+      <div id="tabs-5">
+        <div class="dv_hwzzTp">
+          <div class="dv_hwzzTp_fn">请输入要查询的集装箱号，您可查询集装箱的最新位置。</div>
+          <div class="dv_hwzzTp_in">
+            <form action="" name="jzxForm" id="jzxForm">
+              <div class="dv_hwzzTp2_font" style="float:left;">
+                <span class="hhzz_span1">箱主：</span>
+                <input name="xz" id="xz" class="hhzz_inpt1" type="text" value="TBJU" />
+                <span class="hhzz_span1">箱号：</span>
+                <input name="xh" id="xh" class="hhzz_inpt1" type="text" />
+                <span class="hhzz_span1">验证码：</span>
+                <input class="hhzz_inpt1" name="QUERY_CAPTCA" id="QUERY_CAPTCA_5" style="width:84px;" type="text" />
+              </div>
+            </form>
+            <div class="img" style="float:left;">
+              <img id="captchaImage5" src="img/jcaptcha.jpg" style="margin-left:2px;float:left;line-height:60px;margin-top:3px;" width="100" height="27" alt="如看不清，可点击图片更换" onclick="refreshCaptca(this);" />
+            </div>
+            <div style="clear:both;"></div>
+          </div>
+          <div class="dv_hwzzTp_bt">
+            <div class="dv_btn1" onclick="jzx();"></div>
+            <div class="dv_btn2" onclick="clearForm();"></div>
+            <div style="clear:both;"></div>
+          </div>
+        </div>
+        <div class="dv_hwzzBd" id="jzxBody" style="display:none;">
+          <div class="dv_hwzzBd_fn">
+            <div class="dv_hwzzBd_fn1">查询结果：</div>
+            <div class="dv_hwzzBd_fn2" id="jzxResult">您查询的货物当前报告站为***站（***铁路局），<br />报告时间为：2014年4月15日10点30分</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="dv_hwzzFt">
+      <div class="dv_hwzzFt1">注：系统功能仍在调试中，查询结果仅供参考。</div>
+    </div>
+  </div>
+</body>
+</html>
