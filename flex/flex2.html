@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			 /*.flex-container{
+	            display:flex;
+	            flex-direction: row;
+	            width:600px;
+	            height:230px;
+	            background-color: #ccc;
+	            justify-content: space-around;
+	            align-items:baseline;
+	            align-content: space-between;
+	
+		        }
+		        .flex-item{
+		            background-color:blue;
+		            width: 100px;
+		            height: 70px;
+		            margin: 5px;;
+		        }
+		        .a{
+		            align-self:flex-start ;
+		        }
+		        .b{
+		            align-self:flex-end;
+		        }
+		        .c{
+		            align-self:center;
+		        }*/
+		       .flex-container{
+		            display:flex;
+		            flex-direction: row;
+		            width:600px;
+		            height:230px;
+		            background-color: #ccc;
+		            justify-content: space-around;
+		            align-items:baseline;
+		            align-content: space-between;
+		
+		        }
+		        .flex-item{
+		            background-color:blue;
+		            width: 100px;
+		            height: 70px;
+		            margin: 5px;;
+		        }
+		        .a{
+		            align-self:flex-start ;
+		            flex:1;
+		        }
+		        .b{
+		            align-self:flex-end;
+		            flex:2;
+		        }
+		        .c{
+		            align-self:center;
+		            flex:1;
+		        }
+		</style>
+	</head>
+	<body>
+		<div class="flex-container">
+		    <div class="flex-item a">1</div>
+		    <div class="flex-item  b">2</div>
+		    <div class="flex-item c">3</div>
+		</div>
+	</body>
+</html>
