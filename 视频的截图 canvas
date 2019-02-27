@@ -1,0 +1,23 @@
+function creatImg() {
+	const video = document.getElementById('post-video');
+	var tempImg = document.getElementById('temp-img');
+	const canvas = document.createElement('canvas');
+	const ctx = canvas.getContext('2d');
+	const imgHeight = video.videoHeight;
+	const imgWidth = video.videoWidth;
+	canvas.width = imgWidth;
+	canvas.height = imgHeight;
+
+	ctx.save(); //保存状态
+	ctx.translate(imgWidth / 2, imgHeight / 2); //旋转的中心点
+	ctx.rotate(0 * Math.PI / 180);
+	ctx.drawImage(video, 0 - imgWidth / 2, 0 - imgHeight / 2, imgWidth, imgHeight);
+	ctx.restore();
+
+	var imgSrc = canvas.toDataURL('image/png');
+	tempImg.src = imgSrc;
+	//tempImg.src = "file:///storage/emulated/0/tencent/MicroMsg/WeiXin/lfqlfq.jpg"
+
+	return imgSrc;
+}
+
