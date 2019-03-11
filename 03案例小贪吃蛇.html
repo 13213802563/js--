@@ -32,14 +32,12 @@
       //背景颜色
       this.color = color || "green";
     }
-
     //为原型添加初始化的方法(作用：在页面上显示这个食物)
     //因为食物要在地图上显示,所以,需要地图的这个参数(map---就是页面上的.class=map的这个div)
     Food.prototype.init = function (map) {
       //先删除这个小食物
       //外部无法访问的函数
       remove();
-
       //创建div
       var div = document.createElement("div");
       //把div加到map中
@@ -55,11 +53,9 @@
       this.y = parseInt(Math.random() * (map.offsetHeight / this.height)) * this.height;
       div.style.left = this.x + "px";
       div.style.top = this.y + "px";
-
       //把div加入到数组elements中
       elements.push(div);
     };
-
     //私有的函数---删除食物的
     function remove() {
       //elements数组中有这个食物
@@ -71,7 +67,6 @@
         elements.splice(i, 1);
       }
     }
-
     //把Food暴露给Window,外部可以使用
     window.Food = Food;
   }());
@@ -93,12 +88,10 @@
       //方向
       this.direction = direction || "right";
     }
-
     //为原型添加方法--小蛇初始化的方法
     Snake.prototype.init = function (map) {
       //先删除之前的小蛇
       remove();//===========================================
-
       //循环遍历创建div
       for (var i = 0; i < this.body.length; i++) {
         //数组中的每个数组元素都是一个对象
@@ -259,9 +252,6 @@
     //把Game暴露给window,外部就可以访问Game对象了
     window.Game = Game;
   }());
-
-
-
   //初始化游戏对象
   var gm = new Game(document.querySelector(".map"));
 
