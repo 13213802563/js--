@@ -1,0 +1,8 @@
+		//点击空白处事件
+		$(document).bind('click', function(e) {
+			var _con = $('#demo>li'); // 设置目标区域
+			if(!_con.is(e.target) && _con.has(e.target).length === 0) {
+				$(".edit_deleat").hide();
+				$("#demo>li").css("background", 'url(../source/contractManage/img/back.png) center center / 100% 100% no-repeat');
+			}
+		});
