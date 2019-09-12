@@ -1,0 +1,20 @@
+    let obj1 = new Proxy({
+        value1 : '',
+        value2 : ''
+    },{
+        set(target, p, value, receiver) {
+            if(p === 'value1'){
+                document.getElementById('sub-address').value = value
+            }
+            if(p === 'value2'){
+                document.getElementById('from-subadress').value = value
+            }
+        }
+    })
+    document.getElementById('from-subadress').oninput = function () {
+        console.log(this.value1)
+        obj1.value1 = this.value
+    }
+    document.getElementById('sub-address').oninput = function () {
+        obj1.value2 = this.value
+    }
