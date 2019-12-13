@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta content="yes" name="apple-mobile-web-app-capable"/>
+    <meta content="yes" name="apple-touch-fullscreen">
+    <meta content="black" name="apple-mobile-web-app-status-bar-style"/>
+    <meta content="telephone=no,email=no" name="format-detection">
+    <link rel="stylesheet" href="../../css/reset.css">
+    <link rel="stylesheet" type="text/css" href="../../css/weui/weui.min.css"/>
+    <link rel="stylesheet" type="text/css" href="../../css/weui/demos.css"/>
+    <link rel="stylesheet" type="text/css" href="../../css/weui/jquery-weui.min.css"/>
+    <link rel="stylesheet" href="../../css/common.css">
+    <link rel="stylesheet" type="text/css" href="../../css/vote/vote.css"/>
+    <title>评选首页</title>
+    <style type="text/css">
+        body {
+            width: 100%;
+            height: 100%;
+            background: #6C00C7;
+        }
+
+        .weui-pull-to-refresh__layer {
+            padding: 0;
+        }
+
+        #aa {
+            background: #6C00C7;
+            padding-bottom: 2rem;
+            margin-top: .5rem;
+        }
+
+        .homeDetails {
+            display: flex;
+            width: 100%;
+            flex-flow: wrap;
+            justify-content: center;
+        }
+
+        .details-left,
+        .details-right {
+            width: 47%;
+        }
+
+        .details-left > div {
+            padding-top: .5rem;
+            padding-right: .2rem;
+        }
+
+        .details-right > div {
+            padding-top: .5rem;
+        }
+
+        .details-left > div,
+        .details-right > div {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .homeDetails .serial {
+            position: absolute;
+            color: #e8202e;
+            background: #FFF100;
+            width: 1rem;
+            height: .6rem;
+            line-height: .6rem;
+            top: 1rem;
+            left: -.5rem;
+            border-radius: 12px;
+            font-size: .35rem;
+            padding-left: .5rem;
+        }
+
+        .homeDetails .cover {
+            width: 100%;
+            font-size: 0;
+        }
+
+        .homeDetails .detail-bottom {
+            height: 1rem;
+            background: #ffffff;
+            color: #e8202e;
+            padding: .2rem;
+            font-size: .34rem;
+        }
+
+        .homeDetails .detail-bottom .detail-vote {
+            float: right;
+            background: #e8202e;
+            color: #FFFFFF;
+            border-radius: 10px;
+            width: 1.4rem;
+            text-align: center;
+            font-size: 12px;
+        }
+
+        .lingjiang {
+            position: absolute;
+            top: 50%;
+            transform: translate(0, -50%);
+            right: -.5rem;
+            border: 1px solid #e8202e;
+            border-radius: 19px;
+            background: #e8202e;
+            color: #FFFFFF;
+            font-size: .35rem;
+            padding: .05rem .5rem .05rem .2rem;
+        }
+
+        .detail-name {
+            overflow: hidden;
+            -webkit-line-clamp: 1;
+            display: -webkit-box;
+            -webkit-box-orient: vertical;
+            margin-bottom: .1rem;
+        }
+
+        #rgbn {
+            width: 100%;
+            position: fixed;
+            background: rgba(0, 0, 0, .8);
+            top: 0;
+            left: 0;
+            z-index: 100;
+            bottom: 0;
+            display: none;
+        }
+
+        .p {
+            margin-left: 6.5rem;
+            background: url("../../images/tp.png") no-repeat;
+            background-size: 38% 100%;
+            width: 74%;
+            height: 3rem;
+            margin-top: 0.2rem;
+        }
+
+        #rgbn .div {
+            position: absolute;
+            top: 4rem;
+            z-index: 113;
+            color: #fff;
+            font-size: .6rem;
+            width: 100%;
+            text-align: center;
+        }
+
+        .box {
+            position: absolute;
+            top: 7rem;
+            width: 90%;
+            margin-left: 5%;
+
+        }
+        .vote-code{
+            width: 100%;
+            height: 100vh;
+            position: fixed;
+            /* margin: auto; */
+            /* margin-top: 3.5rem; */
+            top: 0;
+            background: rgba(0,0,0,.6);
+
+        }
+        .vote-code img{
+            width: 100%;
+            padding-bottom: 0.3rem;
+        }
+        .vote-imgcode{
+            text-align: center;
+            color: #fff;
+            padding-bottom: 0.3rem;
+            width: 50%;
+            margin: auto;
+            margin-top: 57%;
+        }
+        .winBox {
+            width: 100%;
+            height: 30px;
+            overflow: hidden;
+            position: relative;
+            background: rgba(0, 0, 0, .5);
+            border-radius: 20px;
+        }
+
+        .scroll {
+            /*width的大小是根据下面li的长度和多少个li而定的，需注意！*/
+            position: absolute;
+            left: 0px;
+            top: 0px;
+        }
+
+        .scroll li {
+            width: 950px;
+            float: left;
+            line-height: 30px;
+            text-indent: 100px;
+            color: #fff100;
+        }
+    </style>
+</head>
+
+<body style="overflow: initial;-webkit-overflow-scrolling: touch;">
+<!--<div class="box">-->
+<!--<div class="winBox">-->
+<!--<ul class="scroll">-->
+
+<!--</ul>-->
+<!--</div>-->
+<!--</div>-->
+<div class="header">
+    <p style="width: 92%;text-align: center;">三好家政服务员评选</p>
+
+    <div class="lingjiang" id="rule">
+        活动规则
+    </div>
+</div>
+<div id="aa" ontouchstart>
+    <div class="weui-pull-to-refresh__layer">
+        <div class='weui-pull-to-refresh__arrow'></div>
+        <div class='weui-pull-to-refresh__preloader'></div>
+        <div class="down">下拉刷新</div>
+        <div class="up">释放刷新</div>
+        <div class="refresh">正在刷新</div>
+    </div>
+    <div class="homeContent">
+        <!--报名信息及个人信息-->
+        <div class="homePage">
+            <div class="signUp">
+
+                <div class="button">
+                    <button>我要报名</button>
+                </div>
+                <!--个人信息-->
+                <div class="personal">
+                    <!--<img src="../../images/accept-logo.png"/>
+            <p>姓名</p>
+            <p>21</p>
+            <div class="state">票数</div>
+            <div class="modify">编辑</div>-->
+                </div>
+
+                <div id="remainTime"></div>
+                <div class="datatime">
+                    <img src="../../images/vote/left@3x.png"/>
+                    <p></p>
+                    <img src="../../images/vote/right@3x.png"/>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="searchTop">
+            <div>已报名 : <span class="enrollNum">0</span></div>
+            <div>投票 : <span class="voteNum">0</span></div>
+        </div>
+
+        <div class="search">
+            <img src="../../images/vote/search@3x.png"/>
+            <input type="text" id="searchName" placeholder="请输入编号或名称"/>
+            <button>搜索</button>
+
+        </div>
+        <!--参赛人-->
+        <ul class="homeDetails">
+            <!--<li>
+        <div class="cover" style="background: url('http://erp.95081.com/img/img/2018/03/09/e25d960ca91b45ada52cc5556f4f34b3.jpg')"></div>
+        <div class="serial">2号</div>
+        <div class="detail-bottom">
+            <div>名称 呵呵呵</div>
+            <div><span>票数 35</span><span class="detail-vote">投票</span></div>
+        </div>
+    </li>-->
+        </ul>
+    </div>
+
+</div>
+
+<!--底部-->
+<div class="index-footer">
+    <ul>
+        <li>
+            <a href="/jzjy-wechat/html/vote/homePage.html" style="color: #FFF100;"><img
+                    src="../../images/vote/clickhome@3x.png"/>
+                <p>首页</p>
+            </a>
+        </li>
+        <li>
+            <a href="/jzjy-wechat/html/vote/prize.html"><img src="../../images/vote/Prize_line@3x.png"/>
+                <p>奖品</p>
+            </a>
+        </li>
+        <li>
+            <a href="/jzjy-wechat/html/vote/ranking-new.html"><img src="../../images/vote/ranking_line@3x.png"/>
+                <P>排名</P>
+            </a>
+        </li>
+    </ul>
+</div>
+
+<!--活动规则-->
+<div id="rabaw">
+    <div class="schedule" style="margin-top: 2rem;">
+        <ul class="schedule_ul">
+            <li>
+            </li>
+        </ul>
+        <div class="knowf">
+            <button class="know_btn">知道了</button>
+        </div>
+    </div>
+</div>
+<div id="rgbn">
+    <p class="p"></p>
+    <div class="div">点击右上角进行分享</div>
+</div>
+<div id="tanwin" class="tan" style="display:none;"></div>
+<div id="loading">
+    <div class="weui-loadmore">
+        <i class="weui-loading"></i>
+        <span class="weui-loadmore__tips">正在加载中...</span>
+    </div>
+</div>
+
+<div class="vote-login">
+    <div class="login">
+        <div class="vote-title">登录后即可投票</div>
+        <div class="vote-phone">
+            <input type="tel" placeholder="请输入您的手机号" id="phonenum">
+        </div>
+        <!--<div class="vote-imgYzm">-->
+        <!--<div class="vote-input"><input type="text" placeholder="图片验证码" id="imgVerCode"></div>-->
+        <!--<img src="/apidisp/verification/img/20020003/jzjy" alt="" class="vote_img">-->
+        <!--<span><img src="../../images/vote/refresh@3x.png" alt=""></span>-->
+        <!--</div>-->
+        <div class="vote-yzm">
+            <input type="tel" placeholder="请输入您的验证码" id="vercode"><input type="button" id="time" value="获取验证码"></input>
+        </div>
+        <div>
+            <button class="vote-sigin">登录</button>
+        </div>
+    </div>
+    <div class="clons"><img src="../../images/vote/delete@3x.png" alt=""></div>
+</div>
+<div class="vote-code" style="display: none">
+    <div class="vote-imgcode">
+        <img src="../../images/vote/qrcode.jpg" alt="">
+        <p>关注公众号参加报名(长按关注公众号)</p>
+    </div>
+</div>
+</body>
+<script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+<script src="../../js/jquery-3.1.1.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../js/weui/fastclick.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../js/weui/jquery-weui.js"></script>
+<script src="../../js/flexible.js"></script>
+<script src="../../js/return.js"></script>
+
+<!--接口加密-->
+<script src="../../js/crypto/core.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../js/crypto/cipher-core.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../js/crypto/lib-typedarrays.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../js/crypto/aes.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../js/crypto/md5.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../js/crypto/mode-ecb.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../js/jzjy-ui/common.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../js/share/shareVoteIndex.js?v1" type="text/javascript" charset="utf-8"></script>
+<script>
+    //		$(function() {
+    //			people()
+    //			var num = 0;
+    //
+    //			function goLeft() {
+    //				//750是根据你给的尺寸，可变的
+    //				if(num == -($(".scroll li").length * $(".scroll li").width())) {
+    //					num = 0;
+    //				}
+    //				num -= 1;
+    //				$(".scroll").css({
+    //					left: num
+    //				})
+    //			}
+    //			//设置滚动速度
+    //			var timer = setInterval(goLeft, 30);
+    //
+    //		})
+    //
+    //		function people() {
+    //			jzjy.newAjax({
+    //				params: {
+    //					key: 761858980556376,
+    //				},
+    //				async: false
+    //			}, function(data) {
+    //				var li = '<li>' + data.data + '</li>'
+    //
+    //				$(".scroll").html(li)
+    //				$(".scroll").width($(".scroll li").length * $(".scroll li").width() + 'px')
+    //
+    //			})
+    //		}
+</script>
+
+</html>

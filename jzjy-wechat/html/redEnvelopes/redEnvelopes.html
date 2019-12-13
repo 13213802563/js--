@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta content="yes" name="apple-mobile-web-app-capable"/>
+    <meta content="yes" name="apple-touch-fullscreen">
+    <meta content="black" name="apple-mobile-web-app-status-bar-style"/>
+    <meta content="telephone=no,email=no" name="format-detection">
+    <link rel="stylesheet" type="text/css" href="../../css/reset.css"/>
+    <link rel="stylesheet" type="text/css" href="../../css/common.css"/>
+    <link rel="stylesheet" type="text/css" href="../../css/index.css"/>
+    <!--红包-->
+    <link rel="stylesheet" type="text/css" href="../../css/coupon/hb.css"/>
+    <link rel="stylesheet" type="text/css" href="../../css/coupon/zshb.css"/>
+
+    <link rel="stylesheet" type="text/css" href="../../css/coupon/coupon.css"/>
+
+    <title>领红包</title>
+    <style type="text/css">
+        html {
+            width: 100%;
+            overflow: hidden;
+        }
+        #remak{
+            position: fixed;
+            top: 0;
+            bottom: 0;
+            width:100%;
+            z-index: 101;
+            opacity: 0.8;
+            display: none;
+        }
+        p { -moz-user-select:none;
+            -webkit-user-select:none;
+            user-select:none;
+        }
+
+
+    </style>
+</head>
+
+<body style="background: #F5F5F5;">
+<div class="header">
+    <img src="../../images/arrow.png" class="lo_left" id="lo_left" onclick="testClickback()"/>
+    <p>领红包</p>
+    <span style="display: inline-block; top: 0.4rem; color: #FC4949;" id="redcoupon">活动说明</span>
+</div>
+<div class="redenvelopes">
+    <ul class="couten">
+        <!--<li>
+            <a href="#"><img src="images/hb_1.png"></a>
+        </li>-->
+    </ul>
+</div>
+<!--抽奖次数-->
+<div class="redNum" style="display: none;">
+    <h2></h2>
+    <p></p>
+</div>
+<!--获奖名单-->
+<div id="rollCon">
+    <div id="rollSubject">
+
+    </div>
+    <div id="rollCopy"></div>
+</div>
+<!--点击显示-->
+<div class="mo">
+    <div class="sen">
+        <!--				<div class="con">-->
+        <!--					<img src="../../images/coupon/mks.png">-->
+        <!--					<h2>领取红包</h2>-->
+        <!--					<h3>欢迎下次再来来</h3>-->
+        <!--					<a href="#">确定</a>-->
+        <!--					<img src="../../images/coupon/cha.png" id="cha">-->
+        <!--				</div>-->
+
+    </div>
+</div>
+
+<!--活动时间和分享按钮-->
+<div class="shareTime">
+    <p></p>
+    <div class="shareTime-button">
+        <button id="btn">投票在得抽奖机会</button>
+        <button onclick="testClick2()">邀请好友获得抽奖机会</button>
+    </div>
+
+</div>
+<button hidden id="hiddenBtn"></button>
+
+
+<div class="vote-login" style="display: none; z-index: 100;">
+    <div class="login">
+        <div class="vote-title">登录后即可报名</div>
+        <div class="vote-phone">
+            <input type="tel" placeholder="请输入您的手机号" id="phonenum">
+        </div>
+        <!--<div class="vote-imgYzm">-->
+        <!--<div class="vote-input"><input type="text" placeholder="图片验证码" id="imgVerCode"></div>-->
+        <!--<img src="/apidisp/verification/img/20020003/jzjy" alt="" class="vote_img">-->
+        <!--<span><img src="../../images/vote/refresh@3x.png" alt=""></span>-->
+        <!--</div>-->
+        <div class="vote-yzm">
+            <input type="tel" placeholder="请输入您的验证码" id="vercode"><input type="button" id="time" value="获取验证码">
+        </div>
+        <div>
+            <button class="vote-sigin">登录</button>
+        </div>
+
+    </div>
+    <div class="clons"><img src="../../images/vote/delete@3x.png" alt=""></div>
+</div>
+<img src="../../images/zz.jpg" alt="" id="remak">
+</body>
+<script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+<script src="../../js/flexible.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../js/jquery-3.1.1.min.js" type="text/javascript" charset="utf-8"></script>
+<!--ios对接-->
+<script src="../../js/ios/gjbWebBridgeV2.js"></script>
+<!--接口加密-->
+<script src="../../js/crypto/core.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../js/crypto/cipher-core.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../js/crypto/lib-typedarrays.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../js/crypto/aes.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../js/crypto/md5.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../js/crypto/mode-ecb.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../js/jzjy-ui/common.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../js/share/shareEnvelopes.js" type="text/javascript" charset="utf-8"></script>
+<!--红包雨-->
+<script src="../../js/redEnvelopes/redEnvelopes.js?id=4" type="text/javascript" charset="utf-8"></script>
+<script src="http://www.mycodes.net/js/tongji.js"></script>
+<script src="../../js/redEnvelopes/redRain/su.js" type="text/javascript" charset="utf-8"></script>
+<!--字体轮播-->
+<!--	<script src="http://code.jquery.com/jquery-latest.js"></script>-->
+<!--<script src="../../js/vconsole.js"></script>-->
+
+</html>

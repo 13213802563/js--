@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+		<meta content="yes" name="apple-mobile-web-app-capable" />
+		<meta content="yes" name="apple-touch-fullscreen">
+		<meta content="black" name="apple-mobile-web-app-status-bar-style" />
+		<meta content="telephone=no,email=no" name="format-detection">
+		<link rel="stylesheet" href="../../../css/reset.css">
+		<link rel="stylesheet" type="text/css" href="../../../css/weui/weui.css" />
+		<link rel="stylesheet" type="text/css" href="../../../css/weui/jquery-weui.min.css" />
+		<link rel="stylesheet" type="text/css" href="../../../css/weui/demos.css" />
+		<link rel="stylesheet" href="../../../css/common.css">
+		<link rel="stylesheet" type="text/css" href="../../../css/vote/vote.css" />
+		<title>我要报名</title>
+		<style type="text/css">
+			body {
+				background: #e8202e;
+				border: 1px solid;
+			}
+			
+			.chaImg {
+				position: absolute;
+				top: 0;
+				right: 0;
+				width: .4rem !important;
+			}
+			
+			input::-webkit-input-placeholder,
+			textarea::-webkit-input-placeholder {
+				color: #CCCCCC;
+			}
+			
+			input:-moz-placeholder,
+			textarea:-moz-placeholder {
+				color: #CCCCCC;
+			}
+			
+			input::-moz-placeholder,
+			textarea::-moz-placeholder {
+				color: #CCCCCC;
+			}
+			
+			input:-ms-input-placeholder,
+			textarea:-ms-input-placeholder {
+				color: #CCCCCC;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div class="header">
+			<img src="../../../images/arrow.png" class="lo_left" id="lo_left" />
+			<p>我要报名</p>
+		</div>
+		<div class="signup">
+			<ul class="signUp-ul">
+				<li>
+					<div><span>真实填写，领奖无忧！</span></div>
+				</li>
+				<li>
+					<div style="font-size: .4rem;"><span> * </span> 姓名</div>
+					<input type="text" id="name" placeholder="请选择您的姓名"/>
+				</li>
+				<li>
+					<div style="font-size: .4rem;"><span> * </span> 手机号</div>
+					<input type="text" id="mobile" placeholder="请填写您的手机号" readonly="readonly" />
+				</li>
+				<li class="orgName">
+					<div style="font-size: .4rem;"><span> * </span> 所在家政公司</div>
+					<input type="text" id="orgName" placeholder="请输入您的家政公司(没有填无)"  />
+				</li>
+				<li>
+					<div style="font-size: .4rem;"> <span> * </span> 地址</div>
+					<input type="text" id="address" placeholder="请填写您的详细地址" />
+				</li>
+				<li>
+					<div style="font-size: .4rem;"> <span> * </span> 描述</div>
+					<textarea maxlength="100" id="tile" rows="5" placeholder="描述您的荣誉，优势等等来拉票(最多输入100字)"></textarea>
+				</li>
+				<li>
+					
+					<ul class="upload">
+						<li>
+							<img class="uploadImgShow" src="../../../images/vote/PHONE@3x.png" id="behindImage" />
+							<input accept="image/*" type="file" id="uploadBehindImage" style="display: none" />
+							<p class="one" style="color: #CCCCCC;">上传封面照</p>
+						</li>
+						<li id="iptModule">
+							<img class="uploadImgShow" src="../../../images/vote/PHONE@3x.png" id="fontImage" />
+							<input accept="image/*" type="file" id="uploadfontImage" class="uploadfontImage" style="display: none" />
+							<p class="two">上传工作照</p>
+						</li>
+			
+					</ul>
+					<p style="width: 89%; margin: auto; margin-top: .3rem;color: #CCCCCC;">最多可上传6张，审核通过后不可修改,好的照片更能吸引眼球哦</p>
+				</li>
+			</ul>
+			<button id="signup">提交报名</button>
+		</div>
+		<div id="tanwin" class="tan" style="display:none;"></div>
+		<div id="loading">
+			<div class="weui-loadmore">
+				<i class="weui-loading"></i>
+				<span class="weui-loadmore__tips">正在加载中...</span>
+			</div>
+		</div>
+	</body>
+	<script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+	<script src="../../../js/jquery-3.1.1.min.js"></script>
+	<script src="../../../js/flexible.js"></script>
+	<script src="../../../js/return.js"></script>
+	<script src="../../../js/weui/jquery-weui.js"></script>
+	<script src="../../../js/upload/lrz.bundle.js" type="text/javascript" charset="utf-8"></script>
+
+	<!--接口加密-->
+	<script src="../../../js/crypto/core.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../../../js/crypto/cipher-core.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../../../js/crypto/lib-typedarrays.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../../../js/crypto/aes.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../../../js/crypto/md5.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../../../js/crypto/mode-ecb.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../../../js/jzjy-ui/common.js?id=1" type="text/javascript" charset="utf-8"></script>
+	<script src="../../../js/vote/signUp.js?id=9" type="text/javascript" charset="utf-8"></script>
+<!--	<script src="../../../js/vconsole.js"></script>-->
+</html>

@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta content="yes" name="apple-mobile-web-app-capable"/>
+    <meta content="yes" name="apple-touch-fullscreen">
+    <meta content="black" name="apple-mobile-web-app-status-bar-style"/>
+    <meta content="telephone=no,email=no" name="format-detection">
+    <link rel="stylesheet" href="../../../css/reset.css">
+    <link rel="stylesheet" href="../../../css/weui/weui.min.css">
+    <link rel="stylesheet" href="../../../css/weui/jquery-weui.min.css">
+    <link rel="stylesheet" type="text/css" href="../../../css/vote/appointment.css"/>
+    <title>预约</title>
+</head>
+<body>
+<div class="header">
+    <img src="../../../images/arrow.png" class="lo_left" id="lo_left" onclick="window.location.href = document.referrer"/>
+    <p>预约</p>
+</div>
+<div class="appointment-con">
+    <div class="m-appointment">
+        <ul class="appointment">
+            <li>
+                <div><span> * </span> 姓名</div>
+                <input type="text" id="name" placeholder="请输入您的姓名"/>
+            </li>
+            <li>
+                <div><span> * </span> 电话</div>
+                <input type="tel" id="mobile" placeholder="请输入您的电话"/>
+            </li>
+            <li>
+                <div><span> * </span> 城市</div>
+                <input type="text" id="city" placeholder="请选择您的城市"/>
+            </li>
+            <li>
+                <div><span> * </span> 所需服务（工种）</div>
+                <input type="text" id="workType" placeholder="请选择您的工种"/>
+            </li>
+            <li>
+                <div><span> * </span> 备注</div>
+                <input type="text" id="remarks" placeholder="请填写您的备注信息"/>
+            </li>
+
+        </ul>
+    </div>
+</div>
+<button>提交</button>
+<div id="tanwin" class="tan" style="display:none;"></div>
+</body>
+<script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+<script src="../../../js/jquery-3.1.1.min.js"></script>
+<script src="../../../js/city-picker.min.js"></script>
+<script src="../../../js/weui/jquery-weui.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../../js/ios/gjbWebBridgeV2.js"></script>
+<!--接口加密-->
+<script src="../../../js/crypto/core.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../../js/crypto/cipher-core.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../../js/crypto/lib-typedarrays.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../../js/crypto/aes.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../../js/crypto/md5.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../../js/crypto/mode-ecb.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../../js/jzjy-ui/common.js" type="text/javascript" charset="utf-8"></script>
+<script>
+    var isBtns = false;
+    $('#city').cityPicker({
+        title: "选择省市区/县",
+        onChange: function (picker, values, displayValues) {
+            $('#city').val(values);
+        },
+        onOpen: function () {
+            $('input').blur()
+        }
+    });
+    jzjy.ajax({
+        url: "personnelApp/queryWorkType",
+        async: false
+    }, function (data) {
+        if (data.code == "0") {
+            var work = data.data;
+            var workDisplayName = $.map(work, function (item) {
+                return item.name
+            })
+            var workValue = $.map(work, function (item) {
+                return item.id;
+            })
+            $("#workType").picker({
+                title: "请选择您的工种",
+                cols: [
+                    {
+                        textAlign: 'center',
+                        values: workValue,
+                        displayValues: workDisplayName
+                    }
+                ], onChange: function (picker, values, displayValues) {
+                    $("#workType").attr("data-id", values.join(''))
+                },
+                formatValue: function (picker, values, displayValues) {
+                    return displayValues.join('')
+                }, onOpen: function () {
+                    $('input').blur()
+                }
+            });
+
+        } else {
+            if (jzjy.debug) {
+                console.log(data.msg);
+            }
+            alert(data.msg);
+        }
+    })
+
+    $("button").on("click", function () {
+        if (isBtns) return;
+        isBtns = true;
+        if (!$("#name").val()) {
+            tanwin("请输入您的姓名")
+            isBtns = false;
+            return;
+        } else if (!$("#mobile").val()) {
+            tanwin("请输入您的手机号")
+            isBtns = false;
+            return;
+        }else if(!(/^(13|15|16|18|14|17|19)\d{9}$/i.test($('#mobile').val()))) {
+            tanwin("请输入正确的手机号");
+            isBtns = false;
+            return;
+        } else if (!$("#city").val()) {
+            tanwin("请选择您的城市")
+            isBtns = false;
+            return;
+        } else if (!$("#workType").val()) {
+            tanwin("请选择您的工种")
+            isBtns = false;
+            return;
+        } else if (!$("#workType").val()) {
+            tanwin("请输入您的备注信息")
+            isBtns = false;
+            return;
+        } else {
+            jzjy.newAjax({
+                params: {
+                    key: 332467290814169,
+                    activityId: 385303394984809,
+                    name: $("#name").val(),
+                    token: getQueryString("token"),
+                    remarks: $("#remarks").val(),
+                    workId: $("#workType").attr("data-id"),
+                    city: $("#city").attr("data-code"),
+                    mobile: $("#mobile").val()
+                },
+                async: false
+            }, function (data) {
+                if (data.code == 0) {
+                    tanwin('预约成功', 2000, function () {
+                        window.location.href = document.referrer
+                    })
+                } else if (data.code == "-1") {
+                    tanwin(data.msg)
+                    isBtns = false;
+                }
+            })
+        }
+    })
+</script>
+
+</html>

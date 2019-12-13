@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html style="background: #f4f4f4">
+	<head>
+		<meta charset="UTF-8">
+		<meta charset="UTF-8">
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+		<meta content="yes" name="apple-mobile-web-app-capable" />
+		<meta content="yes" name="apple-touch-fullscreen">
+		<meta content="black" name="apple-mobile-web-app-status-bar-style" />
+		<meta content="telephone=no,email=no" name="format-detection">
+		<link rel="stylesheet" type="text/css" href="../../css/reset.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/index.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/weui/weui.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/weui/jquery-weui.min.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/weui/demos.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/common.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/punchTheClock.css" />
+		<script src="../../js/umeng.js"></script>
+		<title>打卡</title>
+		<style>
+			.one{
+				color: #fc4949 !important;
+				border: 1px solid !important;
+				border-radius: 1rem;
+			}
+.editOk{
+	color: #fc4949!important;
+}
+			.editCancel{
+	color: #666666!important;
+}
+
+			.weui-picker-modal .picker-modal-inner {
+				height: 3rem;
+			}
+
+			.weui-picker-modal .picker-center-highlight {
+				top: 53.8%;
+			}
+
+			.weui-picker-modal .picker-item {
+				line-height: 41px;
+			}
+
+			.weui-picker-modal {
+				height: 4.5rem;
+			}
+
+			.weui-picker-modal,
+			.toolbar {
+				background: #fff!important;
+				border-radius: .3rem .3rem 0 0;
+			}
+
+			.toolbar:before {
+				background: 0;
+			}
+
+			.weui-picker-container {
+				position: fixed!important;
+				margin: auto;
+				top: -1rem!important;
+				width: 78%;
+			}
+			.ovfHiden{overflow: hidden;height: 100vh!important;}
+			.aaa {
+				transition-duration: .1s!important;
+				-webkit-transition-duration: 0!important;
+				transition-property: unset!important;
+				transform: none!important;
+				touch-action: none;
+			}
+			/*签到弹框*/
+
+			.weui-dialog__ft {
+				position: relative;
+				line-height: 43px;
+				font-size: 18px;
+				display: -webkit-box;
+				display: -webkit-flex;
+				display: flex;
+				width: 50%;
+				margin: auto !important;
+				border-radius: 7.3rem !important;
+				margin-bottom: 0.5rem !important;
+			}
+			/*.weui-dialog__ft a:first-child{*/
+				/*color: #666!important;*/
+			/*}*/
+			* {
+				touch-action: pan-y;
+			}
+			.weui-dialog__bd {
+				height: 3.7rem!important;
+			}
+			.pickerInput {
+				width: 5.1rem;
+				border: none;
+				border-bottom: 1px solid #ddd;
+				padding: .2rem 0;
+				font-size: .3rem;
+			}
+
+			.weui-dialog__bd{
+				padding: 0 1.6em 0em;
+			}
+			.weui-dialog__ft>a{
+				/*color: #fc4949!important;*/
+				/*border:0!important;*/
+				position: relative;
+				top: 0.25rem;
+			.weui-dialog__ft>a:after{
+				border:0!important;
+			}
+			.weui-dialog__ft:after{
+				border:0!important;
+			}
+			.weui-dialog{
+				border-radius: .3rem;
+			}
+			.weui-picker-modal .picker-items{
+				justify-content: space-around;
+			}
+			.punch-two>.two-content:first-child>.cdb-item-left>.cdb-point{
+				background: #fb4848;
+				border: 2px solid #ffd8d8;
+			}
+			.cdb-point{
+				width: .3rem;
+				height: .3rem;
+				position: absolute;
+				background: #cccccc;
+				right: -0.19rem;
+				top: -0.2rem;
+				z-index: 50;
+				border-radius: 10rem;
+				border: 2px solid #e8e8e8;
+				box-sizing: border-box;
+			}
+
+		</style>
+	</head>
+
+	<body style="background: #f4f4f4;">
+		<div class="header">
+			<img src="../../images/arrow.png" class="lo_left" id="lo_left" />
+			<p style="">打卡</p>
+		</div>
+
+
+		<div id="position"><div class="punch">
+			<div class="punch-one">
+
+			</div>
+
+		</div></div>
+
+		<div id="aa" ontouchstart >
+			<div class="weui-pull-to-refresh__layer" style="margin-top: 5.2rem;">
+				<div class='weui-pull-to-refresh__arrow'></div>
+				<div class='weui-pull-to-refresh__preloader'></div>
+				<div class="down">下拉刷新</div>
+				<div class="up">释放刷新</div>
+				<div class="refresh">正在刷新</div>
+			</div>
+			<div class="punch-two">
+
+			</div>
+
+		</div>
+		<div id="loading">
+			<div class="weui-loadmore">
+				<i class="weui-loading"></i>
+				<span class="weui-loadmore__tips">正在加载中...</span>
+
+			</div>
+		</div>
+		<div class="zz"></div>
+		<div id="tanwin" class="tan" style="display:none;"></div>
+	</body>
+	<script src="../../js/jquery-3.1.1.min.js"></script>
+	<script src="../../js/flexible.js"></script>
+	<script src="../../js/weui/jquery-weui.js"></script>
+	<!--接口加密-->
+	<script src="../../js/crypto/core.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../../js/crypto/cipher-core.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../../js/crypto/lib-typedarrays.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../../js/crypto/aes.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../../js/crypto/md5.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../../js/crypto/mode-ecb.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../../js/jzjy-ui/common.js?id=0" type="text/javascript" charset="utf-8"></script>
+	<script src="../../js/orders/puchTheClock.js?v=3"></script>
+	<script>
+	</script>
+
+</html>

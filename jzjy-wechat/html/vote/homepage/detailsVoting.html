@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+		<meta content="yes" name="apple-mobile-web-app-capable" />
+		<meta content="yes" name="apple-touch-fullscreen">
+		<meta content="black" name="apple-mobile-web-app-status-bar-style" />
+		<meta content="telephone=no,email=no" name="format-detection">
+		<link rel="stylesheet" href="../../../css/reset.css">
+		<link rel="stylesheet" type="text/css" href="../../../css/swiper.css"/>
+	
+		<link rel="stylesheet" href="../../../css/common.css">
+		<link rel="stylesheet" type="text/css" href="../../../css/vote/vote.css" />
+		<title>投票详情</title>
+	</head>
+	<style type="text/css">
+		body{
+			background: #6C00C7;
+			border: 1px solid #e8202e;
+		}
+		#rgbn {
+			width: 100%;
+			position: fixed;
+			background: rgba(0, 0, 0, .8);
+			top: 0;
+			left: 0;
+			z-index: 100;
+			bottom: 0;
+			display: none;
+		}
+
+		.p {
+			margin-left: 6.5rem;
+			background: url("../../../images/tp.png") no-repeat;
+			background-size: 38% 100%;
+			width: 74%;
+			height: 3rem;
+			margin-top: 0.2rem;
+		}
+		#rgbn .div {
+			position: absolute;
+			top: 4rem;
+			z-index: 113;
+			color: #fff;
+			font-size: .6rem;
+			width: 100%;
+			text-align: center;
+		}
+		.details{
+			width: 85%;
+			margin: auto;
+			padding-top: 2rem;
+		}
+.voteNum{
+	color: #FFEF35;
+	text-align: center;
+	padding: 0.2rem 0;
+	font-size: 0.35rem;
+}
+		.description{
+			background: #fff;
+			padding: 0.2rem;
+			line-height: 0.5rem;
+		}
+		.detailsBnt{
+			display: flex;
+			justify-content: space-between;
+		}
+		.detailsBnt button{
+			width: 40%;
+			padding: 0.3rem 0;
+			border: 0;
+			background: #FEEF35;
+			border-radius: 1rem;
+			font-size: 0.4rem;
+			color: #8021E8;
+		}
+		#shareVote{
+			background: #fff;
+		}
+	</style>
+	<body>
+		<div class="header">
+			<img src="../../../images/arrow.png" class="lo_left" id="lo_left"/>
+			<p>详情</p>
+			<!--<span>编辑</span>-->
+		</div>
+		<div class="details">
+			<!--轮播-->
+			<div class="swiper-container">
+				<div class="swiper-wrapper" style="height:11rem">
+					
+				</div>
+			</div>
+			<!--个人描述-->
+			<div class="description"><p></p></div>
+			<div class="voteNum">
+				
+			</div>
+			<div class="detailsBnt">
+				<button id="voteBtn">投票</button>
+				<button id="shareVote" style="background: #ffffff;">分享拉票</button>
+			</div>
+		</div>
+		<div id="rgbn">
+			<p class="p"></p>
+			<div class="div">点击右上角进行分享</div>
+		</div>
+		<div id="tanwin" class="tan" style="display:none;"></div>
+	</body>
+	<script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+	<script src="../../../js/jquery-3.1.1.min.js"></script>
+	<script src="../../../js/swiper.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../../../js/flexible.js"></script>
+	<script src="../../../js/return.js"></script>
+	<script src="../../../js/ios/gjbWebBridgeV2.js"></script>
+	<!--接口加密-->
+	<script src="../../../js/crypto/core.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../../../js/crypto/cipher-core.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../../../js/crypto/lib-typedarrays.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../../../js/crypto/aes.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../../../js/crypto/md5.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../../../js/crypto/mode-ecb.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../../../js/jzjy-ui/common.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../../../js/vote/detailsVoting.js?v-10" type="text/javascript" charset="utf-8"></script>
+	<script>
+		
+	</script>
+
+</html>

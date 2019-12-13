@@ -1,0 +1,102 @@
+.distributeLeaflets .head {
+  widows: 100%;
+  height: 3.5rem;
+  background: #FF7E00;
+  text-align: center; }
+  .distributeLeaflets .head h1 {
+    font-size: .5rem;
+    color: #fff;
+    padding-top: .6rem; }
+.distributeLeaflets .content {
+  width: 90%;
+  background: #fff;
+  position: absolute;
+  top: 1.7rem;
+  left: 5%;
+  margin-bottom: 1.3rem; }
+  .distributeLeaflets .content .content-one {
+    padding-top: .3rem;
+    padding-left: .3rem; }
+    .distributeLeaflets .content .content-one .number {
+      font-size: .35rem; }
+      .distributeLeaflets .content .content-one .number span {
+        color: #FF7E00; }
+      .distributeLeaflets .content .content-one .number span:last-child {
+        margin-left: 1rem; }
+      .distributeLeaflets .content .content-one .number p:first-child {
+        margin-top: .4rem; }
+      .distributeLeaflets .content .content-one .number .number-radio, .distributeLeaflets .content .content-one .number .number-radio1 {
+        color: #777777;
+        width: 90%;
+        margin-top: .2rem;
+        display: flex;
+        justify-content: space-between;
+        font-size: .4rem; }
+        .distributeLeaflets .content .content-one .number .number-radio .input, .distributeLeaflets .content .content-one .number .number-radio1 .input {
+          display: flex;
+          align-items: center;
+          margin-left: .3rem; }
+          .distributeLeaflets .content .content-one .number .number-radio .input #text, .distributeLeaflets .content .content-one .number .number-radio1 .input #text {
+            border: 0;
+            border-bottom: 1px solid #999;
+            display: none; }
+      .distributeLeaflets .content .content-one .number .number-mark {
+        margin-left: .3rem; }
+        .distributeLeaflets .content .content-one .number .number-mark .mark-mark {
+          display: flex;
+          align-items: center;
+          margin-top: .2rem; }
+          .distributeLeaflets .content .content-one .number .number-mark .mark-mark .star1, .distributeLeaflets .content .content-one .number .number-mark .mark-mark .star2, .distributeLeaflets .content .content-one .number .number-mark .mark-mark .star3, .distributeLeaflets .content .content-one .number .number-mark .mark-mark .star4, .distributeLeaflets .content .content-one .number .number-mark .mark-mark .star5 {
+            display: flex;
+            margin-left: 1rem; }
+          .distributeLeaflets .content .content-one .number .number-mark .mark-mark p {
+            color: #777777;
+            width: 40%;
+            margin-top: 0; }
+  .distributeLeaflets .content .content-two {
+    border-top: 10px solid #f4f4f4;
+    margin-top: .2rem;
+    padding-left: .3rem;
+    padding-top: .2rem;
+    font-size: .35rem; }
+    .distributeLeaflets .content .content-two li {
+      display: flex;
+      margin-top: .2rem;
+      width: 100%;
+      margin-left: .3rem; }
+      .distributeLeaflets .content .content-two li p {
+        padding-left: .3rem;
+        color: #333333;
+        width: 75%; }
+      .distributeLeaflets .content .content-two li span {
+        color: #999999;
+        display: inline-block;
+        width: 21%; }
+.distributeLeaflets button {
+  position: fixed;
+  width: 100%;
+  bottom: 0;
+  padding: .3rem;
+  border: 0;
+  color: #fff;
+  background: #FF7E00;
+  font-size: .4rem; }
+
+.tan {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  -moz-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  -o-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  width: 60%;
+  padding: .5rem 0.2rem;
+  background: rgba(0, 0, 0, 0.7);
+  text-align: center;
+  color: white;
+  border-radius: 0.1rem;
+  z-index: 10000; }
+
+/*# sourceMappingURL=index.css.map */

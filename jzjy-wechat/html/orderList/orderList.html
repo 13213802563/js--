@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta content="yes" name="apple-mobile-web-app-capable" />
+    <meta content="yes" name="apple-touch-fullscreen">
+    <meta content="black" name="apple-mobile-web-app-status-bar-style" />
+    <meta content="telephone=no,email=no" name="format-detection">
+    <link rel="stylesheet" type="text/css" href="../../css/weui/weui.css" />
+    <link rel="stylesheet" type="text/css" href="../../css/weui/jquery-weui.min.css" />
+    <link rel="stylesheet" type="text/css" href="../../css/reset.css" />
+    <link rel="stylesheet" type="text/css" href="../../css/orderList/orderList.css" />
+    <script src="../../js/umeng.js"></script>
+    <title></title>
+</head>
+<body>
+<div class="m-orderList">
+    <div class="cityDiv">
+        <img src="../../images/Location@3x.png" />
+        <span id="city">北京市</span>
+        <div class="classify" >
+        <div class="partOrders">可接订单</div>
+        <div class="allOrders">热门订单</div>
+         <!--<div class="partOrders_only">-->
+                <!--热门订单-->
+         <!--</div>-->
+    </div>
+    </div>
+
+
+    <!--可接分类-->
+    <div class="part-classify">
+        <div class="single on">
+            保洁服务
+            <p style="margin:auto;"></p>
+        </div>
+        <div class="continue">
+            母婴护理
+            <p style="margin:auto;"></p>
+        </div>
+    </div>
+    <!--热门订单分类-->
+    <div class="allOrder-classify">
+        <div class="allOrderTitle_month">
+            月嫂
+            <p></p>
+        </div>
+        <div class="allOrderTitle_baby">
+            育婴师
+            <p></p>
+        </div>
+        <div class="allOrderTitle_baby_sitter">
+            保姆
+            <p></p>
+        </div>
+        <div class="allOrderTitle_old">
+            养老护理
+            <p  style="margin:auto;"></p>
+        </div>
+    </div>
+</div>
+
+<div id="aa" ontouchstart>
+    <div class="weui-pull-to-refresh__layer">
+        <div class='weui-pull-to-refresh__arrow'></div>
+        <div class='weui-pull-to-refresh__preloader'></div>
+        <div class="down">下拉刷新</div>
+        <div class="up">释放刷新</div>
+        <div class="refresh">正在刷新</div>
+    </div>
+    <!--单次-->
+    <ul class="m-singleList">
+        <!--<li>
+            <div>
+                <p>日常保洁</p>
+                <span> 2018.09.01 11:00-15:00</span>
+            </div>
+            <div>
+                <p>服务时间:</p>
+                <span> 3小时</span>
+            </div>
+            <div>
+                <p>订单价格:</p>
+                <span>150元</span>
+            </div>
+            <div>
+                <p>服务地址:</p>
+                <span>北京市丰台区三环新城8号院</span>
+                <img src="" alt="">
+            </div>
+            <div>
+                <button>拒单</button>
+                <button> 接单</button>
+            </div>
+        </li>-->
+
+    </ul>
+    <!--延续-->
+    <ul class="m-continue">
+        <!--<li>-->
+            <!--<div>-->
+                <!--<p>日常保洁</p>-->
+                <!--<span> 2018.09.01 11:00-15:00</span>-->
+            <!--</div>-->
+            <!--<div>-->
+                <!--<p>订单价格:</p>-->
+                <!--<span>150元</span>-->
+            <!--</div>-->
+            <!--<div>-->
+                <!--<p>服务地址:</p>-->
+                <!--<span>北京市丰台区三环新城8号院</span>-->
+            <!--</div>-->
+            <!--<div>-->
+                <!--<button>查看详情</button>-->
+                <!--<button>抢单</button>-->
+            <!--</div>-->
+        <!--</li>-->
+    </ul>
+    <!--全部-->
+    <ul class="m-all">
+        <!--<li>
+            <div>
+                <p>日常保洁</p>
+            </div>
+            <div>
+                <p>订单价格:</p>
+                <span>150元</span>
+            </div>
+            <div>
+                <p>服务地址:</p>
+                <span>北京市丰台区三环新城8号院</span>
+            </div>
+        </li>-->
+
+    </ul>
+    <!--暂无数据-->
+    <div class="noData">
+        <img src="../../images/noData/no-order.png" alt="">
+        <div class="content">
+            <h1>您还没有可接订单</h1>
+            <p>请拨打95081，联系我们的老师接单！</p>
+        </div>
+        <div class='buttonInfo'><a href='tel:95081'>立即拨打</a></div>
+    </div>
+    <div class="weui-loadmore" style="display: none;">
+        <i class="weui-loading"></i>
+        <span class="weui-loadmore__tips">正在加载</span>
+    </div>
+</div>
+
+<div class="index-footer">
+    <ul>
+        <li>
+            <a href="javaScript:;"><img src="../../images/tab_btn_train__default.png" />
+                <p>首页</p>
+            </a>
+        </li>
+        <li>
+            <a href="javaScript:;"><img src="../../images/tab_btn_lesson_default.png" />
+                <p>课程</p>
+            </a>
+        </li>
+        <li>
+            <a href="javaScript:;" style="color: #FC4949;"><img src="../../images/orders/orders_choice@3x.png" />
+                <P>接单</P>
+            </a>
+        </li>
+        <li>
+            <a href="javaScript:;"><img src="../../images/tab_btn_mine_selected.png" />
+                <P>我的</P>
+            </a>
+        </li>
+    </ul>
+</div>
+
+<div id="tanwin" class="tan" style="display:none;"></div>
+<div class="location">
+    <div class="heade">
+        <img src="../../images/arrow.png" id="cityClose"/>
+        <p style="">选择城市</p>
+    </div>
+    <iframe src="../orders/city.html?id=1" frameborder="0"></iframe>
+</div>
+<div id="mask"></div>
+<div id="refuse">
+    <h1>确定放弃此订单？</h1>
+    <p>放弃完之后不可以重新接此订单了。</p>
+    <div>
+        <button>确定</button>
+        <button>取消</button>
+    </div>
+</div>
+<div class="m-success">
+    <img src="../../images/orderList/check_mark.png" alt="">
+    <p></p>
+</div>
+</body>
+<script src="../../js/jquery-3.1.1.min.js"></script>
+<script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+<script src="../../js/weui/jquery-weui.js"></script>
+<script src="../../js/weui/fastclick.js"></script>
+<script type="text/javascript" src="http://api.map.baidu.com/getscript?v=2.0&ak=tIqExiZw1IyBNAshjMWI1PT1DtIhOsuc&services=&t=20170823191629"></script>
+<script type="text/javascript" src="../../js/baiduMap/baiduMAp.js"></script>
+<script type="text/javascript" src="../../js/baiduMap/bmap.js"></script>
+<!--接口加密-->
+<script src="../../js/crypto/core.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../js/crypto/cipher-core.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../js/crypto/lib-typedarrays.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../js/crypto/aes.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../js/crypto/md5.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../js/crypto/mode-ecb.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../js/jzjy-ui/common.js?id=0" type="text/javascript" charset="utf-8"></script>
+<script src="../../js/orderList/orderList.js?v3" type="text/javascript" charset="utf-8"></script>
+</html>

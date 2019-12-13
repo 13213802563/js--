@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+	<head>
+
+		<head>
+			<meta charset="UTF-8">
+			<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+			<meta content="yes" name="apple-mobile-web-app-capable" />
+			<meta content="yes" name="apple-touch-fullscreen">
+			<meta content="black" name="apple-mobile-web-app-status-bar-style" />
+			<meta content="telephone=no,email=no" name="format-detection">
+			<title>实操详情</title>
+			<link rel="stylesheet" href="../../css/reset.css">
+			<link rel="stylesheet" href="../../css/common.css" />
+			<link rel="stylesheet" href="../../css/index.css" />
+			<style type="text/css">
+				.practicalContent {
+					margin: auto;
+					margin-top: 1.5rem;
+					width: 90%;
+					/* margin: auto; */
+					line-height: 0.7rem;
+					font-size: .4rem;
+					word-break: break-all;
+				}
+				.practicalContent img{
+					width: 100%;
+				}
+			</style>
+		</head>
+	</head>
+
+	<body>
+		<!--<div class="header">
+			<img src="../../images/arrow.png" class="lo_left" id="lo_left"  onclick="testClickback()"/>
+			<p>实操详情</p>
+			&lt;!&ndash;<span id="edit" style="font-size: .35rem;">编辑</span>&ndash;&gt;
+		</div>-->
+		<!--<ul style="margin-top: 1.3rem;">
+			<li>
+				<h3>宝宝头发里居然有这么多学问，家长们一定要注意啊!</h3>
+				<div>
+					<img src="../../images/accept-logo.png"/>
+					<img src="../../images/accept-logo.png"/>
+					<img src="../../images/accept-logo.png"/>
+				</div>
+			</li>
+		</ul>-->
+		<div class="practicalContent"></div>
+	</body>
+
+</html>
+<script src="../../js/flexible.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../js/jquery-3.1.1.min.js" type="text/javascript" charset="utf-8"></script>
+<!--接口加密-->
+<script src="../../js/crypto/core.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../js/crypto/cipher-core.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../js/crypto/lib-typedarrays.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../js/crypto/aes.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../js/crypto/md5.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../js/crypto/mode-ecb.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../js/jzjy-ui/common.js" type="text/javascript" charset="utf-8"></script>
+
+<script src="../../js/ios/android.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../js/ios/WebViewJavascriptBridge.js"></script>
+<script src="../../js/ios/return.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../js/ios/gjbWebBridgeV2.js"></script>
+<script type="text/javascript">
+	jzjy.ajax({
+		params: {
+			token: jzjy.getToken(),
+			id:getQueryString("id")
+		},
+		async: false,
+		url: "problem/queryPracticalPoints"
+	}, function(data) {
+		console.log(data)
+		var list = data.data;
+		for(var i = 0; i < list.length; i++) {
+			
+			$(".practicalContent").append(list[i].practicalPoints)
+		}
+	});
+</script>

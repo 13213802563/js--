@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+		<meta content="yes" name="apple-mobile-web-app-capable" />
+		<meta content="yes" name="apple-touch-fullscreen">
+		<meta content="black" name="apple-mobile-web-app-status-bar-style" />
+		<meta content="telephone=no,email=no" name="format-detection">
+		<title>分享</title>
+		<link rel="stylesheet" href="../../css/reset.css">
+		<link rel="stylesheet" href="../../css/common.css">
+		<link rel="stylesheet" type="text/css" href="../../css/swiper.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/vote/vote.css" />
+		<style type="text/css">
+			body {
+				width: 100%;
+				height: 100%;
+				background: #8021E8;
+			}
+			.details{
+				width: 90%;
+				margin: auto;
+			}
+			.details img{
+				width: 100%;
+			}
+			.vote-code{
+				width: 100%;
+				height: 100vh;
+				position: fixed;
+				/* margin: auto; */
+				/* margin-top: 3.5rem; */
+				top: 0;
+				background: rgba(0,0,0,.6);
+
+			}
+			.vote-code img{
+				width: 100%;
+				padding-bottom: 0.3rem;
+			}
+			.vote-imgcode{
+				text-align: center;
+				color: #fff;
+				padding-bottom: 0.3rem;
+				width: 50%;
+				margin: auto;
+				margin-top: 57%;
+			}
+			.description{
+				background: #fff;
+				padding: 0.2rem;
+				line-height: 0.5rem;
+			}
+			.voteNum{
+				width: 100%;
+				color: #FFEF35;
+				text-align: center;
+				padding: 0.3rem 0;
+			}
+			.detailsBnt{
+				text-align: center;
+				padding: 0.2rem 0.3rem;
+			}
+			.detailsBnt button{
+				border: 0;
+				background: rgba(254,239,53,1);
+				border-radius: 48px;
+				color: #8021E8;
+				padding: 0.3rem 1.5rem;
+				font-size: 0.45rem;
+				font-weight: bold;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div class="header">
+			<!--<img src="../../images/arrow.png" class="lo_left" id="lo_left" />-->
+			<p style="width:100%;text-align: center;">三好家政服务员评选</p>
+
+		</div>
+
+		<div class="homeContent" style="margin-top: 1.35rem;background: #8021E8;">
+			<!--报名信息及个人信息-->
+			<div class="homePage">
+				<div class="signUp">
+					<div class="button">
+						<button>我要报名</button>
+					</div>
+					<div id="remainTime"></div>
+					<div class="datatime">
+						<img src="../../images/vote/left@3x.png" />
+						<p></p>
+						<img src="../../images/vote/right@3x.png" />
+					</div>
+				</div>
+
+			</div>
+			<div class="searchTop">
+				<div>已报名 : <span class="enrollNum"></span></div>
+				<div>投票 : <span class="voteNums"></span></div>
+			</div>
+			<!--详情-->
+			<div class="details" style="margin-top: 0;">
+				<!--轮播-->
+				<div class="swiper-container">
+					<div class="swiper-wrapper">
+
+					</div>
+
+				</div>
+				<!--个人描述-->
+				<div class="description">
+					<p></p>
+				</div>
+				<div class="voteNum"></div>
+				<div class="detailsBnt">
+					<button>投票</button>
+				</div>
+			</div>
+
+		</div>
+		<div id="tanwin" class="tan" style="display:none;"></div>
+		<div class="vote-login">
+			<div class="login">
+				<div class="vote-title">登录后即可投票</div>
+				<div class="vote-phone">
+					<input type="tel" placeholder="请输入您的手机号" id="phonenum">
+				</div>
+				<!--<div class="vote-imgYzm">-->
+					<!--<div class="vote-input"><input type="text" placeholder="图片验证码" id="imgVerCode"></div>-->
+					<!--<img src="/apidisp/verification/img/20020003/jzjy" alt="" class="vote_img">-->
+					<!--<span><img src="../../images/vote/refresh@3x.png" alt=""></span>-->
+				<!--</div>-->
+				<div class="vote-yzm">
+					<input type="tel" placeholder="请输入您的验证码" id="vercode"><input type="button" id="time" value="获取验证码"></input>
+				</div>
+				<div>
+					<button class="vote-sigin">登录</button>
+				</div>
+			</div>
+			<div class="clons" style="width: 100%;"><img src="../../images/vote/delete@3x.png" alt=""></div>
+		</div>
+		<div class="vote-code" style="display: none">
+			<div class="vote-imgcode">
+				<img src="../../images/vote/qrcode.jpg" alt="">
+				<p>关注公众号参加报名(长按关注公众号)</p>
+			</div>
+		</div>
+
+	</body>
+	<script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+	<script src="../../js/jquery-3.1.1.min.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../../js/weui/fastclick.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../../js/weui/jquery-weui.js"></script>
+	<script src="../../js/swiper.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../../js/flexible.js"></script>
+	<script src="../../js/return.js"></script>
+
+	<!--接口加密-->
+	<script src="../../js/crypto/core.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../../js/crypto/cipher-core.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../../js/crypto/lib-typedarrays.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../../js/crypto/aes.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../../js/crypto/md5.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../../js/crypto/mode-ecb.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../../js/jzjy-ui/common.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../../js/vote/shareVote.js?id=9" type="text/javascript" charset="utf-8"></script>
+<!--	<script src="../../js/vconsole.js"></script>-->
+
+</html>

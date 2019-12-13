@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+		<meta content="yes" name="apple-mobile-web-app-capable" />
+		<meta content="yes" name="apple-touch-fullscreen">
+		<meta content="black" name="apple-mobile-web-app-status-bar-style" />
+		<meta content="telephone=no,email=no" name="format-detection">
+		<link rel="stylesheet" type="text/css" href="css/reset.css" />
+		<link rel="stylesheet" type="text/css" href="css/index.css" />
+		<title>管家帮一次性服务派工单</title>
+		<style type="text/css">
+			body {
+				background: #F7F7F7;
+			}
+
+			input[name="radio"]:checked :hover+a {
+					background: red;
+			}
+            #btnSummit{
+                cursor: pointer;
+            }
+		</style>
+	</head>
+
+	<body>
+		<div class="distributeLeaflets">
+			<div class="head">
+				<h1>管家帮一次性服务派工单</h1>
+			</div>
+			<div class="content">
+				<div class="content-one">
+					<div class="number">
+						<!--<span>编号: 订单编号</span>
+						<span>服务站: 服务人员的保洁站名</span>-->
+					</div>
+					<div class="number">
+						<p>1.请您对本次服务进行评价：</p>
+						<div class="number-radio">
+							<div class="input"><input type="radio" name="radio" id="" value="1" />非常满意</div>
+							<div class="input"><input type="radio" name="radio" id="" value="2" />比较满意</div>
+							<div class="input"><input type="radio" name="radio" id="" value="3" />不满意</div>
+
+						</div>
+					</div>
+					<div class="number">
+						<p>2.家中物品损换及丢失：</p>
+						<div class="number-radio1">
+							<div class="input"><input type="radio" name="radio1" id="" value="2" /> 无</div>
+							<div class="input"><input type="radio" name="radio1" id="" value="1" /> 有</div>
+							<div class="input"><input type="text" name="" id="text" value="" /> </div>
+						</div>
+					</div>
+					<div class="number">
+						<p>3.请您对本次服务打分：</p>
+						<div class="number-mark">
+							<div class="mark">
+								<div class="mark-mark">
+									<p>保洁员准时到达</p>
+									<div class="star1"></div>
+								</div>
+							</div>
+							<div class="mark">
+								<div class="mark-mark">
+									<p>服务态度非常好</p>
+									<div class="star2"></div>
+								</div>
+							</div>
+							<div class="mark">
+								<div class="mark-mark">
+									<p>打扫的仔细干净</p>
+									<div class="star3"></div>
+								</div>
+							</div>
+							<div class="mark">
+								<div class="mark-mark">
+									<p>保洁员衣着干净整齐</p>
+									<div class="star4"></div>
+								</div>
+							</div>
+							<div class="mark">
+								<div class="mark-mark">
+									<p>保洁工具干净齐全</p>
+									<div class="star5"></div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<ul class="content-two">
+
+				</ul>
+			</div>
+			<button id="btnSummit">提交</button>
+		</div>
+		<div id="tanwin" class="tan" style="display:none;"></div>
+	</body>
+	<script src="js/flexible.js" type="text/javascript" charset="utf-8"></script>
+	<script src="js/jquery-3.1.1.min.js" type="text/javascript" charset="utf-8"></script>
+	<script src="js/jquery.raty.min.js" type="text/javascript" charset="utf-8"></script>
+	<script src="js/index.js?id=8" type="text/javascript" charset="utf-8"></script>
+
+</html>

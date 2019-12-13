@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+		<meta content="yes" name="apple-mobile-web-app-capable" />
+		<meta content="yes" name="apple-touch-fullscreen">
+		<meta content="black" name="apple-mobile-web-app-status-bar-style" />
+		<meta content="telephone=no,email=no" name="format-detection">
+		<link rel="stylesheet" type="text/css" href="../../../css/reset.css" />
+		<link rel="stylesheet" type="text/css" href="../../../css/common.css" />
+		<link rel="stylesheet" type="text/css" href="../../../css/index.css" />
+		<link rel="stylesheet" type="text/css" href="../../../css/coupon/coupon.css" />
+		<title>红包说明</title>
+	</head>
+
+	<body>
+		<div class="header">
+			<img src="../../../images/arrow.png" class="lo_left" id="lo_left" />
+			<p>活动说明</p>
+		</div>
+		<p class="redrule">活动规则</p>
+		<div class="red">
+
+		</div>
+	</body>
+	<script src="../../../js/flexible.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../../../js/jquery-3.1.1.min.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../../../js/return.js" type="text/javascript" charset="utf-8"></script>
+	<!--接口加密-->
+	<script src="../../../js/crypto/core.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../../../js/crypto/cipher-core.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../../../js/crypto/lib-typedarrays.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../../../js/crypto/aes.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../../../js/crypto/md5.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../../../js/crypto/mode-ecb.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../../../js/jzjy-ui/common.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		/*使用说明*/
+	var id = getQueryString("id");
+		jzjy.newAjax({
+			params: {
+				key: 358847908764199,
+				id: id
+			},
+			async: false
+		}, function(data) {
+			console.log(data)
+			var list = data.data
+			var html = "";
+			var lists;
+			for(var j = 0; j < list.length; j++) {
+				html += '<h2>' + list[j].title + '</h2>'
+				lists = list[j].content;
+					for(var i = 0; i < lists.length; i++) {
+						if(lists[i]==null){
+							lists[i]=""
+						}
+						html += '<p>' + lists[i] + '</p>'
+					}
+				
+			}
+			$(".red").html(html);
+
+		})
+	</script>
+
+</html>

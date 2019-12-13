@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+		<meta content="yes" name="apple-mobile-web-app-capable" />
+		<meta content="yes" name="apple-touch-fullscreen">
+		<meta content="black" name="apple-mobile-web-app-status-bar-style" />
+		<meta content="telephone=no,email=no" name="format-detection">
+		<link rel="stylesheet" href="../../css/reset.css">
+		<link rel="stylesheet" type="text/css" href="../../css/weui/weui.min.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/weui/demos.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/weui/jquery-weui.min.css" />
+		<link rel="stylesheet" href="../../css/common.css">
+		<link rel="stylesheet" type="text/css" href="../../css/vote/vote.css" />
+		<title>奖品</title>
+		<style type="text/css">
+			body {
+				width: 100%;
+				background: #8021E8;
+			}
+			
+			.prizeRule span:last-child {
+				color: #FDEF07;
+			}
+			#p{
+				    width: 80%;
+    margin: auto;
+    color: #fff;
+    font-size: .4rem;
+        margin-top: .5rem;
+    font-weight: 800;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div class="header">
+			<img src="../../images/arrow.png" class="lo_left" id="lo_left" onclick="goto('homePage.html')"/>
+			<p>奖品</p>
+		</div>
+		<div class="prizeContent">
+			<div class="title">奖品设置</div>
+			<table>
+				<thead>
+					<tr style="color: #2C0904;background: #F9EB38;">
+						<th style="border-radius: 0.2rem 0 0 0;">名次</th>
+						<th>人数</th>
+						<th style="border-radius: 0 0.2rem 0 0;">奖金</th>
+					</tr>
+				</thead>
+				<tbody></tbody>
+			</table>
+			<!--领奖规则-->
+			<div id="prizeRule">
+				<div class="prizeRule">
+
+				</div>
+			</div>
+			<!--<div style="width: 100%; text-align: center; margin-top: .5rem;">
+				<img src="../../images/vote/erweim.png"  style="width: 30%; margin: auto;/">
+				<p style="margin: .2rem 0; color: #FDEF07; font-size: .4rem;">服务员之家二维码</p>
+			</div>-->
+			<!--<p id="p">奖品展示：</p>-->
+			<ul id="img">
+				<li></li>
+			</ul>
+		</div>
+
+		<div class="index-footer">
+			<ul>
+				<li>
+					<a href="homePage.html"><img src="../../images/vote/clickhome_line@3x.png" />
+						<p>首页</p>
+					</a>
+				</li>
+				<li>
+					<a href="prize.html" style="color: #FFF100;"><img src="../../images/vote/Prize@3x.png" />
+						<p>奖品</p>
+					</a>
+				</li>
+				<li>
+					<a href="ranking-new.html"><img src="../../images/vote/ranking_line@3x.png" />
+						<P>排名</P>
+					</a>
+				</li>
+			</ul>
+		</div>
+	</body>
+	<script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+	<script src="../../js/jquery-3.1.1.min.js"></script>
+	<script src="../../js/weui/fastclick.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../../js/weui/jquery-weui.js"></script>
+	<script src="../../js/flexible.js"></script>
+<!--	<script src="../../js/return.js"></script>-->
+
+	<!--接口加密-->
+	<script src="../../js/crypto/core.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../../js/crypto/cipher-core.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../../js/crypto/lib-typedarrays.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../../js/crypto/aes.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../../js/crypto/md5.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../../js/crypto/mode-ecb.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../../js/jzjy-ui/common.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../../js/vote/prize.js?id=6" type="text/javascript" charset="utf-8"></script>
+	<script>
+		/*	$(".weui-tab").height($(document).height()-$(".header").height()-$(".header").height());*/
+	</script>
+
+</html>

@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+		<meta content="yes" name="apple-mobile-web-app-capable" />
+		<meta content="yes" name="apple-touch-fullscreen">
+		<meta content="black" name="apple-mobile-web-app-status-bar-style" />
+		<meta content="telephone=no,email=no" name="format-detection">
+		<title>分享</title>
+		<link rel="stylesheet" href="../../css/reset.css">
+		<link rel="stylesheet" href="../../css/common.css">
+		<!-- for video tag based installs flowplayer depends on jQuery 1.7.2+ -->
+		<!-- include flowplayer -->
+		<style type="text/css">
+			.bottom {
+				width: 100%;
+				/* height: 100%;*/
+				background: rgba(0, 0, 0, 0.5);
+				display: none;
+				position: fixed;
+				top: 0;
+				bottom: 0;
+				z-index: 9;
+			}
+			
+			.bottom p {
+				margin-left: 4rem;
+				background: url("../../images/tp.png");
+				background-size: 100% 100%;
+				width: 5rem;
+				height: 7rem;
+			}
+			
+			.bottom div {
+				text-align: center;
+				background: url(../../images/zoo.png);
+				background-size: 100% 100%;
+				width: 9rem;
+				height: 3rem;
+				padding-top: 1.5rem;
+				border-radius: 10px;
+				font-size: .5rem;
+				margin: 0 auto;
+				color: #333;
+			}
+			.verCode-img{
+				position: absolute;
+				right: .4rem;
+				top: .3rem;
+			}
+			.verCode-img img{
+				height: .8rem;
+				width: 2rem;
+			}
+
+		</style>
+	</head>
+
+	<body>
+
+		<div class="accept-content">
+			<div class="accept-content-top">
+				<img src="../../images/accept-logo.png" alt="" />
+				<p style="font-weight: 550;">家政家园</p>
+				<div style="padding: .4rem 0 0 0;">
+					<p>快来接收来自<input type="text" id="pnum" readonly="readonly">好友的邀请吧</p>
+					<p style="margin-bottom: .5rem;">学习更专业的家政知识</p>
+				</div>
+			</div>
+			<div class="accept-content-con">
+				<div class="cell">
+					<input type="text" placeholder="手机号" id="phonenum" />
+				</div>
+				<!--<div class="cell">-->
+					<!--<input type="text" placeholder="图片验证码" id="imgCerCode" />-->
+					<!--<div class="verCode-img">-->
+						<!--<img src="/apidisp/verification/img/20020003/jzjy" alt="">-->
+						<!--<p>看不清,<a href="" style="color: red">换一张</a></p>-->
+					<!--</div>-->
+				<!--</div>-->
+				<div class="verification">
+					<input type="text" placeholder="验证码" id="vercode" />
+					<input id="timecode" type="button" value="获取验证码">
+				</div>
+				<button class="jsyq" style="outline: none;">接受邀请</button>
+			</div>
+
+			<div style="width: 100%; height:.2rem; background: ghostwhite;"></div>
+			<div class="accept-content-bottom">
+				<img src="../../images/shouji.png" />
+				<h3>系统的线上培训</h3>
+				<p>系统的培训学院,精致的讲解步骤</p>
+			</div>
+			<div class="accept-content-bottom">
+				<img src="../../images/baoxian.png" />
+				<h3>高额的服务保险</h3>
+				<p>每次服务我们都为您购买高额保险</p>
+			</div>
+			<div class="accept-content-bottom">
+				<img src="../../images/kefu.png" />
+				<h3>24小时在线咨询团队</h3>
+				<p>专业的法律咨询团队，为您保驾护航</p>
+			</div>
+
+		</div>
+
+		<div id="content" class="bottom">
+			<p></p>
+			<div>请点击右上角,<br>在浏览器中打开并下载</div>
+		</div>
+		<div class="accept-button">
+			<p class="download">去下载“家政家园”</p>
+		</div>
+
+		<div id="tanwin" class="tan" style="display:none;"></div>
+		<!--弹框-->
+		<div class="mask">
+			<div class="bomb-box">
+				<p>您已经是家政家园的用户，请直接下载家政家园APP</p>
+				<div>
+					<div class="close" style="float: left; width: 50%; border-right: 1px solid #F4F4F4;">关闭</div>
+					<div class="goto" style="width: 49%; float: left; line-height: 1rem;">去下载</div>
+				</div>
+			</div>
+		</div>
+
+	</body>
+
+	<script src="../../js/flexible.js"></script>
+	<script src="../../js/jquery-3.1.1.min.js"></script>
+	<script src="../../js/download.js" type="text/javascript" charset="utf-8"></script>
+
+	<!--接口加密-->
+	<script src="../../js/crypto/core.js"></script>
+	<script src="../../js/crypto/cipher-core.js"></script>
+	<script src="../../js/crypto/lib-typedarrays.js"></script>
+	<script src="../../js/crypto/aes.js"></script>
+	<script src="../../js/crypto/md5.js"></script>
+	<script src="../../js/crypto/mode-ecb.js"></script>
+	<script src="../../js/jzjy-ui/common.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../../js/jzjy-ui/main.js" type="text/javascript" charset="utf-8"></script>
+	<script>
+		var mobile = getQueryString("mobile")
+
+		$('#pnum').val(mobile);
+		$("#pnum").val($("#pnum").val().substring(0, 3) + "****" + $("#pnum").val().substring(7, 11));
+
+		var token = getQueryString("token");
+		//alert(token)
+
+		/*var token=window.location.href.split('?')[1];
+		if(!token){
+			console.log('sw')
+		}else{
+			token=token.split('=')[1];
+			console.log(token)
+		}
+*/
+
+		function tanwin(text) {
+			$("#tanwin").text(text).attr('style', '');
+			var clea = setInterval(function() {
+				$('.tan').fadeOut("slow", function() {
+					$("#tanwin").attr('style', 'display:none');
+					clearInterval(clea);
+				});
+
+			}, 2000);
+		};
+		
+		$(".verCode-img").on("click","a",function () {
+            $(".verCode-img img").attr("src","/apidisp/verification/img/20020003/jzjy?date="+new Date());
+            return false;
+        })
+		
+		$('#timecode').on('click', function() {
+//		    if(!$("#imgCerCode").val()){
+//                tanwin('请输入图片验证码');
+//                return false;
+//			}
+//            var vercode = $('#imgCerCode').val();
+			var phonenum = $('#phonenum').val();
+			//var phonenum=$('#phonenum').val();
+			var timer;
+			var time = 60;
+			var data = JSON.stringify({
+				"mobile": phonenum,
+				"type": 1,
+//                veriCode: vercode,
+                terminal:"20020003",
+                pro:"jzjy"
+			})
+
+			$.ajax({
+				url: "/workerAPI/invite/verificationCode",
+				type: "post",
+				dataType: "json",
+                credentials: "include",
+                xhrFields: {
+                    withCredentials: true
+                },
+				data: {
+					body: data
+				},
+				success: function(data) {
+					console.log(data)
+					if(data.code == '-1') {
+						tanwin(data.msg)
+					} else if(data.code == '-2') {
+						tanwin('错误')
+					} else {
+						//$(".verCode-img img").attr("src","/apidisp/verification/img/20020003/jzjy?date="+new Date());
+						timer = setInterval(function() {
+							time--;
+							if(time == 0) {
+								clearInterval(timer);
+								$('#timecode').val("获取验证码");
+								$('#timecode').attr("disabled", false);
+							} else {
+								$('#timecode').val(time + "秒后重试");
+								$('#timecode').attr("disabled", true);
+							}
+						}, 1000)
+					}
+				},
+				error: function(err) {
+					tanwin('系统错误')
+				}
+
+			})
+
+		})
+		$('.jsyq').click(function() {
+			var phonenum = $('#phonenum').val();
+			var vercode = $('#vercode').val();
+			if(phonenum == "") {
+				tanwin("您还没有输入手机号码");
+			} else if(!(/^(13|15|18|14|17)\d{9}$/i.test(phonenum))) {
+				tanwin("请输入正确的手机号");
+			} else if(vercode == '') {
+				tanwin("您还没有输入验证码")
+			} else {
+                jzjy.ajax({
+                    params: {
+                        key:922713582335367,
+                        token: token,
+                        verifyCode: vercode,
+                        mobile: phonenum,
+                        channel: 432454642096150,
+                        inviteWay: 2
+                    },
+                    url: "invite/createInvitation",
+                    async: false
+                },function (data) {
+                    if(data.code == 0) {
+                        window.location.href = "../my/success/submitSuccess.html"
+                    } else if(data.code =="-1") {
+                        if(data.msg=="您已是家政家园的用户") {
+                            $(".mask").css("display", "block");
+                            /*点击取消*/
+                            $(".close").click(function () {
+                                $(".mask").css("display", "none");
+                            })
+                            /*点击直接去下载*/
+                            $(".goto").click(function () {
+                                $(".mask").css("display", "none");
+                                var ttop = $('.download').offset().top;
+                                $('body').animate({'scrollTop': ttop + 'px'}, 500);
+                                return false;
+                            })
+//							关注公众号
+                            $("#fork").on("click",function () {
+                                window.location.href="https://mp.weixin.qq.com/mp/profile_ext?action=home&__biz=MzUxNjE4MjczMQ==&scene=124#wechat_redirect";
+                            })
+                        }
+                        else{
+                            tanwin(data.msg);
+						}
+
+                    }
+                });
+				/*
+				var data = JSON.stringify({
+					"mobile": phonenum,
+					"type": 1,
+					"token": token,
+					"verifcode": vercode
+				})
+				$.ajax({
+					url: geturl() + "/invite/insertInviteAndperson",
+					type: "post",
+					dataType: "json",
+					data: {
+						body: data
+					},
+					success: function(data) {
+						if(data.code == 0) {
+							window.location.href = "../my/success/submitSuccess.html"
+						} else if(data.code =="-11") {
+							
+							$(".mask").css("display","block");
+							/!*点击取消*!/
+							$(".close").click(function(){
+								$(".mask").css("display","none");
+							})
+							/!*点击直接去下载*!/
+							$(".goto").click(function(){
+								$(".mask").css("display","none");
+								var ttop=$('.download').offset().top;
+								$('body').animate({'scrollTop':ttop+'px'},500);
+					        	return false;
+		
+							})
+							
+						}else if(data.code=="-13"){
+						    tanwin(data.msg);
+						}
+					},
+					error: function(err) {
+						console.log('qweqwe')
+					}
+				})*/
+			}
+
+		});
+
+		/*去下载*/
+	</script>
+
+</html>

@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta content="yes" name="apple-mobile-web-app-capable" />
+    <meta content="yes" name="apple-touch-fullscreen">
+    <meta content="black" name="apple-mobile-web-app-status-bar-style" />
+    <meta content="telephone=no,email=no" name="format-detection">
+    <link rel="stylesheet" href="../../css/reset.css">
+    <link rel="stylesheet" type="text/css" href="../../css/weui/weui.min.css" />
+    <link rel="stylesheet" type="text/css" href="../../css/weui/demos.css" />
+    <link rel="stylesheet" type="text/css" href="../../css/weui/jquery-weui.min.css" />
+    <link rel="stylesheet" type="text/css" href="../../css/vote/ranking-new.css" />
+    <title>排名</title>
+</head>
+
+<body style="overflow: hidden; height: 100vh;">
+<div class="header">
+    <img src="../../images/arrow.png" class="lo_left" id="lo_left" onclick="goto('homePage.html')"/>
+    <p>排名</p>
+    <div onclick="goto('prize.html')">查看领奖方式</div>
+</div>
+<div class="ranking">
+    <ul class="rankingUl">
+        <li>排名</li>
+        <li>编号</li>
+        <li>姓名</li>
+        <li>票数</li>
+    </ul>
+    <div id="rankList">
+        <div class="weui-pull-to-refresh__layer" id="list" style="margin-top: -2rem;">
+            <div class='weui-pull-to-refresh__arrow'></div>
+            <div class='weui-pull-to-refresh__preloader'></div>
+            <div class="down" style="color: #FFFFFF;">下拉刷新</div>
+            <div class="up" style="color: #FFFFFF;">释放刷新</div>
+            <div class="refresh" style="color: #FFFFFF;">正在刷新</div>
+        </div>
+        <div class="rankList" style="overflow: auto">
+            <ul>
+<!--                <li>-->
+<!--                    <p>第1名</p>-->
+<!--                    <p>22</p>-->
+<!--                    <p>吴亦凡</p>-->
+<!--                    <p>12852</p>-->
+<!--                </li>-->
+            </ul>
+        </div>
+        <div class="content" style="display: none">
+            <div class="one">
+                <img src="../../images/vote/clock@3x.png" style="width: 55%;"/>
+                <p>活动暂未结束</p>
+<!--                <button>开始报名</button>-->
+            </div>
+        </div>
+    </div>
+
+    <div class="loading" style="display: none">
+        <div class="weui-loadmore">
+            <i class="weui-loading"></i>
+            <span class="weui-loadmore__tips">正在加载中...</span>
+        </div>
+    </div>
+</div>
+
+
+<div class="index-footer">
+    <ul>
+        <li>
+            <a href="homePage.html"><img src="../../images/vote/clickhome_line@3x.png" />
+                <p>首页</p>
+            </a>
+        </li>
+        <li>
+            <a href="prize.html"><img src="../../images/vote/Prize_line@3x.png" />
+                <p>奖品</p>
+            </a>
+        </li>
+        <li>
+            <a href="ranking-new.html" style="color: #FFF100;"><img src="../../images/vote/ranking@3x.png" />
+                <P>排名</P>
+            </a>
+        </li>
+    </ul>
+</div>
+<div id="tanwin" class="tan" style="display:none;"></div>
+</body>
+<script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+<script src="../../js/jquery-3.1.1.min.js"></script>
+<script src="../../js/weui/fastclick.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../js/weui/jquery-weui.js"></script>
+
+<!--接口加密-->
+<script src="../../js/crypto/core.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../js/crypto/cipher-core.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../js/crypto/lib-typedarrays.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../js/crypto/aes.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../js/crypto/md5.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../js/crypto/mode-ecb.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../js/jzjy-ui/common.js" type="text/javascript" charset="utf-8"></script>
+
+<script>
+    var page,isAll;
+    var isScroll=false;
+    var scrollTop=0;
+    var all;
+    /*下拉刷新*/
+    $(".index-footer li:last-child p").html("排名")
+    function fakeLoad(time){
+        $('#list').css({'transform': 'translateY(45px)','transition': 'transform .8s'})
+        setTimeout(function () {
+            $('#list').css({'transform': 'translateY(0px)','transition': 'transform .8s'})
+        },800)
+    }
+    fakeLoad(800)
+    $('.rankList').on('scroll',function (e) {
+        e.stopPropagation()
+        if(e.target.scrollTop === 0){
+            fakeLoad(800)
+        }
+    })
+    /*$("#rankList").pullToRefresh({
+        onRefresh:function() {
+            setTimeout(function() {
+                currPage = 0;
+                /!*调用*!/
+                 rank.query(1,10);
+                $("#rankList").pullToRefreshDone();
+
+            }, 1000);
+        },
+        onPull:function () {
+        }
+    });
+    function fakeLoad(time){
+        $('#list').css({'transform': 'translateY(45px)','transition': 'transform .8s'})
+        setTimeout(function () {
+            $('#list').css({'transform': 'translateY(0px)','transition': 'transform .8s'})
+        },800)
+    }
+    fakeLoad(800)
+    $('#rankList1').on('scroll',function (e) {
+        e.stopPropagation()
+        if(e.target.scrollTop === 0){
+            fakeLoad(800)
+        }
+    })
+
+    var io = new IntersectionObserver(function (s) {
+        if(s[0].intersectionRatio > 0){
+            alert('掉接口')
+            // 用weui下拉加载  loadmore
+        }
+    })
+
+    io.observe(document.getElementById('list'))
+*/
+    $('.rankList').scroll(function (e) {
+        //已经滚动到上面的页面高度
+        scrollTop = $(this).scrollTop();
+        //页面高度
+        var scrollHeight = $(document).height()-50;
+        //浏览器窗口高度
+        var windowHeight = $(this).height();
+        //此处是滚动条到底部时候触发的事件，在这里写要加载的数据，或者是拉动滚动条的操作
+        if (scrollTop + windowHeight >= scrollHeight) {
+            if(isScroll)return;
+            isScroll=true;
+            setTimeout(function () {
+                if (rank.page.maxPage > rank.page.curPage) {
+                    rank.query(rank.page.curPage + 1, rank.page.pageCount);
+                }
+                isScroll=false;
+            });
+        }
+
+    });
+    $(function () {
+        rank.query(1,15);
+        jzjy.ajax({
+            url: "weChat/signature",
+            async: false,
+            params: {
+                url: window.location.href.split("#")[0]
+            }
+        }, function (data) {
+            if (data.code == "-2") {
+                console.log(data);
+            } else {
+                if (data.code == "0") {
+                    var nonceStr = data.data.nonceStr;
+                    var timestamp = data.data.timestamp;
+                    var signature = data.data.signature;
+                    wx.config({
+                        debug: false,
+                        appId: data.data.appId,
+                        timestamp: timestamp,
+                        nonceStr: nonceStr,
+                        signature: signature,
+                        jsApiList: [
+                            'onMenuShareTimeline',
+                            'onMenuShareAppMessage',
+                            'hideMenuItems'
+                        ]
+                    });
+                    var shareData = {
+                        title:"【三好家政服务员评选】",
+                        content:"三好家政服务员评选开始啦，万元现金奖等您领，快来报名吧！",
+                        pic:'http://erp.95081.com/img/img/2019/01/02/dddca91df1d74efeb525e1b054ee458f.jpg',
+                        url:jzjy.shareVoteIndexUrl
+                    }
+                    registeEvent(shareData);
+                }
+            }
+        })
+    })
+
+    var rank={
+        page:{},
+        query:function (curPage,pageCount) {
+            jzjy.activityKey({
+                params: {
+                    key: 218972982525687,
+                    curPage:curPage,
+                    pageCount:pageCount,
+                    activityId:385303394984809
+                },
+                async: false
+            }, function(data) {
+                if(data.code=="0"){
+                    if(data.data.display!=1){
+                        $(".header div").hide();
+                    }
+                    var list=data.data.list;
+                    var page=data.data.page;
+                    rank.page=page;
+                    if(rank.page.curPage==1){
+                        $(".rankList ul").empty();
+                    }
+                    if(list.length>0) {
+                        var index = (page.curPage - 1) * (page.pageCount);
+                        for (var i = 0; i < list.length; i++) {
+                            function isPrize() {
+                                if(list[i].isPrize=='1'){
+                                    return '<img style="width: 23%;padding: 0 0.3rem;" src="../../images/vote/cup.png" >'
+                                }else{
+                                    return '<span style="width: 23%;padding: 0 0.3rem;" ></span>'
+                                }
+                            }
+                            var ul = "<li>" +
+
+                                        "<p style='display: flex;align-items: center;justify-content: center;' class='" + (list[i].isPrize == "1" ? "prize" : "") + "'>"+isPrize()+"第" + (index + i + 1) + "名</p>" +
+                                        "<p>" + list[i].code + "</p>" +
+                                        "<p>" + list[i].name + "</p>" +
+                                        "<p>" + list[i].voteNum + "</p>" +
+                                    "</li>";
+                            $(".rankList ul").append(ul);
+                        }
+                        if(list.length<rank.page.pageCount){
+                            $(".rankList ul").append('<div class="loadFinish">\n' +
+                                '<span class="weui-loadmore__tips">数据加载完成</span>\n' +
+                                '</div>');
+                            isAll=true;
+                        }
+                    }else{
+                        if(list.length=='0'&&rank.page.curPage == '1') {
+                            $(".content").show()
+                        }else if(list.length < rank.page.pageCount){
+                            $(".rankList ul").append('<div class="loadFinish">\n' +
+                                '<span class="weui-loadmore__tips">数据加载完成</span>\n' +
+                                '</div>');
+                            isAll=true;
+                        }
+                    }
+                }
+                else if(data.code=="-1"){
+                    $(".content").show();
+                    $(".content p").html("活动暂未开始");
+                }
+            })
+        }
+    }
+
+    function registeEvent(sharData) {
+        wx.ready(function() {
+            // 1 判断当前版本是否支持指定 JS 接口，支持批量判断
+            wx.checkJsApi({
+                jsApiList: [
+                    'getNetworkType',
+                    'previewImage'
+                ],
+                success: function(res) {
+                    //alert(JSON.stringify(res));
+                }
+            });
+
+            wx.hideMenuItems({
+                menuList: ["menuItem:share:qq", "menuItem:share:QZone"] // 要显示的菜单项，所有menu项见附录3
+            });
+            // 2. 分享接口
+            // 2.1 监听“分享给朋友”，按钮点击、自定义分享内容及分享结果接口
+
+            wx.onMenuShareAppMessage({
+                title: sharData.title,
+                desc: sharData.content,
+                link: sharData.url,
+                imgUrl: sharData.pic ? sharData.pic : "http://erp.95081.com/Service-industry/img/accept-logo.png",
+                trigger: function(res) {
+                    // 不要尝试在trigger中使用ajax异步请求修改本次分享的内容，因为客户端分享操作是一个同步操作，这时候使用ajax的回包会还没有返回
+                    //alert('用户点击发送给朋友');
+                },
+                success: function(res) {
+                    alert('已分享');
+                },
+                cancel: function(res) {
+                    alert('已取消');
+                },
+                fail: function(res) {
+                    alert(JSON.stringify(res));
+                }
+            });
+            //alert('已注册获取“发送给朋友”状态事件');
+
+            // 2.2 监听“分享到朋友圈”按钮点击、自定义分享内容及分享结果接口
+
+            wx.onMenuShareTimeline({
+                title: sharData.title,
+                desc: sharData.content,
+                link: sharData.url,
+                imgUrl: sharData.pic ? sharData.pic : "http://erp.95081.com/Service-industry/img/accept-logo.png",
+                trigger: function(res) {
+                    // 不要尝试在trigger中使用ajax异步请求修改本次分享的内容，因为客户端分享操作是一个同步操作，这时候使用ajax的回包会还没有返回
+                    //alert('用户点击分享到朋友圈');
+                },
+                success: function(res) {
+                    alert('已分享');
+                },
+                cancel: function(res) {
+                    alert('已取消');
+                },
+                fail: function(res) {
+                    alert(JSON.stringify(res));
+                }
+            });
+            //alert('已注册获取“分享到朋友圈”状态事件');
+
+            // 2.3 监听“分享到QQ”按钮点击、自定义分享内容及分享结果接口
+
+            wx.onMenuShareQQ({
+                title: sharData.shareName,
+                desc: sharData.describe,
+                link: sharData.url,
+                imgUrl: sharData.pic ? sharData.pic : "http://erp.95081.com/Service-industry/img/accept-logo.png",
+                trigger: function(res) {
+                    //alert('用户点击分享到QQ');
+                },
+                complete: function(res) {
+                    //alert(JSON.stringify(res));
+                },
+                success: function(res) {
+                    alert('已分享');
+                },
+                cancel: function(res) {
+                    alert('已取消');
+                },
+                fail: function(res) {
+                    alert(JSON.stringify(res));
+                }
+            });
+            //alert('已注册获取“分享到 QQ”状态事件');
+
+            // 2.4 监听“分享到微博”按钮点击、自定义分享内容及分享结果接口
+
+            wx.onMenuShareWeibo({
+                title: sharData.shareName,
+                desc: sharData.describe,
+                link: sharData.url,
+                imgUrl: sharData.pic ? sharData.pic : "http://erp.95081.com/Service-industry/img/accept-logo.png",
+                trigger: function(res) {
+                    //alert('用户点击分享到微博');
+                },
+                complete: function(res) {
+                    //alert(JSON.stringify(res));
+                },
+                success: function(res) {
+                    alert('已分享');
+                },
+                cancel: function(res) {
+                    alert('已取消');
+                },
+                fail: function(res) {
+                    alert(JSON.stringify(res));
+                }
+            });
+            //alert('已注册获取“分享到微博”状态事件');
+
+            // 2.5 监听“分享到QZone”按钮点击、自定义分享内容及分享接口
+
+            wx.onMenuShareQZone({
+                title: sharData.shareName,
+                desc: sharData.describe,
+                link: sharData.url,
+                imgUrl: sharData.pic ? sharData.pic : "http://erp.95081.com/Service-industry/img/accept-logo.png",
+                trigger: function(res) {
+                    //alert('用户点击分享到QZone');
+                },
+                complete: function(res) {
+                    //alert(JSON.stringify(res));
+                },
+                success: function(res) {
+                    alert('已分享');
+                },
+                cancel: function(res) {
+                    alert('已取消');
+                },
+                fail: function(res) {
+                    alert(JSON.stringify(res));
+                }
+            });
+            //alert('已注册获取“分享到QZone”状态事件');
+        });
+
+        wx.error(function(res) {
+            alert(res.errMsg);
+        });
+    }
+</script>
+
+</html>

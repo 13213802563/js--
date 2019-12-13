@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+		<meta content="yes" name="apple-mobile-web-app-capable" />
+		<meta content="yes" name="apple-touch-fullscreen">
+		<meta content="black" name="apple-mobile-web-app-status-bar-style" />
+		<meta content="telephone=no,email=no" name="format-detection">
+		<link rel="stylesheet" href="../../css/reset.css">
+		<link rel="stylesheet" type="text/css" href="../../css/weui/weui.min.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/weui/demos.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/weui/jquery-weui.min.css" />
+		<link rel="stylesheet" href="../../css/common.css">
+		<link rel="stylesheet" type="text/css" href="../../css/vote/vote.css" />
+		<title>排名</title>
+		<style>
+			.rankingUl li:nth-child(1),.rankingUl li:nth-child(2),.rankingUl li:nth-child(3),.rankingUl li:nth-child(4)
+			,.two li:nth-child(1),.two li:nth-child(2),.two li:nth-child(3),.two li:nth-child(4){
+				 flex: 1;
+				 text-align: center;
+			 }
+			.prize{
+				color:#FFF100;
+				position: relative;
+			}
+			.prize:before{
+				content: "";
+				background: url("../../images/vote/cup.png") no-repeat;
+				position: absolute;
+				left: 2px;
+				top: 50%;
+				transform: translate(0,-50%);
+				height: .5rem;
+				width: .4rem;
+				background-size: 100%;
+			}
+			.lingjiang{
+				position: absolute;
+				top: 50%;
+				transform: translate(0,-50%);
+				right: -.5rem;
+				border: 1px solid #e8202e;
+				border-radius: 19px;
+				background: #e8202e;
+				color: #FFFFFF;
+				font-size: .35rem;
+				padding: .05rem .5rem .05rem .2rem;
+			}
+			.ranking .rankingUl{
+				position: relative;
+				z-index: 11;
+			}
+			.loading{
+				text-align: center;
+				display: none;
+				color: #FFFFFF;
+			}
+			.loadFinish{
+				text-align: center;
+				color: #FFFFFF;
+			}
+		</style>
+	</head>
+
+	<body style="background: #8021E8; border: 1px solid #e8202e; overflow: hidden;">
+		<div class="header">
+			<img src="../../images/arrow.png" class="lo_left" id="lo_left" />
+			<p>排名</p>
+			<div class="lingjiang">
+				查看领奖方式
+			</div>
+		</div>
+		<div class="ranking">
+			<ul class="rankingUl">
+				<li>排名</li>
+				<li>编号</li>
+				<li>姓名</li>
+				<li>票数</li>
+			</ul>
+			<div id="rankList" ontouchstart>
+				<div class="weui-pull-to-refresh__layer">
+					<div class='weui-pull-to-refresh__arrow'></div>
+					<div class='weui-pull-to-refresh__preloader'></div>
+					<div class="down" style="color: #FFFFFF;">下拉刷新</div>
+					<div class="up" style="color: #FFFFFF;">释放刷新</div>
+					<div class="refresh" style="color: #FFFFFF;">正在刷新</div>
+				</div>
+				<div class="two" style="overflow: auto">
+					<!--<ul>
+						<li>第1名</li>
+						<li>22</li>
+						<li>吴亦凡</li>
+						<li>12852</li>
+					</ul>-->
+				</div>
+			</div>
+
+				<div class="loading">
+					<div class="weui-loadmore">
+						<i class="weui-loading"></i>
+						<span class="weui-loadmore__tips">正在加载中...</span>
+					</div>
+				</div>
+
+			<div class="content" style="display: none">
+				<div class="one">
+					<img src="../../images/vote/clock@3x.png" style="width: 55%;"/>
+					<p>活动暂未结束</p>
+					<!--<button>开始报名</button>-->
+				</div>
+			</div>
+
+		</div>
+		<div class="index-footer">
+			<ul>
+				<li>
+					<a href="homePage.html"><img src="../../images/vote/clickhome_line@3x.png" />
+						<p>首页</p>
+					</a>
+				</li>
+				<li>
+					<a href="prize.html"><img src="../../images/vote/Prize_line@3x.png" />
+						<p>奖品</p>
+					</a>
+				</li>
+				<li>
+					<a href="ranking-new.html" style="color: #FFF100;"><img src="../../images/vote/ranking@3x.png" />
+						<P>排名</P>
+					</a>
+				</li>
+			</ul>
+		</div>
+		<div id="tanwin" class="tan" style="display:none;"></div>
+	</body>
+	<script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+	<script src="../../js/jquery-3.1.1.min.js"></script>
+	<script src="../../js/weui/fastclick.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../../js/weui/jquery-weui.js"></script>
+	<script src="../../js/flexible.js"></script>
+	<script src="../../js/return.js"></script>
+
+	<!--接口加密-->
+	<script src="../../js/crypto/core.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../../js/crypto/cipher-core.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../../js/crypto/lib-typedarrays.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../../js/crypto/aes.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../../js/crypto/md5.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../../js/crypto/mode-ecb.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../../js/jzjy-ui/common.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../../js/vote/ranking.js?id=4" type="text/javascript" charset="utf-8"></script>
+
+	<script>
+	</script>
+
+</html>

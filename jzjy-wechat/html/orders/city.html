@@ -1,0 +1,296 @@
+﻿<!doctype html>
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no">
+    <title>城市选择</title>
+    <link rel="stylesheet" type="text/css" href="../../css/style.css?v=1"/>
+    <link rel="stylesheet" type="text/css" href="../../css/weui/weui.css"/>
+    <link rel="stylesheet" type="text/css" href="../../css/weui/jquery-weui.min.css"/>
+    <link rel="stylesheet" type="text/css" href="../../css/weui/demos.css"/>
+    <style type="text/css">
+        .rm {
+            font-size: .8rem;
+            padding-bottom: .3rem;
+            width: 81%;
+            margin-left: 20px;
+            margin-top: 0.3rem;
+            color: #292929;
+        }
+
+        .qg {
+            margin-top: .3rem;
+            font-size: .8rem;
+            border-bottom: 1px solid #b6b6b6;
+            width: 81%;
+            margin-left: 20px;
+            padding: 0.2rem 0;
+            color: #5c5c5c;
+        }
+
+        .city-rm {
+            display: flex;
+            padding-left: 10px;
+            flex-wrap: wrap;
+            margin-bottom: 0.6rem;
+        }
+
+        .city-rm p {
+            border: 1px solid #5c5c5c;
+            margin-left: 10px;
+            padding: 0 0.2rem;
+            background: #fff;
+            margin-top: .2rem;
+            color: #5c5c5c;
+        }
+
+        .city-position {
+            position: absolute;
+            top: 2rem;
+            width: 100%;
+            background: #FFFFFF;
+            display: none;
+        }
+
+        .city-position li {
+            border-bottom: 1px solid #F4F4F4;
+            padding: .4rem;
+        }
+
+        #searchBar {
+            z-index: 102;
+        }
+
+        .rgba {
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            /*display: none;*/
+            position: fixed;
+            top: 0;
+            z-index: 0;
+            display: none;
+        }
+
+        .cityList {
+            width: 100%;
+        }
+
+        .letter {
+            position: absolute;
+            line-height: 1.4;
+            right: .3rem;
+            top: 3rem;
+        }
+        .locationCity{
+            margin-top: 0.6rem;
+            padding: 0.3rem 0;
+            margin-left: 20px;
+            border-bottom: 1px solid #b6b6b6;
+            width: 81%;
+            color: #292929;
+        }
+        .locationCity span{
+            color: #5c5c5c;
+        }
+    </style>
+</head>
+
+<body>
+<div class="rgba"></div>
+<!--显示点击的是哪一个字母-->
+<div id="showLetter" class="showLetter"><span>A</span></div>
+<!--城市索引查询-->
+<div class="letter">
+    <ul>
+        <li>
+            <a href="javascript:;">A</a>
+        </li>
+        <li>
+            <a href="javascript:;">B</a>
+        </li>
+        <li>
+            <a href="javascript:;">C</a>
+        </li>
+        <li>
+            <a href="javascript:;">D</a>
+        </li>
+        <li>
+            <a href="javascript:;">E</a>
+        </li>
+        <li>
+            <a href="javascript:;">F</a>
+        </li>
+        <li>
+            <a href="javascript:;">G</a>
+        </li>
+        <li>
+            <a href="javascript:;">H</a>
+        </li>
+        <li>
+            <a href="javascript:;">J</a>
+        </li>
+        <li>
+            <a href="javascript:;">K</a>
+        </li>
+        <li>
+            <a href="javascript:;">L</a>
+        </li>
+        <li>
+            <a href="javascript:;">M</a>
+        </li>
+        <li>
+            <a href="javascript:;">N</a>
+        </li>
+        <li>
+            <a href="javascript:;">P</a>
+        </li>
+        <li>
+            <a href="javascript:;">Q</a>
+        </li>
+        <li>
+            <a href="javascript:;">R</a>
+        </li>
+        <li>
+            <a href="javascript:;">S</a>
+        </li>
+        <li>
+            <a href="javascript:;">T</a>
+        </li>
+        <li>
+            <a href="javascript:;">W</a>
+        </li>
+        <li>
+            <a href="javascript:;">X</a>
+        </li>
+        <li>
+            <a href="javascript:;">Y</a>
+        </li>
+        <li>
+            <a href="javascript:;">Z</a>
+        </li>
+    </ul>
+</div>
+<!--城市列表-->
+<div class="cityList">
+    <div class="weui-search-bar" id="searchBar">
+        <form class="weui-search-bar__form">
+            <div class="weui-search-bar__box">
+                <i class="weui-icon-search"></i>
+                <input type="search" autocomplete="off" class="weui-search-bar__input" id="searchInput" placeholder="搜索"
+                       required="">
+                <!--<a href="javascript:" class="weui-icon-clear" id="searchClear"></a>-->
+            </div>
+            <label class="weui-search-bar__label" id="searchText">
+                <i class="weui-icon-search"></i>
+                <span>搜索</span>
+            </label>
+        </form>
+        <!--<a href="javascript:" class="weui-search-bar__cancel-btn" id="searchCancel">取消</a>-->
+    </div>
+</div>
+<div class="container">
+    <div class="con-city">
+        <div class="city">
+            <div class="locationCity">定位城市：<span></span> </div>
+            <p class="qg" style="display: none">全国</p>
+            <div class="rm" style="display: none">热门城市</div>
+            <div class="city-rm" style="display: none">
+                <p data-id="101001001">北京市</p>
+                <p data-id="101019001">广州市</p>
+                <p data-id="101002001">天津市</p>
+                <p data-id="101009001">上海市</p>
+                <p data-id="101019003">深圳市</p>
+            </div>
+
+            <div class="city-list">
+                <span class="city-letter" id="A1">A</span>
+                <div class="a"></div>
+            </div>
+            <div class="city-list"><span class="city-letter" id="B1">B</span>
+                <div class="b"></div>
+            </div>
+            <div class="city-list"><span class="city-letter" id="C1">C</span>
+                <div class="c"></div>
+            </div>
+            <div class="city-list"><span class="city-letter" id="D1">D</span>
+                <div class="d"></div>
+            </div>
+            <div class="city-list"><span class="city-letter" id="E1">E</span>
+                <div class="e"></div>
+            </div>
+            <div class="city-list"><span class="city-letter" id="F1">F</span>
+                <div class="f"></div>
+            </div>
+            <div class="city-list"><span class="city-letter" id="G1">G</span>
+                <div class="g"></div>
+            </div>
+            <div class="city-list"><span class="city-letter" id="H1">H</span>
+                <div class="h"></div>
+            </div>
+
+            <div class="city-list"><span class="city-letter" id="J1">J</span>
+                <div class="j"></div>
+            </div>
+            <div class="city-list"><span class="city-letter" id="K1">K</span>
+                <div class="k"></div>
+            </div>
+            <div class="city-list"><span class="city-letter" id="L1">L</span>
+                <div class="l"></div>
+            </div>
+            <div class="city-list"><span class="city-letter" id="M1">M</span>
+                <div class="m"></div>
+            </div>
+            <div class="city-list"><span class="city-letter" id="N1">N</span>
+                <div class="n"></div>
+            </div>
+
+            <div class="city-list"><span class="city-letter" id="P1">P</span>
+                <div class="p"></div>
+            </div>
+            <div class="city-list"><span class="city-letter" id="Q1">Q</span>
+                <div class="q"></div>
+            </div>
+            <div class="city-list"><span class="city-letter" id="R1">R</span>
+                <div class="r"></div>
+            </div>
+            <div class="city-list"><span class="city-letter" id="S1">S</span>
+                <div class="s"></div>
+            </div>
+            <div class="city-list"><span class="city-letter" id="T1">T</span>
+                <div class="t"></div>
+            </div>
+            <div class="city-list"><span class="city-letter" id="W1">W</span>
+                <div class="w"></div>
+            </div>
+            <div class="city-list"><span class="city-letter" id="X1">X</span>
+                <div class="x"></div>
+            </div>
+            <div class="city-list"><span class="city-letter" id="Y1">Y</span>
+                <div class="y"></div>
+            </div>
+            <div class="city-list"><span class="city-letter" id="Z1">Z</span>
+                <div class="z"></div>
+            </div>
+        </div>
+    </div>
+</div>
+<ul class="city-position">
+</ul>
+</body>
+<script src="../../js/jquery-3.1.1.min.js"></script>
+
+<script src="../../js/weui/jquery-weui.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../js/crypto/core.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../js/crypto/cipher-core.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../js/crypto/lib-typedarrays.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../js/crypto/aes.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../js/crypto/md5.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../js/crypto/mode-ecb.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../js/jzjy-ui/common.js?id=0" type="text/javascript" charset="utf-8"></script>
+<script src="../../js/orders/city.js?v1" type="text/javascript" charset="utf-8"></script>
+</html>

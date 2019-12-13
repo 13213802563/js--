@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+	<meta content="yes" name="apple-mobile-web-app-capable" />
+	<meta content="yes" name="apple-touch-fullscreen">
+	<meta content="black" name="apple-mobile-web-app-status-bar-style" />
+	<meta content="telephone=no,email=no" name="format-detection">
+	<link rel="stylesheet" type="text/css" href="../../css/reset.css" />
+	<link rel="stylesheet" type="text/css" href="../../css/common.css" />
+	<link rel="stylesheet" type="text/css" href="../../css/index.css" />
+	<title>课程详情</title>
+	<style>
+		#fork,#loadApp{
+			background: red;
+			color: white;
+			font-size: 0.35rem;
+		}
+	</style>
+</head>
+
+<body>
+<div class="headers">
+	<img src="../../images/arrow.png" class="lo_left" id="lo_left" />
+	<p>课程详情</p>
+	<!--<span id="invi" style="color: red;">进度说明</span>-->
+</div>
+<div class="listdeta" style="margin-top: 1.1rem;">
+	<div class="video-content">
+	</div>
+	<ul class="listdetail-ul">
+		<li>目录</li>
+		<li>介绍</li>
+		<li>评论</li>
+	</ul>
+</div>
+<div class="listdetail" style=" padding-top: 6.8rem">
+	<div class="listdetail-bot">
+
+		<!--目录-->
+		<div class="catalog">
+			<div class="catalog-catalog">
+				<!--<p class="catalog-one">(一)月嫂基本技能</p>-->
+				<!--<img class="stop" src="../../images/triangle.png" />-->
+			</div>
+			<div class="drop-down">
+				<!--<div class="org">
+                    <div class="org-left">
+                        <p class="shiting" style="color: #FFA500;border: 1PX solid #FFA500;">视频</p>
+                        <span style="color: #FC4949;">第一课 &nbsp;分秒必争——宝宝呛奶急救处理</span>
+                    </div>
+
+                </div>-->
+
+			</div>
+		</div>
+		<!--介绍-->
+		<div class="catalog">
+			<div class="introduce">
+				<!--<h1>高级月嫂，制作营养美味月子餐</h1>
+                <div class="introduce-two">
+                    <div class="left">免费</div>
+                    <div class="content">定时开课</div>
+                    <div class="right">(共16课时)</div>
+                </div>
+                <div class="introduce-three">
+                    <div>购买人数521</div>
+                    <p>|</p>
+                    <div>好评度100%</div>
+                    <p>|</p>
+                    <div>评论数25</div>
+                </div>-->
+
+			</div>
+			<div class="jiazheng"></div>
+			<div class="course-title">
+				<div class="course-title-left">
+					<img src="../../images/yuan.png" />
+					<h2>名师风采</h2>
+				</div>
+			</div>
+			<div class="style-one">
+				<!--<div class="style">
+                    <div class="style-left">
+                        <img style="width: 100%; border-radius: 50%; border: 1px solid;" src="../../images/teach.png" style="border-radius: 50%;" />
+                    </div>
+                    <div class="style-right">
+                        <h2>南宫倪非</h2>
+                        <div class="right-con">
+                            <div>课程数</div>
+                            <p>25</p>
+                            <div>学员数</div>
+                            <p>1024</p>
+                            <div>播放量</div>
+                            <p>1024</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="size"></div>-->
+			</div>
+
+			<div class="jiazheng"></div>
+			<div class="course-title">
+				<div class="course-title-left">
+					<img src="../../images/yuan.png" />
+					<h2>课程详情</h2>
+				</div>
+
+			</div>
+			<!--课程介绍-->
+			<div class="size-bot"></div>
+
+		</div>
+		<!--评论-->
+		<div class="catalog">
+			<div class="comment">
+				<ul id="commentId1" class="comment-ul">
+					<li data-index=1></li>
+					<li data-index=2></li>
+					<li data-index=3></li>
+					<li data-index=4></li>
+					<li data-index=5></li>
+				</ul>
+			</div>
+			<div class="djpx">点击评星</div>
+			<div class="jiazheng"></div>
+			<div class="comment-bottom">
+				<div class="bottom-top">全部评论<span id="totolComment"></span></div>
+				<ul class="comment-ul-two">
+					<!--<li>简单易懂<span>(1230)</span></li>
+                    <li>简单易懂<span>(1230)</span></li>
+                    <li>简单易懂<span>(1230)</span></li>
+                    <li>简单易懂<span>(1230)</span></li>
+                    <li>简单易懂<span>(1230)</span></li>
+                    <li>简单易懂<span>(1230)</span></li>-->
+				</ul>
+			</div>
+
+			<!--点击评星显示的div-->
+			<div class="lidiv">
+				<div class="comment">
+					<ul id="commentId2" class="comment-ul">
+						<li data-index=1></li>
+						<li data-index=2></li>
+						<li data-index=3></li>
+						<li data-index=4></li>
+						<li data-index=5></li>
+					</ul>
+				</div>
+				<div class="djpx-two">点击评星</div>
+				<div class="comment-bottom">
+					<ul class="comment-ul-three">
+					</ul>
+				</div>
+
+				<textarea class="content" placeholder="请留下您的足迹，我们会及时反馈！"></textarea>
+				<input type="submit" value="立即提交" class="submit" />
+			</div>
+			<!--遮罩-->
+			<div class="xzz"></div>
+			<!--评论内容-->
+			<div class="pl-content">
+				<ul class="pl-contentUL">
+					<!--<li>
+                       <div class="pl-left">
+                           <img src="">
+                           <div class="pl-left-top">
+                               <p>name</p>
+                               <p>2017-05-36</p>
+                               <div style="margin-top: .3rem;"></div>
+
+                           </div>
+                       </div>
+                       <div class="pl-right" style="width: 30%;">
+                       123
+                       </div>
+
+                   </li>-->
+
+				</ul>
+			</div>
+		</div>
+
+	</div>
+	<div class="position">
+		<div class="position-left" style=" border-right: 1px solid #e5e5e5" id="loadApp">
+			<span>下载APP</span>
+		</div>
+		<div class="position-left" id="fork">
+			<span>关注公众号</span>
+		</div>
+
+	</div>
+</div>
+<div id="tanwin" class="tan" style="display:none;"></div>
+</body>
+<script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+<script src="../../js/flexible.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../js/jquery-3.1.1.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../js/jquery.raty.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../js/return.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../js/listdetail.js" type="text/javascript" charset="utf-8"></script>
+<!--接口加密-->
+<script src="../../js/crypto/core.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../js/crypto/cipher-core.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../js/crypto/lib-typedarrays.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../js/crypto/aes.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../js/crypto/md5.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../js/crypto/mode-ecb.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../js/jzjy-ui/common.js?id=1" type="text/javascript" charset="utf-8"></script>
+<!--首页-->
+<script src="../../js/share/shareListdetail.js?id=2" type="text/javascript" charset="utf-8"></script>
+<script src="../../js/share/weChat.js?id=2" type="text/javascript" charset="utf-8"></script>
+
+<script src="../../js/share/shar.js?id=1" type="text/javascript" charset="utf-8"></script>
+
+
+</html>

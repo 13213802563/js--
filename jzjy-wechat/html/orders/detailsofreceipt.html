@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<meta charset="UTF-8">
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+		<meta content="yes" name="apple-mobile-web-app-capable" />
+		<meta content="yes" name="apple-touch-fullscreen">
+		<meta content="black" name="apple-mobile-web-app-status-bar-style" />
+		<meta content="telephone=no,email=no" name="format-detection">
+		<link rel="stylesheet" type="text/css" href="../../css/reset.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/weui/weui.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/weui/jquery-weui.min.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/common.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/orders.css" />
+		<script src="../../js/umeng.js"></script>
+		<title></title>
+		<style>
+			html{
+				background: #FFFFFF;
+			}
+			/*.weui-dialog{*/
+				/*border-radius: 0.3rem!important;*/
+			/*}*/
+			/*.weui-dialog__ft{*/
+				/*justify-content: space-around;*/
+				/*width: 33%;*/
+				/*border: 1px solid #fc4949;*/
+				/*margin: auto;*/
+				/*border-radius: 3rem;*/
+				/*margin-bottom: .5rem;*/
+				/*line-height: 30px;*/
+				/*margin-top: .4rem;*/
+			/*}*/
+			/*.weui-dialog__ft:after{*/
+				/*border: 0!important;*/
+			/*}*/
+			/*.weui-dialog__ft a{*/
+				/*color: #fc4949;*/
+			/*}*/
+			/*.weui-dialog__btn:active{*/
+				/*border-radius: 3rem;*/
+				/*color: #fc4949;*/
+				/*background: #fff!important;*/
+			/*}*/
+			#rgbn {
+				width: 100%;
+				position: fixed;
+				background: rgba(0, 0, 0, .8);
+				top: 0;
+				left: 0;
+				z-index: 100;
+				bottom: 0;
+				display: none;
+			}
+
+			.p {
+				margin-left: 6.5rem;
+				background: url("../../images/tp.png") no-repeat;
+				background-size: 38% 100%;
+				width: 74%;
+				height: 3rem;
+				margin-top: 0.2rem;
+			}
+			#rgbn .div {
+				position: absolute;
+				top: 4rem;
+				z-index: 113;
+				color: #fff;
+				font-size: .6rem;
+				width: 100%;
+				text-align: center;
+			}
+			.header{
+				display: flex;
+				justify-content: space-around;
+				align-items: center;
+			}
+			.header button{
+				font-size: .4rem;
+				background: #FFFFFF;
+				border:0;
+			}
+			.weui-dialog, .weui-toast{
+				z-index: 1000!important;
+			}
+			.leff {
+				position: absolute;
+				top: .49rem;
+				left: .3rem;
+				display: inline-block;
+				width: .25rem;
+				height: .4rem;
+				background-size: 100% 100%;
+			}
+			.background{
+				color: #fff;
+				font-size: .45rem;
+				padding: 1.1rem 0.5rem;
+				background: #4A3535;
+				margin-top: 1.3rem;
+				display: flex;
+				align-items: center;
+				letter-spacing: 1px;
+			}
+			.background p{
+				font-size: 0.35rem;
+				margin-left: 0.1rem;
+			}
+			.background h1{
+				font-weight: 600;
+			}
+			.timeMillisecond{
+				display: flex;
+				align-items: center;
+				font-size: 0.5rem;
+				color: #666;
+				display: none;
+			}
+            .countdown{
+                padding-left: 10px;
+            }
+            .timeMillisecond  .times{
+                display: inline-flex!important;
+            }
+			.timeMillisecond p{
+				color: #333;
+				font-weight: 600;
+				margin-left: 0.2rem;
+			}
+            .weui-dialog__hd{
+                height: 1.5rem;
+            }
+            .detailsofreceipt{
+
+            }
+            .detailsofreceipt  ul{
+                overflow: scroll;
+                height:15rem;
+                /*height: 70%;*/
+                /*height:10.5rem;*/
+            }
+            .detailsofreceipt  ul li{
+                height:20rem;
+                /*height:100%;*/
+            }
+		</style>
+	</head>
+	<body>
+		<div class="header">
+			<img src="../../images/arrow.png" class="leff" id="lo_left" />
+			<p style="margin-left: 2.5rem">订单详情</p>
+			<button style="color: #FC4949; display: inline-block">分享订单</button>
+		</div>
+		<div class="background">
+			<h1></h1>
+			<p></p>
+		</div>
+		<div class="detailsofreceipt">
+			<ul>
+			</ul>
+		</div>
+		<div class="detailsofreceipt-bottom">
+			<button id="apply">抢单</button>
+			<button class="cancel">取消接单</button>
+			<button class="tel" onclick="_czc.push(['_trackEvent','微站', '联系客户'])"><a>联系客户</a></button>
+			<button class="punchClick" id="punchClick">打卡</button>
+			<!--&lt;!&ndash;开始结束服务&ndash;&gt;-->
+			<div class="timeMillisecond">
+				<div  class="countdown">倒计时</div>
+                <div class="times">
+                    <p class="hours">00</p> :
+                    <p class="minite">00</p> :
+                    <p class="second">00</p>
+                </div>
+			</div>
+			<!--<button class="services" style="width:32%!important;background: linear-gradient(248deg, #fc9469 0%, #fb4f37 50%, #fc5d55 79%, #fc4949 100%, #fc4949 100%)!important;border-radius: 4px!important;color:white!important;">开始服务</button>-->
+			<button class="services" style="width:32%;background: linear-gradient(248deg, #fc9469 0%, #fb4f37 50%, #fc5d55 79%, #fc4949 100%, #fc4949 100%);border-radius: 4px!important;color:white!important;">开始服务</button>
+		</div>
+		<div id="rgbn">
+			<p class="p"></p>
+			<div class="div">点击右上角进行分享</div>
+		</div>
+
+	<div id="tanwin" class="tan" style="display:none;"></div>
+	</body>
+</html>
+<style type="text/css">
+    body, html,#allmap {width: 100%;height: 100%;overflow: hidden;margin:0;font-family:"微软雅黑";}
+</style>
+<!--<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0"></script>-->
+<script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+<!--<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=aLNSCC5MQgG4cMKee1X2Dxpz8M7IUuA5"></script>-->
+<script src="../../js/jquery-3.1.1.min.js"></script>
+<script src="../../js/flexible.js"></script>
+<script src="../../js/weui/jquery-weui.js"></script>
+<script src="../../js/weui/fastclick.js"></script>
+
+<!--接口加密-->
+<script src="../../js/crypto/core.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../js/crypto/cipher-core.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../js/crypto/lib-typedarrays.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../js/crypto/aes.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../js/crypto/md5.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../js/crypto/mode-ecb.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../js/jzjy-ui/common.js?v2" type="text/javascript" charset="utf-8"></script>
+<script src="../../js/orders/detailsofreceipt.js?v1" type="text/javascript" charset="utf-8"></script>
+<script>
+
+</script>

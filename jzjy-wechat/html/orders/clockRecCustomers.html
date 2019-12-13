@@ -1,0 +1,1106 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+		<meta content="yes" name="apple-mobile-web-app-capable" />
+		<meta content="yes" name="apple-touch-fullscreen">
+		<meta content="black" name="apple-mobile-web-app-status-bar-style" />
+		<meta content="telephone=no,email=no" name="format-detection">
+		<title>打卡记录</title>
+		<link rel="stylesheet" type="text/css" href="../../css/reset.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/weui/weui.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/weui/jquery-weui.min.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/weui/demos.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/common.css" />
+		<script src="../../js/umeng.js"></script>
+		<style type="text/css" scoped>
+			::-webkit-input-placeholder {
+					 /* WebKit, Blink, Edge */
+					 color: #999;
+				 }
+
+			:-moz-placeholder {
+				/* Mozilla Firefox 4 to 18 */
+				color: #999;
+			}
+
+			::-moz-placeholder {
+				/* Mozilla Firefox 19+ */
+				color: #999;
+			}
+
+			:-ms-input-placeholder {
+				/* Internet Explorer 10-11 */
+				color: #999;
+			}
+
+			* {
+				margin: 0;
+				padding: 0;
+				list-style: none;
+				/* touch-action: non; */
+
+			}
+
+			body {
+				width: 100%;
+				position: relative;
+				margin: 0 auto;
+				background: #f9f9f9;
+				font-family: -apple-system, Helvetica, sans-serif;
+				height: unset !important;
+
+			}
+
+			.up-fix {
+				position: fixed;
+				top: 0;
+				width: 100vw;
+				z-index: 1000;
+			}
+
+			.up-fix-placeholder {
+				height: 10rem;
+			}
+
+			.hd-body {
+				width: 100%;
+				height: 2.2rem;
+				display: block;
+				text-align: center;
+				background: #fff;
+			}
+
+			.hd-title {
+				display: inline-block;
+				line-height: 2.2rem;
+			}
+
+			.line-body {
+				width: 100vw;
+				height: .3rem;
+				background: #f8f8f8;
+			}
+
+			.order-details-body {
+				height: 5.7rem;
+				background: #fff;
+				padding: .5rem;
+			}
+
+			.order-details-body p {
+				margin-top: .2rem;
+			}
+
+			.odb-title {
+				font-size: .8rem;
+				color: #999;
+				font-weight: lighter;
+			}
+
+			.odb-content {
+				font-size: .8rem;
+				color: #333;
+			}
+
+			.clock-details-body {
+				width: auto;
+				min-height: 5rem;
+				background: #fff;
+				margin: -3rem .5rem 0 .5rem;
+				overflow: hidden;
+				padding-top: 0.5rem;
+				padding-bottom: 6rem;
+			}
+
+			.clock-details-body>.cdb-item:first-child>.cdb-item-left>.cdb-point {
+				background: #fb4848;
+				border: 2px solid #ffd8d8;
+			}
+
+			.cdb-item {
+				min-height: 5rem;
+				height: auto;
+				position: relative;
+			}
+
+			.cdb-item>span {
+				vertical-align: top;
+				display: inline-block;
+			}
+
+			.cdb-item-left {
+				width: 18vw;
+				height: 5rem;
+				text-align: right;
+				padding-right: .2rem;
+				position: relative;
+			}
+
+			.cdb-item-right {
+				width: 65vw;
+				min-height: 5rem;
+				height: auto;
+				border-left: 1px solid #ddd;
+				position: relative;
+				padding-left: .5rem;
+
+			}
+
+			.cdb-point {
+				width: .6rem;
+				height: .6rem;
+				position: absolute;
+				background: #cccccc;
+				right: -0.53rem;
+				/* top: -0.4rem; */
+				top: 0rem;
+				z-index: 50;
+				border-radius: 10rem;
+				border: 2px solid #e8e8e8;
+				box-sizing: border-box;
+			}
+
+			.cdb-point+p {
+				margin-top: -0.15rem;
+			}
+
+			.item-clockInTime,
+			.item-clockOutTime {
+				height: 1rem;
+				line-height: 1rem;
+			}
+
+			.item-clockInTime span,
+			.item-clockOutTime span {
+				font-size: .9rem;
+				width: 29vw;
+				font-weight: 600;
+				text-align: right;
+				color: #666;
+			}
+
+			.btn-refuse {
+				border: 1px solid #72aafe;
+				color: #72aafe;
+				background: #fff;
+				width: 2rem;
+				height: 1rem;
+				border-radius: 0.2rem;
+				margin-right: 4vw;
+				line-height: 1rem ! !important;
+			}
+
+			.btn-agree {
+				border: 1px solid #fd4949;
+				color: #fd4949;
+				background: #fff;
+				width: 2rem;
+				height: 1rem;
+				border-radius: 0.2rem;
+				line-height: 1rem ! !important;
+			}
+
+			.float-right {
+				float: right;
+			}
+
+			.float-left {
+				float: left;
+			}
+
+			.item-clockOutRemarks,
+			.item-clockInRemarks {
+				margin-top: .3rem;
+				width: 12rem;
+				display: flex;
+				margin-bottom: .7rem;
+				font-weight: lighter;
+			}
+
+
+			.item-clockOutRemarks span,
+			.item-clockInRemarks span {
+				width: 4rem;
+				font-size: .7rem;
+				color: #999;
+			}
+
+			.item-clockOutRemarks p,
+			.item-clockInRemarks p {
+				width: 25rem;
+				font-size: .7rem;
+				color: #999;
+				overflow: hidden;
+				text-overflow: ellipsis;
+				white-space: nowrap;
+				/* font-weight: 600; */
+			}
+
+			.cdb-item-left p:first-child span:first-child {
+				font-size: .5rem;
+				color: #999;
+			}
+
+			.cdb-item-left p:nth-child(n+2) {
+				color: #999;
+				font-size: .7rem;
+
+			}
+
+			.cdb-dateDay {
+				font-size: 0.8rem;
+				color: #666;
+			}
+
+			.cdb-item:last-child .item-clockOutRemarks {
+				margin-bottom: 0;
+			}
+
+			.oneKey-body {
+				margin: 0 .5rem 0 .5rem;
+				height: 5rem;
+				background: #fff;
+				text-align: center;
+				overflow: hidden;
+				position: fixed;
+				bottom: 0;
+				left: 0;
+				right: 0;
+				z-index: 52;
+			}
+
+			.okb-title {
+				font-size: 0.7rem;
+				color: #999;
+				font-weight: lighter;
+				position: relative;
+				top: 1rem;
+			}
+
+			.oneKey-body button {
+				width: 86vw;
+				height: 2rem;
+				background: #f94b4e;
+				border: none;
+				color: #fff;
+				border-radius: 1rem;
+				position: relative;
+				top: 1.5rem;
+				z-index: 52;
+				font-size: 0.8;
+			}
+
+			.input-refuse {
+				border: none;
+				border-bottom: 1px solid #ddd;
+				width: 12rem;
+			}
+
+			.modal-cancel {
+				text-align: left;
+				padding-left: 1rem;
+				color: #999 !important;
+			}
+
+			.modal-true {
+				text-align: right;
+				padding-right: 1rem;
+				color: #fc4949 !important;
+			}
+
+			/* 控制weui按钮边框显示 */
+			.weui-dialog__btn:after {
+				content: none !important;
+				opacity: 0;
+			}
+
+			.weui-dialog__ft:after {
+				content: none !important;
+				opacity: 0;
+			}
+
+			.btn-iknow {
+				border: 1px solid #fc4949;
+				color: #fc4949 !important;
+				border-radius: 10rem;
+			}
+
+			.reset-remarkBtn {
+				width: 5.1rem;
+				margin: 0 auto;
+				height: 1.8rem;
+				font-size: .8rem;
+				line-height: 1.8rem;
+				margin-bottom: .8rem;
+			}
+
+			.reset-remarkBtn>a {
+				top: 0.4rem
+			}
+
+			.weui-pull-to-refresh__layer {
+				padding-bottom: 3rem;
+			}
+
+			.weui-dialog {
+				border-radius: .8rem;
+			}
+
+			.ovfHiden {
+				overflow: hidden;
+				height: 100vh !important;
+			}
+
+			.weui-dialog__bd {
+				padding: 0 1.6em 0em !important;
+			}
+		</style>
+	</head>
+	<body>
+
+		<div class="up-fix">
+			<!-- 导航栏 start -->
+			<div class="hd-body">
+				<span class="hd-title">打卡记录</span>
+			</div>
+			<!-- 导航栏 end -->
+
+			<!-- 实体线 start -->
+			<div class="line-body">
+
+			</div>
+			<!-- 实体线 end -->
+
+			<!-- 订单信息 start -->
+			<div class="order-details-body">
+				<p>
+					<span class="odb-title">订单编号：</span>
+					<span class="odb-content" name="orderId">&nbsp;</span>
+				</p>
+				<p>
+					<span class="odb-title">订单类型：</span>
+					<span class="odb-content" name="orderName">&nbsp;</span>
+				</p>
+				<p>
+					<span class="odb-title">客户电话：</span>
+					<span class="odb-content" name="userMobile">&nbsp;</span>
+				</p>
+				<p>
+					<span class="odb-title">服务人员：</span>
+					<span class="odb-content" name="personName">&nbsp;</span>
+				</p>
+			</div>
+			<!-- 订单信息 end -->
+		</div>
+		<!-- 锁定区域占位 start -->
+		<div class="up-fix-placeholder"></div>
+		<!-- 锁定区域占位 end -->
+
+		<!-- 下拉刷新 start -->
+		<div id="aa" ontouchstart>
+			<div class="weui-pull-to-refresh__layer">
+				<div class="weui-pull-to-refresh__arrow"></div>
+				<div class="weui-pull-to-refresh__preloader"></div>
+				<div class="down">下拉刷新</div>
+				<div class="up">释放刷新</div>
+				<div class="refresh">正在刷新</div>
+			</div>
+			<div class="clock-details-body">
+			</div>
+
+		</div>
+
+		<!-- 下拉刷新 end -->
+
+
+		<!-- 打卡信息 end -->
+
+		<!-- 一键确认 start -->
+		<div class="oneKey-body">
+			<p class="okb-title">一键确认所有未确认的打卡信息</p>
+			<button name="onekeyAgree">一键确认</button>
+		</div>
+		<!-- 一键确认 end -->
+
+		<!-- 滚动加载 start -->
+		<div id="loading">
+			<div class="weui-loadmore">
+				<i class="weui-loading"></i>
+				<span class="weui-loadmore__tips">正在加载中...</span>
+			</div>
+		</div>
+		<!-- 滚动加载 end -->
+		<div id="tanwin" class="tan" style="display:none;"></div>
+	</body>
+	<script src="../../js/jquery-3.1.1.min.js"></script>
+	<script src="../../js/weui/jquery-weui.js"></script>
+	<script src="../../js/return.js"></script>
+
+	<!--接口加密-->
+	<script src="../../js/crypto/core.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../../js/crypto/cipher-core.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../../js/crypto/lib-typedarrays.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../../js/crypto/aes.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../../js/crypto/md5.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../../js/crypto/mode-ecb.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../../js/jzjy-ui/common.js?id=0" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		var lastDate; //用于存储最后一条的日期
+		var totalData = []; //用于存储当前页面所有的打卡数据
+		var serviceName; //用于存储本页全局服务人员姓名
+
+		//深度定制weui模块样式(尽量不要改动 高长浩)
+		$.promptOwnReset = function(text, title, onOK, onCancel, input, selector, onOpen) {
+			var config;
+			if (typeof text === 'object') {
+				config = text;
+			} else {
+				if (typeof title === 'function') {
+					input = arguments[3];
+					onCancel = arguments[2];
+					onOK = arguments[1];
+					title = undefined;
+				}
+				config = {
+					text: text,
+					title: title,
+					input: input,
+					onOK: onOK,
+					onCancel: onCancel,
+					empty: false, //allow empty
+					selector: selector,
+					onOpen: onOpen
+				}
+			}
+
+			var modal = $.modal({
+				text: '<p class="weui-prompt-text">' + (config.text || '') +
+					'</p><input placeholder="请输入修改原因(最多30个字)" maxlength="30" type="text" class="weui-input weui-prompt-input ' +
+					' ' + (config.selector || '') + '" id="weui-prompt-input" value="' + (config.input || '') + '" />',
+				title: config.title,
+				autoClose: false,
+				buttons: [{
+						text: '取消',
+						className: "default modal-cancel",
+						onClick: function() {
+							$.closeModal();
+							config.onCancel && config.onCancel.call(modal);
+						}
+					},
+					{
+						text: '确定',
+						className: "primary modal-true",
+						onClick: function() {
+							var input = $("#weui-prompt-input").val();
+							if (!config.empty && (input === "" || input === null)) {
+								tanwin('原因不能为空')
+								modal.find('.weui-prompt-input').focus()[0].select();
+								return false;
+							}
+							$.closeModal();
+							config.onOK && config.onOK.call(modal, input);
+						}
+					}
+				]
+			}, function() {
+				this.find('.weui-prompt-input').focus()[0].select();
+			});
+
+			return modal;
+		};
+
+
+		//请求客户查询打卡列表接口
+		var curPage = 1;
+		var getUserInfo = function(type, personId = getQueryString('personID'), orderId = getQueryString('orderId')) {
+			var _ajaxParams; //存储ajax请求的参数
+
+			//通过判断type参数是否存在来选择不同的请求参数。
+			if (!type) {
+				_ajaxParams = {
+					key: 170152247984920,
+					pageCount: 7,
+					curPage: curPage,
+					personId: personId,
+					orderId: orderId,
+					queryCategory: '2'
+				};
+			} else {
+				_ajaxParams = {
+					key: 170152247984920,
+					pageCount: 7,
+					curPage: curPage,
+					personId: personId,
+					orderId: orderId,
+					startTime: lastDate,
+					queryCategory: '2'
+				};
+			}
+			//请求
+			jzjy.newAjax({
+				params: _ajaxParams,
+				async: false
+			}, function(data) {
+				if (data.code == '0') {
+					var _content = data.data.retModel;
+
+					//重设全局服务人员姓名
+					serviceName = '';
+					serviceName = _content.personName;
+
+					//重设最后时间
+					try {
+						lastDate = _content.clockRecordLists[_content.clockRecordLists.length - 1].nowDay;
+					} catch (err) {
+
+						return false; //如果没有获取到就代表没有更多数据了
+					}
+
+
+					//重设用户信息
+					$('span[name="orderId"]').html(_content.orderCode);
+					$('span[name="orderName"]').html(_content.orderName);
+					$('span[name="userMobile"]').html(_content.userMobile.substr(0, 3) + '****' + _content.userMobile.substr(7, 4));
+					$('span[name="personName"]').html(_content.personName);
+
+					//避免多次加载数据重复叠加，当type参数不存在时，每次都先清空所有信息，再重新渲染
+					if (!type) {
+						$('.clock-details-body').children().remove();
+					}
+
+					//渲染DOM
+					var _clockRecordLists = _content.clockRecordLists
+					for (var i = 0; i < _clockRecordLists.length; i++) {
+						totalData.push(_clockRecordLists[i])
+
+						//判断是否显示签到时间，返回字符串
+						function showUpClockTime() {
+							if (_clockRecordLists[i].upClock) {
+								return _clockRecordLists[i].upClock.clockTime;
+							} else {
+								return '';
+							}
+						}
+
+						//判断是否显示签退时间，返回字符串
+						function showDownClockTime() {
+							if (_clockRecordLists[i].downClock) {
+								return _clockRecordLists[i].downClock.clockTime;
+							} else {
+								return '';
+							}
+						}
+
+						//返回DOM中的确认按钮（包含签到和签退的确认）
+						function showUpClockTrueBtn(type) {
+							if (!type) {
+
+								if (_clockRecordLists[i].upClock) {
+									if (_clockRecordLists[i].upClock.isSubmit == '1') {
+										return '<button class="btn-agree" data-clockid="' + _clockRecordLists[i].upClock.id +
+											'" data-verifystatus="' + _clockRecordLists[i].upClock.verifyStatus + '" data-remark="" data-identity="2" data-lastclocktime="' + _clockRecordLists[i].upClock
+											.clockTime + '" data-type="签到确认">确认</button>\n'
+									} else {
+										return '<button  disabled style="border:1px solid #ccc;color:#ccc;" class="btn-agree" data-clockid="' +
+											_clockRecordLists[i].upClock.id +
+											'" data-verifystatus="' + _clockRecordLists[i].upClock.verifyStatus + '" data-remark="" data-identity="2" data-lastclocktime="' + _clockRecordLists[i].upClock
+											.clockTime + '" data-type="签到确认">确认</button>\n'
+									}
+								} else {
+									return '';
+								}
+							} else {
+								if (_clockRecordLists[i].downClock) {
+									if (_clockRecordLists[i].downClock.isSubmit == '1') {
+										return '<button class="btn-agree" data-clockid="' + _clockRecordLists[i].downClock.id +
+											'" data-verifystatus="' + _clockRecordLists[i].downClock.verifyStatus + '" data-remark="" data-identity="2" data-lastclocktime="' + _clockRecordLists[i].downClock
+											.clockTime + '" data-type="签到确认">确认</button>\n'
+									} else {
+										return '<button disabled style="border:1px solid #ccc;color:#ccc;" class="btn-agree" data-clockid="' +
+											_clockRecordLists[i].downClock.id +
+											'" data-verifystatus="' + _clockRecordLists[i].downClock.verifyStatus + '" data-remark="" data-identity="2" data-lastclocktime="' + _clockRecordLists[i].downClock
+											.clockTime + '" data-type="签到确认">确认</button>\n'
+									}
+								} else {
+									return '';
+								}
+							}
+
+						}
+
+						//返回DOM中的拒绝按钮（包含签到和签退的拒绝）
+						function showUpClockRefuseBtn(type) {
+							if (!type) {
+								if (_clockRecordLists[i].upClock) {
+									if (_clockRecordLists[i].upClock.isSubmit == '1') {
+										return '<button class="btn-refuse"  data-clockid="' + _clockRecordLists[i].upClock.id +
+											'" data-verifystatus="' + _clockRecordLists[i].upClock.verifyStatus + '" data-remark="" data-identity="2" data-lastclocktime="' + _clockRecordLists[i].upClock
+											.clockTime + '" data-type="签到拒绝">拒绝</button>\n'
+									} else {
+										return '<button disabled style="border:1px solid #ccc;color:#ccc;" class="btn-refuse"  data-clockid="' +
+											_clockRecordLists[i].upClock.id +
+											'" data-verifystatus="' + _clockRecordLists[i].upClock.verifyStatus + '" data-remark="" data-identity="2" data-lastclocktime="' + _clockRecordLists[i].upClock
+											.clockTime + '" data-type="签到拒绝">拒绝</button>\n'
+									}
+								} else {
+									return '';
+								}
+							} else {
+								if (_clockRecordLists[i].downClock) {
+									if (_clockRecordLists[i].downClock.isSubmit == '1') {
+										return '<button class="btn-refuse"  data-clockid="' + _clockRecordLists[i].downClock.id +
+											'" data-verifystatus="' + _clockRecordLists[i].downClock.verifyStatus + '" data-remark="" data-identity="2" data-lastclocktime="' + _clockRecordLists[i].downClock
+											.clockTime + '" data-type="签到拒绝">拒绝</button>\n'
+									} else {
+										return '<button disabled style="border:1px solid #ccc;color:#ccc;" class="btn-refuse"  data-clockid="' +
+											_clockRecordLists[i].downClock.id +
+											'" data-verifystatus="' + _clockRecordLists[i].downClock.verifyStatus + '" data-remark="" data-identity="2" data-lastclocktime="' + _clockRecordLists[i].downClock
+											.clockTime + '" data-type="签到拒绝">拒绝</button>\n';
+									}
+								} else {
+									return '';
+								}
+							}
+
+						}
+
+						//返回DOM中的签到备注
+						function showUpClockRemark() {
+							if (_clockRecordLists[i].upClock) {
+								if (_clockRecordLists[i].upClock.crLists.length != '0') {
+									if (_clockRecordLists[i].upClock.crLists[0].identity == '1') {
+										return '【' + _clockRecordLists[i].upClock.name + ':' + _clockRecordLists[i].upClock.crLists[0].remark +
+											'】';
+									} else if (_clockRecordLists[i].upClock.crLists[0].identity == '2') {
+										return '【客户:' + _clockRecordLists[i].upClock.crLists[0].remark + '】';
+									}
+								} else {
+									return ''
+								}
+							} else {
+								return ''
+							}
+						}
+
+						//返回DOM中的签退备注
+						function showDownClockRemark() {
+							if (_clockRecordLists[i].downClock) {
+								if (_clockRecordLists[i].downClock.crLists.length != '0') {
+
+									if (_clockRecordLists[i].downClock.crLists[0].identity == '1') {
+										return '【' + _clockRecordLists[i].downClock.name + ':' + _clockRecordLists[i].downClock.crLists[0].remark +
+											'】';
+									} else if (_clockRecordLists[i].downClock.crLists[0].identity == '2') {
+										return '【客户:' + _clockRecordLists[i].downClock.crLists[0].remark + '】';
+									}
+								} else {
+									return ''
+								}
+							} else {
+								return ''
+							}
+						}
+
+						//返回DOM中的签到ClockID
+						function getUpClockId() {
+							if (_clockRecordLists[i].upClock) {
+								if (_clockRecordLists[i].upClock.id) {
+									return _clockRecordLists[i].upClock.id
+								} else {
+									return ''
+								}
+							} else {
+								return ''
+							}
+
+						}
+
+						//返回DOM中的签退ClockID
+						function getDownClockId() {
+							if (_clockRecordLists[i].downClock) {
+								if (_clockRecordLists[i].downClock.id) {
+									return _clockRecordLists[i].downClock.id
+								} else {
+									return ''
+								}
+							} else {
+								return ''
+							}
+
+						}
+
+						function getServiceName() {
+							if (_clockRecordLists[i].upClock) {
+								if (_clockRecordLists[i].upClock.name) {
+									return _clockRecordLists[i].upClock.name
+
+								} else {
+									return ''
+								}
+							} else {
+								return ''
+							}
+						}
+
+						//生成DOM
+						var html = '<div class="cdb-item">\n' +
+							'<span class="cdb-item-left">\n' +
+							'<span class="cdb-point"></span>' +
+							'<p><span>' + _clockRecordLists[i].nowDay.substr(5, 2) + '</span><span class="cdb-dateDay">' +
+							_clockRecordLists[i].nowDay.substr(
+								7,
+								3) + '</span></p>\n' +
+							'<p>' + _clockRecordLists[i].weekDays + '</p>\n' +
+							'<p>' + getServiceName() + '</p>\n' +
+							'</span>\n' +
+							'<span class="cdb-item-right">\n' +
+							'<div class="item-clockInTime">\n' +
+							'<span>签到</span>\n' +
+							'<span>' + showUpClockTime().substr(10, 9) + '</span>\n' +
+							'<span class="float-right">\n' +
+							showUpClockRefuseBtn() +
+							showUpClockTrueBtn() +
+							'</span>\n' +
+							'</div>\n' +
+							'<div class="item-clockInRemarks">\n' +
+							'<span>备注</span>\n' +
+							'<p data-type="upClock" data-date="' + _clockRecordLists[i].nowDay + '" data-id="' + getUpClockId() + '">' +
+							showUpClockRemark() + '</p>\n' +
+							'</div>\n' +
+							'<div class="item-clockOutTime">\n' +
+							'<span>签退</span>\n' +
+							'<span>' + showDownClockTime().substr(10, 9) + '</span>\n' +
+							'<span class="float-right">\n' +
+							showUpClockRefuseBtn('type') +
+							showUpClockTrueBtn('type') +
+							'</span>\n' +
+							'</div>\n' +
+							'<div class="item-clockOutRemarks">\n' +
+							'<span>备注</span>\n' +
+							'<p data-type="downClock" data-date="' + _clockRecordLists[i].nowDay + '" data-id="' + getDownClockId() +
+							'">' + showDownClockRemark() + '</p>\n' +
+							'</div>\n' +
+							'</span>\n' +
+							'</div>\n';
+						$('.clock-details-body').append(html)
+					}
+
+				}
+			})
+		}
+		getUserInfo();
+
+
+		//上拉加载
+		$(window).scroll(function() {
+			//已经滚动到上面的页面高度
+			var scrollTop = $(this).scrollTop();
+			//页面高度
+			var scrollHeight = $(document).height();
+			//浏览器窗口高度
+			var windowHeight = $(this).height();
+			//此处是滚动条到底部时候触发的事件，在这里写要加载的数据，或者是拉动滚动条的操作
+			if (scrollTop + windowHeight >= scrollHeight - 100) {
+				setTimeout(function() {
+					curPage++;
+					getUserInfo('type');
+
+				}, 1500);
+			}
+		});
+
+
+
+		//点击拒绝按钮
+		$('.clock-details-body').on('click', '.btn-refuse[data-verifystatus="1"]', function() {
+            _czc.push(['_trackEvent','微站', '打卡记录','拒绝']);
+			var that = this;
+			$('html,body,#aa').addClass('ovfHiden')
+			$.promptOwnReset({
+				title: '<img src="../../images/refuse@3x.png" style="width:2rem;height:2rem"/>',
+				text: '拒绝',
+				input: '',
+				empty: false,
+				onOK: function(input) {
+					$.ajax({
+						url: "http://erp.95081.com/apidisp/to/dispatcher",
+						type: "POST",
+						data: {
+							key: '239708838551304',
+							clockList: JSON.stringify([{
+								clockId: that.dataset.clockid,
+								verifyStatus: "3",
+								remark: input,
+								identity: "2",
+								lastClockTime: that.dataset.lastclocktime
+							}]),
+						},
+						dataType: "json",
+						success(data) {
+							if (data.code == '0') {
+								// 拒绝按钮置灰
+								that.disabled = '1'
+								that.style.opacity = '.4'
+								window.location.reload()
+								$('html,body,#aa,.weui-pull-to-refresh__layer').removeClass('ovfHiden')
+							}
+						}
+					})
+				},
+				onCancel: function() {
+					$('html,body,#aa,.weui-pull-to-refresh__layer').removeClass('ovfHiden')
+				},
+				selector: 'input-refuse'
+			});
+			document.querySelectorAll('.input-refuse')[0].previousSibling.style.color = '#fc4949'
+			document.querySelectorAll('.input-refuse')[0].previousSibling.style.margin = '-0.4rem 0 0 0'
+			document.querySelectorAll('.input-refuse')[0].parentElement.nextElementSibling.children[0].style.fontSize =
+				".8rem"
+			document.querySelectorAll('.input-refuse')[0].parentElement.nextElementSibling.children[1].style.fontSize =
+				".8rem"
+		});
+
+		//点击确认按钮
+		$('.clock-details-body').on('click', '.btn-agree[data-verifystatus="1"]', function(e) {
+			e.stopPropagation()
+			var that = this;
+
+			//ajax.data前五个参数接口返回，remark强制为空。onekeyconfirm为接口需求参数，单步确认时为0
+			$.ajax({
+				url: "http://erp.95081.com/apidisp/to/dispatcher",
+				type: "POST",
+				data: {
+					key: '239708838551304',
+					clockList: JSON.stringify([{
+						clockId: that.dataset.clockid,
+						verifyStatus: "2",
+						remark: '',
+						identity: "2",
+						lastClockTime: that.dataset.lastclocktime,
+						onekeyConfirm: '0'
+					}]),
+				},
+				dataType: "json",
+				success(data) {
+					if (data.code == '0') {
+						// 确认按钮置灰
+						that.disabled = '1'
+						that.style.border = '1px solid #ccc'
+						that.style.color = '#ccc'
+						that.previousElementSibling.disabled = '1'
+						that.style.opacity = '.4'
+						window.location.reload()
+						tanwin('确认成功')
+					} else if (data.code == '-2') {
+						tanwin('请求超时，请稍后重试')
+					} else {
+						tanwin('确认失败，请重试')
+					}
+				}
+			})
+
+
+		});
+
+		//一键确认
+		$('.oneKey-body').on('click', 'button[name="onekeyAgree"]', function() {
+            _czc.push(['_trackEvent','微站', '打卡记录','一键确认']);
+			var _tempArr = []
+			var _el = $('.btn-agree[data-verifystatus="1"]')
+			for (var i = 0; i < _el.length; i++) {
+				var _obj = {}
+                    _obj.clockId = _el[i].dataset.clockid;
+                    _obj.verifyStatus = '2';
+                    _obj.remark = '';
+                    _obj.identity = '2';
+                    _obj.lastClockTime = _el[i].dataset.lastclocktime;
+                    _obj.onekeyConfirm = 1;
+                    _tempArr.push(_obj)
+			};
+
+			//在ajax钱判断_tempArr是否为空，是则终止ajax
+			if (_tempArr == []) {
+				return false;
+			}
+
+			$.ajax({
+				url: "http://erp.95081.com/apidisp/to/dispatcher",
+				type: "POST",
+				data: {
+					key: '239708838551304',
+					clockList: JSON.stringify(_tempArr)
+				},
+				dataType: "json",
+				success(data) {
+					if (data.code == '0') {
+						tanwin('一键确认成功')
+						for (var i = 0; i < _el.length; i++) {
+							_el[i].disabled = '1'
+							_el[i].style.border = '1px solid #ccc'
+							_el[i].style.color = '#ccc'
+						};
+						debugger;
+						window.location.reload()
+					} else if (data.code == '-2') {
+						tanwin('请求超时，请稍后重试')
+					} else {
+						tanwin('确认失败，请重试')
+					}
+				}
+			})
+
+		});
+
+		//点击签到备注信息弹窗
+		$('.clock-details-body').on('click', 'p[data-type="upClock"]', function() {
+			$('html,body,#aa').addClass('ovfHiden')
+			var that = this;
+			// 			if (that.innerText.replace(' ', '') == '') {
+			// 				return false;
+			// 			}
+			$.modal({
+				title: "备注",
+				text: '<div class="upClock-remarks" style="overflow:overlay;height:100px;text-align:left;color:#999;font-weight:lighter;"></div>',
+				buttons: [{
+					text: "我知道了",
+					className: "btn-iknow",
+					onClick: function() {
+						$('html,body,#aa').removeClass('ovfHiden')
+					}
+				}, ]
+			});
+			$('.btn-iknow').parent().addClass('reset-remarkBtn')
+			for (var i = 0; i < totalData.length; i++) {
+				if (!totalData[i].upClock) {
+					if (that.dataset.date == totalData[i].nowDay) {
+						var html = '<p style="text-align: center;position:relative;top:1.6rem;">【暂无备注】</p>'
+						$('.upClock-remarks').append(html);
+					} else {
+						continue;
+					}
+				} else {
+					if (that.dataset.id == totalData[i].upClock.id) {
+						if (totalData[i].upClock.crLists.length != '0') {
+							for (var j = 0; j < totalData[i].upClock.crLists.length; j++) {
+								var html;
+								if (totalData[i].upClock.crLists[j].identity == '1') {
+									html = '<p>【' + serviceName + ':' + totalData[i].upClock.crLists[j].remark + '】</p>'
+								} else if (totalData[i].upClock.crLists[j].identity == '2') {
+									html = '<p>【客户:' + totalData[i].upClock.crLists[j].remark + '】</p>'
+								};
+								$('.upClock-remarks').append(html);
+							}
+						}
+						if (totalData[i].upClock.crLists.length == '0') {
+							var html = '<p style="text-align: center;position:relative;top:1.6rem;">【暂无备注】</p>'
+							$('.upClock-remarks').append(html);
+						}
+					}
+					if (!that.dataset.id) {
+						if (i == totalData.length - 1) {
+							// 							var html = '<p style="text-align: center;margin-top: 2rem;">【暂无备注】</p>'
+							// 							$('.upClock-remarks').append(html);
+						}
+
+
+					} else {
+						continue;
+					}
+				}
+			}
+		})
+
+		//点击签退备注信息弹窗
+		$('.clock-details-body').on('click', 'p[data-type="downClock"]', function() {
+			$('html,body,#aa').addClass('ovfHiden')
+			var that = this;
+			// 			if (that.innerText.replace(' ', '') == '') {
+			// 				return false;
+			// 			}
+			$.modal({
+				title: "备注",
+				text: '<div class="downClock-remarks" style="overflow:overlay;height:100px;text-align:left;color:#999;font-weight:lighter;"></div>',
+				buttons: [{
+					text: "我知道了",
+					className: "btn-iknow",
+					onClick: function() {
+						$('html,body,#aa').removeClass('ovfHiden')
+					}
+				}, ]
+			});
+
+			$('.btn-iknow').parent().addClass('reset-remarkBtn')
+			for (var i = 0; i < totalData.length; i++) {
+				if (!totalData[i].downClock) {
+					if (that.dataset.date == totalData[i].nowDay) {
+						var html = '<p style="text-align: center;position:relative;top:1.6rem;">【暂无备注】</p>'
+						$('.downClock-remarks').append(html);
+					} else {
+						continue;
+					}
+
+				} else {
+					if (that.dataset.id == totalData[i].downClock.id) {
+						if (totalData[i].downClock.crLists.length != '0') {
+							for (var j = 0; j < totalData[i].downClock.crLists.length; j++) {
+								var html;
+								if (totalData[i].downClock.crLists[j].identity == '1') {
+									html = '<p>【' + serviceName + ':' + totalData[i].downClock.crLists[j].remark + '】</p>'
+								} else if (totalData[i].downClock.crLists[j].identity == '2') {
+									html = '<p>【客户:' + totalData[i].downClock.crLists[j].remark + '】</p>'
+								}
+
+								$('.downClock-remarks').append(html);
+
+							}
+						}
+						if (totalData[i].downClock.crLists.length == '0') {
+							var html = '<p style="text-align: center;position:relative;top:1.6rem;">【暂无备注】</p>'
+							$('.downClock-remarks').append(html);
+						}
+					}
+					if (!that.dataset.id) {
+						if (i == totalData.length - 1) {
+							// 							var html = '<p style="text-align: center;margin-top: 2rem;">【暂无备注】</p>'
+							// 							$('.downClock-remarks').append(html);
+						}
+
+
+					} else {
+						continue;
+					}
+				}
+
+			}
+			// 			$('.downClock-remarks').on('touchmove', function(event) {
+			// 				event.stopPropagation();
+			// 			})
+		})
+
+		//下拉刷新
+		$("#aa").pullToRefresh({
+			onRefresh: function() {
+				setTimeout(function() {
+					totalData = [];
+					curPage = 1;
+					/*调用*/
+					$(".clock-details-body").empty()
+					//loadOrder.allOrder(1, 5);
+					getUserInfo()
+					$("#aa").pullToRefreshDone();
+				}, 1000);
+			},
+			onPull: function() {}
+		});
+		// 		document.querySelectorAll('.cdb-item-right:before')
+		//
+		// 		$('body').on('touchstart', 'weui-mask weui-mask--visible', function(e) {
+		// 			e.stopPropagation();
+		// 			e.preventDefault();
+		// 		}, false)
+	</script>
+</html>

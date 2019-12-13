@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+		<meta content="yes" name="apple-mobile-web-app-capable" />
+		<meta content="yes" name="apple-touch-fullscreen">
+		<meta content="black" name="apple-mobile-web-app-status-bar-style" />
+		<meta content="telephone=no,email=no" name="format-detection">
+		<link rel="stylesheet" type="text/css" href="../../css/reset.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/common.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/index.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/refresh.css" />
+		<title>培训列表</title>
+		<style type="text/css">
+			.datasImg {
+				position: fixed;
+				left: 30%;
+				width: 100%;
+				margin: 50% auto;
+			}
+			
+			.training-img {
+				width: 40%;
+			}
+			.source{
+				display: none;
+			}
+	</style>
+	</head>
+
+	<body>
+		<div class="header">
+			<img src="../../images/arrow.png" class="lo_left" id="lo_left" />
+			<p>培训列表</p>
+		</div>
+		<div id="wrapper">
+			<div id="scroller">
+				<div id="pullDown" class="flip">
+					<div class="spinner">
+						<div class="spinner-container container1">
+							<div class="circle1"></div>
+							<div class="circle2"></div>
+							<div class="circle3"></div>
+							<div class="circle4"></div>
+						</div>
+						<div class="spinner-container container2">
+							<div class="circle1"></div>
+							<div class="circle2"></div>
+							<div class="circle3"></div>
+							<div class="circle4"></div>
+						</div>
+						<div class="spinner-container container3">
+							<div class="circle1"></div>
+							<div class="circle2"></div>
+							<div class="circle3"></div>
+							<div class="circle4"></div>
+						</div>
+					</div>
+					<span class="pullDownLabel">加载中</span>
+				</div>
+				<ul id="thelist">
+				</ul>
+				<div class="datasImg"></div>
+				<div id="pullUp" class="source">
+					<span class="pullUpIcon"></span><span class="pullUpLabel">下拉加载...</span>
+				</div>
+			</div>
+		</div>
+		
+	</body>
+	<script src="../../js/flexible.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../../js/jquery-3.1.1.min.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../../js/iscroll.js"></script>
+	<script src="../../js/refresh.js" type="text/javascript" charset="utf-8"></script>
+	<!--接口加密-->
+	<script src="../../js/crypto/core.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../../js/crypto/cipher-core.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../../js/crypto/lib-typedarrays.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../../js/crypto/aes.js" type="text/javascript" charset="utf-8"></script>
+
+	<script src="../../js/crypto/md5.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../../js/crypto/mode-ecb.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../../js/jzjy-ui/common.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../../js/training/training.js?id=2" type="text/javascript" charset="utf-8"></script>
+
+</html>

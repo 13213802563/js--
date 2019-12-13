@@ -1,0 +1,344 @@
+﻿
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<meta charset="UTF-8">
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+	<meta content="yes" name="apple-mobile-web-app-capable" />
+	<meta content="yes" name="apple-touch-fullscreen">
+	<meta content="black" name="apple-mobile-web-app-status-bar-style" />
+	<meta content="telephone=no,email=no" name="format-detection">
+	<link rel="stylesheet" type="text/css" href="../../css/reset.css" />
+	<link rel="stylesheet" type="text/css" href="../../css/index.css" />
+
+	<link rel="stylesheet" type="text/css" href="../../css/weui/weui.css" />
+	<link rel="stylesheet" type="text/css" href="../../css/weui/jquery-weui.min.css" />
+	<link rel="stylesheet" type="text/css" href="../../css/weui/demos.css" />
+	<link rel="stylesheet" type="text/css" href="../../css/common.css" />
+	<link rel="stylesheet" type="text/css" href="../../css/orders.css" />
+	<link rel="stylesheet" type="text/css" href="../../css/style.css" />
+	<link rel="stylesheet" type="text/css" href="../../css/animation/animation.css" />
+	<script src="../../js/umeng.js"></script>
+	<title>接单</title>
+	<style type="text/css">
+		.weui-dialog__bd {
+			font-size: .4rem;
+			color: #000000;
+			line-height: .6rem;
+		}
+
+		.weui-dialog__ft{
+			line-height: 36px!important;
+		}
+		.weui-dialog{
+			width:62%!important;
+			border-radius: .2rem;
+		}
+		.weui-dialog__ft a:last-child{
+			color: #fc4949;
+		}
+
+		.heade {
+			width: 100%;
+			height: 1.3rem;
+			background: #fff;
+			text-align: center;
+			position: fixed;
+			top: 0;
+			left: 0;
+			z-index: 99;
+			font-size: 0.45rem;
+			border-bottom: 1px solid #ddd;
+			display: flex;
+			justify-content: space-around;
+			align-items: center;
+			line-height: 1.3rem;
+
+		}
+		.cityDiv{
+			color: #fc4949;
+		}
+		.cityDiv img {
+			width: .3rem;
+		}
+
+		#imgDiv,#liDiv,
+		#info {
+			margin-top: 2rem;
+			text-align: center;
+		}
+
+		#imgDiv p,#liDiv p,
+		#info p {
+			color: #756767;
+			font-size: .35rem;
+		}
+		#imgDiv p div,#liDiv p div,
+		#info p div{
+			font-size: 0.53rem;
+			color: #4A3535;
+			font-weight: 600;
+			padding-bottom: 0.2rem;
+		}
+
+		#imgDiv button,#liDiv button,
+		#info button {
+			display: block;
+			padding: .2rem .6rem;
+			background: #fff;
+			border: 0;
+			border: 1px solid #fc4949;
+			color: #fc4949;
+			border-radius: .6rem;
+			margin-top: .3rem;
+			margin-left: 40%;
+		}
+
+		.location {
+			position: fixed;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			z-index: 10000;
+			background: #FFFFFF;
+			display: none;
+			-webkit-overflow-scrolling: touch;
+			overflow-y: scroll;
+		}
+
+		iframe {
+			width: 100%;
+			height: 100%;
+		}
+
+		.newMark {
+			color: white;
+			margin: 0 .3rem;
+			background: #fc4949;
+			width: .6rem;
+			text-align: center;
+			border-radius: 113%;
+		}
+
+		.buttonInfo {
+			border: 1px solid #ff4949;
+			border-radius: 3px;
+			padding: .2rem 0.3rem;
+			width: 2rem;
+			margin: .4rem auto;
+			color: #fc4949!important;
+		}
+		.buttonInfo a:link{
+			color: #fc4949!important;
+		}
+		.types div:nth-child(1),
+		.prices div:nth-child(1) {
+			margin: 0 auto;
+		}
+        .bjfu{
+            color: #fc4949;
+            border-bottom:3px solid #fc4949;
+        }
+/*规则*/
+		#mask {
+			position: fixed;
+			width: 100%;
+			height: 100%;
+			top: 0;
+			left: 0;
+			background: rgba(0, 0, 0, .5);
+			z-index: 100;
+			display: none;
+		}
+		.masks {
+            width: 88%;
+            background: #fff;
+            /* padding: .4rem; */
+            border-radius: .3rem;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            margin-top: -52%;
+            margin-left: -44%;
+		}
+        .masks img{
+            width: 100%;
+            margin-bottom: .3rem;
+        }
+        .maskUl{
+            width: 93%;
+            margin: auto;
+        }
+        .maskUl li {
+			padding-bottom: .3rem;
+			font-size: .38rem;
+			width: 100%;
+			height: 6.5rem;
+			overflow: scroll;
+		}
+
+		.maskUl li h2 {
+            font-size: .45rem;
+            color: #fc4949;
+            font-weight: 600;
+            display: flex;
+
+        }
+        .maskUl li h2 img{
+            width: .4rem;
+            height: .4rem;
+            margin-right: .1rem;
+        }
+
+		.maskUl li p {
+			color: #666666;
+			padding-bottom: .2rem;
+			font-size: .4rem;
+            line-height: .7rem;
+            margin-left: .45rem;
+		}
+		.ok {
+			width: 28%;
+			text-align: center;
+			border: 1px solid #fc4949;
+			background: #ffffff;
+			border-radius: 1rem;
+			padding: .2rem .1rem;
+			margin-bottom: .3rem;
+			margin-top: .3rem;
+			color: #fc4949;
+			font-size: .4rem;
+			font-weight: 600;
+			margin-left: 35%;
+		}
+ul{
+	line-height: 0.6rem;
+}
+		#two li,#three li{
+			 border-bottom: 10px solid #F5F5F5;
+		}
+
+
+	</style>
+</head>
+
+<body style="line-height: 1.3;">
+<div class="heade">
+	<div class="cityDiv" style=" font-size: 0.35rem">
+		<img src="../../images/orders/orders_location@3x.png" />
+		<span id="city">北京市</span>
+	</div>
+	<div class="content-lr">
+		<div class="order-left">可接订单</div>
+		<div class="order-right">热门订单</div>
+	</div>
+
+	<span id="invi" style="width: 15%;"></span>
+</div>
+<div class="orders-content">
+
+	<ul class="orders-header" id="search">
+		<li class="types bjfu">
+			<p class="pric bjmy " id="serchType">保洁服务</p>
+		</li>
+		<li class="prices ">
+            <p class="pric bjmy" id="searchPrice">母婴护理</p>
+		</li>
+	</ul>
+</div>
+
+<!--规则说明-->
+<div id="mask" onclick="mask()">
+	<div class="masks">
+		<ul class="maskUl">
+			<li>
+
+			</li>
+		</ul>
+
+        <button class="ok" onclick="mask()" >好的</button>
+
+	</div>
+</div>
+<div id="aa" ontouchstart style="padding-top: 1.2rem">
+	<div class="weui-pull-to-refresh__layer">
+		<div class='weui-pull-to-refresh__arrow'></div>
+		<div class='weui-pull-to-refresh__preloader'></div>
+		<div class="down">下拉刷新</div>
+		<div class="up">释放刷新</div>
+		<div class="refresh">正在刷新</div>
+	</div>
+	<section id="account_list" style="display: block;">
+		<div class="list-tow">
+			<ul class="orders-list" id="two"></ul>
+			<ul class="orders-list" id="one"></ul>
+			<!--延续-->
+            <ul class="orders-list" id="three"></ul>
+		</div>
+	</section>
+</div>
+
+<div class="index-footer">
+	<ul>
+		<li>
+			<a href="../../homepage.html"><img src="../../images/tab_btn_train__default.png" />
+				<p>首页</p>
+			</a>
+		</li>
+		<li>
+			<a href="../curriculum/index.html"><img src="../../images/tab_btn_lesson_default.png" />
+				<p>课程</p>
+			</a>
+		</li>
+		<li>
+			<a href="#" style="color: #FC4949;"><img src="../../images/orders/orders_choice@3x.png" />
+				<P>接单</P>
+			</a>
+		</li>
+		<li>
+			<a href="../../my.html"><img src="../../images/tab_btn_mine_selected.png" />
+				<P>我的</P>
+			</a>
+		</li>
+	</ul>
+</div>
+<div id="tanwin" class="tan" style="display:none;"></div>
+
+<div class="location">
+	<div class="heade">
+		<em class="lo_left" id="cityClose"></em>
+		<p style="">选择城市</p>
+	</div>
+	<iframe src="city.html?id=1" frameborder="0"></iframe>
+</div>
+<div id="loading">
+	<div class="weui-loadmore">
+		<i class="weui-loading"></i>
+		<span class="weui-loadmore__tips">正在加载中...</span>
+	</div>
+</div>
+</body>
+<script src="../../js/jquery-3.1.1.min.js"></script>
+<script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+<script src="../../js/flexible.js"></script>
+<script src="../../js/weui/jquery-weui.js"></script>
+<script src="../../js/weui/fastclick.js"></script>
+<script src="../../js/return.js"></script>
+
+<script type="text/javascript" src="http://api.map.baidu.com/getscript?v=2.0&ak=tIqExiZw1IyBNAshjMWI1PT1DtIhOsuc&services=&t=20170823191629"></script>
+<script type="text/javascript" src="../../js/baiduMap/baiduMAp.js"></script>
+<script type="text/javascript" src="../../js/baiduMap/bmap.js"></script>
+<!--接口加密-->
+<script src="../../js/crypto/core.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../js/crypto/cipher-core.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../js/crypto/lib-typedarrays.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../js/crypto/aes.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../js/crypto/md5.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../js/crypto/mode-ecb.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../js/jzjy-ui/common.js?id=0" type="text/javascript" charset="utf-8"></script>
+<script src="../../js/orders/orders.js?id=2-4" type="text/javascript" charset="utf-8"></script>
+</html>

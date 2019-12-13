@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta charset="UTF-8">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta content="yes" name="apple-mobile-web-app-capable" />
+    <meta content="yes" name="apple-touch-fullscreen">
+    <meta content="black" name="apple-mobile-web-app-status-bar-style" />
+    <meta content="telephone=no,email=no" name="format-detection">
+    <link rel="stylesheet" type="text/css" href="../../css/weui/weui.css" />
+    <link rel="stylesheet" type="text/css" href="../../css/weui/jquery-weui.min.css" />
+    <link rel="stylesheet" type="text/css" href="../../css/reset.css" />
+    <link rel="stylesheet" type="text/css" href="../../css/orderList/myOrder.css" />
+    <script src="../../js/umeng.js"></script>
+    <title></title>
+</head>
+<body>
+<div class="m-myOrder">
+    <div class="header">
+        <img src="../../images/arrow.png" alt="" onclick="goto('../../my.html')">
+        <p>我的订单</p>
+    </div>
+    <div class="statusOrders">
+        <div class="noState">待完成</div>
+        <div class="completeState">已完成</div>
+        <div class="allState">接单记录</div>
+    </div>
+</div>
+<div id="aa" ontouchstart>
+    <div class="weui-pull-to-refresh__layer">
+        <div class='weui-pull-to-refresh__arrow'></div>
+        <div class='weui-pull-to-refresh__preloader'></div>
+        <div class="down">下拉刷新</div>
+        <div class="up">释放刷新</div>
+        <div class="refresh">正在刷新</div>
+    </div>
+    <!--待完成-->
+    <ul class="m-noComplete">
+        <!--    <li>
+                <div>
+                    <p>床具沙发除螨</p>
+                    <p>已匹配</p>
+                </div>
+                <div>
+                    <p>服务时间:</p>
+                    <span>2018.09.01 11:00-15:00</span>
+                </div>
+                <div>
+                    <p>联系信息:</p>
+                    <span> 李女士(158****6225)</span>
+                    <img src="../../images/orderList/iPhone@3x.png" alt="">
+                </div>
+                <div>
+                    <p>服务地址:</p>
+                    <span>北京市丰台区三环新城8号院</span>
+                    <img src="../../images/orderList/map@3x.png" alt="">
+                </div>
+                <div>￥<h1>100</h1></div>
+                <div>
+                    <button>拒单</button>
+                    <button> 接单</button>
+                </div>
+
+            </li>
+    -->
+    </ul>
+    <!--已完成-->
+    <ul class="m-complete">
+        <!-- <li>
+             <div>
+                 <p>床具沙发除螨</p>
+                 <p>已匹配</p>
+             </div>
+             <div>
+                 <p>服务时间:</p>
+                 <span>2018.09.01 11:00-15:00</span>
+             </div>
+             <div>
+                 <p>订单时长:</p>
+                 <span> 3小时</span>
+             </div>
+             <div>
+                 <p>服务地址:</p>
+                 <span>北京市丰台区三环新城8号院</span>
+             </div>
+             <div>￥<h1>100</h1></div>
+             <div>
+                 <button>拒单</button>
+                 <button> 接单</button>
+             </div>
+
+         </li>-->
+    </ul>
+    <!--接单记录-->
+    <ul class="m-allOrder">
+        <!--<li>
+            <div>
+                <p>床具沙发除螨</p>
+                <p>已匹配</p>
+            </div>
+            <div>
+                <p>服务时间:</p>
+                <span>2018.09.01 11:00-15:00</span>
+            </div>
+            <div>
+                <p>订单时长:</p>
+                <span> 3小时</span>
+            </div>
+            <div>
+                <p>服务地址:</p>
+                <span>北京市丰台区三环新城8号院</span>
+            </div>
+            <div>￥<h1>100</h1></div>
+
+        </li>-->
+
+    </ul>
+    <!--暂无数据-->
+    <div class="noData">
+        <img src="../../images/noData/no-order.png" alt="">
+        <div class="content">
+            <h1>您还没有相关订单</h1>
+        </div>
+    </div>
+    <div class="weui-loadmore" style="display: none;">
+        <i class="weui-loading"></i>
+        <span class="weui-loadmore__tips">正在加载</span>
+    </div>
+</div>
+
+
+
+<div id="tanwin" class="tan" style="display:none;"></div>
+<div id="mask"></div>
+</body>
+<script src="../../js/jquery-3.1.1.min.js"></script>
+<script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+<script src="../../js/weui/jquery-weui.js"></script>
+<script src="../../js/weui/fastclick.js"></script>
+<script type="text/javascript" src="http://api.map.baidu.com/getscript?v=2.0&ak=tIqExiZw1IyBNAshjMWI1PT1DtIhOsuc&services=&t=20170823191629"></script>
+<script type="text/javascript" src="../../js/baiduMap/baiduMAp.js"></script>
+<script type="text/javascript" src="../../js/baiduMap/bmap.js"></script>
+<!--接口加密-->
+<script src="../../js/crypto/core.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../js/crypto/cipher-core.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../js/crypto/lib-typedarrays.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../js/crypto/aes.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../js/crypto/md5.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../js/crypto/mode-ecb.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../js/jzjy-ui/common.js?id=0" type="text/javascript" charset="utf-8"></script>
+<script src="../../js/orderList/myOrder.js?v1-2" type="text/javascript" charset="utf-8"></script>
+<script>
+    // 外部链接直接进入时，看是否登陆  未登录跳转的登录页面
+    if(jzjy.getTokenSkip()===false){
+        window.location.href = "/jzjy-wechat/signin.html";
+    }
+</script>
+</html>

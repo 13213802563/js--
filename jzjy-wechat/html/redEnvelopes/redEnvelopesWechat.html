@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+		<meta content="yes" name="apple-mobile-web-app-capable" />
+		<meta content="yes" name="apple-touch-fullscreen">
+		<meta content="black" name="apple-mobile-web-app-status-bar-style" />
+		<meta content="telephone=no,email=no" name="format-detection">
+		<link rel="stylesheet" type="text/css" href="../../css/reset.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/common.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/index.css" />
+		<!--红包-->
+		<link rel="stylesheet" type="text/css" href="../../css/coupon/hb.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/coupon/zshb.css" />
+
+		<link rel="stylesheet" type="text/css" href="../../css/coupon/coupon.css" />
+
+		<title>领红包</title>
+		<style type="text/css">
+		html {
+				width: 100%;
+				overflow: hidden;
+			}
+			
+			#rgbn {
+				width: 100%;
+				position: fixed;
+				background: rgba(0, 0, 0, .8);
+				top: 0;
+				left: 0;
+				z-index: 100;
+				bottom: 0;
+				display: none;
+			}
+		
+		.p {
+			margin-left: 6.5rem;
+			background: url("../../images/tp.png") no-repeat;
+			background-size: 38% 100%;
+			width: 74%;
+			height: 3rem;
+			margin-top: 0.2rem;
+		}
+		#rgbn .div {
+			position: absolute;
+			top: 4rem;
+			z-index: 113;
+			color: #fff;
+			font-size: .6rem;
+			width: 100%;
+			text-align: center;
+		}
+		.wechat-link{
+			font-family: 微软雅黑;
+			text-align: center;
+			font-size: .35rem;
+			color: #fff02f !important;
+			text-decoration: underline !important;
+			display: none;
+			height: 1rem;
+			line-height: 1rem;
+		}
+			.header{
+				align-items: center;
+				justify-content: space-between;
+			}
+			#lo_left{
+				background: none;
+			}
+			.tanCode{
+				position: fixed;
+				top: 0;
+				height: 100%;
+				width: 100%;
+				z-index: 2;
+				display: none;
+				background: rgba(0, 0, 0, .8);
+			}
+			.tanCode .tanCode-div{
+				position: absolute;
+				top:50%;
+				left: 50%;
+				transform: translate(-50%,-50%);
+				text-align: center;
+				width: 100%;
+			}
+			.tanCode .tanCode-div .tanCode-del{
+				margin-top: 2rem;
+				width: 10%;
+			}
+			.tanCode-code{
+				width: 80%;
+			}
+			.tanCode-div img{
+				display: block;
+				margin: auto;
+			}
+		</style>
+	</head>
+
+	<body style="background: #F5F5F5;">
+		<div class="header">
+			<img src="../../images/arrow.png" class="lo_left" id="lo_left"  onclick="testClickback()"/>
+			<p id="redcoupon">活动说明</p>
+
+		</div>
+<!--		<img src="../../images/coupon/redback.png" class="lo_left" id="lo_left"  onclick="testClickback()"/>-->
+
+		<div class="redenvelopes">
+			<ul class="couten">
+				<!--<li>
+					<a href="#"><img src="images/hb_1.png"></a>
+				</li>-->
+			</ul>
+		</div>
+		<!--抽奖次数-->
+		<div class="redNum">
+			<!--<h2></h2>-->
+			<p></p>
+		</div>
+		<!--获奖名单-->
+		<div id="rollCon">
+			<div id="rollSubject">
+
+			</div>
+			<div id="rollCopy"></div>
+		</div>
+		<!--点击显示-->
+		<div class="mo">
+			<div class="sen">
+				<!--				<div class="con">-->
+				<!--					<img src="../../images/coupon/mks.png">-->
+				<!--					<h2>领取红包</h2>-->
+				<!--					<h3>欢迎下次再来来</h3>-->
+				<!--					<a href="#">确定</a>-->
+				<!--					<img src="../../images/coupon/cha.png" id="cha">-->
+				<!--				</div>-->
+
+			</div>
+		</div>
+		<!--活动时间和分享按钮-->
+		<div class="shareTime">
+			<a class="wechat-link" href="javascript:void(0);">
+				关注“家政家园”公众号领取奖品
+			</a>
+			<button onclick="testClick2()">分享获得抽奖机会</button>
+			<p></p>
+		</div>
+		<div id="rgbn">
+			<p class="p"></p>
+			<div class="div">点击右上角进行分享</div>
+		</div>
+
+		<div class="tanCode">
+			<div class="tanCode-div">
+				<img class="tanCode-code" src="../../images/coupon/redCode.png" alt="">
+				<img class="tanCode-del" src="../../images/coupon/delete@3x.png" alt="">
+			</div>
+		</div>
+	</body>
+	<script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+	<script src="../../js/flexible.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../../js/jquery-3.1.1.min.js" type="text/javascript" charset="utf-8"></script>
+	<!--接口加密-->
+	<script src="../../js/crypto/core.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../../js/crypto/cipher-core.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../../js/crypto/lib-typedarrays.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../../js/crypto/aes.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../../js/crypto/md5.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../../js/crypto/mode-ecb.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../../js/jzjy-ui/common.js" type="text/javascript" charset="utf-8"></script>
+
+	<!--ios对接-->
+	<script src="../../js/ios/android.js"></script>
+	<script src="../../js/ios/gjbWebBridgeV2.js"></script>
+	<script src="../../js/share/shareEnvelopes.js" type="text/javascript" charset="utf-8"></script>
+	<!--红包雨-->
+	<script src="../../js/redEnvelopes/redEnvelopesWechat.js?id=7" type="text/javascript" charset="utf-8"></script>
+	<script src="http://www.mycodes.net/js/tongji.js"></script>
+	<script src="../../js/redEnvelopes/redRain/su.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../../js/redEnvelopes/redRain/redRain.js" type="text/javascript" charset="utf-8"></script>
+	<!--字体轮播-->
+
+	<script>
+		setTimeout(function () {
+            var img=document.createElement("img");
+            img.src="../../images/coupon/redBack.jpg";
+            img.onload=function () {
+                $('.redenvelopes').height($(document).height());
+            }
+        },100);
+
+		$(".wechat-link").on("click",function () {
+			$(".tanCode").show();
+		})
+        $(".tanCode").on("click",function () {
+            $(".tanCode").hide();
+        })
+		$(".tanCode-del").on("click",function () {
+            $(".tanCode").hide();
+        })
+	</script>
+
+</html>

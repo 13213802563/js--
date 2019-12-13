@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta content="yes" name="apple-mobile-web-app-capable" />
+    <meta content="yes" name="apple-touch-fullscreen">
+    <meta content="black" name="apple-mobile-web-app-status-bar-style" />
+    <meta content="telephone=no,email=no" name="format-detection">
+    <title>Title</title>
+    <link rel="stylesheet" type="text/css" href="../../css/weui/weui.min.css" />
+    <link rel="stylesheet" type="text/css" href="../../css/weui/demos.css" />
+    <link rel="stylesheet" type="text/css" href="../../css/weui/jquery-weui.min.css" />
+</head>
+<body style="overflow: hidden; height: 100vh;">
+<div id="rankList" style="background: #eee;z-index: 999">
+    <div id="asd" >
+        <div class="weui-pull-to-refresh__layer" id="list" style="margin-top: -45px;">
+            <div class='weui-pull-to-refresh__arrow'></div>
+            <div class='weui-pull-to-refresh__preloader'></div>
+            <div class="down" style="color: #FFFFFF;">下拉刷新</div>
+            <div class="up" style="color: #FFFFFF;">释放刷新</div>
+            <div class="refresh" style="color: #FFFFFF;">正在刷新</div>
+        </div>
+        <p>头</p>
+        <div id="rankList1" style="overflow:scroll;height: 400px;">
+            <li>1</li>
+            <li>2</li>
+            <li>3</li>
+            <li>12</li>
+            <li>2</li>
+            <li>3</li>
+            <li>1</li>
+            <li>2</li>
+            <li>3</li>
+            <li>4</li>
+            <li>2</li>
+            <li>3</li>
+            <li>1</li>
+            <li>2</li>
+            <li>3</li>
+            <li>4</li>
+            <li>1</li>
+            <li>2</li>
+            <li>3</li>
+            <li>4</li>
+            <li id="aa">666</li>
+        </div>
+    </div>
+
+</div>
+
+</body>
+</html>
+<script src="../../js/jquery-3.1.1.min.js"></script>
+<script src="../../js/weui/fastclick.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../js/weui/jquery-weui.js"></script>
+<script>
+
+    function fakeLoad(time){
+        $('#list').css({'transform': 'translateY(45px)','transition': 'transform .8s'})
+        setTimeout(function () {
+            $('#list').css({'transform': 'translateY(0px)','transition': 'transform .8s'})
+        },800)
+    }
+    fakeLoad(800)
+    $('#rankList1').on('scroll',function (e) {
+        e.stopPropagation()
+        if(e.target.scrollTop === 0){
+            fakeLoad(800)
+        }
+    })
+
+    var io = new IntersectionObserver(function (s) {
+        if(s[0].intersectionRatio > 0){
+            alert('掉接口')
+            // 用weui下拉加载  loadmore
+        }
+    })
+
+    io.observe(document.getElementById('aa'))
+</script>

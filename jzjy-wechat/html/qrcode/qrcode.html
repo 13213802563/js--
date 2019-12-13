@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta content="yes" name="apple-mobile-web-app-capable"/>
+    <meta content="black" name="apple-mobile-web-app-status-bar-style"/>
+    <meta content="telephone=no,email=no" name="format-detection">
+
+    <link rel="stylesheet" type="text/css" href="../../css/reset.css" />
+    <link rel="stylesheet" type="text/css" href="../../css/common.css" />
+    <title></title>
+
+    <link rel="stylesheet" href="../../css/weui/jquery-weui.min.css">
+    <link rel="stylesheet" href="../../css/qrcode/qrcode.css">
+</head>
+<body>
+  <div class="qrcode">
+    <div class="header">
+        <img src="../../images/arrow.png" class="leff" id="lo_left">
+        <p>二维码收款</p>
+    </div>
+      <div class="content">
+          <div class="qrcode_price">￥<span class="qrcodePrice"></span></div>
+          <p class="qrcode_prompt">微信扫描二维码向我付钱</p>
+          <!--canvas生成二维码-->
+          <div id="qrcode"  title=""  style="height: 200px;width: 200px;"></div>
+          <!--canvas布局-->
+      </div>
+  </div>
+
+    <script type="text/javascript" src="//cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+    <script type="text/javascript" src="//static.runoob.com/assets/qrcode/qrcode.min.js"></script>
+  <!--接口加密-->
+  <script src="../../js/crypto/core.js" type="text/javascript" charset="utf-8"></script>
+  <script src="../../js/crypto/cipher-core.js" type="text/javascript" charset="utf-8"></script>
+  <script src="../../js/crypto/lib-typedarrays.js" type="text/javascript" charset="utf-8"></script>
+  <script src="../../js/crypto/aes.js" type="text/javascript" charset="utf-8"></script>
+  <script src="../../js/crypto/md5.js" type="text/javascript" charset="utf-8"></script>
+  <script src="../../js/crypto/mode-ecb.js" type="text/javascript" charset="utf-8"></script>
+  <script src="../../js/ios/gjbWebBridgeV2.js?v=1"></script>
+  <script src="../../js/jzjy-ui/common.js?id=2" type="text/javascript" charset="utf-8"></script>
+  <script type="text/javascript" src="../../js/common/tools.js"></script>
+  <script src="../../js/weui/jquery-weui.js"></script>
+  <script type="text/javascript">
+        let accountId=localStorage.getItem('accountId')
+        let qrcodeUrl=localStorage.getItem('qrcodeUrl');
+
+        $("#qrcode").attr("title",qrcodeUrl);
+        $(".qrcodePrice").text(localStorage.getItem('accountAmount'));
+        let pl={
+            key: 130037019450666,
+            personId:localStorage.getItem('personId'),
+                // accountId:localStorage.getItem('accountIdData'),
+            accountId: accountId,
+            orderId: localStorage.getItem('orderId'),
+            // longitude:'116.225985',
+            // latitude:'39.912142',
+            longitude:localStorage.getItem('longitude'),
+            latitude:localStorage.getItem('latitude'),
+            overworkCost:'40',
+            accountAmount:'20'
+        }
+        // 轮询结束服务的接口;
+        let c=0;
+        var timer=setInterval(function() {   //开启循环：每秒出现一次提示框
+            c += 1;
+            jzjy.newAjax({
+                params:pl,
+                async: false,
+            }, function(data) {
+                if(data.code == '0') {
+                    alert('成功');
+                    let modAsess={
+                        key:  835902653328426,
+                        personId:localStorage.getItem('personId'),
+                        orderId: localStorage.getItem('orderId'),
+                    }
+                    jzjy.newAjax({
+                        params: modAsess,
+                        async: false,
+                    },function(){
+                        if (data.code == "0") {
+                            window.location.href="../orderList/myOrder.html?positions=1"
+                            // window.location.href = "../orders/detailsofreceipt.html?type=myorder&id=869156082945233&interviewType=8&typeRemark=您正在上户&interviewTypeStr=上户中&positions=1";
+                        }else{
+                            tanwin(data.msg);
+                        }
+                    })
+                    clearInterval(timer);
+                }else  if(data.code == '-1'){
+                    console.log("kdkdkfd");
+                }else{
+                    clearInterval(timer);
+                    window.location.href = "../../html/charging/charging.html";
+                }
+            })
+            if(c>=150) {
+                clearInterval(timer);
+            }
+        },2000)
+
+
+        // console.log(pl)
+
+        // console.log(pl);
+        // let c=0;
+        // var timer=setInterval(function(){   //开启循环：每秒出现一次提示框
+        //     c+=1;
+        //
+        //     //     function (data) {
+        //     //     if (data.code == '0') {
+        //     //     }
+        //     // }
+        //     //
+        //     // jzjy.newAjax({
+        //     //         params: {
+        //     //             key: 938092389100296,
+        //     //             personId:localStorage.getItem('personId'),
+        //     //             // accountId:localStorage.getItem('accountIdData'),
+        //     //             accountId: accountId,
+        //     //             orderId: localStorage.getItem('orderId'),
+        //     //             longitude:'',
+        //     //             latitude:'',
+        //     //         },
+        //     //         async: false,
+        //     //     },
+        //         function (data) {
+        //             if (data.code == "0") {
+        //                 if(data.data!=='01') {
+        //                     alert('成功')
+        //                     window.location.href = "orders/detailsofreceipt.html?type=myorder&id=869156082945233&interviewType=8&typeRemark=您正在上户&interviewTypeStr=上户中&positions=1";
+        //                 }
+        //             }
+        //             if (data.code == "-1") {
+        //                 tanwin(data.msg);
+        //                 if (data.msg == "您已下户") {
+        //                     window.history.go(-1);
+        //                 }
+        //             }
+        //     else if(c>=150){
+        //         clearInterval(timer);
+        //     }
+        // })
+        // },2000);
+        getElementsByClassName()
+        var qrcode = new QRCode(document.getElementById("qrcode"), {
+            width : 200,
+            height : 200
+        });
+        function makeCode () {
+            qrcode.makeCode($("#qrcode").attr('title'));
+        }
+        makeCode ();
+
+        //返回按钮
+        $("#lo_left").on('click',function(){
+            clearInterval(timer);
+            window.location.href="../../html/charging/charging.html"
+        })
+        //接口的调用
+        // let data={
+        //     orderId:'403169534666359',
+        //     overworkCost:'40',
+        //     token:'403169534666359',
+        //     overworkNum:'2'
+        // }
+        // jzjy.ajax({
+        //     url: "order/createOverwrkRecord",
+        //     async: false,
+        //     params: {
+        //         orderId:'403169534666359',
+        //         overworkCost:'40',
+        //         token:'403169534666359',
+        //         overworkNum:'2'
+        //     }
+        // }, function (data) {
+        //     if (data.code == "-2") {
+        //         console.log(data);
+        //     } else {
+        //         if (data.code == "0") {
+        //
+        //         }
+        //     }
+        // })
+    </script>
+
+
+
+</body>
+</html>
