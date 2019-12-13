@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html style="background: #f4f4f4">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta content="yes" name="apple-mobile-web-app-capable" />
+    <meta content="yes" name="apple-touch-fullscreen">
+    <meta content="black" name="apple-mobile-web-app-status-bar-style" />
+    <meta content="telephone=no,email=no" name="format-detection">
+    <link rel="stylesheet" type="text/css" href="../../../css/reset.css" />
+    <link rel="stylesheet" type="text/css" href="../../../css/common.css" />
+    <link rel="stylesheet" href="../../../css/weui/weui.css">
+    <link rel="stylesheet" href="../../../css/weui/jquery-weui.min.css">
+    <link rel="stylesheet" href="../../../css/my/signIn/point-details.css?v=2">
+    <script src="../../js/umeng.js"></script>
+    <title>签到日历</title>
+</head>
+
+<body style="background: #f4f4f4">
+<div class="header" id="header">
+    <img src="../../../images/left.png" class="lo_left" id="lo_left" />
+    <p>积分明细</p>
+</div>
+<div class="w-list">
+    <div class="title">
+        <span>当前积分:</span>
+        <span class="u-point">0</span>
+        <span>已使用:</span>
+        <span class="u-used">0</span>
+    </div>
+</div>
+</body>
+<script src="../../../js/flexible.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../../js/jquery-3.1.1.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../../js/weui/jquery-weui.js"></script>
+<!--接口加密-->
+<script src="../../../js/crypto/core.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../../js/crypto/cipher-core.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../../js/crypto/lib-typedarrays.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../../js/crypto/aes.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../../js/crypto/md5.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../../js/crypto/mode-ecb.js" type="text/javascript" charset="utf-8"></script>
+
+<script src="../../../js/jzjy-ui/common.js" type="text/javascript" charset="utf-8"></script>
+<!--<script src="../../../js/vconsole.js"></script>-->
+<script>
+    var curPage = 1
+    function getList(page){
+        jzjy.newAjax({
+            params:{
+                key:'252018093583241',
+                token:localStorage.getItem('token'),
+                pageCount:10,
+                curPage:page
+            }
+        },function (data) {
+            if(data.code === '0'){
+                $('.w-list > .title > .u-point').text(data.data.score)
+                $('.w-list > .title > .u-used').text(data.data.total)
+                let html = '';
+                $.each(data.data.list,function (index,value) {
+                    if(value.rewardType === 1){
+                        html += '<div>\n' +
+                            '        <p class="u-sub-title">' + value.typeName + '</p>\n' +
+                            '        <p class="u-time">' + value.createTime + '</p>\n' +
+                            '        <div class="u-point-details">+' + (!value.fraction? '0':value.fraction) + '</div>\n' +
+                            '    </div>'
+                    }
+                    if(value.rewardType === 2){
+                        html += '<div>\n' +
+                            '        <p class="u-sub-title">' + value.typeName + '</p>\n' +
+                            '        <p class="u-time">' + value.createTime + '</p>\n' +
+                            '        <div class="u-point-details red">' + (!value.fraction? '0':value.fraction) + '</div>\n' +
+                            '    </div>'
+                    }
+                })
+                $('.w-list').append(html)
+
+            }
+        })
+    }
+
+    getList(curPage)
+    $(window).scroll(function () {
+        //已经滚动到上面的页面高度
+        var scrollTop = $(this).scrollTop();
+        //页面高度
+        var scrollHeight = $(document).height();
+        //浏览器窗口高度
+        var windowHeight = $(this).height();
+        //此处是滚动条到底部时候触发的事件，在这里写要加载的数据，或者是拉动滚动条的操作
+        if (scrollTop + windowHeight == scrollHeight) {
+            curPage++
+            getList(curPage)
+        }
+    });
+
+    $('#lo_left').on('click',function () {
+        window.history.go(-1)
+    })
+</script>
+</html>

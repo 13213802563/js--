@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+		<meta content="yes" name="apple-mobile-web-app-capable" />
+		<meta content="yes" name="apple-touch-fullscreen">
+		<meta content="black" name="apple-mobile-web-app-status-bar-style" />
+		<meta content="telephone=no,email=no" name="format-detection">
+		<title>完善信息</title>
+		<link rel="stylesheet" href="../../css/reset.css">
+		<link rel="stylesheet" href="../../css/weui/weui.css">
+    	<link rel="stylesheet" href="../../css/weui/jquery-weui.min.css">
+		<link rel="stylesheet" href="../../css/common.css" />
+		<link rel="stylesheet" href="../../css/index.css" />
+		<link rel="stylesheet" href="../../css/person.css" />
+		<style type="text/css">
+			.img{
+				width: 2.5%;
+				margin-right: .2rem;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div class="header">
+			<img src="../../images/arrow.png" class="lo_left" id="lo_left" />
+			<p>完善信息</p>
+			<span style="color: #fc4949;" id="notice">投保须知</span>
+		</div>
+		<div class="body-con">
+			<ul class="information-ul">
+				<li>
+					<p style="font-size: .4rem;">服务地址</p>
+					<input type="text" placeholder="请选择您的服务地址" id="homeAddr"/>
+					<input type="hidden" id="homeCode"/>
+					<img class="img" src="../../images/right.png" alt="">
+				</li>
+				<li>
+					<p style="font-size: .4rem;">身份证号码</p>
+					<input type="text" placeholder="请填写他的身份证号码" id="custIdcard"/>
+				</li>
+				<li>
+					<p style="font-size: .4rem;">详细地址</p>
+					<input type="text" placeholder="请填写他的详细地址" id="custAddr"/>
+				</li>
+				<li>
+					<p style="font-size: .4rem;">服务类型</p>
+					<input type="text" placeholder="请选择他的服务类型" id="serverType"/>
+					<input type="hidden" id="serverCode"/>
+					<img class="img" src="../../images/right.png" alt="">
+				</li>
+			</ul>
+			<!--上传劳务合同-->
+			<div class="information-con">
+				<div class="information-imag">
+					<h1>上传合同/劳务证明</h1>
+					<ul id="ulPhotos" class="information-showImag showImag" style="display: inline-block">
+						<li class="information-lifontImage lifontImage">
+							<img src="../../images/person/zhaopian.png" class="uploadImgShow" id="fontImage" />
+							<input accept="image/*" type="file" id="uploadfontImage" multiple="multiple" style="display: none" />
+						</li>
+					</ul>
+				</div>
+			</div>
+			<div class="btn" style="margin-top: 1rem;">
+				<button class="submit">提交</button>
+			</div>
+		</div>
+		<div class="raba" style="height: 2644px; display: none;"></div>
+		<div id="tanwin" class="tan" style="display:none;"></div>
+		<div id="loading" >
+			<div class="weui-loadmore">
+				<i class="weui-loading"></i>
+				<span class="weui-loadmore__tips">正在急速加载中...</span>
+			</div>
+		</div>
+	</body>
+	<script src="../../js/flexible.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../../js/jquery-3.1.1.min.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../../js/return.js"></script>
+	<script src="../../js/weui/jquery-weui.js"></script>
+	<script src="../../js/city-picker.min.js"></script>
+	<script src="../../js/upload/lrz.bundle.js"></script>
+	<!--接口加密-->
+	<script src="../../js/crypto/core.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../../js/crypto/cipher-core.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../../js/crypto/lib-typedarrays.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../../js/crypto/aes.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../../js/crypto/md5.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../../js/crypto/mode-ecb.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../../js/jzjy-ui/common.js" type="text/javascript" charset="utf-8"></script>
+	
+	<script src="../../js/insurance/insurance-perfect-information.js?id=6" type="text/javascript" charset="utf-8"></script>
+</html>

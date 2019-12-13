@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta content="yes" name="apple-mobile-web-app-capable"/>
+    <meta content="yes" name="apple-touch-fullscreen">
+    <meta content="black" name="apple-mobile-web-app-status-bar-style"/>
+    <meta content="telephone=no,email=no" name="format-detection">
+    <link rel="stylesheet" type="text/css" href="../../../css/reset.css"/>
+    <link rel="stylesheet" type="text/css" href="../../../css/common.css"/>
+    <link rel="stylesheet" type="text/css" href="../../../css/index.css"/>
+    <link rel="stylesheet" type="text/css" href="../../../css/weui/weui.css"/>
+    <link rel="stylesheet" type="text/css" href="../../../css/weui/jquery-weui.min.css"/>
+    <link rel="stylesheet" type="text/css" href="../../../css/integralGrade/integralRecord.css"/>
+    <title></title>
+</head>
+<body>
+<div class="header" id="hd" style="border: unset;color:#fff;">
+    <img src="../../../images/return_white@3x.png" class="lo_left" id="lo_left"/>
+    <p>积分记录</p>
+    <span class=""></span>
+</div>
+<div class="m-integral-record">
+    <div class="con">
+        <div class="percent-circle percent-circle-left">
+            <div class="left-content"></div>
+        </div>
+        <div class="percent-circle percent-circle-right">
+            <div class="right-content"></div>
+        </div>
+        <div class="text-circle">0</div>
+    </div>
+</div>
+<div class="m-lifting-fraction">
+    — 距离升级分数还有 <span>0</span> 分 —
+</div>
+
+
+<div class="m-integral-list">
+    <h1>积分记录</h1>
+    <div class="u-month">
+        <h3>本月</h3>
+        <p>已获得： <span>0</span></p>
+    </div>
+
+</div>
+<div id="aa" ontouchstart>
+    <div class="list-bottom">
+
+    </div>
+</div>
+
+</body>
+<script src="../../../js/flexible.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../../js/jquery-3.1.1.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../../js/return.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../../js/weui/jquery-weui.js"></script>
+<!--接口加密-->
+<script src="../../../js/crypto/core.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../../js/crypto/cipher-core.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../../js/crypto/lib-typedarrays.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../../js/crypto/aes.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../../js/crypto/md5.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../../js/crypto/mode-ecb.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../../js/jzjy-ui/common.js" type="text/javascript" charset="utf-8"></script>
+<script>
+    var commentPaging//评论分页
+    var isCommentPaging = false;
+    /*下拉刷新*/
+
+    //    滚动刷新
+    $(window).scroll(function () {
+        //已经滚动到上面的页面高度
+        var scrollTop = $(this).scrollTop();
+        //页面高度
+        var scrollHeight = $(document).height();
+        //浏览器窗口高度
+        var windowHeight = $(this).height();
+        //此处是滚动条到底部时候触发的事件，在这里写要加载的数据，或者是拉动滚动条的操作
+        if (scrollTop + windowHeight == scrollHeight) {
+            if (commentPaging && !isCommentPaging) {
+                list(commentPaging.curPage + 1, commentPaging.pageCount)
+            }
+        }
+    });
+    list(1, 10)
+//    列表
+    function list(curPage, pageCount) {
+        $("#info").remove();
+        jzjy.newAjax({
+                params: {
+                    key: 409986899626665,
+                    token: jzjy.getToken(),
+                    pageCount: pageCount,
+                    curPage: curPage
+                },
+            },
+            function (data) {
+                if (data.code == '0') {
+                    var list = data.data.list;
+                    // 判断是否第一页数据（monthFraction/totalFraction/upgrade  只有初次查询有值）
+                    if(data.data.hasOwnProperty("monthFraction")){
+                        if(_localStorage.getItem("monthFraction")&&_localStorage.getItem("totalFraction")&&_localStorage.getItem("upgrade")){
+                            if(_localStorage.getItem("monthFraction")!=data.data.monthFraction||_localStorage.getItem("totalFraction")!=data.data.totalFraction||_localStorage.getItem("upgrade")!=data.data.upgrade){
+                                _localStorage.setItem("monthFraction",data.data.monthFraction)
+                                _localStorage.setItem("totalFraction",data.data.totalFraction)
+                                _localStorage.setItem("upgrade",data.data.upGrade);
+                            }
+                        }else{
+                            _localStorage.setItem("monthFraction",data.data.monthFraction)
+                            _localStorage.setItem("totalFraction",data.data.totalFraction)
+                            _localStorage.setItem("upgrade",data.data.upGrade);
+                        }
+                    }
+
+                    getPercent(_localStorage.getItem("totalFraction"))//总分
+                    if(JSON.parse(_localStorage.getItem("totalFraction"))>1400){
+                        // $(".m-lifting-fraction").hide()
+                        // $(".m-integral-list").css("margin-top"," -0.3rem")
+                        $('.m-lifting-fraction').remove()
+                        $('.m-integral-list').css('border-top','0')
+                        $('.m-integral-list > h1').css('padding','0.15rem 0.45rem 0.45rem 0.5rem')
+                    }
+                    $(".m-lifting-fraction span").html(localStorage.getItem("upgrade"))
+                    $(".u-month p span").html(_localStorage.getItem("monthFraction"))
+                    var reward = ""
+                    var html = '';
+                    commentPaging = data.data.page
+
+                    if (list.length > 0) {
+                        for (var i = 0; i < list.length; i++) {
+                            if (list[i].rewardType == "1") {
+                                reward = '<div class="list-right">+' + (!list[i].fraction? '0':list[i].fraction) + '</div>'
+                            } else {
+                                reward = '<div class="list-right" style="color: #fc4949;">' + (!list[i].fraction? '0':list[i].fraction) + '</div>'
+                            }
+                            html = '<div class="list"><div class="list-left">\n' +
+                                '            <p>' + list[i].name + '</p>\n' +
+                                '            <p>' + list[i].createTime + '</p>\n' +
+                                '        </div>\n' +
+                                '        ' + reward + '</div>'
+                            $(".list-bottom").append(html);
+                        }
+
+                        if (list.length < commentPaging.pageCount) {
+                            $(".list-bottom").after("<p id='info' style='text-align: center;color: #666666;'>— 已经加载完毕 — </p>")
+                            isCommentPaging = true
+                        }
+                    }else{
+                        //$(".list-bottom").after("<p id='info' style='text-align: center;color: #666666;'>— 已经加载完毕 — </p>")
+                        isCommentPaging = true
+                    }
+
+                }
+            })
+    }
+
+
+
+
+    function getPercent(num) {
+        var leftContent = document.querySelector(".left-content");
+        var rightContent = document.querySelector(".right-content");
+        var textCircle = document.querySelector(".text-circle");
+        var angle = 360 / (5000 / num);
+        //当分数比大于80%时，让其锁定至80% 360*80% = 288
+        if (angle > 288) {
+            angle = 288;
+        }
+        if (angle <= 180) {
+            rightContent.setAttribute('style', 'transform: rotate(' + angle + 'deg)');
+        } else {
+            rightContent.setAttribute('style', 'transform: rotate(' + 180 + 'deg)');
+            leftContent.setAttribute('style', 'transform: rotate(' + (angle + 180) + 'deg)');
+        }
+        textCircle.innerHTML = parseInt(num);
+    }
+
+
+</script>
+</html>

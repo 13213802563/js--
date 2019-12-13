@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>购买管家卡</title>
+</head>
+<style>
+    * {
+        touch-action: none;
+    }
+    .body-bg {
+        width: 100%;
+        height: 100%;
+        background-image: url('../../images/purchase_750@3x.png');
+        background-repeat: no-repeat;
+        background-size: contain;
+        position: absolute;
+        background-position: top;
+        top: 0;
+    }
+
+    #qrcode {
+        position: relative;
+        top: 40rem;
+        left: calc(50% - 18rem);
+        width: 36rem;
+        height: 36rem;
+        border: 0.5rem solid #fff;
+    }
+
+    #qrcode >img {
+        width: 100%;
+        height: 100%;
+    }
+    #qrtitle {
+        top: 40rem;
+        position: relative;
+        text-align: center;
+        font-size: 3rem;
+        color: #eacf39;
+    }
+    #qrtitle:after {
+        content: '';
+        width: 12rem;
+        height: 13rem;
+        background-image: url(../../images/finger@3x.png);
+        background-repeat: no-repeat;
+        display: block;
+        position: absolute;
+        right: 4rem;
+        top: -3rem;
+    }
+</style>
+<body style="background: #7c0ed2">
+    <div class="body-bg">
+        <div id="qrcode">
+
+        </div>
+        <p id="qrtitle">长按识别二维码</p>
+    </div>
+</body>
+<script src="../../js/jquery-3.1.1.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../js/qrcode/qrcode.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../js/jzjy-ui/common.js" type="text/javascript" charset="utf-8"></script>
+<script>
+    new QRCode(document.getElementById("qrcode"),'http://w.95081.com/wechat/card/init?type=1&serviceId=' + getQueryString('token'))
+    $('canvas').remove()
+</script>
+</html>

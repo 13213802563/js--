@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+		<meta content="yes" name="apple-mobile-web-app-capable" />
+		<meta content="yes" name="apple-touch-fullscreen">
+		<meta content="black" name="apple-mobile-web-app-status-bar-style" />
+		<meta content="telephone=no,email=no" name="format-detection">
+		<title>公告详情</title>
+		<link rel="stylesheet" href="../../css/reset.css">
+		<link rel="stylesheet" href="../../css/common.css" />
+	</head>
+	<style type="text/css">
+		strong {
+			font-size: .4rem;
+			margin-top: .2rem;
+		}
+		
+		.announce-cont {
+			padding-top: 1.5rem;
+			line-height: .6rem;
+			font-size: .35rem;
+		}
+	</style>
+
+	<body>
+		<div class="header">
+			<em class="lo_left" id="lo_left"></em>
+			<p>公告详情</p>
+		</div>
+		<div class="announce-cont" style="padding-top:1.5rem;">
+			<p id="con"></p>
+		</div>
+
+	</body>
+	<script src="../../js/flexible.js"></script>
+	<script src="../../js/jquery-3.1.1.min.js"></script>
+	<script src="../../js/return.js" type="text/javascript" charset="utf-8"></script>
+	<!--	<script src="../../js/jzjy-ui/common.js" type="text/javascript" charset="utf-8"></script>
+-->
+	<script src="../../js/jzjy-ui/main.js" type="text/javascript" charset="utf-8"></script>
+	<script>
+		$(document).ready(function($) {
+			function getQueryString(name) {
+				var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
+				var r = window.location.search.substr(1).match(reg);
+				if(r != null) return decodeURI(r[2]);
+				return null;
+			}
+
+			var data = JSON.stringify({
+				'id': getQueryString('id')
+			})
+			$.ajax({
+				url: geturl() + "/userApp/loadNewsInfo",
+				type: "post",
+				dataType: "json",
+
+				data: {
+					"body": data
+
+				},
+				success: function(data) {
+					if(data.code == "0") {
+						$("#con").html(data.data.content)
+					} else {
+						console.log(data)
+					}
+
+				}
+
+			})
+		});
+	</script>
+
+</html>

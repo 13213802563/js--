@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+		<meta content="yes" name="apple-mobile-web-app-capable" />
+		<meta content="yes" name="apple-touch-fullscreen">
+		<meta content="black" name="apple-mobile-web-app-status-bar-style" />
+		<meta content="telephone=no,email=no" name="format-detection">
+		<link rel="stylesheet" type="text/css" href="../../../css/reset.css" />
+		<link rel="stylesheet" type="text/css" href="../../../css/common.css" />
+		<link rel="stylesheet" href="../../../css/weui/weui.css">
+		<link rel="stylesheet" href="../../../css/weui/jquery-weui.min.css">
+		<link rel="stylesheet" type="text/css" href="../../../css/index.css?id=2" />
+		<script src="../../../js/umeng.js"></script>
+
+		<title>立即提现</title>
+	</head>
+	<style type="text/css">
+		.weui-dialog__ft a {
+			color: #FC4949;
+		}
+		
+		.weui-dialog__bd {
+			color: #000000;
+		}
+		[readonly="readonly"] {
+			  pointer-events: none;
+			}
+	</style>
+
+	<body>
+		<div class="header">
+			<img src="../../../images/arrow.png" class="lo_left" id="reture" />
+			<p>立即提现</p>
+		</div>
+		<div class="immediateContent">
+			<div class="immediateMoney">
+				<h3></h3>
+				<p>可提现金额(元）</p>
+			</div>
+			<ul class="immediateUl">
+				<li class="firstimmediateUl">
+					<div>提现金额</div>
+					<div style="width: 60%;"><input type="text" onkeyup="num(this)" id="phonenum" placeholder="请输入提现金额" /></div>
+				</li>
+				<li class="lastimmediateUl" style="align-items: center;">
+					<div class="jsclass">添加银行卡</div>
+					<p style="width: 50%;"></p>
+					<!--<input type="text" style="border:0;" value="" readonly="readonly"/>-->
+					<div class="jsimg"><img src="../../../images/person/arrow@3x.png"></div>
+				</li>
+			</ul>
+
+		</div>
+
+		<div class="immediate">
+			<button>提现</button>
+		</div>
+		<div id="tanwin" class="tan" style="display:none;"></div>
+	</body>
+	<script src="../../../js/flexible.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../../../js/jquery-3.1.1.min.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../../../js/return.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../../../js/weui/jquery-weui.js"></script>
+	<!--接口加密-->
+	<script src="../../../js/crypto/core.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../../../js/crypto/cipher-core.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../../../js/crypto/lib-typedarrays.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../../../js/crypto/aes.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../../../js/crypto/md5.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../../../js/crypto/mode-ecb.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../../../js/jzjy-ui/common.js?x1" type="text/javascript" charset="utf-8"></script>
+	<script src="../../../js/my/withdrawals/immediateCash.js?id=2" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript">
+
+	function num(obj) {
+			obj.value = obj.value.replace(/^(\-)*(\d+)\.(\d\d).*$/, '$1$2.$3'); //只能输入两个小数
+		}
+</script>
+</html>

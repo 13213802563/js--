@@ -1,0 +1,427 @@
+<!--信息卡首页-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>家政招工</title>
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta content="yes" name="apple-mobile-web-app-capable"/>
+    <meta content="yes" name="apple-touch-fullscreen">
+    <meta content="black" name="apple-mobile-web-app-status-bar-style"/>
+    <meta content="telephone=no,email=no" name="format-detection">
+    <link rel="stylesheet" type="text/css" href="../../css/reset.css"/>
+    <link rel="stylesheet" href="../../css/weui/weui.css">
+    <link rel="stylesheet" href="../../css/weui/jquery-weui.min.css">
+
+    <link rel="stylesheet" href="../../css/ocr/index.css">
+    <style>
+        #loading{
+            width: 100vh;
+            height: 100vh;
+            position: fixed;
+            top: 0;
+            padding-top: 50%;
+            background: rgba(0, 0, 0, .5);
+            display: none;
+        }
+    </style>
+</head>
+<body>
+<div>
+    <ul>
+        <li>
+            <div>
+                <p>联系电话</p>
+                <input type="tel" id="mobile" placeholder="请输入您的联系方式" maxlength="11" >
+            </div>
+        </li>
+        <li>
+            <div class="verCode">
+                <p>获取验证码</p>
+                <input type="tle" placeholder="请输入验证码" id="vercode" maxlength="6">
+                <button id="time">获取验证码</button>
+            </div>
+        </li>
+        <li>
+            <div>
+                <p>户籍性质</p>
+                <input type="text" readonly id="household-registration" placeholder="请选择户籍性质">
+            </div>
+        </li>
+        <li>
+            <div>
+                <p>人员身份类型</p>
+                <input type="text" readonly placeholder="请选择人员身份类型" id="identity-type">
+            </div>
+        </li>
+        <li>
+            <div>
+                <p>身份证人像面</p>
+                <div class="right card_up">
+                    <div class="wrappic clearfix wrapImg" data-index="0">
+                        <a>
+                            <img class="col-phone portrait-img" src="../../images/file-caed/zheng.png" data-code="203300010001">
+                            <input data-idtype="2" id="imgidCard" accept="image/*" type="file" class="imguplad" data-code="203300010001" data-worktype="4"/>
+                            <div></div>
+                            <input type="hidden" name="img_val" value=""/>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </li>
+        <li>
+            <div>
+                <p>身份证国徽面</p>
+                <div class="right card_up">
+                    <div class="wrappic clearfix wrapImg" data-index="1">
+                        <a>
+                            <img class="col-phone national-emblem" src="../../images/file-caed/fan.png" data-code="203300010002">
+                            <input data-idtype="1" id="imgCard" accept="image/*" type="file" class="imguplad" data-code="203300010002" data-worktype="4" />
+                            <div></div>
+                            <input data-idtype="1" type="hidden" name="img_val" value="" >
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </li>
+        <li>
+            <div>
+                <p>本人一寸照</p>
+                <div class="userCenter-right">
+                    <div class="">
+                        <img class="uploadImgShow" src="../../images/person/zhaopian.png" id="fontImage"/>
+                        <input accept="image/*" type="file" id="uploadfontImage" style="display: none"/>
+                    </div>
+                </div>
+            </div>
+        </li>
+    </ul>
+    <div id="btn">提交</div>
+</div>
+<div id="tanwin" class="tan" style="display:none;"></div>
+<div id="loading" >
+    <div class="weui-loadmore" style="margin: 0;margin-top: 13%;width: 55%;">
+        <i class="weui-loading"></i>
+        <span class="weui-loadmore__tips" style="color: #fff;">正在加载中...</span>
+    </div>
+</div>
+</body>
+<script type="text/javascript" src="../../js/jquery-3.1.1.min.js"></script>
+<script src="../../js/weui/jquery-weui.js"></script>
+<script src="../../js/crypto/core.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../js/crypto/cipher-core.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../js/crypto/lib-typedarrays.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../js/crypto/aes.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../js/crypto/md5.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../js/crypto/mode-ecb.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../js/jzjy-ui/common.js?id=2" type="text/javascript" charset="utf-8"></script>
+<script src="../../js/jzjy-ui/function.js" type="text/javascript" charset="utf-8"></script>
+
+<script src="../../js/upload/lrz.bundle.js"></script>
+<script>
+    var numberID = '';
+    var name = '';
+    var householdAddress = '';
+    var istime = false;
+    var isBtn = false;
+    /*人像面*/
+    $('#imgidCard').on('change', function (e) {
+        let that = this;
+        var index = $(this).parent().parent().attr('data-index');
+        console.log($(this)[0].files[0])
+        var formData = new FormData();
+        formData.append('files', $(this)[0].files[0]);  //添加图片信息的参数
+        formData.append('type', 'ORIGINAL');
+        $("#loading").show();
+        $("input").attr('disabled',true)
+        $.ajax({
+            url: '/img_service/ul/uploadImg.action',
+            type: 'POST',
+            cache: false, //上传文件不需要缓存
+            data: formData,
+            processData: false, // 告诉jQuery不要去处理发送的数据
+            contentType: false, // 告诉jQuery不要去设置Content-Type请求头
+            success: function (data) {
+                var uploadImg = data.reUrl[0];
+                $(".card_up>.wrappic").eq(index).children('a').children('img').attr('src', uploadImg);
+                $(that).attr('data-url', uploadImg)
+                $.ajax({
+                    type: "post",
+                    url: "/public-service/ocr/idCardOCR?imgURL=" + uploadImg,
+                    success: function (msg) {
+                        $("#loading").hide();
+                        $("input").attr('disabled',false)
+
+                        var objdata = JSON.parse(msg.data);
+                        if (msg.status == -1 || msg.status == -2) {
+                            var msg = msg.msg;
+                            tanwin(msg);
+                            return;
+                        }
+
+
+                        if (objdata.result.hasOwnProperty("number")) {
+                            //人像
+                            numberID = objdata.result.number;
+                            name = objdata.result.name;
+                            householdAddress = objdata.result.address;
+
+                        } else {
+                            $(that).attr('ischange', '0')
+                            $("#imgidCard").attr("data-url", '../../images/file-caed/zheng.png')
+                            $(".portrait-img").attr("src", '../../images/file-caed/zheng.png')
+                            tanwin("请上传人像面");
+                            return
+                        }
+
+
+                        $(".card_up>.wrappic").eq(index).attr('number', numberID)
+                        $('input.imguplad').attr('data-number', numberID)
+                    }
+                });
+            }
+        })
+    })
+    /*国徽面*/
+    $('#imgCard').on('change', function (e) {
+        let that = this;
+        var index = $(this).parent().parent().attr('data-index');
+        console.log($(this)[0].files[0])
+        var formData = new FormData();
+        formData.append('files', $(this)[0].files[0]);  //添加图片信息的参数
+        formData.append('type', 'ORIGINAL');
+        $("#loading").show();
+        $("input").attr('disabled',true)
+
+        $.ajax({
+            url: '/img_service/ul/uploadImg.action',
+            type: 'POST',
+            cache: false, //上传文件不需要缓存
+            data: formData,
+            processData: false, // 告诉jQuery不要去处理发送的数据
+            contentType: false, // 告诉jQuery不要去设置Content-Type请求头
+            success: function (data) {
+                $("#loading").hide();
+                $("input").attr('disabled',false)
+
+                var uploadImg = data.reUrl[0];
+                $(".card_up>.wrappic").eq(index).children('a').children('img').attr('src', uploadImg);
+                $(that).attr('data-url', uploadImg)
+                $.ajax({
+                    type: "post",
+                    url: "/public-service/ocr/idCardOCR?imgURL=" + uploadImg,
+                    success: function (msg) {
+                        var objdata = JSON.parse(msg.data);
+                        if (msg.status == -1 || msg.status == -2) {
+                            var msg = msg.msg;
+                            tanwin(msg);
+                            return;
+                        }
+
+                        if (objdata.result.hasOwnProperty("number")) {
+                            // //国徽
+                            $("#imgCard").attr("data-url", '../../images/file-caed/fan.png')
+                            $(".national-emblem").attr("src", '../../images/file-caed/fan.png')
+                            tanwin("请上传国徽面");
+                            return
+
+                        } else {
+                            var temp = 1;
+                            var sessage = msg.data.result;
+                            var startTime = Date.parse(objdata.result.valid_from);
+                            var endTime = Date.parse(objdata.result.valid_to);
+                            var date = new Date().getTime();
+                            $(that).attr('ischange', '1');
+                        }
+
+
+                        $(".card_up>.wrappic").eq(index).attr('number', numberID)
+                        $('input.imguplad').attr('data-number', numberID)
+                    }
+                });
+            }
+        })
+    })
+
+
+    $("#household-registration").picker({
+        title: "请选择您的户籍性质",
+        cols: [
+            {
+                textAlign: 'center',
+                values: ['1', '2'],
+                displayValues: ['城镇', '农村']
+            }
+        ], onChange: function (picker, values, displayValues) {
+            $("#household-registration").attr("data-val", values.join(''))
+        },
+        formatValue: function (picker, values, displayValues) {
+            return displayValues.join('')
+        }, onOpen: function () {
+            $('input').blur()
+        }
+    });
+    $("#identity-type").picker({
+        title: "请选择您的身份类型",
+        cols: [
+            {
+                textAlign: 'center',
+                values: ['1', '2', '3', '4', '5', '6'],
+                displayValues: ['失业人员', '农村转移就业劳动力', '高校毕业生', '退役军人', '残疾人', '在职职工']
+            }
+        ], onChange: function (picker, values, displayValues) {
+            $("#identity-type").attr("data-val", values.join(''))
+        },
+        formatValue: function (picker, values, displayValues) {
+            return displayValues.join('')
+        }, onOpen: function () {
+            $('input').blur()
+        }
+    });
+
+    /*一寸照*/
+
+    $("#fontImage").on("click", function () {
+        $("#uploadfontImage").click();
+    })
+    $("#uploadfontImage").change(function () {
+        $("#loading").show();
+        $("input").attr('disabled',true)
+
+        var formData = new FormData();
+        formData.append('files', $(this)[0].files[0]);  //添加图片信息的参数
+        formData.append('type', 'ORIGINAL')
+        $.ajax({
+            url: '/img_service/ul/uploadImg.action',
+            type: 'POST',
+            cache: false, //上传文件不需要缓存
+            data: formData,
+            processData: false, // 告诉jQuery不要去处理发送的数据
+            contentType: false, // 告诉jQuery不要去设置Content-Type请求头
+            success: function (data) {
+                $("#loading").hide();
+                $("input").attr('disabled',false)
+
+                var uploadImg = data.reUrl[0];
+                $("#fontImage").attr('src', uploadImg)
+
+            }
+        })
+    })
+    /*获取验证码*/
+    //获取验证码
+    $("#time").on('click', function() {
+        if(istime)return;
+        istime=true;
+        jzjyFunction.time($("#mobile").val(),$("#time"),function () {
+            if(data.code == '-1') {
+                tanwin(data.msg);
+                istime = false;
+                jzjyFunction.removerInter()
+                $('#time').html('重新获取');
+                return
+            }
+        })
+    })
+        /*提交*/
+    $("#btn").on("click", function () {
+        if (isBtn) return;
+        isBtn = true;
+        if (!$("#mobile").val()) {
+            tanwin("请输入您的手机号");
+            isBtn = false;
+            return;
+        } else if (!(/^(13|15|18|14|17|16|19)\d{9}$/i.test($("#mobile").val()))) {
+            tanwin("您输入手机号码有误");
+            isBtn = false;
+            return;
+        } else if(!$('#vercode').val()) {
+            tanwin("您还没有输入验证码");
+            isBtn = false;
+            return;
+        }else if (!$("#household-registration").val()) {
+            tanwin("请选择户籍性质");
+            isBtn = false;
+            return;
+        } else if (!$("#identity-type").val()) {
+            tanwin("请选择您的身份类型");
+            isBtn = false;
+            return;
+        }
+        var arr = $("input.imguplad");
+        if (!$(arr[0]).attr('data-url') || !$(arr[1]).attr('data-url')) {
+            $.toast("请上传正反两面的身份证照片", 'text');
+            isBtn = false;
+            return;
+        }
+        var ps = [];
+        if (!arr || arr.length == 0) {
+            $.toast('请上传图片', 'text');
+            isBtn = false;
+            return;
+        }
+        var listArr = [];
+        var numberUrl;
+        for (var i = 0; i < arr.length; i++) {
+            var imgObj = '';
+            if ($(arr[i]).attr('data-idtype') === '1') {
+                var number = $(".card_up>.wrapImg").eq($(arr[i]).attr('data-idtype')).attr('number');
+                imgObj = {
+                    "originalAddress": $(arr[i]).attr('data-url'),
+                    "pictureName": "name",
+                    "suffix": $(arr[i]).attr('data-url').match(/[^.\/]+\.[^.\/]+$/)[0].substr(-3),
+                    "albumTypeId": $(arr[i]).attr('data-idtype'),
+                }
+            } else if ($(arr[i]).attr('data-idtype') === '2') {
+                imgObj = {
+                    "originalAddress": $(arr[i]).attr('data-url'),
+                    "pictureName": "name",
+                    "suffix": $(arr[i]).attr('data-url').match(/[^.\/]+\.[^.\/]+$/)[0].substr(-3),
+                    "albumTypeId": $(arr[i]).attr('data-idtype'),
+                }
+                numberUrl = $(arr[i]).attr('data-number');
+            }
+            listArr.push(imgObj);
+        }
+        if ($("#imgidCard").attr("ischange") === $("#imgCard").attr("ischange")) {
+            $.toast("请上传正反两面的身份证照片", "text");
+            isBtn = false;
+            return;
+        }
+        if ($(".uploadImgShow").attr('src') == '../../images/person/zhaopian.png') {
+            $.toast("请上传本人一寸照", "text");
+            isBtn = false;
+            return;
+        } else {
+            jzjy.newAjax({
+                params: {
+                    key: 639770610299866,
+                    name: name,
+                    verifcode : $('#vercode').val(),
+                    idCardNum: numberID,
+                    householdAddress: householdAddress,
+                    mobile: $("#mobile").val(),
+                    householdType: $("#household-registration").attr("data-val"),
+                    identityType: $("#identity-type").attr("data-val"),
+                    icon: $("#fontImage").attr('src'),
+                    idCardFront: $("#imgCard").attr('data-url'),
+                    idCardBack: $("#imgidCard").attr('data-url'),
+                }
+            }, function (data) {
+                console.log(data)
+                if (data.code == '0') {
+                    $.alert("提交成功", function() {
+                        window.location.href = location.href + '?time=' + ((new Date()).getTime());
+                    });
+
+                } else {
+                    $.toast(data.msg, "text");
+                    isBtn = false;
+                }
+            })
+        }
+    })
+
+</script>
+</html>

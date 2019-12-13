@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+		<meta content="yes" name="apple-mobile-web-app-capable" />
+		<meta content="yes" name="apple-touch-fullscreen">
+		<meta content="black" name="apple-mobile-web-app-status-bar-style" />
+		<meta content="telephone=no,email=no" name="format-detection">
+		<link rel="stylesheet" type="text/css" href="../../css/reset.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/common.css" />
+		<title>管家卡</title>
+		<script src="../../js/umeng.js" type="text/javascript" charset="utf-8"></script>
+		<style type="text/css">
+			body {
+				background: #f4f4f4;
+			}
+
+			#qrcode {
+				width: 60%;
+				height: 41%;
+				text-align: center;
+				background: #fff;
+				position: absolute;
+				top: 50%;
+				margin-top: -30%;
+				left: 50%;
+				margin-left: -30%;
+				font-size: .35rem;
+			}
+
+			#qrcode img {
+				width: 70%;
+				padding-top: .8rem;
+				margin: auto;
+			}
+
+			#qrcode p {
+				color: #666666;
+			}
+
+			#qrcode div {
+				color: #FC4949;
+				margin-top: .2rem;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div class="header">
+			<img src="../../images/arrow.png" class="lo_left" id="lo_left" />
+			<p>我的二维码</p>
+		</div>
+
+		<div id="qrcode"></div>
+
+	</body>
+	<script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+	<script src="../../js/jquery-3.1.1.min.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../../js/qrcode/qrcode.min.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../../js/flexible.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../../js/return.js" type="text/javascript" charset="utf-8"></script>
+
+	<!--接口加密-->
+	<script src="../../js/crypto/core.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../../js/crypto/cipher-core.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../../js/crypto/lib-typedarrays.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../../js/crypto/aes.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../../js/crypto/md5.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../../js/crypto/mode-ecb.js" type="text/javascript" charset="utf-8"></script>
+
+	<script src="../../js/jzjy-ui/common.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../../js/my/qrCode.js"></script>
+
+	<script type="text/javascript">
+		// $('body').height($(document).height());
+		// new QRCode(document.getElementById("qrcode"), "http://w.95081.com/wechat/card/init?type=1&token=" + jzjy.getToken()); // 设置要生成二维码的链接
+		// $("#qrcode img").after("<br/><p>扫一扫上面的二维码，</p><div>购买管家卡(享受优惠)</div>");
+	</script>
+
+</html>

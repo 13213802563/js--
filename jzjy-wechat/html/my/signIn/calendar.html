@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html style="background: #f4f4f4">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta content="yes" name="apple-mobile-web-app-capable" />
+    <meta content="yes" name="apple-touch-fullscreen">
+    <meta content="black" name="apple-mobile-web-app-status-bar-style" />
+    <meta content="telephone=no,email=no" name="format-detection">
+    <link rel="stylesheet" type="text/css" href="../../../css/reset.css" />
+    <link rel="stylesheet" type="text/css" href="../../../css/common.css" />
+    <link rel="stylesheet" href="../../../css/weui/weui.css">
+    <link rel="stylesheet" href="../../../css/weui/jquery-weui.min.css">
+    <link rel="stylesheet" href="../../../css/my/signIn/calendar.css?V=3">
+    <script src="../../js/umeng.js"></script>
+    <title>签到日历</title>
+</head>
+
+<body style="background: #f4f4f4">
+<div class="header" id="header">
+    <img src="../../../images/return_white@3x.png" class="lo_left" id="lo_left" />
+    <span ><a style="color: #fff" href="point-details.html">签到明细</a></span>
+</div>
+<div class="w-signin">
+    <div class="icon">
+        <img src="../../../images/signIn/smiling_face@3x.png" alt="">
+    </div>
+    <p class="title">您已连续签到<span>0</span>天，别间断~</p>
+</div>
+
+<div class="w-calendar">
+    <p class="title">签到日历</p>
+    <div class="m-calendar-body">
+    </div>
+</div>
+
+</body>
+<script src="../../../js/flexible.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../../js/jquery-3.1.1.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../../js/weui/jquery-weui.js"></script>
+<!--接口加密-->
+<script src="../../../js/crypto/core.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../../js/crypto/cipher-core.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../../js/crypto/lib-typedarrays.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../../js/crypto/aes.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../../js/crypto/md5.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../../js/crypto/mode-ecb.js" type="text/javascript" charset="utf-8"></script>
+
+<script src="../../../js/jzjy-ui/common.js" type="text/javascript" charset="utf-8"></script>
+<!--<script src="../../../js/vconsole.js"></script>-->
+<script>
+    function toCN(num) {
+        let _num = num.toString()
+        switch (_num) {
+            case '1':
+                return '一'
+            case '2':
+                return '二'
+            case '3':
+                return '三'
+            case '4':
+                return '四'
+            case '5':
+                return '五'
+            case '6':
+                return '六'
+            case '7':
+                return '七'
+            case '8':
+                return '八'
+            case '9':
+                return '九'
+            case '10':
+                return '十'
+            case '11':
+                return '十一'
+            case '12':
+                return '十二'
+            default:
+                break;
+        }
+    }
+    function calander(num) {
+
+        // 通过月份计算当年的本月有多少天
+        var dayCount = function (num = num) {
+            if(num === 1 || num === 3 || num === 5 || num === 7 || num === 8 || num === 10 || num === 12){
+                return 31;
+            }
+            if(num === 4 || num === 6 || num === 9 || num === 11){
+                return 30;
+            }
+            if(num === 2){
+                let year = new Date().getFullYear()
+                let case1 = year % 4 === 0;
+                let case2 = year % 100 !== 0;
+                let case3 = year % 400 === 0;
+                return (case1 && case2) || case3 ? 29 : 28;
+            }
+        }
+
+        //计算上个月是几月
+        function getLastMonth(num) {
+            return num === 1? 12:num -1;
+        }
+
+        // 计算本月1号是星期几
+        var getWeekDay = function () {
+            return new Date(new Date().getFullYear() + '/' + (num) + '/' + '1').getDay();
+        }
+
+        // 渲染日历格子
+        for(let i = 0; i < 42; i ++){
+            $('.m-calendar-body').append('<span class="day"></span>')
+        }
+
+        //计算前面空了几个格子
+        for(let i = 0 ; i < getWeekDay() ; i++){
+            $($('.day')[i]).addClass('start')
+        }
+        let startCount = $('.m-calendar-body > .start').length;
+        //计算上个月有多少天
+       let lastMonthCount = dayCount(getLastMonth(num))
+        //计算上个月天数 减去 空格子数量 得出差值
+        let difValue = lastMonthCount - startCount;
+        //上个月天数生成数组
+        let lastFullMonthDays = function(){
+           var _tmp = []
+            for(let i = 1 ; i <= lastMonthCount ; i++){
+                _tmp.push(i)
+            }
+            return _tmp;
+        }
+        //取 差值到数组尾的所有元素
+        var needToStart = lastFullMonthDays().slice(difValue,lastMonthCount)
+        //填入空格子
+        for(let i = 0 ; i < needToStart.length ; i++){
+            $($('.day')[i]).append('<span>' + needToStart[i] + '</span>')
+        }
+
+        let day = 0;
+        let fill = 0;
+        // 渲染本月天数和下月天数起始点。
+        for(var i = getWeekDay(); i < $('.day').length;i++){
+            if(i >= dayCount(num) + getWeekDay() ){
+                fill++;
+                $($('.day')[i]).html('<span>' + fill + '</span>')
+                    .addClass('fill')
+            }
+            if(i < dayCount(num) + getWeekDay() ){
+                day++;
+                $($('.day')[i]).html('<span data-day="' + day + '">' + day + '</span>')
+                    .addClass('mid')
+            }
+        }
+    }
+
+    jzjy.newAjax({
+        params:{
+            key:'234346633909369',
+            token:localStorage.getItem('token')
+        }
+    },function (data) {
+        if(data.code === '0'){
+            calander(data.data.month)
+            $('.w-calendar > .title').text('签到日历(' + toCN(data.data.month) + '月)')
+            var $monthItem = $('.mid > span');
+            $.each(data.data.signInRecords,function (index,value) {
+                if(value.isSignIn === 1){
+                    $($monthItem[index]).parent().addClass('yes')
+                }
+                if(value.isSignIn === 2){
+                    $($monthItem[index]).parent().addClass('no')
+                }
+                if(value.isSignIn === 3){
+                    return true;
+                }
+            })
+
+            $('.w-signin > .title > span').text(data.data.continuousDays)
+        }
+    })
+
+    // 返回
+    $('#lo_left').on('click',function () {
+        window.location.href = 'signIn.html'
+    })
+
+    // 处理物里返回键
+    pushHistory();
+    function pushHistory(){　　//刚一进到B页面就往history历史记录pushstate一个url
+        var state = {
+            title:"title",　　//可以传空值""
+            url:"#"};
+        window.history.pushState(state,"title","#");
+    }
+    window.addEventListener("popstate",function(e){　　//只要B页面按下手机物理返回键，就会被监听到
+
+        //该干嘛干嘛
+
+        //WeixinJSBridge.invoke('closeWindow',{},function(res){});　　//js代码关闭微信端当前网页
+
+        window.location.href = 'signIn.html'
+    },false);
+</script>
+</html>

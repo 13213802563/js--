@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<meta charset="UTF-8">
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+		<meta content="yes" name="apple-mobile-web-app-capable" />
+		<meta content="yes" name="apple-touch-fullscreen">
+		<meta content="black" name="apple-mobile-web-app-status-bar-style" />
+		<meta content="telephone=no,email=no" name="format-detection">
+		<meta name="format-detection" content="telephone=yes"/>
+		<link rel="stylesheet" type="text/css" href="../../css/reset.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/common.css" />
+		<link rel="stylesheet" href="../../css/weui/weui.min.css">
+		<link rel="stylesheet" href="../../css/weui/jquery-weui.min.css">
+		<link rel="stylesheet" type="text/css" href="../../css/index.css" />
+		<script src="../../js/umeng.js"></script>
+		<title>我的服务费</title>
+	</head>
+	<style>
+		.select {
+			border: 1px solid red !important;
+			color: red;
+		}
+		
+		.putForward {
+			background-image: url(../../images/bankAdministration/bg3x.png);
+			background-size: 100% 100%;
+			height: 4.5rem;
+			width: 95%;
+			margin: auto;
+			margin-top: 2rem;
+		}
+		
+		.putForward p {
+			color: #FFFFFF;
+			font-size: .4rem;
+
+			padding-top: .3rem;
+		}
+		
+		.putForward .money {
+			display: flex;
+			font-size: .35rem;
+			width: 100%;
+			justify-content: space-between;
+			align-items: center;
+			color: #FFFFFF;
+			margin-top: .35rem;
+		}
+		
+		.putForward .money p {
+			font-size: .7rem;
+			padding-top: 0;
+			margin-left: 0.5rem;
+		}
+		
+		.putForward .money #goForward {
+			width: 13%;
+			text-align: center;
+			background: #fff;
+			padding: .1rem;
+			border-radius: 1rem 0 0 1rem;
+			color: #FC4949;
+		}
+		
+		.putForward .downForward {
+			font-size: .35rem;
+			display: flex;
+			justify-content: space-between;
+			width: 90%;
+			margin: auto;
+			margin-top: 0.4rem;
+		}
+		.money-top{
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+			width: 90%;
+			margin: auto;
+		}
+		.notice{
+			position: absolute;
+			top: 27%;
+			left: 12%;
+			z-index: 300;
+			margin: auto;
+			background: #FFFFFF;
+			padding: .5rem 0;
+			border-radius: .3rem;
+			display: none;
+		}
+		.notice-content{
+			width:83%;
+			margin: auto;
+		}
+		.notice-content h2{
+			font-size: 0.45rem;
+			font-weight: 700;
+			text-align: center;
+			
+		}
+		.notice-content div{
+			margin-top: .3rem;
+		}
+		.notice-content div span{
+			color: #fc4949;
+			font-size: .45rem;
+			margin-left: .1rem;
+		}
+		.notice-content div p{
+			color: #666666;
+			font-size: .35rem;
+			margin-top: .1rem;
+		}
+		.notice-content button{
+			color: #fc4949;
+			font-size: .3rem;
+			padding: .1rem .3rem;
+		}
+		.img{
+			display: flex;
+			align-items: center;
+		}
+		.img img{
+			width:0.45rem;
+		}
+		.button{
+			text-align: center;
+		}
+		.button button{
+			color: #fc4949;
+			font-size: .35rem;
+			padding: .15rem .8rem;
+			border-radius: 1rem;
+			border:1px solid #fc4949;
+			background: #FFFFFF;
+		}
+		.addresss{
+			display: inline-flex;
+		}
+		.complete ul li >div{
+			margin: 0;
+			margin-top: 0.2rem;
+		}
+.addresss p{
+	width:78%;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	display: -webkit-box;
+	-webkit-box-orient: vertical;
+	-webkit-line-clamp: 2;
+}
+		.complete-top{
+			align-items: center;
+			margin: 0!important;
+			padding: 0!important;
+		}
+		.complete-top p{
+			color: #999999;
+			display: flex!important;
+			align-items: center!important;
+		}
+		.complete-top p img{
+			width: 30%!important;
+			margin-left: 0!important;
+			height: 30%!important;
+		}
+		#barrage{
+			position: fixed;
+			right: 15px;
+			top: 54%;
+			width: 20%;
+			z-index: 100;
+		}
+	</style>
+
+	<body>
+		<div class="header">
+			<img src="../../images/arrow.png" class="lo_left" id="lo_left" />
+			<p>我的服务费</p>
+			<span id="jyjl" style="color: red;">交易记录</span>
+		</div>
+		<div class="putForward">
+			<div class="money-top">
+				<p >可提现金额(元)</p>
+				<img src="../../images/bankAdministration/wenhao_copy%202@2x.png" style="width: 6%;" alt="">
+			</div>
+
+			<div class="money">
+				<p></p>
+				<div id="goForward">去提现</div>
+			</div>
+			<div class="downForward">
+				<p>待转入:<span id="dzr"></span></p>
+				<p>|</p>
+				<p>服务费余额:<span id="num"></span></p>
+			</div>
+		</div>
+		<ul class="mysalary">
+			<li>
+				<p>待转入(￥<span id="unSalaryTotal"></span> )</p>
+			</li>
+			<li>
+				<p>已转入
+					<span id="salaryTotal"></span> </p>
+			</li>
+		</ul>
+		<div class="salary">
+			<!--待发放-->
+			<div class="grant">
+				<!--<div class="background">-->
+					<!--<img src="../../images/qian.png" style="padding-left: .45rem;" />-->
+					<!--<div class="qian">-->
+						<!--￥ <span id="unSalaryTotal"></span>-->
+					<!--</div>-->
+				<!--</div>-->
+				<div class="complete">
+					<ul id="unFinished">
+					</ul>
+				</div>
+			</div>
+			<!--已发放-->
+			<div class="grant">
+				<!--<div class="background">-->
+					<!--<img src="../../images/qian.png" style="padding-left: .45rem;" />-->
+					<!--<div class="qian">-->
+						<!--￥ <span id="salaryTotal"></span>-->
+					<!--</div>-->
+				<!--</div>-->
+				<div class="complete">
+					<ul id="finished">
+
+					</ul>
+				</div>
+			</div>
+		</div>
+		<div class="modify">
+			<ul id="errorChoice">
+				<li>工作期间错误</li>
+				<li>出勤天数错误</li>
+				<li>工作总量错误</li>
+			</ul>
+			<div style="margin: 0 0.3rem; font-size:0.35rem">
+				<textarea id="taError" rows="6" style="width: 96%" placeholder="请写明具体原因"></textarea>
+			</div>
+			<div style="text-align: center"><button id="errorSubmit">提交</button></div>
+		</div>
+		<!--遮罩-->
+		<div class="raba" style="height: 2644px;"></div>
+		<div id="tanwin" class="tan" style="display:none;"></div>
+	<!--通知消息-->
+	<div class="notice">
+		<div class="notice-content">
+			<h2>提现须知</h2>
+			<div>
+				<div class="img"><img src="../../images/bankAdministration/juxing@2x.png" alt=""><span>待转入金额</span></div>
+				<p>待转入金额为管家已提报服务费但未到账金额总和。 </p>
+			</div>
+			<div>
+				<div class="img"><img src="../../images/bankAdministration/juxing@2x.png" alt=""><span>服务费余额</span></div>
+					<p>服务费余额为可提现+待转入总和。 </p>
+			</div>
+			<div>
+				<div class="img"><img src="../../images/bankAdministration/juxing@2x.png" alt=""><span>可提现金额</span></div>
+					<p>可提现金额为服务费已转入至可提现账户。 </p>
+
+			</div>
+			<div class="button">
+				<button>好的</button>
+			</div>
+		</div>
+	</div>
+	
+	
+	<!--图片拖拽-->
+		<img src="../../images/PLUC5AQB%7DQ4CV4BZMBD%5DBT8.jpg" draggable="true"id="barrage" alt="">
+	</body>
+	<script src="../../js/flexible.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../../js/jquery-3.1.1.min.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../../js/weui/jquery-weui.js"></script>
+	<!--接口加密-->
+	<script src="../../js/crypto/core.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../../js/crypto/cipher-core.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../../js/crypto/lib-typedarrays.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../../js/crypto/aes.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../../js/crypto/md5.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../../js/crypto/mode-ecb.js" type="text/javascript" charset="utf-8"></script>
+
+	<script src="../../js/jzjy-ui/common.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../../js/my/myWages.js?v=2-4"></script>
+</html>

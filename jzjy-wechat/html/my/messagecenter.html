@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<meta charset="UTF-8">
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+		<meta content="yes" name="apple-mobile-web-app-capable" />
+		<meta content="yes" name="apple-touch-fullscreen">
+		<meta content="black" name="apple-mobile-web-app-status-bar-style" />
+		<meta content="telephone=no,email=no" name="format-detection">
+		<link rel="stylesheet" type="text/css" href="../../css/reset.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/common.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/index.css" />
+		<title>消息中心</title>
+		<style>
+			#messageAppraise>li{
+				border-bottom: 15px solid #F4F4F4;
+				padding-bottom: 0.1rem;
+			}
+
+			#messageAppraise>li>div:first-child{
+				border-bottom: none;
+			}
+			.comment-ul li{
+				width: .42rem;
+				height: .4rem;
+				background-size: .45rem;
+			}
+			.noRecode{
+				text-align: center;
+				margin-top: 48%;
+			}
+		</style>
+
+	</head>
+
+	<body>
+		<div class="header">
+			<img src="../../images/arrow.png" class="lo_left" id="lo_left" />
+			<p>消息中心</p>
+		</div>
+		<div class="messagecenter">
+			<ul class="messagecenter-ul">
+				<li>公告</li>
+				<li>评价</li>
+				<li>反馈</li>
+			</ul>
+			<div class="message-center">
+				<!--公告-->
+				<div id="messageNotice" class="message-notice">
+					<!--<div class="notice">
+						<img src="../../images/accept-logo.png" style="width: 20%; margin-left: .4rem; height: 100%; border-radius: 50%;" />
+						<div class="notice-right">
+							<div class="right-right">
+
+								<div>10月21日</div>
+							</div>
+
+							<p>10月21日，部分课程即将开始</p>
+						</div>
+					</div>-->
+
+				</div>
+				<!--评价-->
+				<div class="message-notice">
+					<ul id="messageAppraise">
+						<!--<li>
+							<div class="evaluate">
+								<img src="../../images/accept-logo.png" style="width: 14%; margin-left: .4rem; height: 100%; border-radius: 50%;" />
+								<div class="notice-right">
+									<div class="right-right">
+										<h1>高级育儿</h1>
+										<div>星星</div>
+									</div>
+									<p style="color: #A7A7A7;">2017-07-05</p>
+								</div>
+							</div>
+							<div class="feedback-size">
+								<div class="size-one"><span>评论: </span>针对于事物进行主管或客观的的自我印象阐述。品论已让人听到有利于不自己的一面，因此品论的话语容易产生对方的逆反心理。</div>
+								<div class="size-two">
+									<span>家政小秘书回复: </span> 针对于事物进行主管或客观的自我印象阐述。评论易让人听到不利于
+								</div>
+							</div>
+							<div class="size-btn"><p>去看看</p></div>
+						</li>-->
+					</ul>
+				</div>
+				<!--反馈-->
+				<div id="feedBack" class="message-notice">
+					<!--<div class="feedback">
+						<img src="../../images/person/userphoto.png" style="width: 14%; margin-left: .4rem; height: 100%; border-radius: 50%;" />
+						<div class="feedback-left">
+							<h1>李潇潇</h1>
+							<p>2017-07-05</p>
+						</div>
+					</div>
+					<div class="feedback-size">
+						<div class="size-one"><span>评论: </span>针对于事物进行主管或客观的的自我印象阐述。品论已让人听到有利于不自己的一面，因此品论的话语容易产生对方的逆反心理。</div>
+						<div class="size-two">
+							<span>家政小秘书回复: </span> 针对于事物进行主管或客观的自我印象阐述。评论易让人听到不利于
+						</div>
+						<div class="size-two">
+							<span>家政小秘书回复: </span> 针对于事物进行主管或客观的自我印象阐述。评论易让人听到不利于
+						</div>
+					</div>-->
+				</div>
+			</div>
+		</div>
+		<div id="tanwin" class="tan" style="display:none;"></div>
+	</body>
+	<script src="../../js/flexible.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../../js/jquery-3.1.1.min.js" type="text/javascript" charset="utf-8"></script>
+	<!--接口加密-->
+	<script src="../../js/crypto/core.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../../js/crypto/cipher-core.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../../js/crypto/lib-typedarrays.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../../js/crypto/aes.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../../js/crypto/md5.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../../js/crypto/mode-ecb.js" type="text/javascript" charset="utf-8"></script>
+
+	<script src="../../js/jzjy-ui/common.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../../js/my/messageCenter.js?id=2" type="text/javascript" charset="utf-8"></script>
+
+</html>

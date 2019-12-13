@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+        <meta content="yes" name="apple-mobile-web-app-capable" />
+        <meta content="yes" name="apple-touch-fullscreen">
+        <meta content="black" name="apple-mobile-web-app-status-bar-style" />
+        <meta content="telephone=no,email=no" name="format-detection">
+        <title>客户信息</title>
+        <link rel="stylesheet" href="../../../css/reset.css">
+        <link rel="stylesheet" href="../../../css/common.css">
+        <script src="../../../js/umeng.js"></script>
+
+    </head>
+    <style type="text/css">
+    	[readonly="readonly"] {
+			  pointer-events: none;
+			}
+    </style>
+</head>
+<body style="background: #fff;"></body>
+<div class="header">
+    <em class="lo_left" id="lo_left" onclick="testClickback()"></em>
+    <p>客户信息</p>
+</div>
+<div class="main part">
+    <ul class="listname">
+        <li>
+            <p class="p">客户性别
+                <input type="text" readonly="readonly" name="sex" id="sex" >
+            </p>
+            <em class="lo_right"></em>
+        </li>
+        <li>
+            <p class="p1">
+                客户信仰
+                <input type="text" id="religion" readonly="readonly">
+            </p>
+            <em class="lo_right"></em>
+        </li>
+        <li>
+            <p class="p2">婚姻状况
+                <input type="text" id="married" readonly="readonly">
+            </p>
+            <em class="lo_right"></em>
+        </li>
+        <li>
+            <p class="p3">家具材料
+                <input type="text" id="furniture" readonly="readonly">
+            </p>
+            <em class="lo_right"></em>
+        </li>
+        <li class="layout">
+            <p class="p4">户&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;型
+                <input type="text" id="house" readonly="readonly">
+            </p>
+            <em class="lo_right"></em>
+        </li>
+        <li>
+            <p class="p5">家庭人口
+                <input type="text" id="people" readonly="readonly">
+            </p>
+
+            <em class="lo_right"></em>
+        </li>
+        <li>
+            <p class="p6">汽&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;车
+                <input type="text" class="inp" id="car" readonly="readonly">
+            </p>
+            <em class="lo_right"></em>
+        </li>
+        <li>
+            <p class="p7">家&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;电
+                <input type="text" readonly="readonly" class="inp" id="household"></p>
+            <em class="lo_right"></em>
+        </li>
+    </ul>
+</div>
+<button class="inv_btn">提交</button>
+<div id="rabaw">
+</div>
+<div class="wraprgba">
+    <div class="sex">
+        <div class="tremo">
+            <div class="remo" id="remo">取消</div>
+            <div class="ent" id="ent">确定</div>
+        </div>
+        <ul class="ofh dan_ul" data-name="sex">
+            <li>男</li>
+            <li>女</li>
+        </ul>
+    </div>
+    <div class="religion">
+        <div class="tremo">
+            <div class="remo">取消</div>
+            <div class="ent">确定</div>
+        </div>
+        <ul class="ofh dan_ul" data-name="religion">
+            <li>穆斯林</li>
+            <li>基督教</li>
+            <li>佛教</li>
+            <li>其他</li>
+            <li>无</li>
+        </ul>
+    </div>
+    <div class="married">
+        <div class="tremo">
+            <div class="remo">取消</div>
+            <div class="ent">确定</div>
+        </div>
+        <ul class="ofh dan_ul" data-name="married">
+            <li>未婚</li>
+            <li>已婚</li>
+        </ul>
+    </div>
+    <div class="furniture">
+        <div class="tremo">
+            <div class="remo">取消</div>
+            <div class="ent">确定</div>
+        </div>
+        <ul class="ofh dan_ul" data-name="furniture">
+            <li>实木</li>
+            <li>一般</li>
+        </ul>
+    </div>
+    <div class="house">
+        <h2>户型</h2>
+        <ul class="ofh sex_ul dianji" data-name="house">
+            <li>1居</li>
+            <li>2居</li>
+            <li>3居</li>
+            <li>4居</li>
+            <li>别墅</li>
+            <li>平房</li>
+        </ul>
+        <h2 style="margin-top:.4rem;">面积</h2>
+        <p class="ofh sex_ul" data-name="house" style="margin-top:.4rem;">
+            <input type="number" id="mji" style="padding: .2rem; width: 80%;">&nbsp;&nbsp;&nbsp;<span style="font-size: .6rem;">㎡</span>
+        </p>
+        <ul class="ofh confirm">
+            <li class="first_con">取消</li>
+            <li class="last_con duo_btn" id="wwr">保存</li>
+        </ul>
+    </div>
+    <div class="people" style="overflow:scroll">
+        <h2>总人口</h2>
+        <ul class="ofh houses_ul" data-name="people">
+
+            <li>1</li>
+            <li>2</li>
+            <li>3</li>
+            <li>4</li>
+            <li>5</li>
+            <li>6</li>
+            <li>7</li>
+            <li>8</li>
+            <li>9</li>
+            <li style="width:2rem;">10人以上</li>
+        </ul>
+        <h2>小孩</h2>
+        <ul class="ofh houses_ul" data-name="people">
+            <li>0</li>
+            <li>1</li>
+            <li>2</li>
+            <li>3</li>
+            <li>4</li>
+        </ul>
+        <h2>中年人</h2>
+        <ul class="ofh houses_ul" data-name="people">
+            <li>0</li>
+            <li>1</li>
+            <li>2</li>
+            <li>3</li>
+            <li>4</li>
+        </ul>
+        <h2>老人</h2>
+        <ul class="ofh houses_ul" data-name="people">
+            <li>0</li>
+            <li>1</li>
+            <li>2</li>
+            <li>3</li>
+            <li>4</li>
+        </ul>
+        <h2>老人身体状态</h2>
+        <ul class="ofh sex_ul qita" data-name="people">
+            <li>健康</li>
+            <li>高血压</li>
+            <li>糖尿病</li>
+            <li>高血脂</li>
+            <li>三高</li>
+            <li>帕金森</li>
+            <li>
+                <span>其他</span>
+                <div class="qt-div" style="display: none;">
+                    <input type="text" id="appen" />
+                    <button id="btn1">确定</button>
+                    <button id="btn2">取消</button>
+                </div>
+            </li>
+            <!--<li><input type="text" /></li>-->
+        </ul>
+        <h2>老人自理能力</h2>
+        <ul class="ofh sex_ul" data-name="people" style="margin-top:.2rem; margin-bottom: 2rem;">
+            <li>完全自理</li>
+            <li>半自理</li>
+            <li>不能自理</li>
+        </ul>
+
+
+        <ul class="ofh confirm" style="position: fixed; bottom: 0; width: 100%;">
+            <li class="first_con">取消</li>
+            <li class="last_con duo_btn">保存</li>
+        </ul>
+    </div>
+    <div class="car">
+        <h2>汽车</h2>
+        <ul class="ofh sex_ul" id="bcar">
+            <li class="has">有</li>
+            <li class="not">无</li>
+        </ul>
+        <h2 style="margin-top:.4rem;" id="trt">汽车品牌</h2>
+        <ul class="ofh sex_ul" data-name="car" id="carss">
+            <li>国产</li>
+            <li>欧美</li>
+            <li>日韩</li>
+            <li>其他</li>
+        </ul>
+        <ul class="ofh confirm">
+            <li class="first_con" id="car_btn">取消</li>
+            <li class="last_con duo_btn">保存</li>
+        </ul>
+    </div>
+    <div class="household" style="overflow:scroll; padding-bottom:1.3rem;" id="househo">
+        <h2>冰箱</h2>
+        <ul class="ofh sex_ul" data-name="household">
+            <li>海尔</li>
+            <li>西门子</li>
+            <li>美的</li>
+            <li>容声</li>
+            <li>其他</li>
+            <li>无</li>
+        </ul>
+        <h2>电视</h2>
+        <ul class="ofh sex_ul" data-name="household">
+            <li>创维</li>
+            <li>TCL</li>
+            <li>长虹</li>
+            <li>康佳</li>
+            <li>小米</li>
+            <li>乐视</li>
+            <li>其他</li>
+            <li>无</li>
+        </ul>
+        <h2>洗衣机</h2>
+        <ul class="ofh sex_ul" data-name="household">
+            <li>海尔</li>
+            <li>小天鹅</li>
+            <li>西门子</li>
+            <li>美的</li>
+            <li>松下</li>
+            <li>其他</li>
+            <li>无</li>
+        </ul>
+        <h2>空调</h2>
+        <ul class="ofh sex_ul" data-name="household">
+            <li>格力</li>
+            <li>美的</li>
+            <li>TCL</li>
+            <li>海尔</li>
+            <li>奥克斯</li>
+            <li>志高</li>
+            <li>三菱</li>
+            <li>其他</li>
+            <li>无</li>
+        </ul>
+        <h2>净化器</h2>
+        <ul class="ofh sex_ul" data-name="household">
+            <li>飞利浦</li>
+            <li>夏普</li>
+            <li>布鲁雅尔</li>
+            <li>霍尼韦尔</li>
+            <li>三星</li>
+            <li>松下</li>
+            <li>小米</li>
+            <li>其他</li>
+            <li>无</li>
+        </ul>
+        <h2>油烟机</h2>
+        <ul class="ofh sex_ul" data-name="household">
+            <li>方太</li>
+            <li>老板</li>
+            <li>美的</li>
+            <li>华帝</li>
+            <li>帅康</li>
+            <li>海尔</li>
+            <li>其他</li>
+            <li>无</li>
+        </ul>
+        <h2>微波炉</h2>
+        <ul class="ofh sex_ul" data-name="household">
+            <li>格兰仕</li>
+            <li>美的</li>
+            <li>松下</li>
+            <li>三洋</li>
+            <li>其他</li>
+            <li>无</li>
+        </ul>
+        <h2>烤箱</h2>
+        <ul class="ofh sex_ul" data-name="household" style="padding-bottom:2.5rem ;">
+            <li>长帝</li>
+            <li>美的</li>
+            <li>格兰仕</li>
+            <li>北美电器</li>
+            <li>其他</li>
+            <li>无</li>
+        </ul>
+
+        <ul class="ofh confirm" id="bth_bot">
+            <li class="first_con">取消</li>
+            <li class="last_con duo_btn">保存</li>
+        </ul>
+    </div>
+</div>
+<div id="tanwin" class="tan" style="display:none;"></div>
+</body>
+<script src="../../../js/flexible.js"></script>
+<script src="../../../js/jquery-3.1.1.min.js"></script>
+<script src="../../../js/ios/gjbWebBridgeV2.js?v=1"></script>
+<script src="../../../js/jzjy-ui/common.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../../js/jzjy-ui/main.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../../js/my/customer/customers.js?id=3" type="text/javascript" charset="utf-8"></script>
+
+</html>

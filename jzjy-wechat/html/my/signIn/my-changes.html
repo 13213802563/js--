@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html style="background: #f4f4f4">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta content="yes" name="apple-mobile-web-app-capable" />
+    <meta content="yes" name="apple-touch-fullscreen">
+    <meta content="black" name="apple-mobile-web-app-status-bar-style" />
+    <meta content="telephone=no,email=no" name="format-detection">
+    <link rel="stylesheet" type="text/css" href="../../../css/reset.css" />
+    <link rel="stylesheet" type="text/css" href="../../../css/common.css" />
+    <link rel="stylesheet" href="../../../css/weui/weui.css">
+    <link rel="stylesheet" href="../../../css/weui/jquery-weui.min.css">
+    <link rel="stylesheet" href="../../../css/my/signIn/my-changes.css?V=3">
+    <script src="../../js/umeng.js"></script>
+    <title></title>
+</head>
+
+<body style="background: #f4f4f4">
+<div class="header" id="header" style="background:#fff;color: #756767" >
+    <img src="../../../images/left.png" class="lo_left" id="lo_left" />
+    <p>我的兑换</p>
+</div>
+<div class="w-list">
+
+</div>
+</body>
+<script src="../../../js/flexible.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../../js/jquery-3.1.1.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../../js/weui/jquery-weui.js"></script>
+<!--接口加密-->
+<script src="../../../js/crypto/core.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../../js/crypto/cipher-core.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../../js/crypto/lib-typedarrays.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../../js/crypto/aes.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../../js/crypto/md5.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../../js/crypto/mode-ecb.js" type="text/javascript" charset="utf-8"></script>
+
+<script src="../../../js/jzjy-ui/common.js" type="text/javascript" charset="utf-8"></script>
+<script>
+
+    function copy(str){
+        let save = function (e){
+            e.clipboardData.setData('text/plain',str);//下面会说到clipboardData对象
+            e.preventDefault();//阻止默认行为
+        };
+        document.addEventListener('copy',save);
+        document.execCommand("copy");//使文档处于可编辑状态，否则无效
+    }
+
+    let curPage = 1;
+    function getList(page) {
+        jzjy.newAjax({
+            params:{
+                key:'852636673437609',
+                token:localStorage.getItem('token'),
+                pageCount:10,
+                curPage:page
+            }
+        },function (data) {
+            if(data.code === '0'){
+                // 如果用户已兑换商品为空
+                if(data.data.list.length === 0 && curPage === 1){
+                    let noChangeDOM = '<img class="u-empty-img" src="../../../images/signIn/my_exchange@3x.png" alt="">\n' +
+                        '<p class="u-nochange-title">还没有兑换的商品</p>\n' +
+                        '<p class="u-nochange-sub">据说积分越多，获得的兑换商品越多哦~</p>';
+                    $('.w-list').append(noChangeDOM);
+                    return false;
+                }
+                // 渲染已兑换商品列表
+                let listDOM = '';
+                function getRemark(value){
+                    if(value.statesNumber === '3' || value.states === '已发货'){
+                        if(value.hasOwnProperty("expressCompany")){
+                            return `<div><span class="u-remark" style="width: 3rem;display: inline-block;">${value.expressCompany?value.expressCompany:''}</span><span class="u-content">${value.expressNumber?value.expressNumber:''}</span><span data-num="${value.expressNumber}" class="u-copy">复制</span></div>`
+                        }else{
+                            return ``;
+                        }
+                    }
+                    if(value.statesNumber === '4' || value.states === '已拒绝'){
+                        return `<div><span class="u-remark">备注:</span><span class="u-content">${!value.remarks? '':value.remarks}</span></div>`
+                    }
+                    if(value.statesNumber === '1' || value.states === '待处理'){
+                        return ``;
+                    }
+                    if(value.statesNumber === '2' || value.states === '已同意'){
+                        return ``;
+                    }
+                }
+                $.each(data.data.list,function (index,value) {
+                    listDOM += '<div class="item">\n' +
+                        '        <img class="u-img" src="' + value.productImgMain + '" alt="">\n' +
+                        '        <p class="u-title">' + value.commodityName + '</p>\n' +
+                        '        <p class="u-point">支付积分:' + value.exchangeIntegral + '积分</p>\n' + getRemark(value) +
+                        '        <span class="u-status">' + value.states + '</span>\n' +
+                        '    </div>'
+                })
+                $('.w-list').append(listDOM)
+
+            }
+        })
+    }
+    getList(curPage);
+
+    // 用户点击复制按钮
+    $('.w-list').on('click','.u-copy',function () {
+        let num = $(this).attr('data-num');
+        copy(num);
+        $.toast("复制成功","text")
+    });
+
+    // 上拉加载
+    $(window).scroll(function () {
+        //已经滚动到上面的页面高度
+        let scrollTop = $(this).scrollTop();
+        //页面高度
+        let scrollHeight = $(document).height();
+        //浏览器窗口高度
+        let windowHeight = $(this).height();
+        //此处是滚动条到底部时候触发的事件，在这里写要加载的数据，或者是拉动滚动条的操作
+        if (scrollTop + windowHeight === scrollHeight) {
+            curPage++;
+            getList(curPage)
+        }
+    });
+
+    $('#lo_left').on('click',function () {
+        // 原生交互
+        window.location.href = 'signIn.html'
+    })
+
+    // 处理物里返回键
+    pushHistory();
+    function pushHistory(){　　//刚一进到B页面就往history历史记录pushstate一个url
+        var state = {
+            title:"title",　　//可以传空值""
+            url:"#"};
+        window.history.pushState(state,"title","#");
+    }
+    window.addEventListener("popstate",function(e){　　//只要B页面按下手机物理返回键，就会被监听到
+
+        //该干嘛干嘛
+
+        //WeixinJSBridge.invoke('closeWindow',{},function(res){});　　//js代码关闭微信端当前网页
+
+        window.location.href = 'signIn.html';　　//跳转到百度页面
+        // 原生交互
+        // if(navigator.userAgent.toLowerCase().indexOf('micromessenger') !== -1){
+        //     window.location.href = 'signIn.html'
+        // }
+        // if(navigator.userAgent.toLowerCase().indexOf('iphone') !== -1 || navigator.userAgent.toLowerCase().indexOf('android') !== -1 ){
+        //     bridgeObj.back(function () {})
+        // }
+
+    },false);
+</script>
+</html>

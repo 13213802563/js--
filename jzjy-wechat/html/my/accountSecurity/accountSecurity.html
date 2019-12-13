@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+		<meta content="yes" name="apple-mobile-web-app-capable" />
+		<meta content="yes" name="apple-touch-fullscreen">
+		<meta content="black" name="apple-mobile-web-app-status-bar-style" />
+		<meta content="telephone=no,email=no" name="format-detection">
+		<link rel="stylesheet" type="text/css" href="../../../css/reset.css" />
+		<link rel="stylesheet" type="text/css" href="../../../css/common.css" />
+		<link rel="stylesheet" type="text/css" href="../../../css/index.css" />
+		<title></title>
+	</head>
+	<style>
+		.securityContent {
+			padding-top: 1.3rem;
+			font-size: 0.45rem;
+			color: #140101;
+			width: 100%;
+			overflow: hidden;
+			font-weight: 500;
+		}
+		
+		li {
+			display: flex;
+			justify-content: space-between;
+			padding: 0.4rem 0.4rem 0.4rem 0;
+			border-bottom: 1px solid #f5f5f5;
+			margin-left: 0.6rem;
+			align-items: center;
+		}
+		
+		li img {
+			height: 0.4rem;
+		}
+		.weui-dialog__bd{
+			font-size: 0.44rem!important;
+		}
+	</style>
+
+	<body>
+		<div class="header">
+			<img src="../../../images/arrow.png" class="lo_left" id="lo_left" onclick="goto('../config.html')"/>
+			<p>账号安全</p>
+			<span class=""></span>
+		</div>
+		<div class="securityContent">
+			<ul>
+				<li>
+					<div>修改登录密码</div>
+					<img src="../../../images/person/arrow@3x.png">
+				</li>
+				<li>
+					<div>更换手机号</div>
+					<img src="../../../images/person/arrow@3x.png">
+				</li>
+				<li style="display: none">
+					<div>注销账户</div>
+					<img src="../../../images/person/arrow@3x.png">
+				</li>
+			</ul>
+		</div>
+		<div id="tanwin" class="tan" style="display:none;"></div>
+	</body>
+	<script src="../../../js/flexible.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../../../js/jquery-3.1.1.min.js" type="text/javascript" charset="utf-8"></script>
+	<!--接口加密-->
+	<script src="../../../js/crypto/core.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../../../js/crypto/cipher-core.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../../../js/crypto/lib-typedarrays.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../../../js/crypto/aes.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../../../js/crypto/md5.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../../../js/crypto/mode-ecb.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../../../js/jzjy-ui/common.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../../../js/my/accountSecurity/accountSecurity.js?v=1-5" type="text/javascript" charset="utf-8"></script>
+</html>

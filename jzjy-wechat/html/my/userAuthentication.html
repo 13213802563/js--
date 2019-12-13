@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta content="yes" name="apple-mobile-web-app-capable"/>
+    <meta content="yes" name="apple-touch-fullscreen">
+    <meta content="black" name="apple-mobile-web-app-status-bar-style"/>
+    <meta content="telephone=no,email=no" name="format-detection">
+    <link rel="stylesheet" href="../../css/reset.css">
+    <link rel="stylesheet" href="../../css/common.css">
+    <link rel="stylesheet" href="../../css/weui/weui.min.css">
+    <link rel="stylesheet" href="../../css/weui/jquery-weui.min.css">
+    <link rel="stylesheet" href="../../css/userAuthentication.css">
+
+    <title>实名认证</title>
+    <style>
+        .one {
+            color: #fc4949 !important;
+        }
+
+        .weui-dialog__ft {
+            justify-content: space-around;
+            width: 38%;
+            border: 1px solid #fc4949;
+            margin: auto;
+            border-radius: 3rem;
+            margin-bottom: .3rem;
+        }
+
+        .weui-dialog__ft:after {
+            border: 0 !important;
+        }
+
+        .weui-dialog__ft {
+            line-height: 40px;
+        }
+
+        .weui-dialog__btn:active {
+            border-radius: 3rem;
+            color: #fc4949;
+            background: #fff !important;
+        }
+
+        .weui-dialog {
+            width: 78% !important;
+            border-radius: .3rem !important;
+        }
+
+    </style>
+</head>
+
+<body>
+<div class="userAuthentication">
+    <div class="header">
+        <img src="../../images/arrow.png" class="lo_left" id="lo_left"/>
+        <p>实名认证</p>
+    </div>
+    <div class="userAuthentication-info">
+        <!--<p id="remark">完成实名认证后，可享受更多的服务。</p>-->
+    </div>
+    <div class="authentication-name">
+        <!--<p>请输入您 <span>()</span> 的全名和身份证号进行认</p>-->
+        <p></p>
+    </div>
+
+    <div class="card_uploda">
+        <h2 class="upfont"></h2>
+        <p>*请上传您本人的二代身份证</p>
+        <div class="card_up">
+            <div class="wrappic clearfix wrapImg"  data-index="0">
+                <a>
+                    <img class="col-phone"  src="../../images/file-caed/zheng.png" data-code="203300010001">
+                    <input data-idtype="2" id="imgidCard" accept="image/*" type="file" class="imguplad" data-code="203300010001" data-worktype="4"  />
+                    <div></div>
+                    <input  type="hidden" name="img_val" value="">
+                </a>
+                <!--<div class="IDdelete"><img  src="../../images/file-caed/delete.png"    alt=""><span>删除</span></div>-->
+                <div class="IDdelete"><img  class = "deletePic" src="../../images/refuse@2x.png"    alt=""  ><span></span></div>
+            </div>
+
+            <div class="wrappic clearfix wrapImg"  data-index="1">
+                <a>
+                    <img class="col-phone"  src="../../images/file-caed/fan.png" data-code="203300010002">
+                    <input data-idtype="1" id="imgCard" accept="image/*" type="file" class="imguplad" data-code="203300010002" data-worktype="4"  />
+                    <div></div>
+                    <input data-idtype="1"  type="hidden" name="img_val" value="">
+                </a>
+                <!--<div class="IDdelete"><img  src="../../images/file-caed/delete.png"    alt="" ><span>删除</span></div>-->
+                <div class="IDdelete"><img  class = "deletePic" src="../../images/refuse@2x.png"    alt="" ><span></span></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="Authentication-content">
+        <ul>
+            <li>
+                <p>姓 &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;名</p>
+                <!--<input type="text" placeholder="请输入姓名" id="name">-->
+                <h1 id="name"></h1>
+            </li>
+            <li>
+                <p>身份证号</p>
+                <!--<input type="text" placeholder="请输入身份证号" id="ID">-->
+                <h1 id="ID"></h1>
+            </li>
+            <li class="liCity">
+                <p style="width: 38%;">期望工作城市</p>
+                <input type="tel" placeholder="请选择城市" readonly="readonly" id="city" class="cityDiv">
+                <img src="../../images/icon_arrows_right.png">
+            </li>
+            <li class="workType">
+                <p>期望工种</p>
+                <input type="text" name="workName" class="u-ipt-work-type" placeholder="请选择您的工种" id="workType" readonly/>
+            </li>
+        </ul>
+    </div>
+    <div id="button">
+        <button>实名认证</button>
+    </div>
+</div>
+
+<!--弹框-->
+<div id="tanwin" class="tan" style="display:none;"></div>
+<!--遮罩-->
+<div class="mask"></div>
+<!--城市-->
+<div class="location">
+    <div class="heade">
+        <!--<em class="lo_left" id="cityClose" style="top: .3rem;"></em>-->
+        <img src="../../images/arrow.png" id="cityClose"/>
+        <p style="">选择城市</p>
+    </div>
+    <!--<div class="heade">-->
+        <!--<img src="../../images/arrow.png" id="cityClose"/>-->
+        <!--<p style="">选择城市</p>-->
+    <!--</div>-->
+    <iframe src="city.html" frameborder="0"></iframe>
+</div>
+<div id="loading">
+    <div class="weui-loadmore" style="width: 45%;line-height: 1.2rem">
+        <i class="weui-loading"></i>
+        <span class="weui-loadmore__tips">正在加载中...</span>
+    </div>
+</div>
+
+</body>
+<script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=aLNSCC5MQgG4cMKee1X2Dxpz8M7IUuA5"></script>
+<script src="../../js/jquery-3.1.1.min.js"></script>
+<script src="../../js/flexible.js"></script>
+<script src="../../js/weui/fastclick.js"></script>
+<script src="../../js/weui/jquery-weui.js"></script>
+
+<!--接口加密-->
+<script src="../../js/crypto/core.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../js/crypto/cipher-core.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../js/crypto/lib-typedarrays.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../js/crypto/aes.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../js/crypto/md5.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../js/crypto/mode-ecb.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../js/jzjy-ui/common.js" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript" src="../../js/common/toUpload.js"></script>
+<script src="../../js/my/userAuthentication.js?v=3" type="text/javascript" charset="utf-8"></script>
+
+<script>
+
+</script>
+</html>

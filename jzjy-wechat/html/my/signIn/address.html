@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html style="background: #f4f4f4">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta content="yes" name="apple-mobile-web-app-capable" />
+    <meta content="yes" name="apple-touch-fullscreen">
+    <meta content="black" name="apple-mobile-web-app-status-bar-style" />
+    <meta content="telephone=no,email=no" name="format-detection">
+    <link rel="stylesheet" type="text/css" href="../../../css/reset.css" />
+    <link rel="stylesheet" type="text/css" href="../../../css/common.css" />
+    <link rel="stylesheet" href="../../../css/weui/weui.css">
+    <link rel="stylesheet" href="../../../css/weui/jquery-weui.min.css">
+    <link rel="stylesheet" href="../../../css/my/signIn/address.css">
+    <script src="../../js/umeng.js"></script>
+    <title></title>
+</head>
+
+<body style="background: #f4f4f4">
+<div class="header" id="header">
+    <img src="../../../images/left.png" class="lo_left" id="lo_left" />
+    <p>收货地址</p>
+</div>
+<div class="w-input">
+    <div class="input-row" >
+        <label for="">
+            姓&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;名:
+        </label>
+        <input class="u-input-name" type="text" placeholder="请填写收货人姓名">
+    </div>
+    <div class="input-row">
+        <label for="">
+            手机号码:
+        </label>
+        <input class="u-input-mobile" type="text" oninput="this.value=this.value.replace(/\D/g,'')" placeholder="请填写手机号码" maxlength="11">
+    </div>
+    <div class="input-row">
+        <label for="">
+            所在地址:
+        </label>
+        <input class="u-input-area" id="u-input-area" type="text" placeholder="请选择所在地址" readonly>
+    </div>
+    <div class="input-row">
+        <label for="">
+            详细地址:
+        </label>
+        <input class="u-input-address" type="text" placeholder="例：5号楼203室">
+    </div>
+    <p class="btn">
+        保存并使用
+    </p>
+</div>
+</body>
+<script src="../../../js/flexible.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../../js/jquery-3.1.1.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../../js/weui/jquery-weui.js"></script>
+<script src="../../../js/city-picker.min.js"></script>
+<!--接口加密-->
+<script src="../../../js/crypto/core.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../../js/crypto/cipher-core.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../../js/crypto/lib-typedarrays.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../../js/crypto/aes.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../../js/crypto/md5.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../../js/crypto/mode-ecb.js" type="text/javascript" charset="utf-8"></script>
+
+<script src="../../../js/jzjy-ui/common.js" type="text/javascript" charset="utf-8"></script>
+<!--<script src="../../../js/vconsole.js"></script>-->
+<script>
+    $("#u-input-area").cityPicker({
+        title: "请选择收货地址"
+    });
+
+    // 收货人信息回显
+    jzjy.newAjax({
+        params:{
+            key:'676701847355817',
+            token:localStorage.getItem('token')
+        },
+        async:true
+    },function (data) {
+        if(data.code === '0'){
+            if(data.data.length === 0){
+                return true
+            }else{
+                console.log(data)
+                $('.u-input-name').val(data.data.result.name)
+                $('.u-input-mobile').val(data.data.result.mobile)
+                $('.u-input-area').val(data.data.result.address)
+                    .attr('data-code',data.data.result.cityCode)
+                $('.u-input-address').val(data.data.result.detailedAddress)
+
+                if($('.u-input-name').val() && $('.u-input-mobile').val() && $('.u-input-area').val() && $('.u-input-address').val()){
+                    $('.btn').css({
+                        'background':'-webkit-linear-gradient(left,#FB0000,#FF5514)',
+                        'background':'-o-linear-gradient(right,#FB0000,#FF5514)',
+                        'background':'-moz-linear-gradient(right,#FB0000,#FF5514)',
+                        'background':'linear-gradient(to right,#FB0000,#FF5514)'
+                    })
+                }
+
+            }
+        }
+    })
+
+
+    // 城市下拉框弹出后 其它input失去焦点
+    $("#u-input-area").on('click',function () {
+        $('input').blur()
+    })
+
+    // 监听input值
+    $('body').delegate('input','input',function () {
+        if($('.u-input-name').val() && $('.u-input-mobile').val()&&$('.u-input-mobile').val().length=="11" && $('.u-input-area').val() && $('.u-input-address').val()){
+            $('.btn').css({
+                'background':'-webkit-linear-gradient(left,#FB0000,#FF5514)',
+                'background':'-o-linear-gradient(right,#FB0000,#FF5514)',
+                'background':'-moz-linear-gradient(right,#FB0000,#FF5514)',
+                'background':'linear-gradient(to right,#FB0000,#FF5514)'
+            })
+        }else{
+            $('.btn').css({
+                'background':'#D8D3D3',
+            })
+        }
+    })
+
+    // 点击
+    let reClick = false;//重复点击判断
+    $('.btn').on('click',function () {
+        if(reClick == true){
+            return false;
+        }
+        reClick = true;
+        if($(this).css('background') === "rgb(216, 211, 211) none repeat scroll 0% 0% / auto padding-box border-box" || reClick === true){
+            reClick = false;
+            return false;
+        }else{
+            if(!(/^(13|15|16|18|14|17|19)\d{9}$/i.test($('.u-input-mobile').val()))){
+                $.toast("手机号码不正确", "text");
+                reClick = false;
+                return false;
+            }
+        }
+
+        jzjy.newAjax({
+            params:{
+                key:'411717868467897',
+                address:$('.u-input-address').val(),
+                cityCode:$('.u-input-area').attr('data-code'),
+                token:localStorage.getItem('token'),
+                commoditiesId:getQueryString('commodityid'),
+                mobile:$('.u-input-mobile').val(),
+                name:$('.u-input-name').val(),
+                exchangeIntegral:getQueryString('exchangeintegral')
+            }
+        },function (data) {
+            if(data.code === '0'){
+                window.location.href = 'signIn.html?success=yes'
+            }else{
+                $.toast(data.msg, "text");
+                reClick = false;
+            }
+        })
+    })
+
+    $('#lo_left').on('click',function () {
+        window.location.href = 'signIn.html'
+    })
+
+
+    // 处理物里返回键
+    pushHistory();
+    function pushHistory(){　　//刚一进到B页面就往history历史记录pushstate一个url
+        var state = {
+            title:"title",　　//可以传空值""
+            url:"#"};
+        window.history.pushState(state,"title","#");
+    }
+    window.addEventListener("popstate",function(e){　　//只要B页面按下手机物理返回键，就会被监听到
+
+        //该干嘛干嘛
+
+        //WeixinJSBridge.invoke('closeWindow',{},function(res){});　　//js代码关闭微信端当前网页
+
+        window.location.href = 'signIn.html'
+
+    },false);
+</script>
+</html>

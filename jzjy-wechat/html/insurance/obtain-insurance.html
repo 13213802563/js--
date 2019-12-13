@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+		<meta content="yes" name="apple-mobile-web-app-capable" />
+		<meta content="yes" name="apple-touch-fullscreen">
+		<meta content="black" name="apple-mobile-web-app-status-bar-style" />
+		<meta content="telephone=no,email=no" name="format-detection">
+		<title>领取保险</title>
+		<link rel="stylesheet" href="../../css/reset.css">
+		<link rel="stylesheet" href="../../css/weui/weui.css">
+		<link rel="stylesheet" href="../../css/weui/jquery-weui.min.css">
+		<link rel="stylesheet" href="../../css/common.css">
+		<link rel="stylesheet" href="../../css/index.css">
+	</head>
+
+	<body>
+		<div class="header">
+			<img src="../../images/arrow.png" class="lo_left" id="lo_left" />
+			<p>领取保险</p>
+			<span style="color: #fc4949;" id="notice">投保须知</span>
+		</div>
+		<div class="body-con" id="form">
+			<ul class="personal-ul">
+				<li>
+					<p>您的姓名</p>
+					<input type="text" id="custName" name="custName" placeholder="请填写您的真实姓名" />
+				</li>
+				<li>
+					<p>手机号</p>
+					<input type="text" id="custPhone" name="custPhone" placeholder="请填写您的手机号" readonly/>
+				</li>
+				<li>
+					<p>证件类型</p>
+					<input type="text" id="idtypeName" placeholder="请填写您的证件类型" />
+					<input type="hidden" id="idtype" name="idtype" />
+					<img src="../../images/right.png" alt="">
+				</li>
+				<li>
+					<p>证件号码</p>
+					<input type="text" id="custIdcard" name="custIdcard" placeholder="请填写您的证件号码" />
+				</li>
+				<li>
+					<p>家庭住址</p>
+					<input type="text" id="homeAddr" placeholder="请填写您的家庭住址" />
+					<input type="hidden" id="homeAddrCode" />
+					<img src="../../images/right.png" alt="">
+				</li>
+				<li>
+					<p>详细住址</p>
+					<input type="text" id="custAddr" name="custAddr" placeholder="请填写您的详细地址"/>
+				</li>
+			</ul>
+			<ul class="employer">
+				<li>
+					<p>服务人员姓名</p>
+					<input type="text" id="staffName" name="staffName" placeholder="请填写您的服务人员姓名"/>
+				</li>
+				<li>
+					<p>服务人员电话</p>
+					<input type="text" id="staffPhone" name="staffPhone" placeholder="请填写您的服务人员电话"/>
+				</li>
+			</ul>
+			<div class="btn">
+				<button id="submit">提交</button>
+			</div>
+			
+		</div>
+		<div class="raba" style="height: 2644px; display: none;"></div>
+		<div id="tanwin" class="tan" style="display:none;"></div>
+	</body>
+
+	<script src="../../js/jquery-3.1.1.min.js"></script>
+	<script src="../../js/flexible.js"></script>
+	<script src="../../js/return.js"></script>
+	<script src="../../js/weui/jquery-weui.js"></script>
+	<script src="../../js/city-picker.min.js"></script>
+	<!--接口加密-->
+	<script src="../../js/crypto/core.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../../js/crypto/cipher-core.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../../js/crypto/lib-typedarrays.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../../js/crypto/aes.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../../js/crypto/md5.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../../js/crypto/mode-ecb.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../../js/jzjy-ui/common.js" type="text/javascript" charset="utf-8"></script>
+
+	<script src="../../js/insurance/obtain-insurance.js?id=1" type="text/javascript" charset="utf-8"></script>
+</html>

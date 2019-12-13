@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta content="yes" name="apple-mobile-web-app-capable"/>
+    <meta content="yes" name="apple-touch-fullscreen">
+    <meta content="black" name="apple-mobile-web-app-status-bar-style"/>
+    <meta content="telephone=no,email=no" name="format-detection">
+    <link rel="stylesheet" type="text/css" href="../../../css/reset.css"/>
+    <link rel="stylesheet" type="text/css" href="../../../css/common.css"/>
+    <link rel="stylesheet" type="text/css" href="../../../css/index.css"/>
+    <link rel="stylesheet" type="text/css" href="../../../css/integralGrade/integralGrade.css"/>
+    <title>积分等级</title>
+    <style>
+
+    </style>
+</head>
+<body>
+<div class="header" id="hd" style="border: unset;color:#fff;">
+    <img src="../../../images/return_white@3x.png" class="lo_left" id="lo_left"/>
+    <p>积分等级</p>
+    <span class="">等级规则</span>
+</div>
+<div class="w-integral-grade">
+    <div class="w-point-record">积分记录</div>
+    <p style="text-align: center;height: 1.3rem">
+    </p>
+    <p class="u-point-update-rule">当前分数: 0</p>
+    <div class="w-scroller">
+        <div class="m-scroll-body">
+            <span class="u-scroll-space"></span>
+            <span class="u-scroll-full"></span>
+            <div style="height: 1rem;" id="w-level-total">
+                <div class="u-scroll-type-warp" style="left: 0rem;" id="w-level-1">
+                    <span class="u-type-img" id="u-img-1"></span>
+                    <p>初级</p>
+                </div>
+
+                <div class="u-scroll-type-warp" style="left: 2rem;" id="w-level-2">
+                    <span class="u-type-img" id="u-img-2"></span>
+                    <p>中级</p>
+                </div>
+
+                <div class="u-scroll-type-warp" style="left: 4rem;" id="w-level-3">
+                    <span class="u-type-img" id="u-img-3"></span>
+                    <p>高级</p>
+                </div>
+
+                <div class="u-scroll-type-warp" style="left: 6rem;" id="w-level-4">
+                    <span class="u-type-img" id="u-img-4"></span>
+                    <p>金牌</p>
+                </div>
+
+                <div class="u-scroll-type-warp" style="left: 8rem;" id="w-level-5">
+                    <span class="u-type-img" id="u-img-5"></span>
+                    <p>首席</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="w-point-rule"
+         style="height: 1.4rem;display: flex;position: relative;border-bottom: 10px solid #FDFAFA;margin-bottom: 0.2rem;">
+        <span style="width: 50%;background: #fff;border-top-right-radius: 0.3rem;"></span>
+        <span style="width: 50%;background: #fff;border-top-left-radius: 0.3rem;"></span>
+        <span class="u-point-distance">— 距离升级分数还有220分 —</span>
+    </div>
+</div>
+<div class="m-integral-title">
+    <div class="u-integral-title" >
+        <h1>获取等级积分的方法</h1>
+        <p>事故惩罚</p>
+    </div>
+</div>
+<div class="m-integral-list">
+    <ul></ul>
+</div>
+<div class="mask"></div>
+<div class="m-accident-rule">
+    <div class="u-accident-rule">
+        <p>x</p>
+        <h1>事故惩罚</h1>
+        <div>单月发生一次事故 <span>扣20分</span> 两次降级;</div>
+        <h1 style=" padding: 0 0 0.2rem 0;margin-top: 1rem;">服务事故定义</h1>
+        <ul>
+            <li>1)<span>未及时与客户沟通</span> （接到订单未联系、无法按时到达未告知客户）造成客户体验不好的;</li>
+            <li>2)<span>未带齐专用工具、设备;</span></li>
+            <li>3)<span>未经客户允许，</span>私自泄露客户信息;</li>
+            <li>4)<span>因衣物不整洁、有异味、保洁工具不整洁;</span></li>
+            <li>5)<span>私拿、用客户物品的;</span></li>
+        </ul>
+    </div>
+</div>
+<!--列表详情弹框-->
+<div class="m-list-details">
+    <img src="../../../images/integralGrade/customer_evaluation_tan@3x.png" alt="">
+    <div class="content">
+
+    </div>
+    <!--<ul class="u-details-list">-->
+    <!--<li>-->
+    <!--<span></span>-->
+    <!--5星好评 <p>+2分；</p>-->
+    <!--</li>-->
+    <!--<li>-->
+    <!--<span></span>-->
+    <!--4星好评 <p>+1分；</p>-->
+    <!--</li>-->
+    <!--<li>-->
+    <!--<span></span>-->
+    <!--3星好评 <p>+0分；</p>-->
+    <!--</li>-->
+    <!--<li>-->
+    <!--<span></span>-->
+    <!--2星好评 <p>-2分；</p>-->
+    <!--</li>-->
+    <!--<li>-->
+    <!--<span></span>-->
+    <!--1星好评 <p>-4分；</p>-->
+    <!--</li>-->
+    <!--</ul>-->
+    <img src="../../../images/coupon/cha.png" alt="" class="close">
+</div>
+</body>
+<script src="../../../js/flexible.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../../js/jquery-3.1.1.min.js" type="text/javascript" charset="utf-8"></script>
+<!--接口加密-->
+<script src="../../../js/crypto/core.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../../js/crypto/cipher-core.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../../js/crypto/lib-typedarrays.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../../js/crypto/aes.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../../js/crypto/md5.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../../js/crypto/mode-ecb.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../../js/jzjy-ui/common.js" type="text/javascript" charset="utf-8"></script>
+<script>
+    $(".header span").on("click", function () {
+        goto("hierarchyRule.html")
+    })
+    $('#lo_left').on("click",function(){
+       goto("../../../my.html")
+    })
+    var rem = parseFloat($('html').css('font-size').replace('px', ''))
+    var imgWidth = 1.3
+    $('.u-scroll-space').css('margin-left',$('#w-level-1 > .u-type-img').offset().left + (imgWidth * rem * 0.75))
+    $('.u-scroll-full').css('margin-left',$('#w-level-1 > .u-type-img').offset().left + (imgWidth * rem * 0.75))
+    function getRealWidth(num, booleanHide) {
+        if (num <= 0) {
+            if (!booleanHide) {
+                $('#w-level-1 > .u-type-img').css({
+                    'background': 'url("../../../images/integralGrade/click_primary_small@3x.png") no-repeat center',
+                    'background-size': '50%'
+                });
+                $('#w-level-2 > .u-type-img').css({
+                    'background': 'url("../../../images/integralGrade/intermediate_hui@3x.png") no-repeat center',
+                    'background-size': '50%'
+                });
+                $('#w-level-3 > .u-type-img').css({
+                    'background': 'url("../../../images/integralGrade/senior_hui@3x.png") no-repeat center',
+                    'background-size': '50%'
+                });
+                $('#w-level-4 > .u-type-img').css({
+                    'background': 'url("../../../images/integralGrade/gold_medal_hui@3x.png") no-repeat center',
+                    'background-size': '50%'
+                });
+                $('#w-level-5 > .u-type-img').css({
+                    'background': 'url("../../../images/integralGrade/chief_hui@3x.png") no-repeat center',
+                    'background-size': '50%'
+                })
+                return 0
+            } else {
+                return 0
+            }
+        }
+        if (num > 0 && num <= 100) {
+            var distance = (($('#w-level-2 > .u-type-img').offset().left + (imgWidth * rem * 0.25))) - (($('#w-level-1 > .u-type-img').offset().left + (imgWidth * rem * 0.75)))
+            var difVa = num - 0;
+            if (!booleanHide) {
+                $('#w-level-1 > .u-type-img').css({
+                    'background': 'url("../../../images/integralGrade/click_primary_small@3x.png") no-repeat center',
+                    'background-size': '50%'
+                })
+                return getRealWidth(0,true) + (distance / 100 * difVa)
+            } else {
+                return getRealWidth(0,true) + (distance / 100 * difVa)
+            }
+        }
+        if (num > 100 && num <= 400) {
+            var distance = (($('#w-level-3 > .u-type-img').offset().left + (imgWidth * rem * 0.25))) - (($('#w-level-2 > .u-type-img').offset().left + (imgWidth * rem)))
+            var difVa = num - 100;
+            if (!booleanHide) {
+                $('#w-level-1 > .u-type-img').css({
+                    'background': 'url("../../../images/integralGrade/click_primary_small@3x.png") no-repeat center',
+                    'background-size': '50%'
+                })
+                $('#w-level-2 > .u-type-img').css({
+                    'background': 'url("../../../images/integralGrade/intermediate_big@3x.png") no-repeat center',
+                    'background-size': '100%'
+                })
+                $('#w-level-3 > .u-type-img').css({
+                    'background': 'url("../../../images/integralGrade/senior_hui@3x.png") no-repeat center',
+                    'background-size': '50%'
+                })
+                $('#w-level-4 > .u-type-img').css({
+                    'background': 'url("../../../images/integralGrade/gold_medal_hui@3x.png") no-repeat center',
+                    'background-size': '50%'
+                })
+                $('#w-level-5 > .u-type-img').css({
+                    'background': 'url("../../../images/integralGrade/chief_hui@3x.png") no-repeat center',
+                    'background-size': '50%'
+                })
+                return getRealWidth(100, true)  + (distance / 300 * difVa) + ($('#w-level-2 > .u-type-img').width() * 0.75)
+            } else {
+                return getRealWidth(100, true)  + (distance / 300 * difVa) + ($('#w-level-2 > .u-type-img').width() * 0.75)
+            }
+        }
+        if (num > 400 && num <= 800) {
+            let distance = (($('#w-level-4 > .u-type-img').offset().left + (imgWidth * rem * 0.25))) - (($('#w-level-3 > .u-type-img').offset().left + (imgWidth * rem)))
+            let difVa = num - 400;
+            if (!booleanHide) {
+                $('#w-level-1 > .u-type-img').css({
+                    'background': 'url("../../../images/integralGrade/click_primary_small@3x.png") no-repeat center',
+                    'background-size': '50%'
+                })
+                $('#w-level-2 > .u-type-img').css({
+                    'background': 'url("../../../images/integralGrade/intermediate_small@3x.png") no-repeat center',
+                    'background-size': '50%'
+                })
+                $('#w-level-3 > .u-type-img').css({
+                    'background': 'url("../../../images/integralGrade/senior_big@3x.png") no-repeat center',
+                    'background-size': '100%'
+                })
+                $('#w-level-4 > .u-type-img').css({
+                    'background': 'url("../../../images/integralGrade/gold_medal_hui@3x.png") no-repeat center',
+                    'background-size': '50%'
+                })
+                $('#w-level-5 > .u-type-img').css({
+                    'background': 'url("../../../images/integralGrade/chief_hui@3x.png") no-repeat center',
+                    'background-size': '50%'
+                })
+                return getRealWidth(400, true) + (distance / 400 * difVa) + ($('#w-level-3 > .u-type-img').width() * 0.75)
+            } else {
+                return getRealWidth(400, true) + (distance / 400 * difVa) + ($('#w-level-3 > .u-type-img').width() * 0.75)
+            }
+        }
+        if (num > 800 && num <= 1400) {
+            let distance = (($('#w-level-5 > .u-type-img').offset().left + (imgWidth * rem * 0.25))) - (($('#w-level-4 > .u-type-img').offset().left + (imgWidth * rem)))
+            let difVa = num - 800;
+            if (!booleanHide) {
+                $('#w-level-1 > .u-type-img').css({
+                    'background': 'url("../../../images/integralGrade/click_primary_small@3x.png") no-repeat center',
+                    'background-size': '50%'
+                })
+                $('#w-level-2 > .u-type-img').css({
+                    'background': 'url("../../../images/integralGrade/intermediate_small@3x.png") no-repeat center',
+                    'background-size': '50%'
+                })
+                $('#w-level-3 > .u-type-img').css({
+                    'background': 'url("../../../images/integralGrade/click_senior_small@3x.png") no-repeat center',
+                    'background-size': '50%'
+                })
+                $('#w-level-4 > .u-type-img').css({
+                    'background': 'url("../../../images/integralGrade/gold_medal_big@3x.png") no-repeat center',
+                    'background-size': '100%'
+                })
+                $('#w-level-5 > .u-type-img').css({
+                    'background': 'url("../../../images/integralGrade/chief_hui@3x.png") no-repeat center',
+                    'background-size': '50%'
+                })
+                return getRealWidth(800, true) + (distance / 600 * difVa) + ($('#w-level-4 > .u-type-img').width() * 0.75)
+            } else {
+                return getRealWidth(800, true) + (distance / 600 * difVa) + ($('#w-level-4 > .u-type-img').width() * 0.75)
+            }
+        }
+
+        if (num > 1400 && num <= 4000) {
+            let distance = (($('#w-level-5 > .u-type-img').offset().left + (imgWidth * rem * 0.25))) - (($('#w-level-4> .u-type-img').offset().left + (imgWidth * rem)))
+            let difVa = num - 1400;
+            if (!booleanHide) {
+                $('#w-level-1 > .u-type-img').css({
+                    'background': 'url("../../../images/integralGrade/click_primary_small@3x.png") no-repeat center',
+                    'background-size': '50%'
+                })
+                $('#w-level-2 > .u-type-img').css({
+                    'background': 'url("../../../images/integralGrade/intermediate_small@3x.png") no-repeat center',
+                    'background-size': '50%'
+                })
+                $('#w-level-3 > .u-type-img').css({
+                    'background': 'url("../../../images/integralGrade/click_senior_small@3x.png") no-repeat center',
+                    'background-size': '50%'
+                })
+                $('#w-level-4 > .u-type-img').css({
+                    'background': 'url("../../../images/integralGrade/click_gold_medal_small @3x.png") no-repeat center',
+                    'background-size': '50%'
+                })
+                $('#w-level-5 > .u-type-img').css({
+                    'background': 'url("../../../images/integralGrade/chief_big@3x.png") no-repeat center',
+                    'background-size': '100%'
+                })
+                return getRealWidth(1400, true) + (distance / 2600 * difVa) + ($('#w-level-4 > .u-type-img').width() * 0.75)
+            } else {
+                return getRealWidth(1400, true) + (distance / 2600 * difVa) + ($('#w-level-4 > .u-type-img').width() * 0.75)
+            }
+        }
+        if (num > 4000) {
+                return getRealWidth(4000)
+        }
+    }
+
+
+    $('.u-scroll-full').css({
+        'transition': 'width 2s'
+    })
+
+    function progress(num) {
+        $('.m-scroll-body').scrollLeft(0)
+        $('.u-scroll-full').width(getRealWidth(num))
+        $('.m-scroll-body').scrollLeft(getRealWidth(num, true) - $('.w-scroller').width() + 100)
+        console.log(getRealWidth(num, true))
+
+    }
+
+    $(".m-integral-title p").on("click", function () {
+        $(".mask").show();
+        $(".m-accident-rule").show();
+        $(".m-integral-list").css({"height":"55vh","overflow":"hidden"})
+    })
+    $(".mask,.m-accident-rule p:first-child,.close").on("click", function () {
+        $(".mask").hide();
+        $(".m-accident-rule").hide();
+        $(".m-list-details").hide();
+        $(".m-integral-list").css({"height":"","overflow":""})
+    })
+    jzjy.newAjax({
+            params: {
+                key: 322643517273993,
+                token: jzjy.getToken()
+            },
+        },
+        function (data) {
+            if (data.code == '0') {
+//                    距离升级还差分数
+                $(".u-point-distance").html("— 距离升级分数还有" + data.data.distanceUpgradeScore + "分 —");
+                progress(data.data.integration)
+                if (data.data.integration >1400) {
+                    // $(".w-point-rule").hide()
+                    // $(".m-integral-title").css("margin-top", "0")
+                    $('.w-point-rule').css('border-bottom','0')
+                    $('.m-integral-title').css('border-top','0')
+                    $('.u-point-distance').hide()
+                    $('.w-point-rule').css('height','0.4rem')
+                    $('.w-point-rule').css('margin-bottom','0')
+                    $('.w-integral-grade').css('height','5.2rem')
+                    $('.m-integral-title > .u-integral-title').css('padding','0.1rem 0 0.4rem 0')
+                    $('.m-integral-title').css('margin-top','0')
+                    $('.w-point-rule').css('margin-top','0.2rem')
+                }
+                var list = data.data.list;
+                var html = ""
+                for (var i = 0; i < list.length; i++) {
+                    if (list[i].title == "客户评价") {
+                        desc = "5星好评+2分"
+                    } else if (list[i].title == "开拓会员") {
+                        desc = "开拓新会员+5分"
+                    } else if (list[i].title == "订单流水") {
+                        desc = "10倍好评率"
+                    } else if (list[i].title == "出勤上户") {
+                        desc = "全勤+10分"
+                    }
+                    html += '<li><div class="list-left"><img src="' + list[i].titleUrl + '" alt=""><div><h2>' + list[i].title + '</h2><p>' + desc + '</p></div></div>\n' +
+                        '            <div class="list-right" onclick="listDetails(this)"  data-value="' + list[i].title + '">详情</div>\n' +
+                        '        </li> <li>' + list[i].exitEvalutionNum + '  ' + list[i].needEvalutionNum + '</li>'
+                }
+                $(".m-integral-list ul").html(html)
+
+                $('.u-point-update-rule').text('当前分数： ' + data.data.integration)
+
+            }
+        })
+
+    //    点击列表详情
+    function listDetails(val) {
+        console.log($(val).attr("data-value"))
+        $(".m-list-details").show()
+        $(".m-integral-list").css({"height":"55vh","overflow":"hidden"})
+        $(".mask").show()
+        if ($(val).attr("data-value") == "客户评价") {
+            $(".m-list-details").find('img').eq(0).attr('src','../../../images/integralGrade/customer_evaluation_tan@3x.png')
+            $(".m-list-details .content").html("<ul class=\"u-details-list\">\n" +
+                "        <li><span></span>5星好评 <p>+2分；</p></li>\n" +
+                "        <li><span></span>4星好评 <p>+1分；</p></li>\n" +
+                "        <li><span></span>3星好评 <p>+0分；</p></li>\n" +
+                "        <li><span></span>2星好评 <p style='color: #fc4949;'>-2分；</p></li>\n" +
+                "        <li><span></span>1星好评 <p style='color: #fc4949;'>-4分；</p></li>\n" +
+                "    </ul>")
+        } else if ($(val).attr("data-value") == "开拓会员") {
+            $(".m-list-details").find('img').eq(0).attr('src','../../../images/integralGrade/pioneer_member_tan@3x.png')
+            $(".m-list-details .content").html("<ul class=\"u-details-list\">\n" +
+                "        <li><span></span>每开拓1个新的会员客户 <p>+5分；</p></li>\n" +
+                "        <li><span></span>办理1000元卡 <p>+2分；</p></li>\n" +
+                "        <li><span></span>办理3000元卡 <p>+8分；</p></li>\n" +
+                "        <li><span></span>办理5000元卡 <p>+16分；</p></li>\n" +
+                "        <li><span></span>办理10000元卡 <p>+30分；</p></li>\n" +
+                "        <li><span></span>办理30000元卡 <p>+50分；</p></li>\n" +
+
+                "    </ul>")
+        } else if ($(val).attr("data-value") == "订单流水") {
+            $(".m-list-details").find('img').eq(0).attr('src','../../../images/integralGrade/order_flow_tan@3x.png')
+            $(".m-list-details .content").html("<div class='pipelineDescription'>每完成<p>10000</p>流水增加<p>10</p>乘以x好评率的积分。</div>")
+        } else if ($(val).attr("data-value") == "出勤上户") {
+            $(".m-list-details").find('img').eq(0).attr('src','../../../images/integralGrade/household_tan@3x.png')
+            $(".m-list-details .content").html("<div class='pipelineDescription'>每月出勤<p>26天</p>（含26天）以上增加<p>10分</p>，出勤<p>20</p>天以下扣减10分，出勤为每日上户。</div>")
+        }
+    }
+
+    $('.w-point-record').on('click', function () {
+        window.location.href = 'integralRecord.html'
+    })
+</script>
+</html>

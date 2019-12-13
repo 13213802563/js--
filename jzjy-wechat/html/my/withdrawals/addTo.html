@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+		<meta content="yes" name="apple-mobile-web-app-capable" />
+		<meta content="yes" name="apple-touch-fullscreen">
+		<meta content="black" name="apple-mobile-web-app-status-bar-style" />
+		<meta content="telephone=no,email=no" name="format-detection">
+		<link rel="stylesheet" type="text/css" href="../../../css/reset.css" />
+		<link rel="stylesheet" type="text/css" href="../../../css/common.css" />
+		<link rel="stylesheet" type="text/css" href="../../../css/index.css?id=0" />
+		
+		
+		<title>添加银行卡</title>
+	</head>
+	<style type="text/css">
+		html{
+			background: #F6F6F6;
+		}
+		.weui-dialog__bd {
+				font-size: .4rem;
+				color: #000000;
+				line-height: .6rem;
+			}
+			
+			.heade {
+				width: 100%;
+				height: 1.3rem;
+				display: flex;
+				justify-content: space-around;
+				align-items: center;
+				line-height: 1.3rem;
+				font-size: .45rem;
+				border-bottom: 2px solid #F4F4F4;
+				background: #fff;
+				z-index: 100;
+				position: relative;
+			}
+			
+			.cityDiv img {
+				width: .3rem;
+			}
+			
+			#imgDiv,
+			#info {
+				margin-top: 2rem;
+				width: 100%;
+				text-align: center;
+			}
+			
+			#imgDiv p,
+			#info p {
+				margin-top: .4rem;
+				color: #242424;
+				font-size: .35rem;
+			}
+			
+			#imgDiv button,
+			#info button {
+				display: block;
+				padding: .2rem .6rem;
+				background: #fff;
+				border: 0;
+				border: 1px solid #fc4949;
+				color: #fc4949;
+				border-radius: .6rem;
+				margin-top: .3rem;
+				margin-left: 40%;
+			}
+			
+			.location {
+				position: fixed;
+				top: 0;
+				left: 0;
+				width: 100%;
+				height: 100%;
+				z-index: 10000;
+				background: #FFFFFF;
+				display: none;
+				-webkit-overflow-scrolling: touch;
+				overflow-y: scroll;
+			}
+			
+			iframe {
+				width: 100%;
+				height: 100%;
+			}
+			
+			.newMark {
+				color: white;
+				margin: 0 .3rem;
+				background: #fc4949;
+				width: .6rem;
+				text-align: center;
+				border-radius: 113%;
+			}
+			
+			.buttonInfo {
+				border: 1px solid #ff4949;
+				border-radius: 28px;
+				padding: .2rem;
+				width: 2rem;
+				margin: .4rem auto;
+			}
+			
+			.types div:nth-child(1),
+			.prices div:nth-child(1) {
+				margin: 0 auto;
+			}
+			.addtoImmediateTwo{
+				display: none;
+			}
+			.hbbm{
+				color: #fc4949;
+			}
+
+		[readonly="readonly"] {
+			  pointer-events: none;
+			}
+
+			
+	</style>
+
+	<body>
+		<div class="header">
+			<img src="../../../images/arrow.png" class="lo_left " id="lo_lefts" />
+			
+			<p>添加银行卡</p>
+
+		</div>
+		<div class="addtoContent">
+			
+			<ul class="addtoUl">
+				
+				<li id="banks">
+					<p>选择银行</p>
+					<input type="text" id="bank" placeholder="请选择银行"/>
+					<input type="hidden" id="bankid" value="" />
+					<div><img src="../../../images/person/arrow@3x.png"></div>
+				</li>
+				<li  id="citys">
+					<p>开户城市</p>
+					<input type="text" id="city" placeholder="请选择开户城市" onfocus="this.blur()" readonly="readonly"/>
+					<div><img src="../../../images/person/arrow@3x.png"></div>
+				</li>
+				<li>
+					<p>开户行</p>
+					<div class="addtoInput"><input type="text" id="openingBank" placeholder="请输入开户行" style="width: 100%;"/></div>
+				</li>
+				<li>
+					<p>银行卡号</p>
+					<div class="addtoInput"><input type="number" id="cardNumber" placeholder="请输入银行卡号" style="width: 100%;"/></div>
+				</li>
+				<li>
+					<p>持卡人</p>
+					<div class="addtoInput"><input type="text" id="cardholder" placeholder="请填写持卡人姓名" style="width: 100%;"/></div>
+				</li>
+			</ul>
+
+		</div>
+		<div class="addtoImmediate">
+			<p>请仔细核对账号信息以免无法收到钱款，造成损失。</p>
+			<button>确认</button>
+		</div>
+		<div id="tanwin" class="tan" style="display:none;"></div>
+		
+		<div class="location">
+			<div class="heade">
+				<em class="lo_left" id="cityClose"></em>
+				<p style="">选择城市</p>
+			</div>
+			<iframe src="../../orders/city.html" frameborder="0"></iframe>
+
+		</div>
+	</body>
+	<script src="../../../js/flexible.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../../../js/jquery-3.1.1.min.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../../../js/return.js" type="text/javascript" charset="utf-8"></script>
+	<!--接口加密-->
+	<script src="../../../js/crypto/core.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../../../js/crypto/cipher-core.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../../../js/crypto/lib-typedarrays.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../../../js/crypto/aes.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../../../js/crypto/md5.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../../../js/crypto/mode-ecb.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../../../js/jzjy-ui/common.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../../../js/my/withdrawals/addto.js?id=4" type="text/javascript" charset="utf-8"></script>
+
+</html>

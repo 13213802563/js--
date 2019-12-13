@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>家政日</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <meta name="applicable-device" content="mobile">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link rel="stylesheet" href="../../css/reset.css">
+    <style>
+        .background{
+            width: 100%;
+            height: 100%;
+        }
+        .toupiao{
+            width: 60%;
+            position: absolute;
+            top: 47.1rem;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index:99;
+        }
+        .choujiang{
+            width: 60%;
+            position: absolute;
+            top: 52.1rem;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index:99;
+        }
+        .zhibo{
+            width: 60%;
+            position: absolute;
+            top: 57.1rem;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index:99;
+        }
+        .return_back{
+            height: 1.2rem;
+            position: absolute;
+            left: 0.5rem;
+            top: 0.5rem;
+        }
+        .button_bottom{
+            position: fixed;
+            bottom: 0.1rem;
+            left: 0;
+            display: none;
+        }
+    </style>
+
+</head>
+<body>
+<img class="return_back" src="../../images/houseDay/re@3x.png" alt="">
+<img class="background" src="../../images/houseDay/jzr-jzjy-background.jpg" alt="">
+<img class="toupiao" src="../../images/houseDay/jzr-wechat-toupiao.png" alt="">
+<img class="choujiang" src="../../images/houseDay/jzr-wechat-choujiang.png" alt="">
+<img class="zhibo" src="../../images/houseDay/jzr-wechat-zhibo.png" alt="">
+<img class="button_bottom" src="../../images/houseDay/button_fiexd_bottom.png" alt="">
+
+</body>
+<script src="../../js/jquery-3.1.1.min.js"></script>
+<script src="../../js/jzjy-ui/common.js"></script>
+<script src="../../js/ios/gjbWebBridgeV2.js"></script>
+<script src="../../js/jzjy-ui/common.js"></script>
+<script>
+    window.onload = window.onresize = function(){
+        document.documentElement.style.fontSize = document.documentElement.clientWidth/16+'px';
+    };
+    (function () {
+        $('.toupiao').css('top','54rem');
+        $('.choujiang').css('top','65.4rem');
+        $('.zhibo').css('top','70.4rem');
+
+        $('.toupiao').on('click', function () {
+            if(jzjy.isWechat()||(getQueryString('token')&&getQueryString('token')!="null")) {
+                var url = '/jzjy-wechat/html/vote/homePage.html?activityId=778193207767160&token=' + getQueryString('token');
+                window.location.href = url;
+            }
+            else{
+                alert("新版本即将到来，该功能暂时无法使用");
+                return;
+            }
+        })
+        $('.choujiang').on('click', function () {
+            if(jzjy.isWechat()||(getQueryString('token')&&getQueryString('token')!="null")) {
+                var url = '/jzjy-wechat/html/redEnvelopes/redEnvelopesWechat.html?activityId=955135467451368&token=' + getQueryString('token');
+                window.location.href = url;
+            }
+            else{
+                alert("新版本即将到来，该功能暂时无法使用");
+                return;
+            }
+        })
+
+        $('.zhibo').on('click',function () {
+            if(jzjy.isWechat()||(getQueryString('token')&&getQueryString('token')!="null")) {
+                if(confirm("活动暂未开始，请耐心等待...")){
+                    window.location.href='http://play.yunxi.tv/livestream/3b009364258f433dae1f60b5f25117f6'
+                }else{
+                    return;
+                }
+            }
+            else{
+                alert("新版本即将到来，该功能暂时无法使用");
+                return;
+            }
+
+
+
+
+
+        })
+
+        $('.return_back').on('click',function () {
+            if(jzjy.isWechat()){
+                window.history.go(-1);
+            }else{
+                bridgeObj.back(function(responseData) {})
+            }
+        })
+    })(jQuery)
+</script>
+</html>

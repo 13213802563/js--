@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+		<meta content="yes" name="apple-mobile-web-app-capable" />
+		<meta content="yes" name="apple-touch-fullscreen">
+		<meta content="black" name="apple-mobile-web-app-status-bar-style" />
+		<meta content="telephone=no,email=no" name="format-detection">
+		<title>关于我们</title>
+		<link rel="stylesheet" href="../../css/reset.css">
+		<link rel="stylesheet" href="../../css/common.css" />
+		<style>
+			button{
+				background: #fc4949;
+				border: 0;
+				padding: .3rem;
+				color: #fff;
+				border-radius: 1.3rem;
+				font-size: .4rem;
+				letter-spacing: 4px;
+				margin-bottom: .4rem;
+			}
+			#imgZz{
+				position: fixed;
+				top: 0;
+				bottom: 0;
+				left:0;
+				right:0;
+				width: 100%;
+				opacity: 0.9;
+				display: none;
+				z-index: 100;
+			}
+		</style>
+	</head>
+	
+
+	<body>
+		<div class="header">
+			<img src="../../images/arrow.png" class="lo_left" id="lo_left" onclick="testClickback()"/>
+			<p>关于我们</p>
+			<!--<span id="invi" style="color: red;">进度说明</span>-->
+		</div>
+		<div class="contain main_tent clearfix">
+			<img src="../../images/accept-logo.png" />
+			<h3>家政家园</h3>
+			<div class="wrap_about">
+				家政家园是服务于全国家政服务人员的开放性平台，依托国家级的培训基地，坚持“以服务为宗旨，以就业为导向，以技能为核心”的办学宗旨，经过多年的实践教学形成了家政业的标准化教程。为了让更多的家政从业人员学习到优秀的国际领先的服务理念，我们借助网络从线下到线上，打造一套强大的家政培训体系。
+			</div>
+			<div class="wrap_about">
+				经过在线培训、考试和评级认证后，可发放国家认可的家政从业资质证书。基于我们客户端与家政家园的无缝对接，我们平台提供自主接单、预约面试、客情维护和服务费结算等一站式服务。我们围绕服务人员提供家政险、法律咨询、行业资讯、温暖互助和心理咨询等一系列后勤保障服务，只要您有需要我们随时为您服务，真正做到您在前方为家服务，我们在后方为您服务！
+			</div>
+			<p style="margin-top: 1.5rem">识别二维码关注家政家园公众号</p>
+			<img src="../../images/code.png" style="width: 50%; height: 50%; margin-top: 0" />
+			<button class="button">下载家政家园App，享受更多服务</button>
+		</div>
+		<img src="../../extension/download/img/zz.png" alt="" id="imgZz"/>
+		<script src="../../js/flexible.js"></script>
+		<script src="../../js/jquery-3.1.1.min.js"></script>
+		<script src="../../js/jzjy-ui/common.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../../js/ios/android.js?v=1"></script>
+		<script src="../../js/ios/gjbWebBridgeV2.js?v=1"></script>
+
+	</body>
+	<script>
+        if(getQueryString("ios")){
+            $('#lo_left').on("click",function(){
+
+            })
+        }else{
+			$(".button").hide()
+        }
+        var browser = {
+            versions: function() {
+                var u = navigator.userAgent,
+                    app = navigator.appVersion;
+                return { //移动终端浏览器版本信息
+                    trident: u.indexOf('Trident') > -1, //IE内核
+                    presto: u.indexOf('Presto') > -1, //opera内核
+                    webKit: u.indexOf('AppleWebKit') > -1, //苹果、谷歌内核
+                    gecko: u.indexOf('Gecko') > -1 && u.indexOf('KHTML') == -1, //火狐内核
+                    mobile: !!u.match(/AppleWebKit.*Mobile.*/) || !!u.match(/AppleWebKit/), //是否为移动终端
+                    ios: !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/), //ios终端
+                    android: u.indexOf('Android') > -1 || u.indexOf('Linux') > -1, //android终端或者uc浏览器
+                    iPhone: u.indexOf('iPhone') > -1 || u.indexOf('Mac') > -1, //是否为iPhone或者QQHD浏览器
+                    iPad: u.indexOf('iPad') > -1, //是否iPad
+                    webApp: u.indexOf('Safari') == -1 //是否web应该程序，没有头部与底部
+                };
+            }(),
+            language: (navigator.browserLanguage || navigator.language).toLowerCase()
+        }
+        $("body").on('click',".button", function() {
+            if(browser.versions.ios || browser.versions.iPhone || browser.versions.iPad) {
+                window.location.href = "https://itunes.apple.com/cn/app/id1282946357?ls=1&mt=8";
+            }
+            if(browser.versions.android) {
+                $("#imgZz").show();
+                isWechat();
+                window.location.href = "http://app.95081.com/jzjy.apk"
+            }
+        });
+        function isWechat() {
+            var ua = navigator.userAgent.toLowerCase();
+            if(ua.match(/MicroMessenger/i) == "micromessenger") {
+                if(browser.versions.ios || browser.versions.iPhone || browser.versions.iPad) {
+                    return true;
+                } else if(browser.versions.android) {
+                    $("#imgZz").show();
+                    return true;
+                }
+
+            } else {
+                $("#imgZz").hide()
+                window.location.href = "http://app.95081.com/jzjy.apk"
+            }
+        }
+        $("#imgZz").on("click",function () {
+            $("#imgZz").hide()
+        })
+	</script>
+</html>

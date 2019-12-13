@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html style="background: #f4f4f4">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta content="yes" name="apple-mobile-web-app-capable" />
+    <meta content="yes" name="apple-touch-fullscreen">
+    <meta content="black" name="apple-mobile-web-app-status-bar-style" />
+    <meta content="telephone=no,email=no" name="format-detection">
+    <link rel="stylesheet" type="text/css" href="../../../css/reset.css" />
+    <link rel="stylesheet" type="text/css" href="../../../css/common.css" />
+    <link rel="stylesheet" href="../../../css/weui/weui.css">
+    <link rel="stylesheet" href="../../../css/weui/jquery-weui.min.css">
+    <link rel="stylesheet" href="../../../css/my/signIn/item-details.css">
+    <script src="../../js/umeng.js"></script>
+    <title></title>
+</head>
+
+<body style="background: #f4f4f4">
+<div class="header" id="header">
+    <img src="../../../images/left.png" class="lo_left" id="lo_left" />
+    <p>商品详情</p>
+</div>
+<div class="w-content">
+</div>
+<div class="w-btn">
+    <button>马上兑换</button>
+</div>
+</body>
+<script src="../../../js/flexible.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../../js/jquery-3.1.1.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../../js/weui/jquery-weui.js"></script>
+<!--接口加密-->
+<script src="../../../js/crypto/core.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../../js/crypto/cipher-core.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../../js/crypto/lib-typedarrays.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../../js/crypto/aes.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../../js/crypto/md5.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../../js/crypto/mode-ecb.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../../js/ios/gjbWebBridgeV2.js"></script>
+<script src="../../../js/jzjy-ui/common.js" type="text/javascript" charset="utf-8"></script>
+<!--<script src="../../../js/vconsole.js"></script>-->
+<script>
+
+    // 库存不足按钮隐藏
+    if(!getQueryString('inventory') || parseInt(getQueryString('inventory')) == '0'){
+        $('.w-btn').hide()
+    }
+
+    // 设置按钮显示积分
+    $('.w-btn > button').text('马上兑换(' + getQueryString('exchangeintegral') + '个积分)')
+
+    // 获取商品详情
+    jzjy.newAjax({
+        params:{
+            key:'906520237898153',
+            id: getQueryString('commodityid')
+        },
+        async:true
+    },function (data) {
+        if(data.code === '0'){
+            $('.w-content').html(data.data.productDetail)
+        }
+    })
+
+    // 用户点击兑换
+    let obja = {
+        commodityid:getQueryString('commodityid')
+    }
+    $('.w-btn').on('click','button',function () {
+        if(parseInt(getQueryString('exchangeintegral')) > parseInt(getQueryString('total'))){
+            $(this).text('积分不足，去赚积分')
+            $(this).unbind()
+            $(this).on('click',function () {
+
+                // 原生交互
+                if(navigator.userAgent.toLowerCase().indexOf('micromessenger') !== -1){
+                    window.location.href = 'signIn.html'
+                }
+                if((navigator.userAgent.toLowerCase().indexOf('iphone') !== -1 || navigator.userAgent.toLowerCase().indexOf('android') !== -1)){
+                    bridgeObj.back(function () {})
+                }
+
+            })
+        }
+        if(parseInt(getQueryString('exchangeintegral')) <= parseInt(getQueryString('total'))){
+
+            // 原生交互
+            if(navigator.userAgent.toLowerCase().indexOf('micromessenger') !== -1){
+                window.location.href = 'address.html?commodityid=' + getQueryString('commodityid') + '&exchangeintegral=' + getQueryString('exchangeintegral');
+            }
+            if(navigator.userAgent.toLowerCase().indexOf('iphone') !== -1 || navigator.userAgent.toLowerCase().indexOf('android') !== -1 ){
+                bridgeObj.toPointAddress({
+                    'commodityid':getQueryString('commodityid'),
+                    'exchangeintegral':getQueryString('exchangeintegral')
+                })
+            }
+        }
+    })
+
+
+
+    $('#lo_left').on('click',function () {
+        // 原生交互
+        if(navigator.userAgent.toLowerCase().indexOf('micromessenger') !== -1){
+            window.location.href = 'signIn.html'
+        }
+        if(navigator.userAgent.toLowerCase().indexOf('iphone') !== -1 || navigator.userAgent.toLowerCase().indexOf('android') !== -1 ){
+            bridgeObj.back(function () {})
+        }
+
+    })
+
+    // 处理物里返回键
+    pushHistory();
+    function pushHistory(){　　//刚一进到B页面就往history历史记录pushstate一个url
+        var state = {
+            title:"title",　　//可以传空值""
+            url:"#"};
+        window.history.pushState(state,"title","#");
+    }
+    window.addEventListener("popstate",function(e){　　//只要B页面按下手机物理返回键，就会被监听到
+
+        //该干嘛干嘛
+
+        //WeixinJSBridge.invoke('closeWindow',{},function(res){});　　//js代码关闭微信端当前网页
+
+        if(navigator.userAgent.toLowerCase().indexOf('micromessenger') !== -1){
+            window.location.href = 'signIn.html'
+        }
+        if(navigator.userAgent.toLowerCase().indexOf('iphone') !== -1 || navigator.userAgent.toLowerCase().indexOf('android') !== -1 ){
+            bridgeObj.back(function () {})
+        }
+
+    },false);
+</script>
+</html>
+-

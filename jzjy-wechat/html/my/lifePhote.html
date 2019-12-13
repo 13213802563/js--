@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta content="yes" name="apple-mobile-web-app-capable"/>
+    <meta content="yes" name="apple-touch-fullscreen">
+    <meta content="black" name="apple-mobile-web-app-status-bar-style"/>
+    <meta content="telephone=no,email=no" name="format-detection">
+    <link rel="stylesheet" href="../../css/reset.css">
+    <link rel="stylesheet" href="../../css/weui/weui.css">
+    <link rel="stylesheet" href="../../css/jquery-weui.min.css">
+    <link rel="stylesheet" href="../../css/common.css">
+    <link rel="stylesheet" href="../../css/person.css?id=1">
+    <title>工作生活照</title>
+</head>
+<body>
+<div class="header">
+    <img src="../../images/arrow.png" class="lo_left" id="lo_left"/>
+    <p>工作生活照</p>
+</div>
+<div class="userCenter-info">
+    <input class="idenfityInfo" readonly="readonly" value="上传工作生活照，缩短与客户的距离，从现在开始行动吧..." style="margin-top: .3rem;"/>
+</div>
+<div class="identify">
+    <div class="identity-imag">
+        <div>
+            <img src="../../images/person/leng.png"/><span>已上传生活照</span>
+        </div>
+        <hr style="border: 1px solid #ddd">
+        <div>
+            <ul class="showImag" id="lifeImg">
+            </ul>
+        </div>
+        <div class="uploadImg">
+            <span>上传图片提示：</span><span>照片大小不要超过5M；最多上传8张</span>
+        </div>
+        <div>
+            <ul class="showImag" id="uploadLifeImg">
+                <li class="lifontImage">
+                    <img src="../../images/person/zhaopian.png" class="uploadImgShow" id="fontImage"/>
+                    <input accept="image/*" type="file" name="files" id="uploadfontImage" multiple="multiple" style="display: none"/>
+                </li>
+            </ul>
+        </div>
+        <hr style="border: 1px solid #ddd">
+        <div class="identity-foot"><p>您的证件信息家政家园将为您保密，加上水印“仅用作家政家园身份验证”。只用于认证身份，不会作为他用。</p></div>
+        <button id="lifeSubmit">提交</button>
+    </div>
+</div>
+<div id="tanwin" class="tan" style="display:none;"></div>
+
+</body>
+<script src="../../js/jquery-3.1.1.min.js"></script>
+<script src="../../js/flexible.js"></script>
+<script src="../../js/return.js"></script>
+
+<script src="../../js/upload/lrz.bundle.js"></script>
+<!--接口加密-->
+<script src="../../js/crypto/core.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../js/crypto/cipher-core.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../js/crypto/lib-typedarrays.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../js/crypto/aes.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../js/crypto/md5.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../js/crypto/mode-ecb.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../js/jzjy-ui/common.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../js/my/lifePhone.js?id=7"></script>
+</html>

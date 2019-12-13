@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+		<meta content="yes" name="apple-mobile-web-app-capable" />
+		<meta content="yes" name="apple-touch-fullscreen">
+		<meta content="black" name="apple-mobile-web-app-status-bar-style" />
+		<meta content="telephone=no,email=no" name="format-detection">
+		<title>邀请有奖</title>
+		<link rel="stylesheet" href="../../css/reset.css">
+		<link rel="stylesheet" href="../../css/weui/weui.css">
+		<link rel="stylesheet" href="../../css/weui/jquery-weui.min.css">
+		<link rel="stylesheet" href="../../css/common.css">
+		<script src="../../js/umeng.js"></script>
+	</head>
+	<style type="text/css">
+		.shareFriend {
+			width: 100%;
+			background: #9BCDE9;
+			padding-bottom: 1.3rem;
+			text-align: center;
+		}
+
+		.shareFriend button {
+			width: 42%;
+			padding: .4rem 0;
+			background: #FBF06C;
+			color: #79ADCD;
+			border: 0;
+			border-radius: .7rem;
+			font-size: .4rem;
+		}
+
+		#rgbn {
+			width: 100%;
+			position: fixed;
+			background: rgba(0, 0, 0, .8);
+			top: 0;
+			left: 0;
+			z-index: 100;
+			bottom: 0;
+			display: none;
+		}
+
+		.p {
+			margin-left: 6.5rem;
+			background: url("../../images/tp.png") no-repeat;
+			background-size: 38% 100%;
+			width: 74%;
+			height: 3rem;
+			margin-top: 0.2rem;
+		}
+		#rgbn .div {
+			position: absolute;
+			top: 4rem;
+			z-index: 113;
+			color: #fff;
+			font-size: .6rem;
+			width: 100%;
+			text-align: center;
+		}
+
+	</style>
+	<body style="background: #f4f4f4!important;">
+		<div class="header">
+			<em class="lo_left" onclick="testClickback()"></em>
+			<p>邀请有奖</p>
+			<span id="inv" style="display: none;">查看记录</span>
+		</div>
+		<div style="padding-bottom:1rem;background: #9BCDE9;">
+			<div class="banner part">
+				<img src="../../images/server.png" alt="" id="downpic">
+			</div>
+			<div class="main">
+				<!--<div class="invite">
+					<div class="invite_wrap">
+						<p class="tit"><span>方式一：</span>分享给朋友，让朋友填写</p>
+						<div class="father">
+							<button class="fen_btn" onclick="testClick1()">分享给朋友</button>
+						</div>
+					</div>
+				</div>-->
+				<!--<div class="invite">
+					<div class="invite_wrap">
+						<p class="tit"><span>方式二：</span>直接填写，推荐给“家政家园”</p>
+						<div class="vali">
+							<div class="validate">
+								<p>朋友姓名</p>
+								<input type="text" id="name">
+							</div>
+							<div class="validate">
+								<p>朋友手机号</p>
+								<input type="text" id="phone">
+							</div>
+							<div class="validate" id="validate">
+								<p>所在省市</p>
+								<div class="content-block" style="display:inline-block;">
+									<input type='text' id='city-picker' placeholder='请选择省市区县' style="width:100%;" />
+									<input id="code_code" type="hidden" />
+
+								</div>
+							</div>
+						</div>
+						<div class="father">
+							<button class="fen_btn" onclick="TestWay()">立即推荐</button>
+						</div>
+					</div>
+				</div>-->
+				<div class="shareFriend">
+
+					<button onclick="shareAward()">分享有奖</button>
+				</div>
+				<div class="invite">
+					<div class="invite_wrap">
+						<div class="textp">
+							<h3 class="redcol">活动说明:</h3>
+							<p>通过微信分享给月嫂/育儿嫂等家政服务人员，该朋友在家政家园注册并成功通过实名认证后，邀请人可获得10元现金奖励（详情请看奖励规则）。</p>
+							<h3 class="redcol">奖金规则:</h3>
+							<p>1.推荐好友已经是“家政家园”的注册用户，不予发放奖励；</p>
+							<p>2.好友接受邀请，被邀请人注册家政家园并成功通过实名认证后，邀请人可获得10元现金奖励（实名认证步骤：首页中点击“我的”选择“实名认证”，根据提示完成实名认证）;</p>
+							<p>3.推荐无上限，推荐所得奖励无上限；</p>
+							<p>4.非正常邀请不给予发放邀请奖励（机刷，钻系统漏洞，恶意干扰系统等行为一律不给予奖励）；</p>
+							<p>5.本活动最终解释权归家政家园所有。</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!--<div id="tanwin" class="tan" style="display:none;"></div>-->
+		<div class="raba"></div>
+		<div id="rgbn">
+			<p class="p"></p>
+			<div class="div">点击右上角进行分享</div>
+		</div>
+	</body>
+	<script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+	<script src="../../js/flexible.js"></script>
+	<script src="../../js/jquery-3.1.1.min.js"></script>
+	<script src="../../js/jzjy-ui/main.js"></script>
+	<script src="../../js/weui/jquery-weui.js"></script>
+	<script src="../../js/weui/city-picker.js"></script>
+	<script src="../../js/ios/android.js?v=132312"></script>
+	<script src="../../js/ios/return.js?v=1" type="text/javascript" charset="utf-8"></script>
+	<script src="../../js/ios/gjbWebBridgeV2.js?v=1"></script>
+	<!--接口加密-->
+	<script src="../../js/crypto/core.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../../js/crypto/cipher-core.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../../js/crypto/lib-typedarrays.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../../js/crypto/aes.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../../js/crypto/md5.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../../js/crypto/mode-ecb.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../../js/jzjy-ui/common.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../../js/tow/invite-prizes.js?v=2"></script>
+</html>

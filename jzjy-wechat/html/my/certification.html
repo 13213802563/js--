@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+    content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta content="yes" name="apple-mobile-web-app-capable"/>
+    <meta content="yes" name="apple-touch-fullscreen">
+    <meta content="black" name="apple-mobile-web-app-status-bar-style"/>
+    <meta content="telephone=no,email=no" name="format-detection">
+    <link rel="stylesheet" href="../../css/reset.css">
+    <link rel="stylesheet" href="../../css/common.css">
+    <link rel="stylesheet" href="../../css/jquery-weui.min.css">
+    <link rel="stylesheet" href="../../css/person.css">
+    <title>资质认证</title>
+</head>
+<body>
+<div class="header">
+    <img src="../../images/arrow.png" class="lo_left" id="lo_left"/>
+    <p>资质认证</p>
+</div>
+<div class="identify certification">
+    <div class="identity-imag">
+        <div class="uploadImg">
+            <span>上传图片提示：</span><span>同类证书请上传最好资质；证件信息清晰可见；照片不要超过5M</span>
+        </div>
+        <hr style="border: 2px solid #ddd">
+        <div class="certification-div">
+            <span>添加证书</span>
+            <img src="../../images/person/addbuttn.png" id="addCertification"/>
+        </div>
+        <hr style="border: 2px solid #ddd">
+        <ul id="cerImgList">
+        </ul>
+    </div>
+</div>
+<div id="tanwin" class="tan" style="display:none;"></div>
+</body>
+<script src="../../js/jquery-3.1.1.min.js"></script>
+<script src="../../js/flexible.js"></script>
+<script src="../../js/return.js"></script>
+<!--接口加密-->
+<script src="../../js/crypto/core.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../js/crypto/cipher-core.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../js/crypto/lib-typedarrays.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../js/crypto/aes.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../js/crypto/md5.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../js/crypto/mode-ecb.js" type="text/javascript" charset="utf-8"></script>
+
+<script src="../../js/jzjy-ui/common.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../js/my/certification.js"></script>
+</html>

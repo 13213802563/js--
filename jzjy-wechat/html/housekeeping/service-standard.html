@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+		<meta content="yes" name="apple-mobile-web-app-capable" />
+		<meta content="yes" name="apple-touch-fullscreen">
+		<meta content="black" name="apple-mobile-web-app-status-bar-style" />
+		<meta content="telephone=no,email=no" name="format-detection">
+		<title>家政服务标准</title>
+		<link rel="stylesheet" href="../../css/reset.css">
+		<link rel="stylesheet" href="../../css/css/common.css">
+	</head>
+
+	<body>
+		<div class="header">
+			<img src="../../images/arrow.png" class="lo_left" id="lo_left" onclick="testClickback()"/>
+			<p>家政服务标准</p>
+			<!--<span id="invi" style="color: red;">进度说明</span>-->
+		</div>
+		<div class="banner wrapper"><img src="../../images/banner.png" /></div>
+		<nav class="contion_nav">
+			<ul>
+				<li>
+					<a href="maternity-matron.html">
+						<img src="../../images/img1.png" />
+						<span>月嫂</span>
+					</a>
+				</li>
+				<li>
+					<a href="advertising-page.html">
+						<img src="../../images/img2.png" />
+						<span>育婴师</span>
+					</a>
+				</li>
+				<li>
+					<a href="nursing.html">
+						<img src="../../images/img3.png" />
+						<span>陪护</span>
+					</a>
+				</li>
+				<li>
+					<a href="steam.html">
+						<img src="../../images/pic11.png" />
+						<span>满月汗蒸</span>
+					</a>
+				</li>
+				<li>
+					<a href="housekeeping.html">
+						<img src="../../images/img5.png" />
+						<span>一般家务</span>
+					</a>
+				</li>
+				<li>
+					<a href="lactagogue.html">
+						<img src="../../images/img6.png" />
+						<span>催乳</span>
+					</a>
+				</li>
+				<li>
+					<a href="children.html">
+						<img src="../../images/img7.png" />
+						<span>小儿推拿</span>
+					</a>
+				</li>
+				<li>
+					<a href="massage.html">
+						<img src="../../images/img8.png" />
+						<span>按摩</span>
+					</a>
+				</li>
+				<li>
+					<a href="cleaning.html">
+						<img src="../../images/img9.png" />
+						<span>保洁</span>
+					</a>
+				</li>
+			</ul>
+		</nav>
+
+		<script src="../../js/flexible.js"></script>
+		<script src="../../js/jquery-3.1.1.min.js"></script>
+		<script src="../../js/jzjy-ui/common.js"></script>
+		<script src="../../js/ios/android.js?v=1"></script>
+		<script src="../../js/ios/return.js?v=1" type="text/javascript" charset="utf-8"></script>
+		<script src="../../js/ios/gjbWebBridgeV2.js?v=1"></script>
+		<script>
+			window.onload = function() {
+				var aLi = document.getElementsByTagName("li");
+				var i = 0;
+				for(i = 0; i < aLi.length; i++) {
+					aLi[i].onclick = function() {
+						for(i = 0; i < aLi.length; i++) aLi[i].className = aLi[i].className.replace(/\s?ico/, "");
+						this.className += "ico";
+					};
+				}
+			};
+
+			$('body').height($(document).height());
+			// 2
+		</script>
+	</body>
+
+</html>

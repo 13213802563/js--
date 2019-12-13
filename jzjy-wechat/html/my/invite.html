@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+		<meta content="yes" name="apple-mobile-web-app-capable" />
+		<meta content="yes" name="apple-touch-fullscreen">
+		<meta content="black" name="apple-mobile-web-app-status-bar-style" />
+		<meta content="telephone=no,email=no" name="format-detection">
+		<title>邀请记录</title>
+		<link rel="stylesheet" href="../../css/reset.css">
+		<link rel="stylesheet" href="../../css/common.css">
+	</head>
+
+	<body>
+		<div class="header">
+			<em class="lo_left" id="lo_left"></em>
+			<p>邀请记录</p>
+			<span id="invi" style="color: red;">奖金说明</span>
+		</div>
+		<div class="main part">
+			<div class="main_wrap">
+				<table class="inv_table">
+					<thead>
+						<tr style="font-size: .4rem;">
+							<th>时间</th>
+							<th>用户名</th>
+							<th>进度</th>
+							<th>奖金</th>
+						</tr>
+					</thead>
+					<tbody></tbody>
+
+				</table>
+				<div class="img"></div>
+			</div>
+		</div>
+		<!-- 进度说明 -->
+		<div id="rabaw">
+			<div class="schedule">
+				<ul class="schedule_ul">
+					<li>
+
+					</li>
+				</ul>
+				<div class="knowf">
+					<button class="know_btn" onclick="know()">知道了</button>
+				</div>
+			</div>
+		</div>
+
+		<div id="tanwin" class="tan" style="display:none;"></div>
+		<script src="../../js/flexible.js"></script>
+		<script src="../../js/jquery-3.1.1.min.js"></script>
+		<script src="../../js/jzjy-ui/main.js"></script>
+		<!--接口加密-->
+		<script src="../../js/crypto/core.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../../js/crypto/cipher-core.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../../js/crypto/lib-typedarrays.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../../js/crypto/aes.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../../js/crypto/md5.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../../js/crypto/mode-ecb.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../../js/jzjy-ui/common.js" type="text/javascript" charset="utf-8"></script>
+
+		<script>
+			$("#lo_left").on("click", function() {
+				window.history.back(-1);
+			})
+			/*显示隐藏*/
+
+			function tanwin(text) {
+				$("#tanwin").text(text).attr('style', '');
+				var clea = setInterval(function() {
+					$('.tan').fadeOut("slow", function() {
+						$("#tanwin").attr('style', 'display:none');
+						clearInterval(clea);
+					});
+
+				}, 2000);
+			};
+			var height = $(window).height();
+			$('#rabaw').css('height', height + 'px');
+			/*奖金说明*/
+
+			$('#invi').on("click", function() {
+				$('#rabaw').show(0, "lineear",
+					$.ajax({
+						url:"/workerAPI/invite/progressExplain",
+						type: 'post',
+						dataType: "json",
+						success: function(res) {
+							console.log(res)
+							var data = res.data;
+							var html = "";
+							for(var i = 0; i < data.length; i++) {
+								var list = data[i].content;
+								html += '<h2>' + data[i].title + '</h2>'
+								for(var j = 0; j < list.length; j++) {
+									html += '<p>' + list[j] + '</p>'
+								}
+							}
+							$(".schedule_ul li").html(html)
+
+						},
+						error: function(data) {
+							tanwin("连接失败，请稍后重试");
+						}
+					})
+
+				);
+
+			})
+
+			function know() {
+				$('#rabaw').hide();
+			}
+
+			/* 跳转页面 */
+			var cont;
+			$(function() {
+				cont = getQueryString("token");
+				//alert(cont) 
+			});
+
+			$(document).ready(function() {
+				/*$.ajax({
+				url:geturl()+"/invite/queryInvite",
+				type: 'post',
+				dataType:"json",
+				data: {
+					 "body":"{'token':'"+cont+"'}"
+				},
+			    success:function(res){  
+			    	console.log(res)
+			    		var html="";
+						var html1="";
+						console.log(res.data.list.length)
+						if(res.data.list.lengthg!=null||res.data.list.length>0){
+					    	for(var i=0;i<res.data.list.length;i++) {
+								html += '<tr><td>' + res.data.list[i].createTime + '</td>'+
+								'<td>' + res.data.list[i].mobile+ '</td>'+
+								'<td>' + res.data.list[i].progressName + '</td></tr>'
+								
+				            }
+					    	$(" table tbody ").html(html);
+					    	$('.img').css("display","none");
+					    }else{
+					    	html1+='<img src="images/ku.png" class="imgs"/>';
+					    	$('.img').html(html1)
+				           }
+					    
+						
+				},
+				error:function(data){
+					tanwin("连接失败，请稍后重试");
+				}
+	
+			});*/
+				jzjy.newAjax({
+					params: {
+						key: 675424274151815,
+						token: cont,
+						channel: 432454642096150,
+
+					},
+					async: false
+				}, function(data) {
+					var html = "";
+					var html1 = "";
+					if(data.code == "0") {
+
+						if(data.obj.lengthg != null || data.obj.length > 0) {
+							for(var i = 0; i < data.obj.length; i++) {
+								html += '<tr><td>' + (data.obj[i].updateTime?data.obj[i].updateTime:"") + '</td>' +
+									'<td>' + (data.obj[i].inviteeName?data.obj[i].inviteeName:"") + '</td>' +
+									'<td>' + (data.obj[i].newStatus ? data.obj[i].newStatus : "") + '</td>' +
+									'<td>' + (data.obj[i].inviterRewards?data.obj[i].inviterRewards:"") + '</td></tr>'
+
+							}
+							$(" table tbody ").html(html);
+							$('.img').css("display", "none");
+						}
+					} else if(data.code == "-1") {
+						html1 += '<img src="../../images/ku.png" class="imgs"/>';
+						html1 += '<p style="text-align: center;margin-top: .4rem;font-size: .4rem;">' + data.msg + '</p>'
+						$('.img').html(html1)
+					}
+
+				})
+			});
+		</script>
+	</body>
+
+</html>

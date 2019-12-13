@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta content="yes" name="apple-mobile-web-app-capable" />
+    <meta content="yes" name="apple-touch-fullscreen">
+    <meta content="black" name="apple-mobile-web-app-status-bar-style" />
+    <meta content="telephone=no,email=no" name="format-detection">
+    <link rel="stylesheet" href="../../css/reset.css">
+    <link rel="stylesheet" href="../../css/weui/weui.css">
+    <link rel="stylesheet" href="../../css/weui/jquery-weui.min.css">
+    <link rel="stylesheet" href="../../css/common.css">
+    <link rel="stylesheet" href="../../css/person.css">
+    <title>基本信息</title>
+</head>
+<body>
+    <div class="header">
+        <img src="../../images/arrow.png" class="lo_left" id="lo_left" />
+        <p>基本信息</p>
+    </div>
+    <div class="baseInfo userCenter-content">
+        <ul>
+            <li>
+                <div class="userCenter-left">
+                    <p class="require">*</p><p>真实姓名</p>
+                    <input type="text" id="name" placeholder="请输入您的真实姓名">
+                </div>
+            </li>
+            <li>
+                <div class="userCenter-left"><p class="require">*</p><p>期望城市</p>
+                    <input type="text" id="inCity" placeholder="请填写">
+                    <input id="city_Code" type="hidden" />
+                </div>
+                <div class="userCenter-right"><img src="../../images/right.png"></div>
+            </li>
+            <li>
+                <div class="userCenter-left"><p class="require">*</p><p>期望薪资</p>
+                    <input type="number" id="salaryExpectation" placeholder="请填写"></div>
+                <div class="userCenter-right"><p class="money">元</p></div>
+            </li>
+            <li>
+                <div class="userCenter-left"><p class="require">*</p><p>期望工种</p>
+                    <input type="text" id="workName" name="workName" placeholder="请选择" readonly>
+                    <input id="workCode" type="hidden" /></div>
+                <div class="userCenter-right"><img src="../../images/right.png"></div>
+            </li>
+            <li>
+                <div class="userCenter-left"><p class="require">*</p><p>工作年限</p>
+                    <input type="text" id="workingLife" placeholder="请选择" readonly></div>
+                <div class="userCenter-right"><img src="../../images/right.png"></div>
+            </li>
+
+            <li>
+                <div class="userCenter-left"><p class="require">*</p><p>家庭住址</p>
+                    <input id="homeAddress" name="city-picker" type="text" placeholder="请选择" readonly>
+                    <input id="code_code" type="hidden" /></div>
+                <div class="userCenter-right"><img src="../../images/right.png"></div>
+            </li>
+            <li>
+                <div class="userCenter-left"><p class="require">*</p><p>详细地址</p>
+                    <input type="text" id="detailAddress" placeholder="请填写" style="width: 6.8rem;"></div>
+                <div class="userCenter-right"></div>
+            </li>
+            <li>
+                <div class="userCenter-left"><p class="baseInfo-left">技能特长</p>
+                    <input type="text" id="specialty" placeholder="请填写" style="width: 6.8rem;">
+                </div>
+                <div class="userCenter-right"></div>
+            </li>
+        </ul>
+        <button id="submit">提交</button>
+    </div>
+    <div class="raba" style="height: 2644px;"></div>
+    <div id="tanwin" class="tan" style="display:none;"></div>
+</body>
+
+<script src="../../js/jquery-3.1.1.min.js"></script>
+<script src="../../js/flexible.js"></script>
+<script src="../../js/return.js"></script>
+<script src="../../js/weui/jquery-weui.js"></script>
+<script src="../../js/city-picker.min.js"></script>
+<!--接口加密-->
+<script src="../../js/crypto/core.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../js/crypto/cipher-core.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../js/crypto/lib-typedarrays.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../js/crypto/aes.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../js/crypto/md5.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../js/crypto/mode-ecb.js" type="text/javascript" charset="utf-8"></script>
+
+<script src="../../js/jzjy-ui/common.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../js/my/baseInfo.js?id=1"></script>
+<script>
+
+</script>
+</html>

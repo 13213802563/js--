@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta charset="UTF-8">
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+		<meta content="yes" name="apple-mobile-web-app-capable" />
+		<meta content="yes" name="apple-touch-fullscreen">
+		<meta content="black" name="apple-mobile-web-app-status-bar-style" />
+		<meta content="telephone=no,email=no" name="format-detection">
+		<link rel="stylesheet" type="text/css" href="../../css/reset.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/common.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/index.css" />
+		<link rel="stylesheet" href="../../css/weui/weui.css">
+		<link rel="stylesheet" href="../../css/weui/jquery-weui.min.css">
+		
+		<title>身份验证</title>
+	</head>
+	<body>
+		<div class="header">
+			<img src="../../images/arrow.png" class="lo_left" id="lo_left" />
+			<p>身份效验</p>
+			
+		</div>
+		<div class="body-content">
+			 <input class="authentication-con" value="为了您更好的享受服务，请您尽快验证身份~"/>
+			<ul>
+				<li>
+					<span>姓 &nbsp; &nbsp;名</span>
+					<input type="" placeholder="请输入您的姓名" class="name"/>
+				</li>
+				<li>
+					<span>身份证号</span>
+					<input type="" placeholder="请输入您的身份证号" class="idCardNum"/>
+				</li>
+			</ul>
+		</div>
+		<div class="authentication-bottom">
+			<p>为了保证您的隐私，身份必须验证才能查看呦！</p>
+			<button id="btn">提交</button>
+		</div>
+		<div id="tanwin" class="tan" style="display:none;"></div>
+		<div id="loading">
+			<div class="weui-loadmore">
+				<i class="weui-loading"></i>
+				<span class="weui-loadmore__tips">正在加载中...</span>
+			</div>
+		</div>
+	</body>
+	<script src="../../js/flexible.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../../js/jquery-3.1.1.min.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../../js/return.js" type="text/javascript" charset="utf-8"></script>
+	<!--接口加密-->
+	<script src="../../js/crypto/core.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../../js/crypto/cipher-core.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../../js/crypto/lib-typedarrays.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../../js/crypto/aes.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../../js/crypto/md5.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../../js/crypto/mode-ecb.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../../js/jzjy-ui/common.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../../js/my/authentication.js?id=0" type="text/javascript" charset="utf-8"></script>
+</html>

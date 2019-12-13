@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+		<meta content="yes" name="apple-mobile-web-app-capable" />
+		<meta content="yes" name="apple-touch-fullscreen">
+		<meta content="black" name="apple-mobile-web-app-status-bar-style" />
+		<meta content="telephone=no,email=no" name="format-detection">
+		<link rel="stylesheet" type="text/css" href="../../../css/reset.css" />
+		<link rel="stylesheet" type="text/css" href="../../../css/common.css" />
+		<link rel="stylesheet" type="text/css" href="../../../css/weui/weui.css" />
+		<link rel="stylesheet" type="text/css" href="../../../css/weui/jquery-weui.min.css" />
+		<link rel="stylesheet" type="text/css" href="../../../css/weui/demos.css" />
+		<link rel="stylesheet" type="text/css" href="../../../css/index.css" />
+		<link rel="stylesheet" type="text/css" href="../../../css/accountSecurity/mobile.css" />
+		<title></title>
+		<style>
+			.weui-dialog__bd{
+				font-size: 0.44rem!important;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="header">
+			<img src="../../../images/arrow.png" class="lo_left" id="lo_left" onclick="goto('accountSecurity.html')"/>
+			<p>更换手机号</p>
+			<span class=""></span>
+		</div>
+		<div class="title">
+			<div class="titleContent">
+				<div class="con">
+					<img src="../../../images/accountSecurity/tips@3x.png" alt="">
+					<p>仅支持更换未注册过的手机号</p>
+				</div>
+				<h1>当前账号验证</h1>
+				<ul>
+					<li>
+						<div>
+							<input type="tel" placeholder="输入手机号" id="mobile" maxlength="11" readonly="readonly">
+						</div>
+					</li>
+					<li>
+						<div>
+							<input type="tle" placeholder="请输入验证码" id="vercode" maxlength="6">
+							<button id="time" style="font-size: 0.4rem;">获取验证码</button>
+						</div>
+					</li>
+                    <li>
+                        <div>
+                            <input type="password" name="passwords" placeholder="原密码字母和数字组合，6-12位" maxlength="13" id="password">
+                            <img src="../../../images/accountSecurity/close_eyes@3x.png" alt="" id="eyes">
+                        </div>
+                    </li>
+					<li>
+                        <div class="button">
+                            <button disabled="disabled">下一步</button>
+                        </div>
+					</li>
+				</ul>
+				<div class="password">
+					<a href="javaScript:;" >接收不到验证码？尝试使用密码验证</a>
+				</div>
+			</div>
+		</div>
+		<div id="loading" style="display: none">
+			<div class="weui-loadmore" style="width: 45%;line-height: 1.2rem">
+				<i class="weui-loading"></i>
+				<span class="weui-loadmore__tips">正在加载中...</span>
+			</div>
+		</div>
+		<div id="tanwin" class="tan" style="display:none;"></div>
+	</body>
+	<script src="../../../js/flexible.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../../../js/jquery-3.1.1.min.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../../../js/weui/jquery-weui.js" type="text/javascript" charset="utf-8"></script>
+
+	<!--接口加密-->
+	<script src="../../../js/crypto/core.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../../../js/crypto/cipher-core.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../../../js/crypto/lib-typedarrays.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../../../js/crypto/aes.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../../../js/crypto/md5.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../../../js/crypto/mode-ecb.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../../../js/jzjy-ui/common.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../../../js/jzjy-ui/function.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../../../js/my/accountSecurity/mobile.js?v=1-6" type="text/javascript" charset="utf-8"></script>
+</html>

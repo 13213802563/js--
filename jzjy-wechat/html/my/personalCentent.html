@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+		<meta content="yes" name="apple-mobile-web-app-capable" />
+		<meta content="yes" name="apple-touch-fullscreen">
+		<meta content="black" name="apple-mobile-web-app-status-bar-style" />
+		<meta content="telephone=no,email=no" name="format-detection">
+		<link rel="stylesheet" href="../../css/reset.css">
+		<link rel="stylesheet" href="../../css/common.css">
+		<link rel="stylesheet" href="../../css/person.css">
+		<link rel="stylesheet" href="../../css/weui/weui.min.css">
+		<link rel="stylesheet" href="../../css/weui/jquery-weui.min.css">
+		<title>用户生效中心</title>
+	</head>
+
+	<body>
+		<div class="userCenter">
+			<div class="header">
+				<img src="../../images/arrow.png" class="lo_left" id="lo_left" />
+				<p>个人中心</p>
+				<span id="succe" style="color: #FC4949;">完成</span>
+			</div>
+
+			<div class="userCenter-content" style="margin-top: 1.3rem;">
+				<ul>
+					<li>
+						<div class="userCenter-left">
+							<p>头像</p>
+						</div>
+						<div class="userCenter-right">
+							<P id="headPic">未上传</P>
+							<img src="../../images/right.png"></div>
+					</li>
+					<li>
+						<div class="userCenter-left">
+							<p>昵称</p>
+						</div>
+						<div class="userCenter-right">
+							 <div class="userCenter-right"><P id="nickName">请输入昵称</P></div>
+							<!--<input type="text" style="color:black;"  id="nickNameInput"  placeholder="请输入您的昵称"/>-->
+						</div>
+					</li>
+
+				</ul>
+
+			</div>
+		</div>
+		<input accept="image/*" type="file" id="uploadHeadImg" style="display: none" />
+		<div id="tanwin" class="tan" style="display:none;"></div>
+	</body>
+	<script src="../../js/jquery-3.1.1.min.js"></script>
+	<script src="../../js/flexible.js"></script>
+	<script src="../../js/return.js"></script>
+	<script src="../../js/upload/lrz.bundle.js"></script>
+	<script src="../../js/weui/jquery-weui.js"></script>
+	<!--接口加密-->
+	<script src="../../js/crypto/core.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../../js/crypto/cipher-core.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../../js/crypto/lib-typedarrays.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../../js/crypto/aes.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../../js/crypto/md5.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../../js/crypto/mode-ecb.js" type="text/javascript" charset="utf-8"></script>
+
+	<script src="../../js/jzjy-ui/common.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../../js/my/userCenter.js?id=5"></script>
+<script type="text/javascript">
+	$("#succe").on("click", function() {
+				window.location.href = "../../my.html";
+				
+			})
+</script>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+	    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+	    <meta content="yes" name="apple-mobile-web-app-capable" />
+	    <meta content="yes" name="apple-touch-fullscreen">
+	    <meta content="black" name="apple-mobile-web-app-status-bar-style" />
+	    <meta content="telephone=no,email=no" name="format-detection">
+		<title>课程</title>
+		<link rel="stylesheet" href="../../../css/reset.css">
+		<link rel="stylesheet" href="../../../css/common.css">
+	</head>
+	<body>
+		<div class="header">
+			<em class="lo_left" id="lo_left"></em>
+			<p>推荐成功</p>
+			
+		</div>
+		<div class="recommend-content">
+			<img src="../../../images/accept-share.png"/>
+			<h1>推荐成功!</h1>
+			<p>记得让朋友认证身份哦</p>
+		</div>
+		<div class="recommend-bottom">
+			<p>推荐朋友越多，赢取奖金越多哦！</p>
+			<button class="reco">再去推荐</button>
+			
+		</div>
+	</body>
+	<script src="../../../js/flexible.js"></script>  
+	<script src="../../../js/jquery-3.1.1.min.js"></script>
+	<script src="../../../js/return.js" type="text/javascript" charset="utf-8"></script>
+	<script>
+		$(".reco").click(function(){
+			window.history.back(-1);
+		})
+			
+	</script>
+</html>

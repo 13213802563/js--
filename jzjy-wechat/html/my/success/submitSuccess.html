@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+	    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+	    <meta content="yes" name="apple-mobile-web-app-capable" />
+	    <meta content="yes" name="apple-touch-fullscreen">
+	    <meta content="black" name="apple-mobile-web-app-status-bar-style" />
+	    <meta content="telephone=no,email=no" name="format-detection">
+		<title>课程</title>
+		<link rel="stylesheet" href="../../../css/reset.css">
+		<link rel="stylesheet" href="../../../css/common.css">
+	</head>
+		<style type="text/css">
+			.bottom{
+            width: 100%;
+           /* height: 100%;*/
+            background: rgba(0,0,0,0.5);
+            display: none;
+            position: fixed;
+            top: 0;
+            bottom: 0;
+            z-index: 9;
+        }
+        .bottom p{
+            margin-left: 4rem;
+            background: url("../../../images/tp.png");
+            background-size: 100% 100%;
+            width: 5rem;
+            height: 7rem;
+        }
+        .bottom div{
+            text-align: center;
+		    background: url(../../../images/zoo.png);
+		    background-size: 100% 100%;
+		    width: 9rem;
+		    height: 3rem;
+		    padding-top: 1.5rem;
+		    border-radius: 10px;
+		    font-size: .5rem;
+		    margin: 0 auto;
+		    color: #333;
+        }
+		</style>
+	<body style="background: #FFF;">
+		<div class="header">
+			<em class="lo_left" class="return" id="lo_left"></em>
+			<p>接受邀请，学习更专业的专业技能</p>
+		</div>
+		<div class="recommend-content">
+			<img src="../../../images/success.png" style="width: 100%;"/>
+			
+			
+		</div>
+		<div id="content" class="bottom"><p></p><div>请点击右上角,<br>在浏览器中打开并下载</div></div>
+		<div class="recommend-bottom">
+			<button class="download">去下载“家政家园”</button>
+			
+		</div>
+	</body>
+
+	<script src="../../../js/flexible.js"></script>  
+	<script src="../../../js/jquery-3.1.1.min.js"></script>
+	<script src="../../../js/download.js"></script>
+	<script src="../../../js/return.js" type="text/javascript" charset="utf-8"></script>
+	
+	<script>
+	var ls=window.localStorage;
+	  ls.phone=""
+	</script>
+</html>

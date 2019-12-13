@@ -1,0 +1,158 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no">
+    <title>城市选择</title>
+    <link rel="stylesheet" type="text/css" href="../../css/style.css" />
+    <link rel="stylesheet" type="text/css" href="../../css/weui/weui.css" />
+    <link rel="stylesheet" type="text/css" href="../../css/weui/jquery-weui.min.css" />
+    <link rel="stylesheet" type="text/css" href="../../css/weui/demos.css" />
+    <style type="text/css">
+        .rm {
+            font-size: .8rem;
+            padding-bottom: .3rem;
+            width: 100%;
+            margin-left: 20px;
+            margin-top: 0.3rem;
+            color: #5c5c5c;
+        }
+        .qg{
+            margin-top: .3rem;
+            font-size: .9rem;
+        }
+        .city-rm,.nearbyCity {
+            display: flex;
+            padding-left: 0;
+            flex-wrap: wrap;
+            margin-left: 20px;
+
+        }
+        .city-rm{
+            margin-bottom: .5rem;
+        }
+.city{
+    margin-bottom: 6.5rem;
+}
+        .city-rm p ,.nearbyCity p{
+            border: 1px solid #fff;
+            margin-left: 0.2rem;
+            padding: 0 0.2rem;
+            background: #fff;
+            margin-top: .2rem;
+            color: #333;
+        }
+
+        .city-position {
+            position: absolute;
+            top: 2rem;
+            width: 100%;
+            background: #FFFFFF;
+            display: none;
+        }
+
+        .city-position li {
+            border-bottom: 1px solid #F4F4F4;
+            padding: .4rem;
+        }
+
+        #searchBar {
+            z-index: 102;
+        }
+
+        .rgba {
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            /*display: none;*/
+            position: fixed;
+            top: 0;
+            z-index: 0;
+            display: none;
+        }
+
+        .cityList {
+            width: 100%;
+        }
+
+        .letter {
+            position: absolute;
+            right: .3rem;
+            align-items: center;
+            height: 100vh;
+            display: flex;
+        }
+        .letter a{
+            color: #fc4949;
+        }
+        .weui-search-bar{
+            display: list-item!important;
+        }
+
+
+    </style>
+</head>
+
+<body>
+<div class="rgba"></div>
+<!--显示点击的是哪一个字母-->
+<div id="showLetter" class="showLetter"><span>A</span></div>
+<!--城市索引查询-->
+<div class="letter">
+    <ul>
+
+    </ul>
+</div>
+<!--城市列表-->
+<div class="cityList">
+    <div class="weui-search-bar" id="searchBar">
+        <form class="weui-search-bar__form">
+            <div class="weui-search-bar__box">
+                <i class="weui-icon-search"></i>
+                <input type="search" autocomplete="off" class="weui-search-bar__input" id="searchInput" placeholder="搜索" required="">
+                <!--<a href="javascript:" class="weui-icon-clear" id="searchClear"></a>-->
+            </div>
+            <label class="weui-search-bar__label" id="searchText">
+                <i class="weui-icon-search"></i>
+                <span>搜索城市名称或首字母</span>
+            </label>
+        </form>
+        <!--<a href="javascript:" class="weui-search-bar__cancel-btn" id="searchCancel">取消</a>-->
+    </div>
+</div>
+<div class="container">
+    <div class="city">
+        <div class="rm" style="display: flex;">已定位城市 :
+        <div class="city-current" style="color: #333;margin-left: .4rem;"><p></p></div></div>
+
+        <div class="rm" id="nearbyCity">附近城市</div>
+        <div class="nearbyCity">
+
+        </div>
+        <div class="rm" id="hotCity">热门城市</div>
+        <div class="city-rm">
+
+        </div>
+
+    </div>
+</div>
+<ul class="city-position">
+</ul>
+</body>
+<script src="../../js/jquery-3.1.1.min.js"></script>
+
+<script src="../../js/weui/jquery-weui.js" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=aLNSCC5MQgG4cMKee1X2Dxpz8M7IUuA5"></script>
+<script src="../../js/crypto/core.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../js/crypto/cipher-core.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../js/crypto/lib-typedarrays.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../js/crypto/aes.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../js/crypto/md5.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../js/crypto/mode-ecb.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../js/jzjy-ui/common.js?id=0" type="text/javascript" charset="utf-8"></script>
+<script src="../../js/my/city.js?id=1-13" type="text/javascript" charset="utf-8"></script>
+</html>

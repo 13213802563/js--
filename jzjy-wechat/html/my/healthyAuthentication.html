@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+		<meta content="yes" name="apple-mobile-web-app-capable" />
+		<meta content="yes" name="apple-touch-fullscreen">
+		<meta content="black" name="apple-mobile-web-app-status-bar-style" />
+		<meta content="telephone=no,email=no" name="format-detection">
+		<link rel="stylesheet" href="../../css/reset.css">
+		<link rel="stylesheet" href="../../css/weui/weui.css">
+		<link rel="stylesheet" href="../../css/weui/jquery-weui.min.css">
+		<link rel="stylesheet" href="../../css/common.css">
+		<link rel="stylesheet" href="../../css/person.css?id=2">
+		<title>健康证认证</title>
+	</head>
+
+	<body>
+		<div class="header">
+			<img src="../../images/arrow.png" class="lo_left" id="lo_left" />
+			<p>健康证认证</p>
+		</div>
+		<div class="userCenter-info">
+			<input id="healthInfo" class="idenfityInfo" value="只有通过健康认证，客户才能放心哦~" readonly="readonly"/>
+		</div>
+		<div class="identify health">
+			<div class="identify-num">
+				<span>健康证有效期</span><input type="text" style="width: 25%;" placeholder="开始时间" id="healthTime" readonly="readonly">——<input id="healthTimeEnd" type="text" style="width: 30%; margin-left: .3rem;" placeholder="结束时间" readonly="readonly">
+			</div>
+			<div style=" height: 0.3rem; background: #f5f2f2"></div>
+			<div class="identity-imag">
+				<div class="uploadImg">
+					<span>上传图片提示：</span><span>证件信息可见；照片大小不要超过5M</span>
+				</div>
+				<hr style="border: 1px solid #ddd">
+				<div>
+					<img src="../../images/person/leng.png" /><span>卫生法规知识培训合格证</span>
+				</div>
+				<div class="identity-img-border">
+					<div>
+						<img src="../../images/person/zhengmian.png" class="uploadImgShow" id="fontImage" />
+						<input accept="image/*" type="file" id="uploadfontImage" style="display: none" />
+
+					</div>
+					<div>
+						<img src="../../images/person/fanmian.png" class="uploadImgShow" id="behindImage" />
+						<input accept="image/*" type="file" id="uploadbehindImage" style="display: none" />
+
+					</div>
+				</div>
+				<div>
+					<img src="../../images/person/leng.png" /><span>从业人员健康说明</span>
+				</div>
+				<div class="identity-img-border">
+					<div><img src="../../images/person/zhengmian.png" class="uploadImgShow" id="healthFontImage" />
+						<input accept="image/*" type="file" id="uploadhealthFontImage" style="display: none" />
+					</div>
+					<div><img src="../../images/person/fanmian.png" class="uploadImgShow" id="healthBehindImage" />
+						<input accept="image/*" type="file" id="uploadhealthBehindImage" style="display: none" />
+					</div>
+				</div>
+				<div class="identity-foot">
+					<p>您的证件信息家政家园将为您保密，加上水印“仅用作家政家园身份验证”。只用于认证身份，不会作为他用。</p>
+				</div>
+				<button id="healthySubmit">提交</button>
+			</div>
+		</div>
+		<div id="tanwin" class="tan" style="display:none;"></div>
+		<div id="loading">
+			<div class="weui-loadmore">
+				<i class="weui-loading"></i>
+				<span class="weui-loadmore__tips">正在加载中...</span>
+			</div>
+		</div>
+	</body>
+	<script src="../../js/jquery-3.1.1.min.js"></script>
+	<script src="../../js/flexible.js"></script>
+	<script src="../../js/return.js"></script>
+	<script src="../../js/weui/jquery-weui.js"></script>
+	<script src="../../js/upload/lrz.bundle.js"></script>
+	<!--接口加密-->
+	<script src="../../js/crypto/core.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../../js/crypto/cipher-core.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../../js/crypto/lib-typedarrays.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../../js/crypto/aes.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../../js/crypto/md5.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../../js/crypto/mode-ecb.js" type="text/javascript" charset="utf-8"></script>
+
+	<script src="../../js/jzjy-ui/common.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../../js/my/healthyAuthentication.js?id=11"></script>
+
+</html>

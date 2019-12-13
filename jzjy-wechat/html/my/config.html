@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta content="yes" name="apple-mobile-web-app-capable"/>
+    <meta content="yes" name="apple-touch-fullscreen">
+    <meta content="black" name="apple-mobile-web-app-status-bar-style"/>
+    <meta content="telephone=no,email=no" name="format-detection">
+    <link rel="stylesheet" type="text/css" href="../../css/reset.css"/>
+    <link rel="stylesheet" href="../../css/weui/weui.min.css">
+    <link rel="stylesheet" href="../../css/weui/jquery-weui.min.css">
+    <link rel="stylesheet" href="../../css/my/config.css">
+</head>
+<body>
+<div class="g-header">
+    <div class="u-back">
+
+    </div>
+</div>
+<div class="g-main-title">
+    设置
+</div>
+<div class="g-list">
+    <div class="item">账户安全<span class="u-more"></span></div>
+    <div class="item">关于我们<span class="u-more"></span></div>
+    <div class="item">意见反馈<span class="u-more"></span></div>
+</div>
+<div class="g-btns">
+    <button>退出登录</button>
+</div>
+</body>
+<script src="../../js/jquery-3.1.1.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../js/weui/jquery-weui.js"></script>
+<!--接口加密-->
+<script src="../../js/crypto/core.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../js/crypto/cipher-core.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../js/crypto/lib-typedarrays.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../js/crypto/aes.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../js/crypto/md5.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../js/crypto/mode-ecb.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../js/jzjy-ui/common.js?id=2" type="text/javascript" charset="utf-8"></script>
+</html>
+<script>
+
+    /**
+     * 验证用户的Token。如果没有，则跳到signin.html，否则返回boolean true。
+     * @returns {boolean}
+     */
+    function verifyTokenToLogin(callback) {
+        if (localStorage.getItem('token')) {
+            callback()
+        } else {
+            window.location.href = '/jzjy-wechat/signin.html'
+        }
+    }
+
+    // 返回上一页
+    $('.g-header > .u-back').on('click',function () {
+        window.location.href = '/jzjy-wechat/my.html';
+    });
+
+    // 列表点击事件
+    $('.g-list').on('click','.item',function () {
+        let targetText = $(this).text();
+        switch (targetText) {
+            case '账户安全':
+                verifyTokenToLogin(function () {
+                    window.location.href = '/jzjy-wechat/html/my/accountSecurity/accountSecurity.html'
+                });
+                break;
+            case '关于我们':
+                    window.location.href = '/jzjy-wechat/html/my/about.html?ios=1'
+                break;
+            case '意见反馈':
+                verifyTokenToLogin(function () {
+                    window.location.href = '/jzjy-wechat/html/my/feedback.html'
+                });
+                break;
+            default:
+                break;
+
+
+        }
+    });
+
+
+    // 按钮点击事件
+    $('.g-btns').on('click','button',function () {
+        let targetText = $(this).text()
+        switch (targetText) {
+            case '退出登录':
+                localStorage.clear();
+                sessionStorage.clear();
+                window.location.href = '/jzjy-wechat/homepage.html';
+                break;
+            default:
+                break;
+        }
+    })
+</script>
