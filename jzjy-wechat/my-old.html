@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+		<meta content="yes" name="apple-mobile-web-app-capable" />
+		<meta content="yes" name="apple-touch-fullscreen">
+		<meta content="black" name="apple-mobile-web-app-status-bar-style" />
+		<meta content="telephone=no,email=no" name="format-detection">
+		<link rel="stylesheet" type="text/css" href="css/reset.css" />
+		<link rel="stylesheet" type="text/css" href="css/common.css" />
+		<link rel="stylesheet" type="text/css" href="css/index.css" />
+		<link rel="stylesheet" href="css/person.css?id=4">
+		<link rel="stylesheet" href="css/weui/weui.min.css">
+		<link rel="stylesheet" href="css/weui/jquery-weui.min.css">
+		<script src="js/umeng.js"></script>
+		<title>我的</title>
+		<style>
+			/*.weui-dialog__hd{*/
+				/*padding: 0.8rem!important;*/
+			/*}*/
+			.weui-dialog__ft{
+				line-height: 36px!important;
+			}
+			.weui-dialog{
+				width:70%!important;
+				border-radius: .2rem;
+			}
+			.weui-dialog__ft a:last-child{
+				color: #fc4949;
+			}
+			#status img:last-child{
+				float: right;
+				margin:0 .1rem;
+			}
+			#span{
+				color: #ffffff;
+				background-image: url(images/button@3x.png);
+				background-repeat: no-repeat;
+				background-size: 100% 100%;
+				-moz-background-size: 100% 100%;
+				padding: 0 .2rem;
+			}
+			.weui-dialog__ft:after{
+				border:0;
+			}
+			.weui-dialog__btn{
+				border-top: 1px solid #d5d5d6;
+			}
+			.one{
+				border:0;
+			}
+			#myVerifyInfo>span {
+				width: 1.5rem;
+				text-align: center;
+			}
+			#myVerifyInfo {
+				width: max-content;
+				width: -webkit-max-content;
+				width: -moz-max-content;
+				width: -o-max-content;
+			}
+			#myAccountNewAmount>span {
+				width: 2rem;
+				text-align: center;
+			}
+			#myAccountNewAmount{
+				width: max-content;
+				width: -webkit-max-content;
+				width: -moz-max-content;
+				width: -o-max-content;
+			}
+#status{
+	display: flex;
+	align-items: center;
+	border: 0;
+	padding: 0;
+	margin: .05rem 0;
+	font-size: 0.35rem;
+	height: 0.6rem;
+	line-height: 0.6rem;
+
+}
+			#status img{
+				width: 0.5rem;
+				height: 0.5rem;
+				margin-left: 0.1rem;
+				vertical-align: middle;
+			}
+		</style>
+	</head>
+
+	<body style="overflow-x:hidden">
+		<div class="person">
+			<div class="person-header">
+				<div class="person-head-left">
+					<img id="headUrl" src="http://erp.95081.com/jzjy-wechat/images/person/userphoto.png">
+				</div>
+				<div class="person-head-left" style="width: 70%;margin-left: 0.2rem">
+					<p id="userName" style="margin: 0"></p>
+					<div class="fat_div" style="display: none">
+
+						<div id="status">
+							<img src="images/integralGrade/click_gold_medal_small%20@3x.png" alt="">
+							<p style='color: #fc4949;margin-left: .05rem'>金牌</p>
+							<img src="/jzjy-wechat/images/bankAdministration/ret@3x.png" alt="" style="width: 0.25rem;height: 0.35rem;">
+						</div>
+					</div>
+				</div>
+				<div class="person-head-set">
+					<img src="images/courseAttendance/sm.png" class="signInImg" style="display: none">
+					<img src="images/person/bells.png" class="oneImg">
+				</div>
+				<!--<div class="person-head-right" id="useAccount">-->
+					<!--<div class="jsUser">-->
+						<!--<h2 class="num_h2">-->
+						<!--</h2>-->
+						<!--<h5 class="num_h5">我的账户</h5>-->
+					<!--</div>-->
+				<!--</div>-->
+			</div>
+			<div class="person-body">
+				<ul>
+					<li>
+						<div><img src="images/my/mine_order@3x.png" ></div>
+						<div>我的订单</div>
+					</li>
+					<li>
+						<div><img src="images/my/mine_pay@3x.png" > </div>
+						<div>我的服务费</div>
+					</li>
+					<li>
+						<div><img src="images/my/mine_card@3x.png" > </div>
+						<div>在线售卡</div>
+					</li>
+					<li>
+						<div><img src="images/my/mine_prize@3x.png"> </div>
+						<div>邀请有奖</div>
+					</li>
+					<li>
+						<div><img src="images/my/mine_home@3x.png"> </div>
+						<div>服务之家</div>
+					</li>
+
+					<li>
+						<div><img src="images/my/mine_coupon@3x.png"></div>
+						<div>优惠券</div>
+					</li>
+					<li>
+						<div><img src="images/my/mine_look@3x.png" ></div>
+						<div>我的浏览</div>
+					</li>
+					<li>
+						<div><img src="images/my/mine_collection@3x.png"></div>
+						<div>我的收藏</div>
+					</li>
+					<!--<li>
+						<div><img src="images/person/mine_insurance.png"></div>
+						<div>我的保险</div>
+					</li>-->
+				</ul>
+			</div>
+
+
+			<div id="myAccountNew">
+				<ul>
+					<li>
+						<div class="myVerifyTitle" id="myVerifyTitle">实名认证</div>
+						<div class="myVerifyInfo" id="myVerifyInfo">
+							<img src="" alt="" id="myVerifyInfoImg" style="display: none">
+							<span id="span">去认证</span>
+							<img src="images/person/arrow@3x.png">
+						</div>
+					</li>
+					<li>
+						<div id="account-safety">账号安全</div>
+						<img src="images/person/arrow@3x.png">
+					</li>
+					<li>
+						<div>培训课程报名</div>
+						<div><img src="images/person/arrow@3x.png"></div>
+					</li>
+					<li>
+						<div class="myAccountNewTitle" id="myAccountNewTitle">我的账户</div>
+						<div class="myAccountNewAmount" id="myAccountNewAmount" style="color: #fc4949; font-weight: 600;"><span>￥ 0.00</span><img src="images/person/arrow@3x.png"></div>
+					</li>
+					<li class="bank" style="display: none">
+						<div>银行卡</div>
+						<div><img src="images/person/arrow@3x.png"></div>
+					</li>
+				</ul>
+			</div>
+
+
+			<div class="person-content">
+
+				<ul class="uls_list">
+
+
+					<!--<li id="mycode">-->
+						<!--<div>我的邀请码</div>-->
+						<!--<div><img src="images/person/arrow@3x.png"></div>-->
+					<!--</li>-->
+					<li id="">
+						<div>我的专属码</div>
+						<div><img src="images/person/arrow@3x.png"></div>
+					</li>
+
+					<!--<li>
+						<div>我的优惠券</div>
+						<div><img src="images/person/arrow@3x.png"></div>
+					</li>-->
+					<!--<li>
+						<div>我的保险</div>
+						<div><img src="images/person/arrow@3x.png"></div>
+					</li>-->
+
+					<li>
+						<div>意见反馈</div>
+						<div><img src="images/person/arrow@3x.png"></div>
+					</li>
+					<!--<li>-->
+
+					<!--<div>设置</div>-->
+					<!--<div><img src="images/person/arrow@3x.png"></div>-->
+					<!--</li>-->
+					<li>
+						<div>关于我们</div>
+						<div><img src="images/person/arrow@3x.png"></div>
+					</li>
+					<li>
+						<button style="background: #F4F4F4; border: 0; color: #000000; display: none" onclick="loginOut()">退出</button>
+					</li>
+				</ul>
+			</div>
+		</div>
+		<div class="index-footer">
+			<ul>
+				<li>
+					<a href="homepage.html"><img src="images/tab_btn_train__default.png" />
+						<p>首页</p>
+					</a>
+				</li>
+				<li>
+					<a href="html/curriculum/index.html"><img src="images/tab_btn_lesson_default.png" />
+						<p>课程</p>
+					</a>
+				</li>
+				<li>
+					<a href="html/orderList/orderList.html"><img src="images/orders/orders_default@3x.png" />
+						<P>接单</P>
+					</a>
+				</li>
+				<li>
+					<a href="my.html" style="color: #FC4949;"><img src="images/tab_btn_mine_default.png" />
+						<P>我的</P>
+					</a>
+				</li>
+			</ul>
+		</div>
+		<div id="tanwin" class="tan" style="display:none;"></div>
+		<!--首次登录弹框-->
+		<div class="quick-verify">
+			<img src="images/btn-closeVerify@3x.png" alt="" id="quickImg">
+			<div class="quick-content">
+				<div class="verify-avatar">
+					<img src="images/avatar@3x.png" alt="">
+				</div>
+				<p class="verify-phrase">
+					出于对用户安全性考虑，请您填写真实信息，进行快速认证。
+				</p>
+				<ul class="Authentication-content">
+					<li >
+						<p>姓名</p>
+						<input type="text" placeholder="请输入姓名" id="name">
+					</li>
+					<li>
+						<p>身份证号</p>
+						<input type="tel" placeholder="请输入身份证号" id="ID">
+					</li>
+					<li class="liCity">
+						<p style="width: 53%;">期望工作城市</p>
+						<input type="tel" placeholder="请选择城市" readonly="readonly" id="city" class="cityDiv">
+						<img src="images/icon_arrows_right.png" style="height: .4rem;">
+					</li>
+				</ul>
+
+				<div id="button">
+					<button>立即认证</button>
+				</div>
+			</div>
+		</div>
+		<div class="mark"></div>
+		<!--城市-->
+		<div class="location">
+			<div class="heade">
+				<em class="lo_left" id="cityClose" style="top: .3rem;"></em>
+				<p style="">选择城市</p>
+			</div>
+			<iframe src="html/my/city.html?v=5" frameborder="0"></iframe>
+		</div>
+		<div id="loading" style="display: none">
+			<div class="weui-loadmore" style="width: 45%;line-height: 1.2rem">
+				<i class="weui-loading"></i>
+				<span class="weui-loadmore__tips">正在加载中...</span>
+			</div>
+		</div>
+	</body>
+	<script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+	<script src="js/flexible.js" type="text/javascript" charset="utf-8"></script>
+	<script src="js/jquery-3.1.1.min.js" type="text/javascript" charset="utf-8"></script>
+	<script src="js/weui/jquery-weui.js"></script>
+	<!--接口加密-->
+	<script src="js/crypto/core.js" type="text/javascript" charset="utf-8"></script>
+	<script src="js/crypto/cipher-core.js" type="text/javascript" charset="utf-8"></script>
+	<script src="js/crypto/lib-typedarrays.js" type="text/javascript" charset="utf-8"></script>
+	<script src="js/crypto/aes.js" type="text/javascript" charset="utf-8"></script>
+	<script src="js/crypto/md5.js" type="text/javascript" charset="utf-8"></script>
+	<script src="js/crypto/mode-ecb.js" type="text/javascript" charset="utf-8"></script>
+	<script src="js/jzjy-ui/common.js?id=2" type="text/javascript" charset="utf-8"></script>
+	<script type="application/javascript" src="js/my/my.js?v=1-1"></script>
+
+</html>

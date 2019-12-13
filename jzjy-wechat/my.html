@@ -1,0 +1,770 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>我的</title>
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta content="yes" name="apple-mobile-web-app-capable"/>
+    <meta content="yes" name="apple-touch-fullscreen">
+    <meta content="black" name="apple-mobile-web-app-status-bar-style"/>
+    <meta content="telephone=no,email=no" name="format-detection">
+    <link rel="stylesheet" type="text/css" href="css/reset.css"/>
+    <link rel="stylesheet" type="text/css" href="https://cdn.bootcss.com/Swiper/4.5.0/css/swiper.min.css"/>
+    <link rel="stylesheet" href="css/weui/weui.min.css">
+    <link rel="stylesheet" href="css/weui/jquery-weui.min.css">
+    <link rel="stylesheet" href="css/my-new.css">
+    <script src="js/umeng.js"></script>
+</head>
+<body>
+<div class="g-header">
+    <div class="u-scan"></div>
+    <div class="u-msg"></div>
+    <div class="u-config"></div>
+</div>
+
+<div class="g-userinfo">
+    <div class="info">
+        <div class="u-avatar"></div>
+        <span class="u-username"></span>
+        <span class="u-verify-status">已认证</span>
+        <div class="u-logo"></div>
+    </div>
+    <div class="counts">
+        <div class="item">
+            <p class="u-num">0</p>
+            <p class="u-title">优惠券</p>
+        </div>
+        <div class="item">
+            <p class="u-num">0</p>
+            <p class="u-title">浏览</p>
+        </div>
+        <div class="item">
+            <p class="u-num">0</p>
+            <p class="u-title">收藏</p>
+        </div>
+    </div>
+    <div class = "midlleIcon"style="position:relative;top: 10px;" >
+
+    </div>
+    <!--<div class="swiper" id="swiper">-->
+        <!--<div class="swiper-wrapper">-->
+            <!--&lt;!&ndash;<div class="swiper-slide">Slide 1</div>&ndash;&gt;-->
+            <!--&lt;!&ndash;<div class="swiper-slide">Slide 2</div>&ndash;&gt;-->
+            <!--&lt;!&ndash;<div class="swiper-slide">Slide 3</div>&ndash;&gt;-->
+        <!--</div>-->
+    <!--</div>-->
+
+
+
+    <div class="golden" style="display: none">
+        <img src="images/point/click_primary_small@3x.png" alt="">
+        <span>金牌保洁师</span>
+    </div>
+</div>
+
+<div class="g-up-list">
+    <div class="m-item">
+        <img class="u-icon" src="images/my-new/order@3x.png" alt="">
+        <span class="u-title">订单</span>
+        <img class="u-more" src="images/my-new/return@3x.png" alt="">
+    </div>
+    <div class="m-item">
+        <img class="u-icon" src="images/my-new/rfiles@3x.png" alt="">
+        <span class="u-title">资料卡</span>
+        <div>
+            <p>完善度 <span id="fraction">0</span>%</p>
+            <img class="u-more" src="images/my-new/return@3x.png" alt="">
+        </div>
+
+    </div>
+    <div class="m-item">
+        <img class="u-icon" src="images/my-new/service_charge@3x.png" alt="">
+        <span class="u-title">服务费</span>
+        <img class="u-more" src="images/my-new/return@3x.png" alt="">
+    </div>
+    <div class="m-item">
+        <img class="u-icon" src="images/my-new/account@3x.png" alt="">
+        <span class="u-title">账户</span>
+        <div style="font-weight: 600;">
+            <p style="color: #fc4949;" id="total"></p>
+            <img class="u-more" src="images/my-new/return@3x.png" alt="">
+        </div>
+
+        <span class="u-sub-title"></span>
+    </div>
+    <div class="m-item" style="display: none" data-name="银行卡">
+        <img class="u-icon" src="images/my-new/bank_card@3x.png" alt="">
+        <span class="u-title">银行卡</span>
+        <img class="u-more" src="images/my-new/return@3x.png" alt="">
+    </div>
+</div>
+
+<div class="g-down-list">
+    <div class="m-item">
+        <img class="u-icon" src="images/my-new/enrolment@3x.png" alt="">
+        <span class="u-title">培训报名</span>
+        <img class="u-more" src="images/my-new/return@3x.png" alt="">
+    </div>
+    <div class="m-item" data-name="专属码">
+        <img class="u-icon" src="images/my-new/code@3x.png" alt="">
+        <span class="u-title">专属码</span>
+        <img class="u-more" src="images/my-new/return@3x.png" alt="">
+    </div>
+    <!--<div class="m-item" data-name="服务之家">
+        <img class="u-icon" src="images/my-new/home@3x.png" alt="">
+        <span class="u-title">服务之家</span>
+        <img class="u-more" src="images/my-new/return@3x.png" alt="">
+    </div>-->
+</div>
+<div class="index-footer">
+    <ul>
+        <li>
+            <a href="javaScript:;"><img src="images/tab_btn_train__default.png">
+                <p>首页</p>
+            </a>
+        </li>
+        <li>
+            <a href="javaScript:;"><img src="images/tab_btn_lesson_default.png">
+                <p>课程</p>
+            </a>
+        </li>
+        <li>
+            <a href="javaScript:;"><img src="images/orders/orders_default@3x.png">
+                <p>接单</p>
+            </a>
+        </li>
+        <li>
+            <a href="javaScript:;" style="color: #FC4949;"
+               onclick="location.reload();goto('/jzjy-wechat/my.html')">
+                <img src="images/tab_btn_mine_default.png">
+                <p id="u-icon-mine">请登录</p>
+            </a>
+        </li>
+    </ul>
+</div>
+<div class="guide">
+    <img src="images/file-caed/yd.png" id="guide" alt="">
+    <button>知道了</button>
+</div>
+
+<!--首次登录弹框-->
+<!--<div class="quick-verify">-->
+    <!--<img src="images/btn-closeVerify@3x.png" alt="" id="quickImg">-->
+    <!--<div class="quick-content">-->
+        <!--<div class="verify-avatar">-->
+            <!--<img src="images/avatar@3x.png" alt="">-->
+        <!--</div>-->
+        <!--<p class="verify-phrase">-->
+            <!--出于对用户安全性考虑，请您填写真实信息，进行快速认证。-->
+        <!--</p>-->
+        <!--<ul class="Authentication-content">-->
+            <!--<li>-->
+                <!--<p>姓名</p>-->
+                <!--<input type="text" placeholder="请输入姓名" id="name">-->
+            <!--</li>-->
+            <!--<li>-->
+                <!--<p>身份证号</p>-->
+                <!--<input type="tel" placeholder="请输入身份证号" id="ID">-->
+            <!--</li>-->
+            <!--<li class="liCity">-->
+                <!--<p>期望工作城市</p>-->
+                <!--<input type="tel" placeholder="请选择城市" readonly="readonly" id="city" class="cityDiv">-->
+                <!--<img src="images/icon_arrows_right.png">-->
+            <!--</li>-->
+            <!--<li class="">-->
+                <!--<p>期望工种</p>-->
+                <!--<input type="text" name="workName" class="u-ipt-work-type" placeholder="请选择您的工种" id="workType" readonly/>-->
+            <!--</li>-->
+        <!--</ul>-->
+
+        <!--<div id="button">-->
+            <!--<button>立即认证</button>-->
+        <!--</div>-->
+    <!--</div>-->
+<!--</div>-->
+<div class="mark"></div>
+<div id="tanwin" class="tan" style="display:none;"></div>
+<!--城市-->
+<div class="location">
+    <div class="heade">
+        <img src="images/arrow.png" class="lo_left" id="cityClose"/>
+        <p style="">选择城市</p>
+    </div>
+    <iframe src="html/my/city.html?v=5" frameborder="0"></iframe>
+</div>
+</body>
+<script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+<!--<script src="http://res2.wx.qq.com/open/js/jweixin-1.4.0.js"></s    cript>-->
+<script src="js/jquery-3.1.1.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="js/weui/jquery-weui.js"></script>
+<script src="https://cdn.bootcss.com/Swiper/4.5.0/js/swiper.min.js"></script>
+<!--接口加密-->
+<script src="js/crypto/core.js" type="text/javascript" charset="utf-8"></script>
+<script src="js/crypto/cipher-core.js" type="text/javascript" charset="utf-8"></script>
+<script src="js/crypto/lib-typedarrays.js" type="text/javascript" charset="utf-8"></script>
+<script src="js/crypto/aes.js" type="text/javascript" charset="utf-8"></script>
+<script src="js/crypto/md5.js" type="text/javascript" charset="utf-8"></script>
+<script src="js/crypto/mode-ecb.js" type="text/javascript" charset="utf-8"></script>
+<script src="js/jzjy-ui/common.js?id=2" type="text/javascript" charset="utf-8"></script>
+<!--<script src="js/my/userAuthentication.js?v1"></script>-->
+<script>
+    var _czc = _czc || [];
+    if (!localStorage.getItem('First_entry')) {
+        /*展示资料卡引导*/
+        localStorage.setItem('First_entry', 1);
+        $(".guide").show()
+    }
+    $(".guide").on('click', function () {
+        $(".guide").hide()
+    })
+    // userinfo verify 0 已认证，其它都是未认证
+
+    // 微信签名
+    jzjy.ajax({
+        url: "weChat/signature",
+        async: false,
+        params: {
+            url: window.location.href.split("#")[0]
+        }
+    }, function (data) {
+        if (data.code == "-2") {
+            console.log(data);
+        } else {
+            let nonceStr = data.data.nonceStr;
+            let timestamp = data.data.timestamp;
+            let signature = data.data.signature;
+            wx.config({
+                debug: false,
+                appId: data.data.appId,
+                timestamp: timestamp,
+                nonceStr: nonceStr,
+                signature: signature,
+                jsApiList: [
+                    'checkJsApi',
+                    'scanQRCode'
+                ]
+            });
+            wx.error(function (res) {
+                alert("错误：" + res.errMsg); //这个地方的好处就是wx.config配置错误，会弹出窗口哪里错误，然后根据微信文档查询即可。
+            });
+            wx.ready(function () {
+                wx.checkJsApi({
+                    jsApiList: [
+                        'scanQRCode'
+                    ],
+                    success: function (res) {
+                    }
+                });
+            })
+        }
+    });
+
+    let swiperDetails = [{
+        url: '/jzjy-wechat/images/my-new/invite@3x.png',
+        link: '/jzjy-wechat/extension/invite-prizes/newInvitePrizes.html'
+    }, {
+        url: '/jzjy-wechat/images/my-new/swp1.png',
+        link: '/jzjy-wechat/html/my/userAuthentication.html'
+    }]
+
+    let AJAXuserInfo = ''; // 用于存储AJAX传过来的用户资料
+
+    /**
+     * 验证用户的Token。如果没有，则跳到signin.html，否则返回boolean true。
+     * @returns {boolean}
+     */
+    function verifyTokenToLogin(callback) {
+        if (localStorage.getItem('token')) {
+            callback()
+        } else {
+            window.location.href = '/jzjy-wechat/signin.html'
+        }
+    }
+
+    function urlToAny(obj) {
+        if ($(obj).attr('data-index') == 0) {
+            verifyTokenToLogin(function () {
+                window.location.href = '/jzjy-wechat/extension/invite-prizes/newInvitePrizes.html'
+            })
+        }
+        if ($(obj).attr('data-index') == 1) {
+            verifyTokenToLogin(function () {
+                window.location.href = '/jzjy-wechat/html/my/userAuthentication.html'
+            })
+        }
+    }
+
+    if (!localStorage.getItem('token')) { // 如果用户没登录
+        //未登录时的轮播图
+        // let html = ''
+        // $.each(swiperDetails, function (index, value) {
+        //     html += '<div class="swiper-slide"><img data-index="' + index + '" onclick="urlToAny(this)" style="width:100%;" src="' + value.url + '" alt=""></div>'
+        // })
+        // $('#swiper').find('.swiper-wrapper').empty().append(html)
+        // swiperDetails
+        //   <img src="/jzjy-wechat/images/bankAdministration/ret@3x.png" alt="" style="width: 0.25rem;height: 0.35rem;">
+
+        //     new Swiper('.swiper', {
+        //     speed: 200,
+        //     autoplay: {
+        //         disableOnInteraction: false
+        //     },
+        //
+        //     loop: true
+        // });
+        // let html =  '<img  src="' + swiperDetails[0].url + '"  onclick="urlToAny(this)" style="width:100%;"alt="">'
+        // $(".wrappic").eq(i).children('a').children('img').attr("src", json.url);
+        // $('#midlleIcon').children('img').attr("src",  swiperDetails[0].url);
+
+        let html = ''
+            html += '<div class="aaaa"><img data-index="' + 0 + '" onclick="urlToAny(this)" style="width:100%;" src="' + swiperDetails[1].url + '" alt=""></div>'
+        $('.midlleIcon').html(html)
+
+        // 用户名改变文字并且点击跳登录页
+        $('.g-userinfo').find('.u-username').css({'top': '1.8rem'})
+            .text('登录/注册')
+            .on('click', function () {
+                window.location.href = 'signin.html'
+            })
+
+    } else if (localStorage.getItem('token')) { //如果用户已登录
+
+        // 判断是否显示银行卡和邀请码
+        jzjy.newAjax({
+            params: {
+                phone: jzjy.getMobile(),
+                key: 145170999177111
+            },
+            async: false
+        }, function (data) {
+            var list = data.data
+            if (data.code == 0) {
+                // if(list.myCode == true) { //我的邀请码
+                //     $('.g-down-list').find('.m-item[data-name="专属码"]').show()
+                // } else {
+                //     $('.g-down-list').find('.m-item[data-name="专属码"]').hide()
+                // }
+                if (list.ldRegister == true) { //银行卡管理
+                    $('.g-up-list').find('.m-item[data-name="银行卡"]').show()
+                } else {
+                    $('.g-up-list').find('.m-item[data-name="银行卡"]').hide()
+                }
+            }
+        })
+
+
+        // 未登录图标文字
+        $('#u-icon-mine').text('我的')
+
+
+        // 认证状态显示
+        $('.g-userinfo').find('.u-verify-status').show();
+
+        // 加载用户信息
+        jzjy.ajax({
+            params: {
+                token: localStorage.getItem('token')
+            },
+            async: true,
+            url: "personnelApp/loadPersonInfo"
+        }, function (data) {
+            if (data.code === '0') {
+
+                _localStorage.setItem('verity',data.data.verify);
+                if (data.data.verify == 0) {
+                    // 扫一扫显示
+                    $('.g-header > .u-scan').show();
+
+                    // let html = '<div class="swiper-slide"><img data-index="' + 0 + '" onclick="urlToAny(this)" style="width:100%;" src="' + swiperDetails[0].url + '" alt=""></div>'
+                    // $('#swiper').find('.swiper-wrapper').empty().append(html)
+                    let html = ''
+                    html += '<div class="aaaa"><img data-index="' + 0 + '" onclick="urlToAny(this)" style="width:100%;" src="' + swiperDetails[0].url + '" alt=""></div>'
+                    $('.midlleIcon').html(html)
+
+                } else {
+                    $('.g-userinfo').find('.u-verify-status').text('未认证')
+                        .addClass('off')
+                    //未认证时的轮播图
+                    // let html = ''
+                    // $.each(swiperDetails, function (index, value) {
+                    //     html += '<div class="swiper-slide"><img data-index="' + index + '" onclick="urlToAny(this)" style="width:100%;" src="' + value.url + '" alt=""></div>'
+                    // })
+                    // $('#swiper').find('.swiper-wrapper').empty().append(html)
+
+                    // new Swiper('.swiper', {
+                    //     speed: 200,
+                    //     autoplay: {
+                    //         disableOnInteraction: false
+                    //     },
+                    //
+                    //     loop: true
+                    // });
+                    let html = ''
+                    html += '<div class="aaaa"><img data-index="' + 1 + '" onclick="urlToAny(this)" style="width:100%;" src="' + swiperDetails[1].url + '" alt=""></div>'
+                    $('.midlleIcon').html(html)
+                }
+                AJAXuserInfo = data.data;
+                // 设置用户昵称
+                let $userinfo = $('.g-userinfo');
+                if (data.data.nickName) {
+                    $userinfo.find('.u-username').text(data.data.nickName);
+                } else {
+                    $userinfo.find('.u-username').text(data.data.mobile);
+                }
+
+
+                // 显示用户头像
+                if (data.data.headPic) {
+                    $userinfo.find('.u-avatar').css({
+                        'background': 'url("' + data.data.headPic + '")',
+                        'background-size': 'cover',
+                        'background-position': 'center'
+                    });
+                }
+                // 显示金牌服务
+                if (data.data.workType && data.data.workType === '2') {
+                    $userinfo.find('.golden').show()
+                    $(".golden").on("click", function () {
+                        goto("html/my/integralGrade/integralGrade.html")
+                    })
+                }
+
+
+                // 设置认证状态
+                // let $verifyStatus = $userinfo.find('.u-verify-status');
+                // if (data.data.verify === "0") {
+                //     $verifyStatus.text('已认证')
+                //         .addClass('on')
+                //     $userinfo.find('.swiper')
+                //         .addClass('has-verify')
+                //         .on('click', function () {
+                //             verifyTokenToLogin(function () {
+                //                 window.location.href = '/jzjy-wechat/extension/invite-prizes/newInvitePrizes.html'
+                //             })
+                //         })
+                // } else {
+                //     $verifyStatus.text('未认证')
+                //         .addClass('off');
+                //     $userinfo.find('.swiper')
+                //         .addClass('no-verify')
+                //         .on('click', function () {
+                //             window.location.href = '/jzjy-wechat/html/my/userAuthentication.html'
+                //         })
+                // }
+
+                // 设置计数器
+                let $counts = $('.g-userinfo > .counts');
+                if (data.data.countCoupon) {
+                    $counts.find('.u-num').eq(0).text(data.data.countCoupon);// 优惠券数量
+                }
+                if (data.data.countBrowse) {
+                    $counts.find('.u-num').eq(1).text(data.data.countBrowse); // 浏览数量
+                }
+                if (data.data.countCollection) {
+                    $counts.find('.u-num').eq(2).text(data.data.countCollection) // 收藏数量
+                }
+                if (data.data.fraction) {
+                    $("#fraction").html(data.data.fraction) // 信息完善度
+                }
+                if (data.data.total) {
+                    $("#total").html('￥ <span >' + data.data.total + '</span>') // 账户
+                }
+
+            }
+        })
+    }
+
+    // 列表点击事件
+    $('.g-up-list,.g-down-list').on('click', '.m-item', function () {
+        let targerText = $($(this)[0]).find('.u-title').text()
+        switch (targerText) {
+            case '订单':
+                verifyTokenToLogin(function () {
+                    _czc.push(['_trackEvent', '微站', '我的订单'])
+                    if (_localStorage.getItem("verity") && _localStorage.getItem("verity") == "1") {
+                        // goto("/jzjy-wechat/html/my/userAuthentication.html?type=2");
+                        $.modal({
+                            autoClose: false,
+                            title: "为确保您的账户安全，请先完成实名认证。",
+                            text: "",
+                            buttons: [{
+                                text: "关闭",
+                                className: "default",
+                                onClick: function () {
+                                    $.closeModal()
+                                }
+                            },
+                                {
+                                    text: "去认证",
+                                    onClick: function () {
+                                        //点击确认
+                                        window.location.href = "/jzjy-wechat/html/my/userAuthentication.html";
+                                    }
+                                }
+                            ]
+                        });
+                        $('.weui-dialog__title').parent().css("padding", "0.8rem")
+                    } else if (_localStorage.getItem("verity") && _localStorage.getItem("verity") == "0") {
+                        goto("/jzjy-wechat/html/orderList/myOrder.html");
+                    } else {
+                        $.modal({
+                            autoClose: false,
+                            title: "为确保您的账户安全，请先完成实名认证。",
+                            text: "",
+                            buttons: [{
+                                text: "关闭",
+                                className: "default",
+                                onClick: function () {
+                                    $.closeModal()
+                                }
+                            },
+                                {
+                                    text: "去认证",
+                                    onClick: function () {
+                                        //点击确认
+                                        window.location.href = "/jzjy-wechat/html/my/userAuthentication.html";
+                                    }
+                                }
+                            ]
+                        });
+                        $('.weui-dialog__title').parent().css("padding", "0.8rem")
+
+                    }
+                    //window.location.href = '/jzjy-wechat/html/orderList/myOrder.html';
+                });
+                break;
+            case '服务费':
+                verifyTokenToLogin(function () {
+                    _czc.push(['_trackEvent', '微站', '我的服务费'])
+                    if (_localStorage.getItem("verity") && _localStorage.getItem("verity") == "1") {
+                        // goto("/jzjy-wechat/html/my/userAuthentication.html?type=1");
+                        $.modal({
+                            autoClose: false,
+                            title: "为确保您的账户安全，请先完成实名认证。",
+                            text: "",
+                            buttons: [{
+                                text: "关闭",
+                                className: "default",
+                                onClick: function () {
+                                    $.closeModal()
+                                }
+                            },
+                                {
+                                    text: "去认证",
+                                    onClick: function () {
+                                        //点击确认
+                                        window.location.href = "/jzjy-wechat/html/my/userAuthentication.html";
+                                    }
+                                }
+                            ]
+                        });
+                        $('.weui-dialog__title').parent().css("padding", "0.8rem")
+                    } else if (_localStorage.getItem("verity") && _localStorage.getItem("verity") == "0") {
+                        goto("/jzjy-wechat/html/my/mywages.html");
+                    } else {
+                        $.modal({
+                            autoClose: false,
+                            title: "为确保您的账户安全，请先完成实名认证",
+                            text: "",
+                            buttons: [{
+                                text: "关闭",
+                                className: "default",
+                                onClick: function () {
+                                    $.closeModal()
+                                }
+                            },
+                                {
+                                    text: "去认证",
+                                    onClick: function () {
+                                        //点击确认
+                                        window.location.href = "/jzjy-wechat/html/my/userAuthentication.html";
+                                    }
+                                }
+                            ]
+                        });
+                        $('.weui-dialog__title').parent().css("padding", "0.8rem")
+                    }
+                    // window.location.href = '/jzjy-wechat/html/my/mywages.html';
+                });
+                break;
+            case '账户':
+                verifyTokenToLogin(function () {
+                    _czc.push(['_trackEvent', '微站', '我的账户'])
+                    window.location.href = '/jzjy-wechat/html/my/myaccount.html';
+                });
+
+                break;
+            case '银行卡':
+                verifyTokenToLogin(function () {
+                    _czc.push(['_trackEvent', '微站', '银行卡'])
+                    window.location.href = '/jzjy-wechat/html/bankAdministration/bankAdministration.html';
+                });
+                break;
+            case '成绩':
+                break;
+            case '培训报名':
+                verifyTokenToLogin(function () {
+                    _czc.push(['_trackEvent', '微站', '培训课程报名'])
+                    if (_localStorage.getItem("verity") && _localStorage.getItem("verity") == "0") {
+                        goto('/jzjy-wechat/html/agreement/train-introduction.html');
+                    } else {
+                        $.modal({
+                            autoClose: false,
+                            title: "为确保您的账户安全，请先完成实名认证",
+                            text: "",
+                            buttons: [{
+                                text: "关闭",
+                                className: "default",
+                                onClick: function () {
+                                    $.closeModal()
+                                }
+                            },
+                                {
+                                    text: "去认证",
+                                    onClick: function () {
+                                        //点击确认
+                                        goto('/jzjy-wechat/html/my/userAuthentication.html')
+                                    }
+                                }
+                            ]
+                        });
+
+                        $('.weui-dialog__title').parent().css("padding", "0.8rem")
+                    }
+                    //window.location.href = '/jzjy-wechat/html/agreement/train-introduction.html';
+                });
+                break;
+            case '资料卡':
+                verifyTokenToLogin(function () {
+                    _czc.push(['_trackEvent', '微站', '资料卡'])
+                    if (_localStorage.getItem("verity") && _localStorage.getItem("verity") == "0") {
+                        goto('/jzjy-wechat/html/file-card/file-card-index.html');
+                    } else {
+                        $.modal({
+                            autoClose: false,
+                            title: "为确保您的账户安全，请先完成实名认证",
+                            text: "",
+                            buttons: [{
+                                text: "关闭",
+                                className: "default",
+                                onClick: function () {
+                                    $.closeModal()
+                                }
+                            },
+                                {
+                                    text: "去认证",
+                                    onClick: function () {
+                                        //点击确认
+                                        goto('/jzjy-wechat/html/my/userAuthentication.html')
+                                    }
+                                }
+                            ]
+                        });
+
+                        $('.weui-dialog__title').parent().css("padding", "0.8rem")
+                    }
+                    //window.location.href = '/jzjy-wechat/html/agreement/train-introduction.html';
+                });
+                break;
+            case '专属码':
+                verifyTokenToLogin(function () {
+                    _czc.push(['_trackEvent', '微站', '我的专属码'])
+                    window.location.href = '/jzjy-wechat/html/my/exclusive.html?name=' + AJAXuserInfo.name + '&mobile=' + AJAXuserInfo.mobile + '&src=' + AJAXuserInfo.headPic;
+                });
+                break;
+            case  '服务之家':
+                _czc.push(['_trackEvent', '微站', '服务之家'])
+                window.location.href = '/jzjy-wechat/html/housekeeping/waiters-house.html'
+                break;
+            default:
+                break;
+        }
+    });
+
+
+    // 导航栏小图标点击事件
+    $('.g-header').on('click', 'div', function () {
+        let targetClassName = $(this)[0].className;
+        switch (targetClassName) {
+            case 'u-scan':
+                wx.scanQRCode({
+                    needResult: 1, // 默认为0，扫描结果由微信处理，1则直接返回扫描结果，
+                    scanType: ["qrCode", "barCode"], // 可以指定扫二维码还是一维码，默认二者都有
+                    success: function (res) {
+                        var result = res.resultStr; // 当needResult 为 1 时，扫码返回的结果
+                        // 扫一扫结果处理 直接拿cuifan的代码
+                        if (result.indexOf('jzjy-wechat') !== -1) {
+                            var url = result.slice(21);
+                            if (result.indexOf('?') !== -1) {
+                                window.location.href = '../' + url + '&token=' + jzjy.getToken();
+                            } else {
+                                window.location.href = '../' + url + '?token=' + jzjy.getToken();
+                            }
+                        } else {
+                            window.location.href = result
+                        }
+                    }
+                });
+                break;
+            case 'u-msg':
+                verifyTokenToLogin(function () {
+                    window.location.href = '/jzjy-wechat/html/my/messagecenter.html';
+                });
+                break;
+            case 'u-config':
+                window.location.href = '/jzjy-wechat/html/my/config.html';
+                break;
+            default:
+                break;
+        }
+    });
+
+    $(".counts div").on("click", function () {
+        if ($("p:last-child", $(this)).html() == "优惠券") {
+            _czc.push(['_trackEvent', '微站', '优惠券'])
+            verifyTokenToLogin(function () {
+                window.location.href = '/jzjy-wechat/html/redEnvelopes/coupon/coupon.html';
+            });
+        } else if ($("p:last-child", $(this)).html() == "浏览") {
+            _czc.push(['_trackEvent', '微站', '我的浏览'])
+            verifyTokenToLogin(function () {
+                window.location.href = '/jzjy-wechat/html/my/mybrowsing.html';
+            });
+        } else if ($("p:last-child", $(this)).html() == "收藏") {
+            _czc.push(['_trackEvent', '微站', '我的收藏'])
+            verifyTokenToLogin(function () {
+                window.location.href = '/jzjy-wechat/html/my/mycollection.html';
+            });
+        }
+    })
+    /*更换头像*/
+    $(".u-avatar").on("click", function () {
+        _czc.push(['_trackEvent', '微站', '头像'])
+        if (jzjy.getTokenSkip()) {
+            window.location.href = "html/my/personalCentent.html";
+        }
+    });
+
+    /*首次登录服务人员认证*/
+    // if (_localStorage.getItem("isPopWindow") == "02") {
+    //     if (_localStorage.getItem("verity") == "2") {
+    //         var html = ''
+    //         html += '<div class="heade">\n' +
+    //             '\t\t\t\t        <img src="images/arrow.png" class="lo_left" id="cityClose"/>\n\n' +
+    //             '\t\t\t\t<p style="">选择城市</p>\n' +
+    //             '\t\t\t</div>\n' +
+    //             '\t\t\t<iframe src="html/my/city.html?v=5" frameborder="0"></iframe>'
+    //         $(".location").html(html)
+    //         $(".quick-verify").show()
+    //         $(".mark").show()
+    //     }
+    // }
+    /*关闭弹框*/
+    $("#quickImg").on("click", function () {
+        $(".quick-verify").hide()
+        $(".mark").hide();
+        _localStorage.setItem('isPopWindow', "01");
+    })
+</script>
+</html>

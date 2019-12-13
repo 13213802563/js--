@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta content="yes" name="apple-mobile-web-app-capable"/>
+    <meta content="yes" name="apple-touch-fullscreen">
+    <meta content="black" name="apple-mobile-web-app-status-bar-style"/>
+    <meta content="telephone=no,email=no" name="format-detection">
+    <title>首页</title>
+    <link rel="stylesheet" type="text/css" href="css/reset.css"/>
+    <link rel="stylesheet" type="text/css" href="css/common.css"/>
+    <link rel="stylesheet" href="css/weui/weui.min.css">
+    <link rel="stylesheet" href="css/weui/jquery-weui.min.css">
+    <link rel="stylesheet" type="text/css" href="css/swiper.css"/>
+    <link rel="stylesheet" type="text/css" href="css/weui/demos.css"/>
+    <link rel="stylesheet" type="text/css" href="css/index.css?id=1"/>
+    <link rel="stylesheet" type="text/css" href="css/homepage/homepage.css"/>
+    <style>
+        .vote {
+            position: relative;
+            display: none;
+        }
+
+        .vote #remainTime {
+            top: 1.2rem;
+            right: 1.9rem;
+            left: -0.4rem;
+            width: 100%;
+        }
+        #timeConfig{
+            top: 1.2rem;
+            right: 1.9rem;
+            left: 0.3rem;
+            position: absolute;
+            width: 100%;
+        }
+
+        #cnzz_stat_icon_1275507848 {
+            display: none;
+        }
+
+        .swiper-wrapper img {
+            width: 100%;
+            height: 100% !important;
+            border-radius: 5px;
+        }
+
+        #chat {
+            position: fixed;
+            right: 0.2rem;
+            bottom: 1.5rem;
+            width: 20%;
+        }
+
+    </style>
+    <style>
+
+    </style>
+    <script src="js/umeng.js" type="text/javascript" charset="utf-8"></script>
+</head>
+<body>
+<div class="homepage">
+    <!--轮播-->
+    <div class="h-header">
+        <div class="home-backHead">
+            <h1>首页</h1>
+            <div class="swiper-container">
+                <div class="swiper-wrapper">
+                </div>
+                <div class="swiper-pagination"></div>
+            </div>
+
+        </div>
+    </div>
+
+    <!--九宫格-->
+    <ul class="ul">
+        <li>
+            <a href="html/curriculum/index.html"><img src="images/new-homepage/course@3x.png"/><br/><span>课程培训</span></a>
+        </li>
+        <li>
+            <a id="ksjd"><img src="images/new-homepage/check_in_courtesy@3x.png"/><br/><span>签到有礼</span></a>
+        </li>
+        <li>
+            <!--<a id="homHistory"><img src="images/homequery.png" /><br /><span>服务历史</span></a>-->
+            <a id="onlineCard"><img src="images/new-homepage/online_card%20_sale@3x.png"/><br/><span>在线售卡</span></a>
+        </li>
+        <li>
+            <!--<a href="html/housekeeping/service-standard.html"><img src="images/housekeeping@3x.png" /><br /><span>家政标准</span></a>-->
+            <a id="yqyjan"><img src="images/new-homepage/invite_awards@3x.png"/><br/><span>邀请有奖</span></a>
+        </li>
+
+    </ul>
+    <div class="jiazheng"></div>
+    <!--家政资讯-->
+    <div class="img">
+        <img src="images/domestic-information-information@3x.png"/>
+        <div id="rollCon">
+            <div id="rollSubject">
+
+            </div>
+            <div id="rollCopy"></div>
+        </div>
+    </div>
+
+    <!--活动-->
+    <div class="activity">
+        <div class="grab vote con" style="text-align: center;display: none">
+            <h1>投票抢红包</h1>
+            <p id="remainTime"></p>
+            <div class="imgBtn">
+                <img src="" alt="">
+                <img src="" alt="">
+            </div>
+        </div>
+        <div class="timeConfig con" style="display: none">
+            <h1>投票抢红包</h1>
+            <p id="timeConfig"></p>
+            <div class="imgBtn">
+                <img src="" alt="">
+                <img src="" alt="">
+            </div>
+
+        </div>
+
+    </div>
+    <div class="individualActivities">
+        <div>
+            <h1>抢红包</h1>
+            <p>距离结束00:00:00</p>
+        </div>
+        <img src="" alt="">
+    </div>
+    <!--精品课程-->
+    <div class="course-title curriculum">
+        <!--course-title-left-->
+        <div class="star-title-left">
+            <h1 class="f-star  f-course">精品课程</h1>
+        </div>
+        <div class="course-title-right">
+            <span>更多课程</span>
+            <img class="imhh" src="images/new-homepage/triangle@2x.png"/>
+        </div>
+
+    </div>
+    <!--    课程轮播-->
+    <div id="wrapper">
+        <!--<div id="scroller">-->
+        <ul id="scrollerUrl">
+        </ul>
+        <!--</div>-->
+    </div>
+    <div class="jiazheng"></div>
+    <!--在线直播- -->
+    <!--<div class="broadcast-title">-->
+    <!--<div class="broadcast-title-left">-->
+    <!--<h1 class="f-star  f-broadcast">在线直播</h1>-->
+    <!--</div>-->
+    <!--<div class="course-title-right">-->
+    <!--<span>更多直播</span>-->
+    <!--<img class="imhh" src="images/new-homepage/triangle@2x.png"/>-->
+    <!--</div>-->
+    <!--</div>-->
+    <!---->
+    <div class="course-title" id="homeStar">
+        <div class="star-title-left">
+            <h1 class="f-star  f-family"></h1>
+            <span class="f-period"></span>
+        </div>
+        <div class="course-title-right">
+            <span>更多人员</span>
+            <img class="imhh" src="images/new-homepage/triangle@2x.png"/>
+        </div>
+    </div>
+    <!--图片列表的展示-->
+    <!-- 轮播-->
+    <div class="imgWrapper" id="imgWrapper">
+        <!--<div id="scroller">-->
+        <ul id="scrollerUrl1" class="imgScrollerUrl  .swiper-container">
+        </ul>
+        <!--</div>-->
+    </div>
+    <div class="jiazheng"></div>
+
+    <!--名师风采标题-->
+    <div class="course-title" id="course-title">
+        <div class="star-title-left" id="course-title-list">
+            <p class="f-star  f-teacher">名师风采</p>
+        </div>
+        <!--<img class="imhh" id="imhh1" src="../images/person/arrow@3x.png" />-->
+    </div>
+    <!--老师列表-->
+    <ul class="list-ul" id="thelist" style="margin-top: 0;">
+    </ul>
+    <div class="teacherMore" onclick="window.location.href='./html/click/list.html'">
+        <span> 查看全部<img src="images/new-homepage/triangle_hong@3x.png" alt=""></span>
+    </div>
+    <div class="bottom-light"><img src="images/new-homepage/light.png" alt=""></div>
+</div>
+
+
+
+<img src="images/signIn/chat@3x.png" id="chat" alt=""/>
+<!--<img src="images/yqyjan.png" id="yqyjan" />-->
+<div id="tanwin" class="tan" style="display:none;"></div>
+<div class="index-footer">
+    <ul>
+        <li>
+            <a href="javaScript:;" style="color: #FC4949;"><img src="images/tab_btn_train_selected.png"/>
+                <p>首页</p>
+            </a>
+        </li>
+        <li>
+            <a href="javaScript:;"><img src="images/tab_btn_lesson_default.png"/>
+                <p>课程</p>
+            </a>
+        </li>
+        <li>
+            <a href="javaScript:;"><img src="images/orders/orders_default@3x.png"/>
+                <P>接单</P>
+            </a>
+        </li>
+        <li>
+            <a href="javaScript:;"><img src="images/tab_btn_mine_selected.png"/>
+                <P>我的</P>
+            </a>
+        </li>
+    </ul>
+</div>
+</body>
+
+
+<script src="js/jquery-3.1.1.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="js/flexible.js" type="text/javascript" charset="utf-8"></script>
+
+<!--老师列表-->
+<script src="js/list.js?v=1" type="text/javascript" charset="utf-8"></script>
+
+<script src="js/swiper.js" type="text/javascript" charset="utf-8"></script>
+<!--左滑右滑插件-->
+<script src="js/iscroll.js" type="text/javascript" charset="utf-8"></script>
+<script src="js/demoUtils.js" type="text/javascript" charset="utf-8"></script>
+
+<!--接口加密-->
+<script src="js/crypto/core.js" type="text/javascript" charset="utf-8"></script>
+<script src="js/crypto/cipher-core.js" type="text/javascript" charset="utf-8"></script>
+<script src="js/crypto/lib-typedarrays.js" type="text/javascript" charset="utf-8"></script>
+<script src="js/crypto/aes.js" type="text/javascript" charset="utf-8"></script>
+
+<script src="js/crypto/md5.js" type="text/javascript" charset="utf-8"></script>
+<script src="js/crypto/mode-ecb.js" type="text/javascript" charset="utf-8"></script>
+<script src="js/jzjy-ui/common.js?id=1" type="text/javascript" charset="utf-8"></script>
+<!--字体轮播-->
+<script src="http://code.jquery.com/jquery-latest.js"></script>
+<!--首页-->
+<script src="js/homepage/homepage.js?v1" type="text/javascript" charset="utf-8"></script>
+<script src="js/weui/jquery-weui.js"></script>
+<script src="js/my/signIn/reminds.js?v=2"></script>
+</html>

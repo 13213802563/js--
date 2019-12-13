@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+		<meta content="yes" name="apple-mobile-web-app-capable" />
+		<meta content="yes" name="apple-touch-fullscreen">
+		<meta content="black" name="apple-mobile-web-app-status-bar-style" />
+		<meta content="telephone=no,email=no" name="format-detection">
+		<title>登录/注册</title>
+		<link rel="stylesheet" type="text/css" href="css/reset.css" />
+		<link rel="stylesheet" type="text/css" href="css/common.css" />
+		<link rel="stylesheet" type="text/css" href="css/swiper.css" />
+		<link rel="stylesheet" href="css/index.css?id=1" />
+		<script src="js/jquery-3.1.1.min.js" type="text/javascript" charset="utf-8"></script>
+		<style>
+
+		</style>
+		<style>
+			.cell>div,.verification>div{
+				padding-left: 0.38rem;
+			}
+
+			.verCode-img img{
+				width: 2.2rem;
+				height: 1rem;;
+			}
+			.xieyi{
+				position: fixed;
+				left: 0;
+				top: 0;
+				background: white;
+				z-index: 500;
+				height: 100%;
+				overflow: auto;
+				display: none;
+			}
+			.ul{
+				margin-top: 1.7rem;
+				width: 90%;
+				margin-left: 5%;
+			}
+			.ul h1{
+				font-size: .45rem;
+				padding: .3rem 0;
+				font-weight: 600;
+			}
+			.ul p{
+				font-size: .35rem;
+				line-height: .6rem;
+				margin-left: .4rem;
+				margin-top: .3rem;
+			}
+		</style>
+
+		<script>
+            function getQueryString(name) {
+                var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
+                var r = window.location.search.substr(1).match(reg);
+                if (r != null) return decodeURI(r[2]); return null;
+            }
+            if(getQueryString("template")){
+                var iuyh="<script type=\"text/javascript\"  src=\"https://s22.cnzz.com/z_stat.php?id=1262042504&web_id=1262042504\" language=\"JavaScript\">\n<" + "/script>"
+                $("style").before(iuyh);
+            }
+		</script>
+	</head>
+
+	<body>
+		<div class="header">
+			<img src="images/arrow.png" class="lo_left" id="lo_left" />
+			<p>登录</p>
+		</div>
+		<div class="signin-img">
+			<img src="images/jzc-logo.png" alt="" style="width:2.4rem;;"/>
+		</div>
+		<div class="signin-input">
+			<div class="cell" style="height: 1.8rem;align-items: center">
+				<span style="padding-top: .49rem">手机号</span>
+				<div>
+					<input type="text" id="phonenum" placeholder="请输入手机号" style="padding-top: .5rem;" />
+				</div>
+			</div>
+			<!--<div class="cell" style="height: 1.8rem;">-->
+				<!--<span style="padding-top: .38rem">图片验证码</span>-->
+				<!--<div style="display: flex">-->
+					<!--<input type="text" id="imgVerCode" placeholder="请输入计算结果" />-->
+					<!--<div class="verCode-img">-->
+						<!--<img src="/apidisp/verification/img/20020003/jzjy" alt="">-->
+						<!--<p>看不清,<a href="" style="color: #198afc">换一张</a></p>-->
+					<!--</div>-->
+				<!--</div>-->
+			<!--</div>-->
+			<div class="verification" style="height: 1.8rem">
+				<span style="padding-top: .25rem">短信验证码</span>
+				<div>
+					<input type="tel" id="vercode" placeholder="请输入短信验证码" />
+					<input type="button" id="time" class="yzm" value="获取验证码" style="color: #198afc ;">
+				</div>
+			</div>
+			<div class="cell" id="yqm" style="height: 1.8rem;align-items: center; display: none;">
+				<span style="padding-top: .49rem">邀请码</span>
+				<div>
+					<input type="text" id="inviteCode" placeholder="请输入邀请码(非必填)" style="width: 6.3rem;" />
+				</div>
+			</div>
+
+			<button class="signin-but" style="outline: none;background: #198afc;border-radius: 0.2rem;">登录</button>
+		</div>
+		<div class="disclaimer" style="display: none">
+			<input type="checkbox" id="checkbox"/>
+			<p id="disclaimer">同意<家政家园服务协议></p>
+		</div>
+		<div id="tanwin" class="tan" style="display:none;"></div>
+
+	<div class="xieyi">
+		<div class="header">
+			<img src="images/arrow.png" onclick="$('.xieyi').hide()"/>
+			<p style="margin-top: 0;">家政家园服务协议</p>
+		</div>
+		<ul class="ul">
+			<li class="li">
+				<h1>一、前言</h1>
+				<p style="margin-left: 0;">
+					家政家园系北京易盟天地信息技术股份有限公司（以下简称“本公司”）旗下品牌，即家政培训接单平台。本协议（未成年人应在监护人陪同下阅读）描述家政家园平台（以下简称“本平台”或“本系统”）提供的服务及用户的责任，用户（以下简称“用户”或“您”）注册时点击“注册”按钮即表示您仔细阅读过本协议并接受本协议全部条款，在您点击“注册”之时本协议生效。本公司有权随时单方面修改本协议，修改后的协议在本平台上公布后即生效。如果您是我们的老用户，您需要经常查看本协议的更新版本以便知晓相关修订。如果您不同意其中的任何条款或者任何修订，您唯一的解决办法是不使用本服务。</p>
+			</li>
+			<li>
+				<h1>二、系统功能简介</h1>
+				<p>本系统提供全国所有用户使用，包含所有服务人员及想成为服务人员的用户，在线学习、考试评级、验证身份证、拿证、接单、查服务费等各种服务。 （注：由于系统业务的完善，功能将逐渐增加，本文档将继续完善。）</p>
+			</li>
+			<li>
+				<h1>三、信息说明</h1>
+				<p>1、本平台所有信息均通过合法方式获取，所有课程均经授权，遵守国家政策和法律条款。</p>
+				<p> 2、本平台使用过程中如有问题，可通过平台提供反馈信息通道进行问题反馈，本公司将会第一时间进行处理。</p>
+			</li>
+			<li>
+				<h1>四、服务内容</h1>
+				<p>1、在用户接受本协议的前提下，本平台向注册用户提供不可转让，非独占性的服务，并保留今后修改，删除其中任意项或全部服务的权利。</p>
+				<p>2、除非经本平台明确书面同意，用户不得转载、发布、销售或以e-mail等其他任何形式将本平台的内容或服务转移到第三方。</p>
+			</li>
+			<li>
+				<h1>五、用户的权利和义务</h1>
+				<p>1、用户及访问者承认本平台的所有财产（包括但不限于信息、软件、硬件及结构等），以及本平台上所包含所有者为第三方的所有财产（包括但不限于信息、软件、硬件及结构等）受国内和国际知识产权的法律保护，并在未得到本平台书面同意前不转载、发布、销售、e-mail或以其他任何形式将该财产（包括但不限于信息、软件、硬件及结构等）或服务转移到第三方。用户及访问者就本平台的所有财产不作商业性利用，不得对任何资料作商业性利用，不得复制在本平台上展示的任何资料。</p>
+				<p>2、在您注册完毕后，您可以使用本平台提供所有查询服务以及增值服务。</p>
+				<p>3、您在本平台完善后的信息，如您同意授权协议，则视为您同意将信息作为详情页面提供他人查看，本平台承诺将隐藏个人隐私信息，包含：身份证号、身份证件、详细住址、家庭信息、以及包含个人隐私的图片和未授权显示的信息等。</p>
+				<p> 4、如您在使用增值服务时，需要向本平台支付相应的增值服务费用，如购买课程、充值、考试发证等。</p>
+				<p> 5、如您向本平台已支付增值服务费用，无论任何原因费用均不予退还。</p>
+
+			</li>
+			<li>
+				<h1>六、家政家园有限责任</h1>
+				<p>1、本平台不作为服务交易中的任何一方，亦非任何一方的代理，只是作为家政服务人员的平台，不承担与交易有关的任何责任。用户及访问者同意按照本平台所提供的服务使用。</p>
+				<p>2、因为需要在本平台上进行身份认证，用户同意自行确认其身份并对此负责，本平台对用户的身份，信用度等不负任何责任，且保证不对外透漏用户的任何信息。如用户利用虚假身份在本平台活动产生的一切损失和责任由该用户负全部责任。</p>
+
+			</li>
+			<li>
+				<h1>七、最终解释</h1>
+				<p>本协议最终解释权归“北京易盟天地信息技术股份有限公司”所有，如擅自篡改协议内容，涉责必究。</p>
+
+			</li>
+		</ul>
+	</div>
+
+	</body>
+	<script src="js/flexible.js" type="text/javascript" charset="utf-8"></script>
+	<script src="js/return.js" type="text/javascript" charset="utf-8"></script>
+	<script src="js/signin/signin.js?v-1" type="text/javascript" charset="utf-8"></script>
+
+	<script src="js/crypto/core.js" type="text/javascript" charset="utf-8"></script>
+	<script src="js/crypto/cipher-core.js" type="text/javascript" charset="utf-8"></script>
+	<script src="js/crypto/lib-typedarrays.js" type="text/javascript" charset="utf-8"></script>
+	<script src="js/crypto/aes.js" type="text/javascript" charset="utf-8"></script>
+	<script src="js/crypto/md5.js" type="text/javascript" charset="utf-8"></script>
+	<script src="js/crypto/mode-ecb.js" type="text/javascript" charset="utf-8"></script>
+	<script src="js/jzjy-ui/common.js" type="text/javascript" charset="utf-8"></script>
+
+</html>
