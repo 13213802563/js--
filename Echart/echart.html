@@ -1,0 +1,869 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no, width=device-width">
+    <title>看板</title>
+    <link rel="stylesheet" type="text/css" href="css/reset.css" />
+    <link rel="stylesheet" type="text/css" href="css/scanboard.css" />
+    <link rel="stylesheet" type="text/css" href="css/animsition.css" />
+    <link rel="stylesheet" type="text/css" href="css/jquery.shCircleLoader.css" />
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        body{
+            overflow: scroll;
+        }
+        .left{
+            width:30%;
+            float: left;
+        }
+        .amap-info-content{
+            width:40%;
+            float: left;
+        }
+        .right{
+            width:30%;
+            float: left;
+        }
+        .itemCon {
+            padding: 12px 33px;
+        }
+        .map-top{
+            height: 600px;
+        }
+        map-bottom{
+           height:60px;
+        }
+        .itemp{
+            width:50%!important;
+        }
+        .itemp  span:first-child{
+            width:20%!important;
+            float: left;
+            line-height: 47px!important;
+            height: 48px!important;
+        }
+        .itemp  span:last-child{
+            width:60%!important;
+            float: left;
+        }
+        .itemp  span:last-child  p{
+            line-height: 20px!important;
+            height: 20px!important;
+        }
+        .infoPie ul li p {
+            text-align: left;
+            padding-left: 10px;
+        }
+        #main22>div, #manyColumn>div,#leida>div,#main_map>div,#zhexi1>div,#zhexi2>div,#zhexi3>div{
+            width:100%!important;
+        }
+        #main22>div>canvas,#manyColumn>div>canvas,#leida>div>canvas,#main_map>div>canvas,#main_map>div>div,#zhexi1>div>canvas,#zhexi2>div>canvas,#zhexi3>div>canvas{
+            width:100%!important;
+        }
+
+    </style>
+</head>
+<body>
+<div class="left">
+    <!--折线图-->
+    <div id="main22" style="width:100%;height:400px;"></div>
+    <!--柱状图-->
+    <div id="manyColumn" style="width:100%;height:400px;"></div>
+    <!--雷达图-->
+    <div id="leida" style="width:100%;height:400px;"></div>
+</div>
+<div class="amap-info-content">
+    <div class="map-top">
+        <!-- 为ECharts准备一个具备大小（宽高）的Dom -->
+        <div id="main_map" style="height: 100%;width:100%;"></div>
+
+        <div>
+            <p id="high-light">当前高亮省份：无</p>
+            <p class="num" id="high-count">加载中</p>
+        </div>
+        <!--<span style="color: #6273b8;font-size: 3vw;position: absolute;bottom: 7vh;left: 24vw;">服务人员数量</span>-->
+    </div>
+
+    <div class="map-bottom">
+        <div id="zhexi1" style="width:100%;height:100px;"></div>
+        <div id="zhexi2" style="width:100%;height:100px;"></div>
+        <div id="zhexi3" style="width:100%;height:100px;"></div>
+    </div>
+</div>
+<div class="right">
+    <!--总计订单、家庭、服务人员数-->
+    <div class="item total itembg">
+        <div class="itemTit">
+            <span class="border-red">总计订单数</span>
+        </div>
+        <div class="itemCon">
+            <div class="totalNum"><strong class="totalNum" total="368082">5000000</strong><span>单</span></div>
+        </div>
+        <div class="itemTit">
+            <span class="border-yellow">总计家庭数</span>
+        </div>
+        <div class="itemCon">
+            <div class="totalNum"><strong class="totalNum" total="36803382">23442</strong><span>户</span></div>
+        </div>
+
+        <div class="itemTit">
+            <span class="border-blue">总计服务人员数</span>
+        </div>
+        <div class="itemCon">
+            <div class="totalNum"><strong class="totalNum" total="36803382">322345</strong><span>人</span></div>
+        </div>
+    </div>
+    <!--服务人员培训数量-->
+    <div class="item basicInfo">
+        <div class="itemTit">
+            <span class="border-green">培训人数</span>
+        </div>
+        <div class="itemCon itembg">
+            <div class="infoPie">
+                <ul class="clearfix">
+                    <li class="color-blue   itemp">
+                        <span class="border-blue">10</span>
+                        <span><p>保姆</p><p>10000000</p></span>
+                    </li>
+                    <li class="color-yellow itemp">
+                        <span class="border-yellow">20</span>
+                        <span><p>月嫂</p><p>10000000</p></span>
+                    </li>
+                    <li class="color-blue  itemp">
+                        <span class="border-blue">15</span>
+                        <span><p>陪护</p><p>10000000</p></span>
+                    </li>
+
+                    <li class="color-green  itemp">
+                        <span class="border-green">5</span>
+                        <span><p>钟点工</p><p>10000000</p></span>
+                        <!--<p>钟点工</p>-->
+                    </li>
+                    <li class="color-blue  itemp">
+                        <span class="border-yellow">50</span>
+                        <span><p>保洁</p><p>10000000</p></span>
+                        <!--<p>保洁</p>-->
+                    </li>
+                    <li class="color-green  itemp">
+                        <span class="border-green">40</span>
+                        <span><p>育婴师</p><p>10000000</p></span>
+                        <!--<p>育婴师</p>-->
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="item billState">
+        <div class="itemTit">
+            <span class="border-green">家政服务内容</span>
+        </div>
+        <div class="itemCon">
+            <div class="itemCon itembg">
+                <div id="mybubble" style="width: 288px; height: 300px; margin: 0 auto"></div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<!--vgvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv-->
+<script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
+<!-- 引入 echarts.js -->
+<script type="text/javascript" src="js/echarts.min.js"></script>
+<script type="text/javascript" src="js/highcharts.js"></script>
+<script type="text/javascript" src="js/highcharts-more.js"></script>
+<!--柱状图-->
+<script type="text/javascript">
+    // 基于准备好的dom，初始化echarts实例
+    var myChart = echarts.init(document.getElementById('manyColumn'));
+    // 指定图表的配置项和数据
+    var  option88 = {
+        title : {
+            text: '',
+            subtext: ''
+        },
+        legend: {
+            data:['蒸发量','降水量']
+        },
+        toolbox: {
+            show : true,
+            feature : {
+                // mark : {show: true},
+                // dataView : {show: true, readOnly: false},
+                // magicType : {show: true, type: ['line', 'bar']},
+                // restore : {show: true},
+                // saveAsImage : {show: true}
+            }
+        },
+        calculable : false,
+        xAxis : [
+            {
+                type : 'category',
+                axisLine: {
+                    lineStyle: {
+                        color: 'rgb(0,255,235)',
+                        width: 1, //这里是为了突出显示加上的
+                    }
+                },
+                data : ['2015','2016','2017','2018','2019','2020']
+            }
+        ],
+        yAxis : [
+            {
+                type : 'value',
+                axisLine: {
+                    lineStyle: {
+                        color: 'rgb(0,255,235)',
+                        width: 1, //这里是为了突出显示加上的
+                    }
+                }
+            }
+        ],
+        series : [
+            {
+                name:'蒸发量',
+                type:'bar',
+                data:[2.0, 4.9, 7.0, 23.2, 25.6, 76.7],
+                markPoint : {
+                    data : [
+                        {type : 'max', name: '最大值'},
+                        {type : 'min', name: '最小值'}
+                    ]
+                },
+                markLine : {
+                    data : [
+                        {type : 'average', name: '平均值'}
+                    ]
+                },
+                itemStyle: {
+                    normal: {
+                        barBorderRadius: [8, 8, 2, 2],
+                        barBorderColor: 'rgba(0,0,0,0)',
+                        areaStyle: {
+                            type: 'default'
+                        },
+                        // //每个柱子的颜色为一组，循环
+                        // color: function(params) {
+                        //     var colorItem = ['#C1232B','#B5C334'];
+                        //     var currentItem=0;
+                        //     var colorList=[];
+                        //     for(var i=0;i<params.series.data.length;i++){
+                        //         colorList.push(colorItem[currentItem]);
+                        //         if(currentItem==0){
+                        //             currentItem=1;
+                        //         }
+                        //         else {
+                        //             currentItem=0;
+                        //         }
+                        //     }
+                        //     return colorList[params.dataIndex]
+                        // }
+                    },
+                    emphasis: {     //鼠标悬停时
+                        barBorderRadius: [8, 8, 2, 2]
+                    }
+                }
+            },
+            {
+                name:'降水量',
+                type:'bar',
+                data:[2.6, 5.9, 9.0, 26.4, 28.7, 70.7],
+                markPoint : {
+                    data : [
+                        {name : '年最高', value : 182.2, xAxis: 7, yAxis: 183, symbolSize:18},
+                        {name : '年最低', value : 2.3, xAxis: 11, yAxis: 3}
+                    ]
+                },
+                markLine : {
+                    data : [
+                        {type : 'average', name : '平均值'}
+                    ]
+                }
+            }
+        ]
+    };
+
+    // 使用刚指定的配置项和数据显示图表。
+    myChart.setOption(option88);
+</script>
+<!--雷达图-->
+<script>
+    var myChart = echarts.init(document.getElementById('leida'));
+    let option99 = {
+        title : {
+            text: '',
+            subtext: ''
+        },
+        tooltip : {
+            trigger: 'axis'
+        },
+        legend: {
+            orient : 'vertical',
+            x : 'right',
+            y : 'bottom',
+            data:['预算分配（Allocated Budget）','实际开销（Actual Spending）']
+        },
+        toolbox: {
+            show : true,
+            feature : {
+                mark : {show: true},
+                dataView : {show: true, readOnly: false},
+                restore : {show: true},
+                saveAsImage : {show: true}
+            }
+        },
+        polar : [
+            {
+                indicator : [
+                    { text: '销售（sales）', max: 6000},
+                    { text: '管理（Administration）', max: 16000},
+                    { text: '信息技术（Information Techology）', max: 30000},
+                    { text: '客服（Customer Support）', max: 38000},
+                    { text: '研发（Development）', max: 52000},
+                    { text: '市场（Marketing）', max: 25000}
+                ]
+            }
+        ],
+        calculable : true,
+        series : [
+            {
+                name: '预算 vs 开销（Budget vs spending）',
+                type: 'radar',
+                data : [
+                    {
+                        value : [4300, 10000, 28000, 35000, 50000, 19000],
+                        name : '预算分配（Allocated Budget）'
+                    },
+                    {
+                        value : [5000, 14000, 28000, 31000, 42000, 21000],
+                        name : '实际开销（Actual Spending）'
+                    }
+                ]
+            }
+        ]
+    };
+    myChart.setOption(option99);
+</script>
+<!--折线图-->
+<script type="text/javascript">
+    // 基于准备好的dom，初始化echarts实例
+    var myChart = echarts.init(document.getElementById('main22'));
+    // 指定图表的配置项和数据
+    myChart.setOption({
+        title: {
+            text: ''
+        },
+        legend: {
+            data: ['近七日收益']
+        },
+        grid: {
+            left: '3%',
+            right: '4%',
+            bottom: '3%',
+            containLabel: true
+        },
+        toolbox: {
+            feature: {
+                saveAsImage: {}
+            }
+        },
+        xAxis: {
+            splitLine: {　　　　 show: false　　 },
+            type: 'category',
+            boundaryGap: false,
+            /*改变x轴颜色*/
+            axisLine: {
+                lineStyle: {
+                    color: 'rgb(0,255,235)',
+                    width: 1, //这里是为了突出显示加上的
+                }
+            },
+            data:["2015","2016","2017",'2018','2019','2020']
+        },
+        yAxis: {
+            splitLine: {　　　　 show: false　　 },
+            /*改变y轴颜色*/
+            axisLine: {
+                lineStyle: {
+                    color: 'rgb(0,255,235)',
+                    width: 1, //这里是为了突出显示加上的
+                }
+            },
+            data:["2000亿","4000亿","6000亿",'8000亿','10000亿'],
+            type: 'value'
+        },
+        series: [{
+                type:'line',
+                itemStyle:{
+                    normal:{ color: "#00F4E2" } //坐标圆点的颜色
+                },
+                lineStyle:{
+                    normal:{ width:2,color: "rgb(0,255,220,0.3)"  }//线条的颜色及宽度
+                },
+                label: {//线条上的数字提示信息
+                    normal: {
+                        show: true,
+                        position: 'top'
+                    }
+                },
+                smooth: true,//线条平滑
+               data: ["16", "20", "24", "28", "36",'16']
+        }]
+    });
+
+</script>
+<!-- ECharts单文件引入 -->
+<script type="text/javascript" src="js/echarts.map.js"></script>
+<script type="text/javascript">
+    // 路径配置
+    require.config({
+        paths: {
+            echarts: 'http://echarts.baidu.com/build/dist'
+        }
+    });
+
+
+
+    // 使用
+    require(
+        [
+            'echarts',
+            'echarts/chart/bar', // 使用柱状图就加载bar模块，按需加载
+            'echarts/chart/map', // 使用柱状图就加载bar模块，按需加载
+            'echarts/chart/pie'
+        ],
+        function (ec) {
+            // 基于准备好的dom，初始化echarts图表
+            var myChart_map = ec.init(document.getElementById('main_map'));
+            var localData = [];
+            if(localStorage.getItem('oldData3')){
+                for(let i of JSON.parse(localStorage.getItem('oldData3'))){
+                    let tmp = {}
+                    tmp['name'] = i['name']
+                    tmp['value'] = i['value']
+                    tmp['per'] = i['per']
+                    tmp['selected'] = false
+                    localData.push(tmp)
+                }
+            }
+            //localData = []
+
+            let _Data = localData.length > 0 ? localData: [
+                {"name":"山东","value":"33093","per":"0.0023896"},
+                {"name":"甘肃","value":"18","per":"0.0000014"},
+                {"name":"福建","value":"9820","per":"0.0007091"},
+                {"name":"吉林","value":"16646","per":"0.0012020"},
+                {"name":"宁夏","value":"1767","per":"0.0001276"},
+                {"name":"贵州","value":"35156","per":"0.0025386"},
+                {"name":"天津","value":"185586","per":"0.0134007"},
+                {"name":"云南","value":"3864","per":"0.0002791"},
+                {"name":"广东","value":"207924","per":"0.0150136"},
+                {"name":"北京","value":"1330459","per":"0.0960688"},
+                {"name":"湖北","value":"23677","per":"0.0017097"},
+                {"name":"江西","value":"3612","per":"0.0002608"},
+                {"name":"山西","value":"14471","per":"0.0010449"},
+                {"name":"新疆","value":"165","per":"0.0000119"},
+                {"name":"湖南","value":"43481","per":"0.0031397"},
+                {"name":"浙江","value":"35761","per":"0.0025822"},
+                {"name":"上海","value":"138589","per":"0.0100071"},
+                {"name":"黑龙江","value":"17469","per":"0.0012614"},
+                {"name":"四川","value":"58317","per":"0.0042109"},
+                {"name":"河南","value":"12086","per":"0.0008727"},
+                {"name":"陕西","value":"33844","per":"0.0024438"},
+                {"name":"内蒙古","value":"6710","per":"0.0004845"},
+                {"name":"重庆","value":"21402","per":"0.0015454"},
+                {"name":"安徽","value":"64348","per":"0.0046464"},
+                {"name":"辽宁","value":"30447","per":"0.0021985"},
+                {"name":"江苏","value":"68222","per":"0.0049262"},
+                {"name":"河北","value":"64516","per":"0.0046586"},
+                {"name":"海南","value":"6576","per":"0.0004749"},
+                {"name":"广西","value":"1960","per":"0.0001416"},
+
+            ]
+
+            var option_map = {
+                backgroundColor: '#050925', // 全屏背景颜色
+                title : {
+                    //text: '管家帮订单数据监控',
+                    //subtext: '纯属虚构',
+                    x:'100',
+                    y:'80',
+                    textStyle:{
+                        color:'#ffffff', // 主标题字体颜色
+                        fontSize:'30'
+                    }
+                },
+                tooltip : {
+                    trigger: 'item',
+                    formatter:function (param) {  // 自定义鼠标悬停区域显示内容
+                        // console.log(param)
+                        return Math.round(param.value)
+                    }
+                },
+                dataRange: {
+                    x: '100',
+                    y: '700',
+                    splitList: [
+                        // {start: 500001,text:'500000 - 1000000',color: '#5475f5'},
+                        // {start: 400001, end: 500000,text: '400000 - 500000', color: '#9feaa5'},
+                        // {start: 300001, end: 400000,text: '300000 - 400000', color: '#85daef'},
+                        // {start: 200001, end: 300000,text: '200000 - 300000',color: '#74e2ca'},
+                        // {start: 100001, end: 200000, text: '100000 - 200000',color: '#e6ac53'},
+                        // {start: 0, end: 100000, label: '0 - 100000', color: '#9fb5ea'},
+                        // {end: -1,label: '当前选中的省份', color: '#ff4700'}
+                        { start: 350001, text: '大于350001', color: '#a4a6fb'},
+                        { start: 175001, end: 350000 , text: '175001 - 350000', color: '#6b71da'},
+                        { start: 35001, end: 175000 , text: '35001 - 175000', color: '#565cc5'},
+                        { start: 17501, end: 35000 , text: '17501 - 35000', color: '#3b40a2'},
+                        { start: 3501, end: 17500 , text: '3501 - 17500', color: '#282c84'},
+                        { start: 0, end: 3500 , text: '0 - 3500', color: '#161a67'},
+                    ],
+                    textStyle:{
+                        color:'#ffffff' // 右下角数据文字颜色
+                    },
+                    show: false
+                },
+
+                series : [
+                    {
+                        name: 'iphone3',
+                        type: 'map',
+                        mapType: 'china',
+                        roam: false,
+                        itemStyle:{
+                            normal:{
+                                label:{
+                                    show:true,
+                                    //formatter:'{b}',
+                                    textStyle: {fontSize: 13,fontWeight : 'bold',color:'#ffffff'}
+                                },
+                                areaStyle:{color:'#161a67'}, // 地图颜色
+
+                            },
+                            emphasis:{
+                                label:{
+                                    show:true,
+                                    textStyle: {fontSize: 13,fontWeight : 'bold',color:'#ffffff'}
+                                },
+                                areaStyle:{
+                                    color:'#ffbd57', // 高亮时的颜色
+                                }
+                            },
+
+                        },
+                        data:_Data,
+
+
+                    },
+                    // {
+                    //     name: 'iphone4',
+                    //     type: 'map',
+                    //     mapType: 'china',
+                    //     itemStyle:{
+                    //         normal:{label:{show:true}},
+                    //         emphasis:{label:{show:true}}
+                    //     },
+                    //     data:[
+                    //         {name: '北京',value: Math.round(Math.random()*1000)},
+                    //         {name: '天津',value: Math.round(Math.random()*1000)},
+                    //         {name: '上海',value: Math.round(Math.random()*1000)},
+                    //         {name: '重庆',value: Math.round(Math.random()*1000)},
+                    //         {name: '河北',value: Math.round(Math.random()*1000)},
+                    //         {name: '安徽',value: Math.round(Math.random()*1000)},
+                    //         {name: '新疆',value: Math.round(Math.random()*1000)},
+                    //         {name: '浙江',value: Math.round(Math.random()*1000)},
+                    //         {name: '江西',value: Math.round(Math.random()*1000)},
+                    //         {name: '山西',value: Math.round(Math.random()*1000)},
+                    //         {name: '内蒙古',value: Math.round(Math.random()*1000)},
+                    //         {name: '吉林',value: Math.round(Math.random()*1000)},
+                    //         {name: '福建',value: Math.round(Math.random()*1000)},
+                    //         {name: '广东',value: Math.round(Math.random()*1000)},
+                    //         {name: '西藏',value: Math.round(Math.random()*1000)},
+                    //         {name: '四川',value: Math.round(Math.random()*1000)},
+                    //         {name: '宁夏',value: Math.round(Math.random()*1000)},
+                    //         {name: '香港',value: Math.round(Math.random()*1000)},
+                    //         {name: '澳门',value: Math.round(Math.random()*1000)}
+                    //     ]
+                    // },
+                    // {
+                    //     name: 'iphone5',
+                    //     type: 'map',
+                    //     mapType: 'china',
+                    //     itemStyle:{
+                    //         normal:{label:{show:true}},
+                    //         emphasis:{label:{show:true}}
+                    //     },
+                    //     data:[
+                    //         {name: '北京',value: Math.round(Math.random()*1000)},
+                    //         {name: '天津',value: Math.round(Math.random()*1000)},
+                    //         {name: '上海',value: Math.round(Math.random()*1000)},
+                    //         {name: '广东',value: Math.round(Math.random()*1000)},
+                    //         {name: '台湾',value: Math.round(Math.random()*1000)},
+                    //         {name: '香港',value: Math.round(Math.random()*1000)},
+                    //         {name: '澳门',value: Math.round(Math.random()*1000)}
+                    //     ]
+                    // }
+                ]
+            };
+
+
+
+            // 为echarts对象加载数据
+            myChart_map.setOption(option_map);
+
+            var i = 0
+            setInterval(function () {
+                // 累加值
+                let orderCount = 0;
+                for(let i of _Data){
+                    i['value'] = (parseFloat(i['value']) + parseFloat(i['per']) ).toString()
+                    orderCount += Math.round(parseFloat(i['value']))
+                }
+
+                window.parent.frames['aaa'].document.getElementById('servicer-count').innerText= orderCount
+
+                //document.getElementById('order-count').innerText = orderCount;
+                if(i >= _Data.length){
+                    i = 0
+                }
+                _Data[i].selected = true;
+                try{
+                    document.getElementById('high-count').innerText = Math.round(parseFloat(_Data[i].value))
+                    document.getElementById('high-light').innerText = '当前高亮省份：' + _Data[i].name
+                    localStorage.setItem('oldData3',JSON.stringify(_Data))
+                    if(i == 0){
+                        _Data[_Data.length - 1].selected = false;
+                    }else{
+                        _Data[i-1].selected = false;
+                    }
+                }catch (e) {
+
+                }
+                i++;
+                myChart_map.setOption(option_map);
+            },5000)
+        }
+    );
+</script>
+
+<!--折线图-->
+<script type="text/javascript">
+    // 基于准备好的dom，初始化echarts实例
+    var myCharto = echarts.init(document.getElementById('zhexi1'));
+    var  myChartp= echarts.init(document.getElementById('zhexi2'));
+    var myChartt = echarts.init(document.getElementById('zhexi3'));
+    var option2={
+        title: {
+            text: ''
+        },
+        legend: {
+            data: ['近七日收益']
+        },
+        grid: {
+            left: '10%',
+            right: '4%',
+            bottom: '3%',
+            containLabel: true
+        },
+        toolbox: {
+            feature: {
+                saveAsImage: {}
+            }
+        },
+        xAxis: {
+            splitLine: {　　　　 show: false　　 },
+            type: 'category',
+            boundaryGap: false,
+            /*改变x轴颜色*/
+            axisLine: {
+                lineStyle: {
+                    color: 'rgb(0,255,235)',
+                    width: 1, //这里是为了突出显示加上的
+                }
+            },
+            data:["1月","2月","3月",'4月','5月','6月',"7月","8月","9月",'10月','11月','12月']
+        },
+        yAxis: {
+            type : 'value',
+            splitLine: { show: false　　 },
+            /*改变y轴颜色*/
+            axisLine: {
+                lineStyle: {
+                    color: 'rgb(0,255,235)',
+                    width: 1, //这里是为了突出显示加上的
+                }
+            },
+            // min:0
+            min: '0k',
+            max:'50k'
+        },
+        series: [{
+            type:'line',
+            itemStyle:{
+                normal:{ color: "#00F4E2" } //坐标圆点的颜色
+            },
+            lineStyle:{
+                normal:{ width:2,color: "rgb(0,255,220,0.3)"  }//线条的颜色及宽度
+            },
+            label: {//线条上的数字提示信息
+                normal: {
+                    show: true,
+                    position: 'top'
+                }
+            },
+            smooth: true,//线条平滑
+            data: ["16", "20", "24", "28", "36",'16',"7",'8','9','10','11','12']
+        }]
+    }
+    // 指定图表的配置项和数据
+    myCharto.setOption(option2);
+    myChartp.setOption(option2);
+    myChartt.setOption(option2);
+</script>
+
+
+<script>
+    var chart = Highcharts.chart('mybubble', {
+        chart: {
+            type: 'packedbubble',
+            backgroundColor: 'black',
+            plotBackgroundColor: 'black'
+        },
+        title: {
+            text: ''
+        },
+        tooltip: {
+            useHTML: true,
+            pointFormat: '<b>{point.name}:</b> {point.y}m CO<sub>2</sub>'
+        },
+
+        legend: {
+            itemStyle: {
+                "color": "white"
+            }
+        },
+
+        plotOptions: {
+            packedbubble: {
+                minSize: '30%',
+                maxSize: '100%',
+                zMin: 0,
+                zMax: 1000,
+                layoutAlgorithm: {
+                    gravitationalConstant: 0.05,
+                    splitSeries: true,
+                    seriesInteraction: false,
+                    dragBetweenSeries: true,
+                    parentNodeLimit: true
+                },
+                dataLabels: {
+                    enabled: true,
+                    format: '{point.name}',
+                    filter: {
+                        property: 'y',
+                        operator: '>',
+                        value: 0
+                    },
+                    style: {
+                        color: 'black',
+                        textOutline: 'none',
+                        fontWeight: 'normal'
+                    }
+                }
+            }
+        },
+        series: [{
+            name: '家政',
+            data: [{
+                name: '一般家务',
+                value: 500.1
+            },
+                {
+                    name: "母婴服务",
+                    value: 78.3
+                },
+                {
+                    name: "产后修复",
+                    value: 415.4
+                }, {
+                    name: "专业陪护",
+                    value: 353.2
+                }, {
+                    name: "保洁服务",
+                    value: 337.6
+                },
+                {
+                    name: "搬家服务",
+                    value: 71.1
+                },
+                {
+                    name: "便捷护理",
+                    value: 69.8
+                },
+                {
+                    name: "家装维修",
+                    value: 67.7
+                }
+            ]
+        }, {
+            name: '营养',
+            data: [{
+                name: "礼品兑换",
+                value: 8.2
+            },
+                {
+                    name: "大集",
+                    value: 9.2
+                },
+                {
+                    name: "秒杀活动",
+                    value: 13.1
+                },
+                {
+                    name: "食品生鲜",
+                    value: 14.1
+                }, {
+                    name: "年货礼包",
+                    value: 141.5
+                }
+            ]
+        }, {
+            name: '健康',
+            data: [{
+                name: "精致丽人",
+                value: 60.5
+            },
+                {
+                    name: "生活日用",
+                    value: 21.1
+                },
+                {
+                    name: "医疗服务",
+                    value: 31.7
+                },
+                {
+                    name: "按摩理疗",
+                    value: 47.8
+                },
+                {
+                    name: "旅居养老",
+                    value: 74.3
+                },
+                {
+                    name: "摄影写真",
+                    value: 4.3
+                }
+            ]
+        }]
+    })
+
+</script>
+
+
+</body>
+</html>
